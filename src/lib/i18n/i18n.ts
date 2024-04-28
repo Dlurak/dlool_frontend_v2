@@ -2,6 +2,8 @@ import en from '$lib/locales/en';
 import de from '$lib/locales/de';
 import { svocal } from '$lib/utils/store/svocal';
 import { get } from 'svelte/store';
+import type { DefaultValue } from '$lib/types/objects';
+import type { ExtractWordsAfterSign, ReplaceSubstringType } from '$lib/types/strings';
 
 const languages = { en, de } as const;
 
@@ -10,33 +12,48 @@ const currentLanguage = svocal('i18n.currentlang');
 export type LocaleAbbr = keyof typeof languages;
 export type Token = keyof (typeof languages)[LocaleAbbr];
 
-type Count = Record<number | 'default', string>;
+type Amount = number | 'default';
+type Count = Record<Amount, string>;
 
 type GenerateCount<T extends { counts: Count } | string> = T extends { counts: Count }
 	? T['counts']
 	: { default: T };
 
-type DefaultCount<
-	T extends { count?: number | 'default' },
-	Default extends number | 'default'
-> = T extends { count: infer C } ? (C extends undefined ? 'default' : C) : Default;
-
-type ProcessCount<Counts extends Count, Amount extends number | 'default'> = Counts extends {
-	[P in Amount]: infer U;
+type ProcessCount<Counts extends Count, A extends Amount> = Counts extends {
+	[P in A]: infer U;
 }
 	? { default: U }
 	: Counts;
 
-type I18nProps = {
-	count?: number | 'default';
-};
+type BaseString<
+	Tok extends Token,
+	Opt extends Pick<I18nProps, 'count'>,
+	Loc extends LocaleAbbr
+> = ProcessCount<
+	GenerateCount<(typeof languages)[Loc][Tok]>,
+	DefaultValue<'count', Opt, 'default', Amount>
+>['default'];
 
-export const i = <Tok extends Token, Opt extends I18nProps>(
+type Pairs<
+	Tok extends Token,
+	Opt extends I18nProps,
+	Loc extends LocaleAbbr
+	// @ts-ignore
+> = Record<ExtractWordsAfterSign<BaseString<Tok, Opt, Loc>, '$'>[number], string>;
+
+type I18nProps = { count?: Amount };
+
+export const i = <
+	Tok extends Token,
+	Opt extends I18nProps,
+	Pai extends Pairs<Tok, Opt, LocaleAbbr>
+>(
 	token: Tok,
-	options: Opt = {} as Opt
+	pairs = {} as Pai,
+	options = {} as Opt
 ) => {
-	type Base = (typeof languages)[LocaleAbbr][Tok];
-	const baseVal = languages[get(currentLanguage)][token] as Base;
+	type Base = BaseString<Tok, Opt, LocaleAbbr>;
+	const baseVal = languages[get(currentLanguage)][token];
 
 	const count = options.count ?? 'default';
 
@@ -44,10 +61,15 @@ export const i = <Tok extends Token, Opt extends I18nProps>(
 		typeof baseVal === 'string'
 			? baseVal
 			: // @ts-ignore
-				baseVal.counts[count]
-	) as ProcessCount<GenerateCount<Base>, DefaultCount<Opt, 'default'>>['default'];
+				baseVal.counts[count] ?? baseVal.counts.default
+	) as Base;
 
-	return unproccessedString;
+	// @ts-ignore
+	const parted = unproccessedString.replace(
+		/\$([a-zA-Z]+)/g,
+		(match, key) => pairs[key] || match
+	) as ReplaceSubstringType<Base, Pai>;
+
+	// @ts-ignore
+	return parted;
 };
-
-const test = i('nav.homework', {});
