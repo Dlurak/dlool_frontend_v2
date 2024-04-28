@@ -34,16 +34,16 @@ type BaseString<
 	DefaultValue<'count', Opt, 'default', Amount>
 >['default'];
 
-type Pairs<
+export type Pairs<
 	Tok extends Token,
 	Opt extends I18nProps,
 	Loc extends LocaleAbbr
 	// @ts-ignore
 > = Record<ExtractWordsAfterSign<BaseString<Tok, Opt, Loc>, '$'>[number], string>;
 
-type I18nProps = { count?: Amount };
+export type I18nProps = { count?: Amount };
 
-export const i = <
+export const int = <
 	Tok extends Token,
 	Opt extends I18nProps,
 	Pai extends Pairs<Tok, Opt, LocaleAbbr>
@@ -67,7 +67,9 @@ export const i = <
 	// @ts-ignore
 	const parted = unproccessedString.replace(
 		/\$([a-zA-Z]+)/g,
+		// @ts-ignore
 		(match, key) => pairs[key] || match
+		// @ts-ignore
 	) as ReplaceSubstringType<Base, Pai>;
 
 	// @ts-ignore

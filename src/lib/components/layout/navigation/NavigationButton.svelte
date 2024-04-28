@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import Store from '$lib/components/utils/Store.svelte';
+	import { i } from '$lib/i18n/store';
 	import { svocal } from '$lib/utils/store/svocal';
 	import type { NavigationTarget } from './types';
 	import {
@@ -12,16 +14,44 @@
 		MagnifyingGlass,
 		type IconSource
 	} from 'svelte-hero-icons';
+	import { type Readable } from 'svelte/store';
 
 	export let target: NavigationTarget;
 
-	const entries: Record<NavigationTarget, { icon: IconSource; action: () => void }> = {
-		login: { icon: User, action: () => goto('/login') },
-		notes: { icon: PencilSquare, action: () => goto('/notes') },
-		calendar: { icon: Calendar, action: () => goto('/calendar') },
-		homework: { icon: BookOpen, action: () => goto('/homework') },
-		launcher: { icon: MagnifyingGlass, action: () => {} },
-		register: { icon: UserPlus, action: () => goto('/register') }
+	const entries: Record<
+		NavigationTarget,
+		{ icon: IconSource; action: () => void; text: Readable<string> }
+	> = {
+		login: {
+			icon: User,
+			action: () => goto('/login'),
+			text: i('nav.login')
+		},
+		notes: {
+			icon: PencilSquare,
+			action: () => goto('/notes'),
+			text: i('nav.notes')
+		},
+		calendar: {
+			icon: Calendar,
+			action: () => goto('/calendar'),
+			text: i('nav.calendar')
+		},
+		homework: {
+			icon: BookOpen,
+			action: () => goto('/homework'),
+			text: i('nav.homework')
+		},
+		launcher: {
+			icon: MagnifyingGlass,
+			action: () => {},
+			text: i('nav.launcher')
+		},
+		register: {
+			icon: UserPlus,
+			action: () => goto('/register'),
+			text: i('nav.register')
+		}
 	};
 
 	$: data = entries[target];
@@ -35,6 +65,6 @@
 	</div>
 
 	{#if $showText}
-		<span class="text-xs">{target}</span>
+		<span class="text-xs"><Store store={data.text} /></span>
 	{/if}
 </button>
