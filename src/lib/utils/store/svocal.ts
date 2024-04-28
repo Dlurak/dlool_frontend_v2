@@ -1,4 +1,5 @@
 import type { NavigationTarget } from '$lib/components/layout/navigation/types';
+import type { LocaleAbbr } from '$lib/i18n/i18n';
 import { localstorage } from 'svocal';
 
 const sv = {
@@ -12,7 +13,8 @@ const sv = {
 				'launcher'
 			] satisfies NavigationTarget[] as NavigationTarget[]
 	],
-	'settings.nav.texts': ['settings.nav.texts', () => true]
+	'settings.nav.texts': ['settings.nav.texts', () => true],
+	'i18n.currentlang': ['i18n.currentlang', () => 'de' satisfies LocaleAbbr as LocaleAbbr]
 } as const;
 
 type SvocalKey = keyof typeof sv;
