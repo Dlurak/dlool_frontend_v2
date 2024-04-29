@@ -38,7 +38,7 @@
 			-->
 			<a
 				href="https://github.com/Dlurak/dloolFrontend_v2"
-				class="text-light-text dark:text-dark-text flex items-center gap-1 rounded-full border px-4 py-1 shadow-md"
+				class="flex items-center gap-1 rounded-full border px-4 py-1 text-black shadow-md dark:text-white"
 			>
 				<Github />
 				<Store store={i('home.quick.github')} />

@@ -12,6 +12,8 @@ const currentLanguage = svocal('i18n.currentlang');
 export type LocaleAbbr = keyof typeof languages;
 export type Token = keyof (typeof languages)[LocaleAbbr];
 
+export const abbrevations = Object.keys(languages) satisfies string[] as LocaleAbbr[];
+
 type Amount = number | 'default';
 type Count = Record<Amount, string>;
 

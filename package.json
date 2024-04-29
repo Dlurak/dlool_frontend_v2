@@ -40,7 +40,10 @@
 	"type": "module",
 	"pmr": "pnpm",
 	"dependencies": {
+		"@floating-ui/core": "^1.6.1",
+		"nutzlich": "^0.4.0",
 		"svelte-bootstrap-icons": "^3.1.1",
+		"svelte-floating-ui": "^1.5.8",
 		"svocal": "^0.2.2"
 	}
 }

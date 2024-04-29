@@ -15,13 +15,15 @@
 	<div class="grid grid-cols-1 justify-items-center gap-5 sm:grid-cols-2 md:grid-cols-4">
 		{#each links as link}
 			<a href={link.href} class="flex flex-col items-center justify-center gap-1">
-				{#if link.icon === 'github'}
-					<Github class="h-8 w-8" />
-				{:else if link.icon === 'mastodon'}
-					<Mastodon class="h-8 w-8" />
-				{:else if link.icon === 'cam'}
-					<Icon src={VideoCamera} solid class="h-8 w-8" />
-				{/if}
+				<span class="h-8 w-8 text-black dark:text-white">
+					{#if link.icon === 'github'}
+						<Github class="h-8 w-8" />
+					{:else if link.icon === 'mastodon'}
+						<Mastodon class="h-8 w-8" />
+					{:else if link.icon === 'cam'}
+						<Icon src={VideoCamera} solid class="h-8 w-8" />
+					{/if}
+				</span>
 				<Store store={i(link.text)} />
 			</a>
 		{/each}

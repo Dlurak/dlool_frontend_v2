@@ -8,6 +8,16 @@ const en = {
 	'nav.register': 'Register',
 	'nav.launcher': 'Launcher',
 
+	'nav.footer.auth': 'Account',
+	'nav.footer.auth.login': 'Login',
+	'nav.footer.auth.register': 'Register',
+	'nav.footer.notes': 'Notes',
+	'nav.footer.notes.notes': 'Notes',
+	'nav.footer.calendar': 'Calendar',
+	'nav.footer.calendar.calendar': 'Calendar',
+	'nav.footer.homework': 'Homework',
+	'nav.footer.homework.homework': 'Homework',
+
 	'home.subtitle': 'Next generation homework for your entire class',
 	'home.digitalEra': 'A homework management system for the digital era',
 	'home.quick.getStarted': '🚀 Get Started',
@@ -58,7 +68,16 @@ const en = {
 	'home.boxes.students.description': 'Dlool was made by students for students',
 	'home.boxes.easy': 'Easy & fast to use',
 	'home.boxes.easy.description':
-		'Eventhough Dlool has many advanced features it is still very easy and intuitive to use'
+		'Eventhough Dlool has many advanced features it is still very easy and intuitive to use',
+
+	'lang.de': 'German',
+	'lang.en': 'English',
+
+	'footer.creator': 'Created by Dlurak',
+	'footer.creator.license': 'Liscenced under the GNU General Public License Version 3',
+	'footer.contact': 'Contact',
+	'footer.contact.backend': 'Backend on GitHub',
+	'footer.contact.frontend': 'Frontend on GitHub'
 } as const satisfies I18nDict;
 
 export default en;

@@ -8,6 +8,16 @@ const de = {
 	'nav.register': 'Registrieren',
 	'nav.launcher': 'Suche',
 
+	'nav.footer.auth': 'Account',
+	'nav.footer.auth.login': 'Einloggen',
+	'nav.footer.auth.register': 'Registrieren',
+	'nav.footer.notes': 'Notizen',
+	'nav.footer.notes.notes': 'Notizen',
+	'nav.footer.calendar': 'Kalender',
+	'nav.footer.calendar.calendar': 'Kalender',
+	'nav.footer.homework': 'Hausaufgaben',
+	'nav.footer.homework.homework': 'Hausaufgaben',
+
 	'home.subtitle': 'Das Hausaufgabenheft der nächsten Generation für Deine ganze Klasse',
 	'home.digitalEra': 'Ein Hausaufgabenheft für das digitale Zeitalter',
 	'home.quick.getStarted': '🚀 Loslegen',
@@ -63,7 +73,16 @@ const de = {
 	'home.boxes.students.description': 'Dlool wurde von Schülern für Schüler erstellt',
 	'home.boxes.easy': 'Schnell & Einfach zu nutzen',
 	'home.boxes.easy.description':
-		'Obwohl Dlool viele fortschrittliche Funktionen hat ist es dennoch leicht es zu bedienen.'
+		'Obwohl Dlool viele fortschrittliche Funktionen hat ist es dennoch leicht es zu bedienen.',
+
+	'lang.de': 'Deutsch',
+	'lang.en': 'Englisch',
+
+	'footer.creator': 'Erstellt von Dlurak',
+	'footer.creator.license': 'Lizensiert unter der Gnu General Public License 3',
+	'footer.contact': 'Kontakt',
+	'footer.contact.backend': 'Backend auf GitHub',
+	'footer.contact.frontend': 'Frontend auf GitHub'
 } as const satisfies I18nDict;
 
 export default de;

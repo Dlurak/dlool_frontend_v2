@@ -40,4 +40,8 @@
 	ul {
 		@apply list-inside list-disc;
 	}
+
+	a {
+		@apply text-sky-600 dark:text-sky-400;
+	}
 }
