@@ -82,7 +82,15 @@ const de = {
 	'footer.creator.license': 'Lizensiert unter der Gnu General Public License 3',
 	'footer.contact': 'Kontakt',
 	'footer.contact.backend': 'Backend auf GitHub',
-	'footer.contact.frontend': 'Frontend auf GitHub'
+	'footer.contact.frontend': 'Frontend auf GitHub',
+
+	'password.validation.length': 'Muss läner als 7 Zeichen seien',
+	'password.validation.lowercase': 'Muss min. einen Kleinbuchstaben enthalten',
+	'password.validation.upper': 'Muss min. einen Großbuchstaben enthalten',
+	'password.validation.digit': 'Muss min. eine Ziffer enthalten',
+	'password.validation.special': 'Muss min. ein Sonderzeichen enthalten',
+
+	literal: '$literal'
 } as const satisfies I18nDict;
 
 export default de;

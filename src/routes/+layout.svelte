@@ -4,9 +4,9 @@
 	import '../app.css';
 </script>
 
-<div class="min-h-[100dvh] w-full">
+<div class="flex min-h-[100dvh] w-full flex-col justify-between">
 	<Navbar />
-	<main class="flex w-full flex-col items-center px-3 pb-3">
+	<main class="flex w-full flex-col items-center px-3 py-3">
 		<slot />
 	</main>
 	<Footer />

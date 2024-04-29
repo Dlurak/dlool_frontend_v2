@@ -77,7 +77,15 @@ const en = {
 	'footer.creator.license': 'Liscenced under the GNU General Public License Version 3',
 	'footer.contact': 'Contact',
 	'footer.contact.backend': 'Backend on GitHub',
-	'footer.contact.frontend': 'Frontend on GitHub'
+	'footer.contact.frontend': 'Frontend on GitHub',
+
+	'password.validation.length': 'Must be longer then 7 charachters',
+	'password.validation.lowercase': 'Must include at least one lowercase charachter',
+	'password.validation.upper': 'Must include at least one uppercase charachter',
+	'password.validation.digit': 'Must include at least one digit',
+	'password.validation.special': 'Must include at least one special charachter',
+
+	literal: '$literal'
 } as const satisfies I18nDict;
 
 export default en;

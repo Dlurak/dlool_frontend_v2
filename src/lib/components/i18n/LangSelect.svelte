@@ -23,7 +23,7 @@
 </script>
 
 <button
-	class="flex items-center gap-2 rounded px-2 shadow-md outline outline-1 outline-emerald-500 dark:outline-emerald-700"
+	class="flex items-center gap-2 rounded px-2 outline outline-1 outline-emerald-500 dark:outline-emerald-700"
 	on:click={isPopoverOpen.toggle}
 	use:floatingRef
 	bind:clientWidth={width}
