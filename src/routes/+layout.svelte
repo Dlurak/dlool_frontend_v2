@@ -3,9 +3,9 @@
 	import '../app.css';
 </script>
 
-<div class="min-h-[100dvh]">
+<div class="min-h-[100dvh] w-full">
 	<Navbar />
-	<main class="px-3">
+	<main class="flex w-full flex-col items-center px-3">
 		<slot />
 	</main>
 </div>

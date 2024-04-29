@@ -1,15 +1,13 @@
 <script>
-	import { svocal } from '$lib/utils/store/svocal';
-
-	const lang = svocal('i18n.currentlang');
+	import Top from '$lib/components/home/Top.svelte';
+	import Boxes from '$lib/components/home/Boxes.svelte';
+	import HomeworkBut from '$lib/components/home/HomeworkBut.svelte';
+	import DiscoverMore from '$lib/components/home/DiscoverMore.svelte';
 </script>
 
-<h1>Dlool</h1>
-
-<button
-	on:click={() => {
-		lang.update((old) => (old === 'de' ? 'en' : 'de'));
-	}}
->
-	{$lang}
-</button>
+<div class="max-w-[min(80rem,95%)]">
+	<Top />
+	<Boxes />
+	<HomeworkBut />
+	<DiscoverMore />
+</div>

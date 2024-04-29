@@ -40,6 +40,7 @@
 	"type": "module",
 	"pmr": "pnpm",
 	"dependencies": {
+		"svelte-bootstrap-icons": "^3.1.1",
 		"svocal": "^0.2.2"
 	}
 }
