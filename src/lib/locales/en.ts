@@ -8,6 +8,8 @@ const en = {
 	'register.nametaken.desc': 'But you can stil use the same displayname and password',
 	'register.success': "Successfully registered (ﾉ◕ヮ◕)ﾉ",
 
+	'login.login': "Login",
+
 	'nav.homework': 'Homework',
 	'nav.calendar': 'Calendar',
 	'nav.notes': 'Notes',

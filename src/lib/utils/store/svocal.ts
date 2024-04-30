@@ -15,7 +15,18 @@ const sv = {
 	],
 	'settings.nav.texts': ['settings.nav.texts', () => true],
 	'i18n.currentlang': ['i18n.currentlang', () => 'de' satisfies LocaleAbbr as LocaleAbbr],
-	'api.url': ['api.url', () => 'http://localhost:3000']
+	'api.url': ['api.url', () => 'http://localhost:3000'],
+
+	'auth.refresh.token': ['auth.refresh.token', () => null satisfies string | null as string | null],
+	'auth.refresh.expires': [
+		'auth.refresh.expires',
+		() => null satisfies number | null as number | null
+	],
+	'auth.access.token': ['auth.access.token', () => null satisfies string | null as string | null],
+	'auth.access.expires': [
+		'auth.access.expires',
+		() => null satisfies number | null as number | null
+	]
 } as const;
 
 type SvocalKey = keyof typeof sv;

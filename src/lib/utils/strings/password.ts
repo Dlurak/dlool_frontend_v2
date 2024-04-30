@@ -1,7 +1,7 @@
 import { i } from '$lib/i18n/store';
 import type { Readable } from 'svelte/store';
 
-const longEnough = (pwd: string) => pwd.length > 8;
+const longEnough = (pwd: string) => pwd.length > 7;
 const hasLowercaseChar = (pwd: string) => /[a-z]/.test(pwd);
 const hasUppercaseChar = (pwd: string) => /[A-Z]/.test(pwd);
 const hasDigit = (pwd: string) => /[0-9]/.test(pwd);

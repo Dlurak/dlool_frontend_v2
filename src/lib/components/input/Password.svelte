@@ -12,8 +12,9 @@
 
 	<input
 		type="password"
-		class="bg-transparent focus:outline-none"
+		class="w-full bg-transparent focus:outline-none"
 		bind:value
+		on:input
 		placeholder={$placeholder}
 	/>
 </Frame>

@@ -32,6 +32,5 @@ export async function register(props: RegisterProps) {
 		})
 	}).then((r) => r.json());
 
-	console.log(res)
 	return scheme.parse(res);
 }

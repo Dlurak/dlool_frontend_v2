@@ -18,6 +18,7 @@
 		type="text"
 		class="w-full bg-transparent focus:outline-none"
 		placeholder={$placeholder}
+		on:input
 		bind:value
 	/>
 </Frame>

@@ -9,6 +9,8 @@ const de = {
 		'Aber Du kannst noch immer den selben Anzeigenamen und das selbe Passwort nutzen',
 	'register.success': 'Erfolgreich registriert (ﾉ◕ヮ◕)ﾉ',
 
+	'login.login': "Einloggen",
+
 	'nav.homework': 'Hausaufgaben',
 	'nav.calendar': 'Kalender',
 	'nav.notes': 'Notizen',
