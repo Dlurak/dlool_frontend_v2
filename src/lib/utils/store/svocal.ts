@@ -14,7 +14,8 @@ const sv = {
 			] satisfies NavigationTarget[] as NavigationTarget[]
 	],
 	'settings.nav.texts': ['settings.nav.texts', () => true],
-	'i18n.currentlang': ['i18n.currentlang', () => 'de' satisfies LocaleAbbr as LocaleAbbr]
+	'i18n.currentlang': ['i18n.currentlang', () => 'de' satisfies LocaleAbbr as LocaleAbbr],
+	'api.url': ['api.url', () => 'http://localhost:3000']
 } as const;
 
 type SvocalKey = keyof typeof sv;

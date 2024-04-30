@@ -1,6 +1,13 @@
 import type { I18nDict } from './types';
 
 const en = {
+	error: 'Something went wrong',
+
+	'register.register': 'Register',
+	'register.nametaken': 'Username taken :(',
+	'register.nametaken.desc': 'But you can stil use the same displayname and password',
+	'register.success': "Successfully registered (ﾉ◕ヮ◕)ﾉ",
+
 	'nav.homework': 'Homework',
 	'nav.calendar': 'Calendar',
 	'nav.notes': 'Notes',
@@ -79,6 +86,10 @@ const en = {
 	'footer.contact.backend': 'Backend on GitHub',
 	'footer.contact.frontend': 'Frontend on GitHub',
 
+	username: 'Username',
+	displayname: 'Displayname',
+
+	password: 'Password',
 	'password.validation.length': 'Must be longer then 7 charachters',
 	'password.validation.lowercase': 'Must include at least one lowercase charachter',
 	'password.validation.upper': 'Must include at least one uppercase charachter',

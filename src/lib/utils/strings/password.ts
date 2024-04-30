@@ -39,7 +39,7 @@ export const getConditions = (pwd: string) => {
 	return conditions
 		.map((cn) => ({
 			...cn,
-			isValid: cn.isValid(pwd)
+			isValid: cn.isValid(pwd.trim())
 		}))
 		.sort((a, b) => {
 			if (a.isValid === b.isValid) return 0;

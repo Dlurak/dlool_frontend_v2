@@ -16,7 +16,7 @@
 
 	<input
 		type="text"
-		class="bg-transparent focus:outline-none"
+		class="w-full bg-transparent focus:outline-none"
 		placeholder={$placeholder}
 		bind:value
 	/>

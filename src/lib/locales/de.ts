@@ -1,6 +1,14 @@
 import type { I18nDict } from './types';
 
 const de = {
+	error: 'Etwas ist schief gelaufen',
+
+	'register.register': 'Registrieren',
+	'register.nametaken': 'Nutzername vergeben :(',
+	'register.nametaken.desc':
+		'Aber Du kannst noch immer den selben Anzeigenamen und das selbe Passwort nutzen',
+	'register.success': 'Erfolgreich registriert (ﾉ◕ヮ◕)ﾉ',
+
 	'nav.homework': 'Hausaufgaben',
 	'nav.calendar': 'Kalender',
 	'nav.notes': 'Notizen',
@@ -84,6 +92,10 @@ const de = {
 	'footer.contact.backend': 'Backend auf GitHub',
 	'footer.contact.frontend': 'Frontend auf GitHub',
 
+	username: 'Nutzername',
+	displayname: 'Anzeigename',
+
+	password: 'Passwort',
 	'password.validation.length': 'Muss läner als 7 Zeichen seien',
 	'password.validation.lowercase': 'Muss min. einen Kleinbuchstaben enthalten',
 	'password.validation.upper': 'Muss min. einen Großbuchstaben enthalten',
