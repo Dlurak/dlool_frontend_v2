@@ -8,6 +8,10 @@
 	import { readable } from 'svelte/store';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { AcademicCap, BuildingLibrary } from 'svelte-hero-icons';
+	import { createSchool } from '$lib/dlool/school/create';
+	import { createClass } from '$lib/dlool/classes/create';
+	import { joinClass } from '$lib/dlool/join';
+	import { sendToast } from '$lib/components/layout/toasts';
 
 	const { isLoggedIn } = useAuth();
 
@@ -16,6 +20,8 @@
 
 	let classInput = '';
 	let classes: Class[] = [];
+
+	let isDisabled = false;
 </script>
 
 <div
@@ -28,6 +34,7 @@
 			allowCustomval
 			icon={BuildingLibrary}
 			on:userInput={async (e) => {
+				isDisabled = false;
 				schools = await listSchools({
 					query: e.detail
 				}).then((d) => d.data);
@@ -49,6 +56,7 @@
 				value: name
 			}))}
 			on:userInput={async (e) => {
+				isDisabled = false;
 				classes = await listClasses({
 					school: schoolInput,
 					query: e.detail
@@ -58,7 +66,57 @@
 			threshold={0.1}
 		/>
 
-		<PrimaryButton disabled={!(classInput && schoolInput)}>
+		<PrimaryButton
+			disabled={!(classInput && schoolInput) || isDisabled}
+			on:click={async () => {
+				try {
+					isDisabled = true;
+					await createSchool({
+						name: schoolInput.trim()
+					});
+					await createClass({
+						school: schoolInput.trim(),
+						name: classInput.trim()
+					});
+					const res = await joinClass({
+						school: schoolInput.trim(),
+						class: classInput.trim()
+					});
+
+					if (res.status === 'error') {
+						const content = {
+							'Request already exists': i('toast.join.requestExists'),
+							'User is already in class': i('toast.join.alreadyInClass')
+						}[res.error];
+
+						sendToast({
+							content,
+							type: 'error',
+							timeout: 5_000
+						});
+						return;
+					}
+
+					const content = {
+						'Join request created successfully!': i('toast.join.requested'),
+						'Joined class successfully!': i('toast.join.joined')
+					}[res.message];
+
+					sendToast({
+						content,
+						type: 'success',
+						timeout: 5_000
+					});
+				} catch (e) {
+					isDisabled = false;
+					sendToast({
+						type: 'error',
+						content: i('error'),
+						timeout: 5_000
+					});
+				}
+			}}
+		>
 			<Store store={i('join.joinClass')} />
 		</PrimaryButton>
 	{:else}

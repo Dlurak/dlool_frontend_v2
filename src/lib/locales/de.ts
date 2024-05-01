@@ -11,6 +11,11 @@ const de = {
 	'toast.refreshToken.error':
 		'Es konnte kein neues Zugangstoken beantragt werden, bitte melde Dich erneut an',
 
+	'toast.join.joined': 'Erfolgreich der Klasse beigetreten!',
+	'toast.join.requested': 'Erfolgreich angefragt der Klasse beizutreten!',
+	'toast.join.alreadyInClass': 'Du bist bereits in dieser Klasse.',
+	'toast.join.requestExists': 'Du hast bereits angefragt dieser Klasse beizutreten.',
+
 	'register.register': 'Registrieren',
 	'register.nametaken': 'Nutzername vergeben :(',
 	'register.nametaken.desc':

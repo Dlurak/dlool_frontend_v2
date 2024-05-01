@@ -10,6 +10,11 @@ const en = {
 	'toast.login.incorrect': 'Falscher Nutzername oder Passwort',
 	'toast.refreshToken.error': 'A new access token could not be requested, please log in again',
 
+	'toast.join.joined': 'Successfully joined the class!',
+	'toast.join.requested': 'Successfully requested to join the class!',
+	'toast.join.alreadyInClass': "You're already a member of this class",
+	'toast.join.requestExists': "You've already requested to join that class",
+
 	'register.register': 'Register',
 	'register.nametaken': 'Username taken :(',
 	'register.nametaken.desc': 'But you can stil use the same displayname and password',

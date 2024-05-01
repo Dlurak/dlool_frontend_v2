@@ -30,8 +30,6 @@
 
 	let currentlyFocused = useCycle({ max: () => sortedAndFiltered.length - 1 });
 
-	let inputEleIsFocused = false;
-
 	const [floatingRef, floatingContent] = createFloatingActions({
 		strategy: 'absolute',
 		placement: 'bottom',
@@ -63,16 +61,13 @@
 	}}
 />
 
-<div class="relative">
+<div class="entire relative">
 	<div use:floatingRef>
 		<TextInput
 			isValid={!!value}
 			{icon}
 			{placeholder}
 			bind:value={userInput}
-			on:blur={() => {
-				inputEleIsFocused = false;
-			}}
 			on:input={(e) => {
 				showSuggestions = true;
 				currentlyFocused.reset();
@@ -93,31 +88,35 @@
 
 				dispatch('userInput', newVal);
 			}}
-			on:focus={() => (inputEleIsFocused = true)}
 		/>
 	</div>
 
-	{#if showSuggestions}
-		<div
-			class="z-10 flex w-full flex-col overflow-hidden rounded-md bg-zinc-200 dark:bg-zinc-800"
-			use:floatingContent
-		>
-			{#each sortedAndFiltered as opt, index}
-				<button
-					role="option"
-					aria-selected={$currentlyFocused === index ? 'true' : 'false'}
-					tabindex="0"
-					class="px-2 py-1 text-start"
-					class:bg-zinc-300={index === $currentlyFocused}
-					class:dark:bg-zinc-700={index === $currentlyFocused}
-					on:mouseenter={() => ($currentlyFocused = index)}
-					on:click={() => {
-						select(index);
-					}}
-				>
-					<Store store={opt.label} />
-				</button>
-			{/each}
-		</div>
-	{/if}
+	<div
+		class="suggestion-panel z-10 flex w-full flex-col overflow-hidden rounded-md bg-zinc-200 dark:bg-zinc-800"
+		class:hidden={!showSuggestions}
+		use:floatingContent
+	>
+		{#each sortedAndFiltered as opt, index}
+			<button
+				role="option"
+				aria-selected={$currentlyFocused === index ? 'true' : 'false'}
+				tabindex="0"
+				class="px-2 py-1 text-start"
+				class:bg-zinc-300={index === $currentlyFocused}
+				class:dark:bg-zinc-700={index === $currentlyFocused}
+				on:mouseenter={() => ($currentlyFocused = index)}
+				on:click={() => {
+					select(index);
+				}}
+			>
+				<Store store={opt.label} />
+			</button>
+		{/each}
+	</div>
 </div>
+
+<style>
+	.entire:not(:focus-within) > .suggestion-panel {
+		display: none;
+	}
+</style>
