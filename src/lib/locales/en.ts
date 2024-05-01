@@ -3,6 +3,9 @@ import type { I18nDict } from './types';
 const en = {
 	error: 'Something went wrong',
 
+	school: 'School',
+	class: 'Class',
+
 	'toast.login.success': 'Erfolgreich eingeloggt',
 	'toast.login.incorrect': 'Falscher Nutzername oder Passwort',
 	'toast.refreshToken.error': 'A new access token could not be requested, please log in again',
@@ -14,6 +17,8 @@ const en = {
 
 	'login.login': 'Login',
 
+	'join.joinClass': 'Join now',
+
 	'nav.homework': 'Homework',
 	'nav.calendar': 'Calendar',
 	'nav.notes': 'Notes',
@@ -24,6 +29,7 @@ const en = {
 	'nav.footer.auth': 'Account',
 	'nav.footer.auth.login': 'Login',
 	'nav.footer.auth.register': 'Register',
+	'nav.footer.auth.join': 'Join class',
 	'nav.footer.notes': 'Notes',
 	'nav.footer.notes.notes': 'Notes',
 	'nav.footer.calendar': 'Calendar',

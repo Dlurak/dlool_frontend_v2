@@ -2,12 +2,13 @@ import { goto } from '$app/navigation';
 import { i } from '$lib/i18n/store';
 import type { Readable } from 'svelte/store';
 import {
+	type IconSource,
 	BookOpen,
 	User,
 	UserPlus,
 	PencilSquare,
-	type IconSource,
-	Calendar
+	Calendar,
+	RectangleGroup
 } from 'svelte-hero-icons';
 
 type Link = {
@@ -34,6 +35,11 @@ export const links: LinkGroup[] = [
 				name: i('nav.footer.auth.register'),
 				action: () => goto('/register'),
 				icon: UserPlus
+			},
+			{
+				name: i('nav.footer.auth.join'),
+				action: () => goto('/join'),
+				icon: RectangleGroup
 			}
 		]
 	},

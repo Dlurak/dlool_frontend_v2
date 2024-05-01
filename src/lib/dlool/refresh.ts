@@ -29,8 +29,6 @@ export async function refresh(props: RefreshProps) {
 
 	svocal('auth.access.token').set(parsed.data.token);
 	svocal('auth.access.expires').set(parsed.data.expiresIn * 1_000 + currentMs());
-	console.log(parsed.data.expiresIn);
-	console.log(new Date(parsed.data.expiresIn * 1_000 + currentMs()).toTimeString());
 	svocal('auth.access.generatedBy').set('refreshToken');
 
 	return parsed;

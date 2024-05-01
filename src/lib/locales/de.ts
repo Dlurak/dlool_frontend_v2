@@ -3,6 +3,9 @@ import type { I18nDict } from './types';
 const de = {
 	error: 'Etwas ist schief gelaufen',
 
+	school: 'Schule',
+	class: 'Klasse',
+
 	'toast.login.success': 'Erfolgreich eingeloggt',
 	'toast.login.incorrect': 'Falscher Nutzername oder falsches Passwort',
 	'toast.refreshToken.error':
@@ -16,6 +19,8 @@ const de = {
 
 	'login.login': 'Einloggen',
 
+	'join.joinClass': 'Beitreten',
+
 	'nav.homework': 'Hausaufgaben',
 	'nav.calendar': 'Kalender',
 	'nav.notes': 'Notizen',
@@ -26,6 +31,7 @@ const de = {
 	'nav.footer.auth': 'Account',
 	'nav.footer.auth.login': 'Einloggen',
 	'nav.footer.auth.register': 'Registrieren',
+	'nav.footer.auth.join': 'Klasse beitreten',
 	'nav.footer.notes': 'Notizen',
 	'nav.footer.notes.notes': 'Notizen',
 	'nav.footer.calendar': 'Kalender',

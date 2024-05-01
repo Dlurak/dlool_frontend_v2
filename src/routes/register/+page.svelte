@@ -9,6 +9,7 @@
 	import { writable } from 'svelte/store';
 	import Confetti from 'svelte-confetti';
 	import Store from '$lib/components/utils/Store.svelte';
+	import { login } from '$lib/dlool/login';
 
 	let username = '';
 	let displayname = '';
@@ -26,9 +27,9 @@
 		})
 			.then((data) => {
 				status.set(data);
+				login({ username: username.trim(), password: pwd.trim() });
 			})
-			.catch((e) => {
-				console.log(e);
+			.catch(() => {
 				status.set('error');
 			});
 	};
