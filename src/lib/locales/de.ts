@@ -5,6 +5,8 @@ const de = {
 
 	'toast.login.success': 'Erfolgreich eingeloggt',
 	'toast.login.incorrect': 'Falscher Nutzername oder falsches Passwort',
+	'toast.refreshToken.error':
+		'Es konnte kein neues Zugangstoken beantragt werden, bitte melde Dich erneut an',
 
 	'register.register': 'Registrieren',
 	'register.nametaken': 'Nutzername vergeben :(',

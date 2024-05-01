@@ -49,6 +49,7 @@ export async function login(props: LoginProps) {
 
 	svocal('auth.access.token').set(parsed.data.accessToken.token);
 	svocal('auth.access.expires').set(inNSecondsToTs(parsed.data.accessToken.expiresIn));
+	svocal('auth.access.generatedBy').set('login');
 
 	const refreshToken = svocal('auth.refresh.token');
 	const oldRefreshToken = get(refreshToken);

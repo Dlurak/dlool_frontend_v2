@@ -26,6 +26,10 @@ const sv = {
 	'auth.access.expires': [
 		'auth.access.expires',
 		() => null satisfies number | null as number | null
+	],
+	'auth.access.generatedBy': [
+		'auth.access.generatedBy',
+		() => null satisfies null | 'refreshToken' | 'login' as null | 'refreshToken' | 'login'
 	]
 } as const;
 

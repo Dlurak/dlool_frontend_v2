@@ -5,6 +5,7 @@ const en = {
 
 	'toast.login.success': 'Erfolgreich eingeloggt',
 	'toast.login.incorrect': 'Falscher Nutzername oder Passwort',
+	'toast.refreshToken.error': 'A new access token could not be requested, please log in again',
 
 	'register.register': 'Register',
 	'register.nametaken': 'Username taken :(',
