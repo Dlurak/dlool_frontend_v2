@@ -44,6 +44,15 @@ export const links: LinkGroup[] = [
 		]
 	},
 	{
+		name: i("nav.footer.mod"),
+		entries: [
+			{
+				name: i('nav.footer.mod.own'),
+				action: () => goto("/moderation/own")
+			}
+		]
+	},
+	{
 		name: i('nav.footer.homework'),
 		entries: [
 			{

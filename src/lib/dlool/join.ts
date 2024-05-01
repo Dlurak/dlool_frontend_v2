@@ -38,6 +38,5 @@ export async function joinClass(props: JoinProps) {
 		})
 	}).then((r) => r.json());
 
-	console.log(res);
 	return scheme.parse(res);
 }

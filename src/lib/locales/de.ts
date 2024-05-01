@@ -26,6 +26,12 @@ const de = {
 
 	'join.joinClass': 'Beitreten',
 
+	'moderation.state.Accepted': 'Akzeptiert',
+	'moderation.state.Rejected': 'Abgelehnt',
+	'moderation.state.Pending': 'Ausstehend',
+	'moderation.own.noData': 'Es gibt keine Anfragen für dich.',
+	'moderation.own.review': 'Überprüfung',
+
 	'nav.homework': 'Hausaufgaben',
 	'nav.calendar': 'Kalender',
 	'nav.notes': 'Notizen',
@@ -43,6 +49,8 @@ const de = {
 	'nav.footer.calendar.calendar': 'Kalender',
 	'nav.footer.homework': 'Hausaufgaben',
 	'nav.footer.homework.homework': 'Hausaufgaben',
+	'nav.footer.mod': 'Moderation',
+	'nav.footer.mod.own': 'Eigene Anfragen',
 
 	'home.subtitle': 'Das Hausaufgabenheft der nächsten Generation für Deine ganze Klasse',
 	'home.digitalEra': 'Ein Hausaufgabenheft für das digitale Zeitalter',

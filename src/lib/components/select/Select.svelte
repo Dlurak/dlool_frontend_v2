@@ -38,8 +38,11 @@
 	const dispatch = createEventDispatcher();
 
 	const select = (n: number) => {
-		userInput = get(sortedAndFiltered[n].label);
-		value = sortedAndFiltered[n].value;
+		const item = sortedAndFiltered[n];
+		if (!item) return;
+
+		userInput = get(item.label);
+		value = item.value;
 		showSuggestions = false;
 	};
 </script>

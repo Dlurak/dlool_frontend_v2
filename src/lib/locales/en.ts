@@ -24,6 +24,12 @@ const en = {
 
 	'join.joinClass': 'Join now',
 
+	'moderation.state.Accepted': 'Accepted',
+	'moderation.state.Rejected': 'Rejected',
+	'moderation.state.Pending': 'Pending',
+	'moderation.own.noData': 'There are no requests for you.',
+	'moderation.own.review': 'Review',
+
 	'nav.homework': 'Homework',
 	'nav.calendar': 'Calendar',
 	'nav.notes': 'Notes',
@@ -41,6 +47,8 @@ const en = {
 	'nav.footer.calendar.calendar': 'Calendar',
 	'nav.footer.homework': 'Homework',
 	'nav.footer.homework.homework': 'Homework',
+	'nav.footer.mod': 'Moderation',
+	'nav.footer.mod.own': 'Own requests',
 
 	'home.subtitle': 'Next generation homework for your entire class',
 	'home.digitalEra': 'A homework management system for the digital era',
