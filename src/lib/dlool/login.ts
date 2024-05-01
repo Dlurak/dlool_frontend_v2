@@ -2,6 +2,8 @@ import { getApibase } from '$lib/utils/api';
 import { currentMs } from '$lib/utils/dates/current';
 import { svocal } from '$lib/utils/store/svocal';
 import { z } from 'zod';
+import { logout } from './logout';
+import { get } from 'svelte/store';
 
 const inNSecondsToTs = (n: number) => n * 1_000 + currentMs();
 
@@ -46,11 +48,17 @@ export async function login(props: LoginProps) {
 	if (parsed.status !== 'success') return parsed;
 
 	svocal('auth.access.token').set(parsed.data.accessToken.token);
-	svocal('auth.refresh.token').set(parsed.data.refreshToken.token);
 	svocal('auth.access.expires').set(inNSecondsToTs(parsed.data.accessToken.expiresIn));
-	svocal('auth.refresh.expires').set(inNSecondsToTs(parsed.data.refreshToken.expiresIn));
 
-	// TODO: send a log out if a refresh token was alreaedy specified
+	const refreshToken = svocal('auth.refresh.token');
+	const oldRefreshToken = get(refreshToken);
+
+	if (oldRefreshToken) {
+		logout({ refreshToken: oldRefreshToken });
+	}
+
+	refreshToken.set(parsed.data.refreshToken.token);
+	svocal('auth.refresh.expires').set(inNSecondsToTs(parsed.data.refreshToken.expiresIn));
 
 	return parsed;
 }

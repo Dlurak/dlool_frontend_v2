@@ -3,15 +3,15 @@ import type { I18nDict } from './types';
 const en = {
 	error: 'Something went wrong',
 
-	'toast.login.success': "Erfolgreich eingeloggt",
-	'toast.login.incorrect': "Falscher Nutzername oder Passwort",
+	'toast.login.success': 'Erfolgreich eingeloggt',
+	'toast.login.incorrect': 'Falscher Nutzername oder Passwort',
 
 	'register.register': 'Register',
 	'register.nametaken': 'Username taken :(',
 	'register.nametaken.desc': 'But you can stil use the same displayname and password',
-	'register.success': "Successfully registered (ﾉ◕ヮ◕)ﾉ",
+	'register.success': 'Successfully registered (ﾉ◕ヮ◕)ﾉ',
 
-	'login.login': "Login",
+	'login.login': 'Login',
 
 	'nav.homework': 'Homework',
 	'nav.calendar': 'Calendar',

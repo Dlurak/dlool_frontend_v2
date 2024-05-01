@@ -3,8 +3,8 @@ import type { I18nDict } from './types';
 const de = {
 	error: 'Etwas ist schief gelaufen',
 
-	'toast.login.success': "Erfolgreich eingeloggt",
-	'toast.login.incorrect': "Falscher Nutzername oder falsches Passwort",
+	'toast.login.success': 'Erfolgreich eingeloggt',
+	'toast.login.incorrect': 'Falscher Nutzername oder falsches Passwort',
 
 	'register.register': 'Registrieren',
 	'register.nametaken': 'Nutzername vergeben :(',
@@ -12,7 +12,7 @@ const de = {
 		'Aber Du kannst noch immer den selben Anzeigenamen und das selbe Passwort nutzen',
 	'register.success': 'Erfolgreich registriert (ﾉ◕ヮ◕)ﾉ',
 
-	'login.login': "Einloggen",
+	'login.login': 'Einloggen',
 
 	'nav.homework': 'Hausaufgaben',
 	'nav.calendar': 'Kalender',
