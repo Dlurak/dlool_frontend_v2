@@ -1,6 +1,7 @@
 <script>
 	import Footer from '$lib/components/layout/footer/Footer.svelte';
 	import Navbar from '$lib/components/layout/navigation/Navbar.svelte';
+	import ToastContainer from '$lib/components/layout/toasts/ToastContainer.svelte';
 	import '../app.css';
 </script>
 
@@ -10,4 +11,6 @@
 		<slot />
 	</main>
 	<Footer />
+
+	<ToastContainer />
 </div>

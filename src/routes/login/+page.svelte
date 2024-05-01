@@ -7,6 +7,9 @@
 	import { getConditions } from '$lib/utils/strings/password';
 	import { login } from '$lib/dlool/login';
 	import { writable } from 'svelte/store';
+	import { sendToast } from '$lib/components/layout/toasts';
+
+	let it = 0;
 
 	let username = '';
 	let pwd = '';
@@ -36,7 +39,22 @@
 				password: pwd.trim()
 			})
 				.then((data) => {
-					state.set(data.status === 'success' ? 'success' : 'incorrect');
+					if (data.status === 'success') {
+						state.set('success');
+						sendToast({
+							type: 'success',
+							timeout: 5_000,
+							content: i('toast.login.success')
+						});
+						return;
+					}
+
+					sendToast({
+						type: 'error',
+						timeout: 5_000,
+						content: i('toast.login.incorrect')
+					});
+					state.set('incorrect');
 				})
 				.catch(() => {
 					state.set('base');
