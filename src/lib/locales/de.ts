@@ -16,6 +16,9 @@ const de = {
 	'toast.join.alreadyInClass': 'Du bist bereits in dieser Klasse.',
 	'toast.join.requestExists': 'Du hast bereits angefragt dieser Klasse beizutreten.',
 
+	'toast.mod.foreing.accept.success': 'Erfolgreich akezeptiert!',
+	'toast.mod.foreing.reject.success': 'Erfolgreich abgelehnt!',
+
 	'register.register': 'Registrieren',
 	'register.nametaken': 'Nutzername vergeben :(',
 	'register.nametaken.desc':
@@ -31,6 +34,15 @@ const de = {
 	'moderation.state.Pending': 'Ausstehend',
 	'moderation.own.noData': 'Es gibt keine Anfragen für dich.',
 	'moderation.own.review': 'Überprüfung',
+	'moderation.foreign.noData': 'Es gibt keine Anfragen, die du überprüfen darfst.',
+	'moderation.foreign.acceptedIn.others': {
+		counts: {
+			default: 'Und $count anderen Klassen',
+			1: 'Und einer anderen Klasse'
+		}
+	},
+	'moderation.foreign.accept': 'Akezptieren',
+	'moderation.foreign.reject': 'Ablehnen',
 
 	'nav.homework': 'Hausaufgaben',
 	'nav.calendar': 'Kalender',
@@ -51,6 +63,7 @@ const de = {
 	'nav.footer.homework.homework': 'Hausaufgaben',
 	'nav.footer.mod': 'Moderation',
 	'nav.footer.mod.own': 'Eigene Anfragen',
+	'nav.footer.mod.list': 'Fremde Anfragen',
 
 	'home.subtitle': 'Das Hausaufgabenheft der nächsten Generation für Deine ganze Klasse',
 	'home.digitalEra': 'Ein Hausaufgabenheft für das digitale Zeitalter',

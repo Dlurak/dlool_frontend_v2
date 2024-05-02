@@ -47,10 +47,6 @@ export async function login(props: LoginProps) {
 
 	if (parsed.status !== 'success') return parsed;
 
-	svocal('auth.access.token').set(parsed.data.accessToken.token);
-	svocal('auth.access.expires').set(inNSecondsToTs(parsed.data.accessToken.expiresIn));
-	svocal('auth.access.generatedBy').set('login');
-
 	const refreshToken = svocal('auth.refresh.token');
 	const oldRefreshToken = get(refreshToken);
 
@@ -60,6 +56,9 @@ export async function login(props: LoginProps) {
 
 	refreshToken.set(parsed.data.refreshToken.token);
 	svocal('auth.refresh.expires').set(inNSecondsToTs(parsed.data.refreshToken.expiresIn));
+	svocal('auth.access.token').set(parsed.data.accessToken.token);
+	svocal('auth.access.expires').set(inNSecondsToTs(parsed.data.accessToken.expiresIn));
+	svocal('auth.access.generatedBy').set('login');
 
 	return parsed;
 }

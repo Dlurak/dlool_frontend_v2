@@ -15,6 +15,9 @@ const en = {
 	'toast.join.alreadyInClass': "You're already a member of this class",
 	'toast.join.requestExists': "You've already requested to join that class",
 
+	'toast.mod.foreing.accept.success': 'Successfully accepted!',
+	'toast.mod.foreing.reject.success': 'Successfully rejected!',
+
 	'register.register': 'Register',
 	'register.nametaken': 'Username taken :(',
 	'register.nametaken.desc': 'But you can stil use the same displayname and password',
@@ -29,6 +32,15 @@ const en = {
 	'moderation.state.Pending': 'Pending',
 	'moderation.own.noData': 'There are no requests for you.',
 	'moderation.own.review': 'Review',
+	'moderation.foreign.noData': 'There are no requests you can review.',
+	'moderation.foreign.acceptedIn.others': {
+		counts: {
+			default: 'And $count other classes',
+			1: 'And one other class'
+		}
+	},
+	'moderation.foreign.accept': 'Accept',
+	'moderation.foreign.reject': 'Reject',
 
 	'nav.homework': 'Homework',
 	'nav.calendar': 'Calendar',
@@ -49,6 +61,7 @@ const en = {
 	'nav.footer.homework.homework': 'Homework',
 	'nav.footer.mod': 'Moderation',
 	'nav.footer.mod.own': 'Own requests',
+	'nav.footer.mod.list': 'Foreign requests',
 
 	'home.subtitle': 'Next generation homework for your entire class',
 	'home.digitalEra': 'A homework management system for the digital era',

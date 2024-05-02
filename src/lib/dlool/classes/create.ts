@@ -35,7 +35,6 @@ export async function createClass(props: ClassProps) {
 		})
 	}).then((r) => r.json());
 
-	console.log(res);
 	const parsed = scheme.parse(res);
 	return parsed;
 }

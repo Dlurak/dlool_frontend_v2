@@ -4,7 +4,7 @@ import { z } from 'zod';
 const scheme = z.object({
 	data: z.null(),
 	message: z.literal('Deleted one refresh token successfully'),
-	status: z.literal('Success')
+	status: z.literal('success')
 });
 
 interface LogoutProps {
