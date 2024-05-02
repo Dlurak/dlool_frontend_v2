@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Chips from '$lib/components/filter/Chips.svelte';
 	import ForeignReqBox from '$lib/components/moderation/ReqBox/foreign/ForeignReqBox.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { foreignRequests, type ForeignReq } from '$lib/dlool/moderation/foreign';
@@ -6,12 +7,44 @@
 	import { onMount } from 'svelte';
 
 	let data: ForeignReq[] = [];
+	let filterValue = 'all';
 
 	onMount(async () => {
 		// requires auth so we run it on the client
-		data = await foreignRequests({}).then((d) => d.data);
+		data = await foreignRequests({ type: 'all' }).then((d) => d.data);
 	});
+
+	const chipHandler = async (d: CustomEvent<'all' | 'Pending' | 'Accepted' | 'Rejected'>) => {
+		data = await foreignRequests({ type: d.detail }).then((d) => d.data);
+	};
 </script>
+
+{#if !(filterValue === 'all' && data.length === 0)}
+	<div class="w-full py-3">
+		<Chips
+			bind:value={filterValue}
+			on:change={chipHandler}
+			options={[
+				{
+					value: 'all',
+					label: i('moderation.state.all')
+				},
+				{
+					value: 'Pending',
+					label: i('moderation.state.Pending')
+				},
+				{
+					value: 'Accepted',
+					label: i('moderation.state.Accepted')
+				},
+				{
+					value: 'Rejected',
+					label: i('moderation.state.Rejected')
+				}
+			]}
+		/>
+	</div>
+{/if}
 
 <div
 	class="grid w-full gap-3"
@@ -21,7 +54,8 @@
 		<ForeignReqBox
 			req={d}
 			on:review={async () => {
-				data = await foreignRequests({}).then((d) => d.data);
+				// @ts-ignore
+				data = await foreignRequests({ type: filterValue }).then((d) => d.data);
 			}}
 		/>
 	{:else}

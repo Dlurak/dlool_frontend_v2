@@ -67,14 +67,15 @@ const scheme = z.object({
 	data: z.array(reqScheme)
 });
 
-interface ForeignReqProps {
-	type?: 'Pending' | 'Accepted' | 'Rejected';
+export interface ForeignReqProps {
+	type: 'Pending' | 'Accepted' | 'Rejected' | 'all';
 }
 
-export async function foreignRequests(props: ForeignReqProps) {
-	const res = await fetch(`${getApibase()}/mod?${props.type ? 'type=type' : ''}`, {
+export async function foreignRequests(props: ForeignReqProps = { type: 'all' }) {
+	const res = await fetch(`${getApibase()}/mod?type=${props.type}`, {
 		headers: { Authorization: getAuthHeader() }
 	}).then((r) => r.json());
 
+	console.log(res);
 	return scheme.parse(res);
 }

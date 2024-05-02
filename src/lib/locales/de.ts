@@ -32,6 +32,7 @@ const de = {
 	'moderation.state.Accepted': 'Akzeptiert',
 	'moderation.state.Rejected': 'Abgelehnt',
 	'moderation.state.Pending': 'Ausstehend',
+	'moderation.state.all': 'Alle',
 	'moderation.own.noData': 'Es gibt keine Anfragen für dich.',
 	'moderation.own.review': 'Überprüfung',
 	'moderation.foreign.noData': 'Es gibt keine Anfragen, die du überprüfen darfst.',

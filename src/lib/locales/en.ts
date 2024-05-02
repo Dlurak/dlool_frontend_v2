@@ -30,6 +30,7 @@ const en = {
 	'moderation.state.Accepted': 'Accepted',
 	'moderation.state.Rejected': 'Rejected',
 	'moderation.state.Pending': 'Pending',
+	'moderation.state.all': 'All',
 	'moderation.own.noData': 'There are no requests for you.',
 	'moderation.own.review': 'Review',
 	'moderation.foreign.noData': 'There are no requests you can review.',
