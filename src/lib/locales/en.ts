@@ -134,6 +134,10 @@ const en = {
 	'password.validation.digit': 'Must include at least one digit',
 	'password.validation.special': 'Must include at least one special charachter',
 
+	'confirmation.default.content': 'Are you really sure?',
+	'confirmation.default.cancel': 'Cancel',
+	'confirmation.default.ok': 'Ok',
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 

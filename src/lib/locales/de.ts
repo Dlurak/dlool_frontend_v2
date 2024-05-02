@@ -141,6 +141,10 @@ const de = {
 	'password.validation.digit': 'Muss min. eine Ziffer enthalten',
 	'password.validation.special': 'Muss min. ein Sonderzeichen enthalten',
 
+	'confirmation.default.content': 'Bist Du Dir sicher?',
+	'confirmation.default.cancel': 'Abbrechen',
+	'confirmation.default.ok': 'Ok',
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 

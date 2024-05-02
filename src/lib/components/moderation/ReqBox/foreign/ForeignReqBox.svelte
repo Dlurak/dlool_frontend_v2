@@ -8,12 +8,20 @@
 	import { createEventDispatcher } from 'svelte';
 	import ReqBox from '../ReqBox.svelte';
 	import User from './User.svelte';
+	import { confirm } from '$lib/components/layout/confirmation';
 
 	export let req: ForeignReq;
 
 	const dispatch = createEventDispatcher();
 
 	const operate = async (action: 'accept' | 'reject') => {
+		if (
+			!(await confirm({
+				ok: i(`moderation.foreign.${action}`)
+			}))
+		)
+			return;
+
 		await review({
 			id: req.id,
 			operation: (

@@ -1,5 +1,6 @@
 <script>
 	import Token from '$lib/components/layout/Token.svelte';
+	import Confirmation from '$lib/components/layout/confirmation/Confirmation.svelte';
 	import Footer from '$lib/components/layout/footer/Footer.svelte';
 	import Navbar from '$lib/components/layout/navigation/Navbar.svelte';
 	import ToastContainer from '$lib/components/layout/toasts/ToastContainer.svelte';
@@ -16,4 +17,5 @@
 
 	<ToastContainer />
 	<Token />
+	<Confirmation />
 </div>
