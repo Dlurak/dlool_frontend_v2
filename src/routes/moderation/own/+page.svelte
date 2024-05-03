@@ -1,14 +1,11 @@
 <script lang="ts">
 	import ReqBox from '$lib/components/moderation/ReqBox/ReqBox.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
-	import Tooltipped from '$lib/components/utils/Tooltipped.svelte';
 	import { ownRequests, type JoinReq } from '$lib/dlool/moderation/own';
 	import { i } from '$lib/i18n/store';
-	import { currentLang } from '$lib/stores';
 	import { onMount } from 'svelte';
-	import { AcademicCap, BuildingLibrary, Clock, Icon, User } from 'svelte-hero-icons';
 
-	let data: JoinReq[] = []; //ownRequests()
+	let data: JoinReq[] = [];
 
 	onMount(async () => {
 		// requires auth so we run it on the client

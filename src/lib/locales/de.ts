@@ -2,6 +2,7 @@ import type { I18nDict } from './types';
 
 const de = {
 	error: 'Etwas ist schief gelaufen',
+	loading: 'Lädt',
 
 	school: 'Schule',
 	class: 'Klasse',
@@ -145,6 +146,9 @@ const de = {
 	'confirmation.default.content': 'Bist Du Dir sicher?',
 	'confirmation.default.cancel': 'Abbrechen',
 	'confirmation.default.ok': 'Ok',
+
+	'assignments.assignment.date': 'Vom $start bis zum $end',
+	'assignments.filter.needToSet': 'Spezifiziere bitte die Schule und Klasse',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

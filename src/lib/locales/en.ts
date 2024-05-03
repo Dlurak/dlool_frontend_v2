@@ -2,6 +2,7 @@ import type { I18nDict } from './types';
 
 const en = {
 	error: 'Something went wrong',
+	loading: 'Loading',
 
 	school: 'School',
 	class: 'Class',
@@ -138,6 +139,9 @@ const en = {
 	'confirmation.default.content': 'Are you really sure?',
 	'confirmation.default.cancel': 'Cancel',
 	'confirmation.default.ok': 'Ok',
+
+	'assignments.assignment.date': 'From $start to $end',
+	'assignments.filter.needToSet': 'Please specify your school und class',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

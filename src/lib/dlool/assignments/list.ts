@@ -24,6 +24,9 @@ const assignmentScheme = z.object({
 	),
 	id: z.string()
 });
+
+export type Assignment = z.infer<typeof assignmentScheme>;
+
 const scheme = z.object({
 	status: z.literal('success'),
 	message: z.literal('Received data'),
