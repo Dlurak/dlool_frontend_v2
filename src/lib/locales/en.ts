@@ -142,6 +142,7 @@ const en = {
 
 	'assignments.assignment.date': 'From $start to $end',
 	'assignments.filter.needToSet': 'Please specify your school und class',
+	'assignments.filter.apply': 'Apply',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

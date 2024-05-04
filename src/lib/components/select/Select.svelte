@@ -8,13 +8,15 @@
 	import type { Option } from './types';
 	import { useCycle } from '$lib/utils/store/cycle';
 	import { createEventDispatcher } from 'svelte';
-	import type { IconSource } from 'svelte-hero-icons';
+	import { Icon, XMark, type IconSource } from 'svelte-hero-icons';
 
 	export let placeholder: Readable<string>;
 	export let options: Option[] = [];
-	export let value: null | string = null;
-	export let userInput = value ?? '';
+	export let value: null | string[] = null;
+	export let firstValue: string | null = value ? value[0] ?? null : null;
+	export let userInput = Array.isArray(value) ? value[0] : value ?? '';
 
+	export let allowMultiple = false;
 	export let allowCustomval = false;
 	export let threshold = 0.2;
 	export let icon: IconSource | null = null;
@@ -39,11 +41,20 @@
 
 	const select = (n: number) => {
 		const item = sortedAndFiltered[n];
+
 		if (!item) return;
+		if (value?.includes(item.value)) return;
 
 		userInput = get(item.label);
-		value = item.value;
+		firstValue = item.value;
 		showSuggestions = false;
+
+		if (allowMultiple) {
+			value = [...(value ?? []), item.value];
+			userInput = '';
+		} else {
+			value = [item.value];
+		}
 	};
 </script>
 
@@ -67,10 +78,11 @@
 <div class="entire relative">
 	<div use:floatingRef>
 		<TextInput
-			isValid={!!value}
+			isValid={!!value?.length}
 			{icon}
 			{placeholder}
 			bind:value={userInput}
+			showSecondLine={allowMultiple && (value?.length ?? 0) > 0}
 			on:input={(e) => {
 				showSuggestions = true;
 				currentlyFocused.reset();
@@ -79,19 +91,40 @@
 				const newVal = e.target?.value;
 
 				if (allowCustomval) {
-					value = newVal || null;
+					value = newVal ? [newVal] : null;
+					firstValue = newVal ?? null;
 					dispatch('userInput', newVal);
 					return;
 				}
 
 				const typedOption = options.find(({ label }) => get(label) === newVal);
 
-				if (typedOption) value = typedOption.value;
-				else value = null;
+				if (typedOption && !allowMultiple) {
+					value = [typedOption.value];
+					firstValue = typedOption.value;
+				} else if (!allowMultiple) {
+					value = null;
+				}
 
 				dispatch('userInput', newVal);
 			}}
-		/>
+		>
+			<div slot="secondLine" class="flex flex-wrap gap-2 text-sm empty:hidden">
+				{#if allowMultiple}
+					{#each value ?? [] as v}
+						<button
+							class="flex items-center rounded-full bg-zinc-200 px-2 dark:bg-zinc-800"
+							on:click={() => {
+								value = value?.filter((iVal) => iVal !== v) ?? null;
+							}}
+						>
+							<Icon src={XMark} class="h-4 w-4" />
+							{v}
+						</button>
+					{/each}
+				{/if}
+			</div>
+		</TextInput>
 	</div>
 
 	<div

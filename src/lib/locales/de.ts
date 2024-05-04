@@ -149,6 +149,7 @@ const de = {
 
 	'assignments.assignment.date': 'Vom $start bis zum $end',
 	'assignments.filter.needToSet': 'Spezifiziere bitte die Schule und Klasse',
+	'assignments.filter.apply': 'Anwenden',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

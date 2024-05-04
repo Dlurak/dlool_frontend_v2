@@ -9,6 +9,7 @@
 
 	export let allowSnapClosing = true;
 	export const minimum = 200;
+	export const max = 31;
 
 	/** How many pixels are neccessary to collapse the sidemenu due to width */
 	const threshold = Math.min(120, minimum);
@@ -42,9 +43,10 @@
 <div class="flex w-full flex-col gap-2 md:flex-row">
 	{#if $isSmall || $showSideMenu}
 		<div
-			class="flex h-full w-full flex-col md:w-[--w] md:min-w-[--min-w]"
+			class="flex h-full w-full max-w-[--max-w] flex-col md:w-[--w] md:min-w-[--min-w]"
 			style:--w={`${width}px`}
 			style:--min-w={`${minimum}px`}
+			style:--max-w={`${max}rem`}
 			bind:clientWidth={domWidth}
 		>
 			<div class="hidden md:flex">
@@ -69,7 +71,7 @@
 
 	<div
 		class="flex h-full w-full flex-col gap-2 md:w-[--w]"
-		style:--w={`calc(100% - ${$showSideMenu ? width ?? domWidth : 0}px)`}
+		style:--w={`calc(100% - ${$showSideMenu ? domWidth : 0}px)`}
 	>
 		{#if !$showSideMenu}
 			<div class="hidden md:flex">

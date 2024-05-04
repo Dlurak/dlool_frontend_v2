@@ -6,6 +6,8 @@
 	import type { PageData } from './$types';
 	import Panes from '$lib/components/panes/Panes.svelte';
 	import SideMenu from '$lib/components/assignment/SideMenu/SideMenu.svelte';
+	import { goto } from '$app/navigation';
+	import { objToQueryParams } from '$lib/utils/url/query';
 
 	export let data: PageData;
 </script>
@@ -17,7 +19,10 @@
 		<div class="flex w-full max-w-[120rem]">
 			<Panes minimum={200}>
 				<div slot="a">
-					<SideMenu query={data.query} />
+					<SideMenu
+						query={data.query}
+						on:filterApply={({ detail }) => goto(`?${objToQueryParams(detail)}`)}
+					/>
 				</div>
 
 				<div slot="b">
