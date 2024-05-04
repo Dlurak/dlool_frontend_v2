@@ -23,13 +23,15 @@
 		/>
 	</div>
 
-	<div slot="b" class="flex w-full justify-center">
+	<div slot="b" class="flex w-full items-center justify-center">
 		{#if data.data}
 			{#await data.data}
-					<LoadingCircle />
+				<LoadingCircle />
 			{:then assignmentData}
 				{#if assignmentData}
-					<AssignmentGrid assignments={assignmentData.data.assignments} />
+					<div class="h-full w-full">
+						<AssignmentGrid assignments={assignmentData.data.assignments} />
+					</div>
 				{:else}
 					<div class="flex items-center justify-center">
 						<Store store={i('error')} />

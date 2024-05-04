@@ -40,10 +40,10 @@
 	const isSmall = mediaQuery('(max-width: 768px)');
 </script>
 
-<div class="flex w-full flex-col items-center gap-2 md:flex-row">
+<div class="flex h-full w-full flex-1 flex-col items-stretch gap-2 md:flex-row">
 	{#if $isSmall || $showSideMenu}
 		<div
-			class="flex h-full w-full max-w-[--max-w] flex-col md:w-[--w] md:min-w-[--min-w]"
+			class="flex h-full w-full max-w-full flex-col md:w-[--w] md:min-w-[--min-w] md:max-w-[--max-w]"
 			style:--w={`${width}px`}
 			style:--min-w={`${minimum}px`}
 			style:--max-w={`${max}rem`}
@@ -60,7 +60,7 @@
 			<slot name="a"></slot>
 		</div>
 
-		<button class="hidden h-full md:flex" on:mousedown={handleMouseDown} tabindex="-1">
+		<button class="hidden flex-1 md:flex" on:mousedown={handleMouseDown} tabindex="-1">
 			<slot name="resizer">
 				<div class="h-full cursor-col-resize px-2">
 					<div class="h-full w-1 rounded bg-zinc-300 dark:bg-zinc-700" />
@@ -70,11 +70,11 @@
 	{/if}
 
 	<div
-		class="flex h-full w-full flex-col gap-2 md:w-[--w]"
+		class="flex w-full flex-col items-center justify-center gap-2 md:w-[--w]"
 		style:--w={`calc(100% - ${$showSideMenu ? domWidth : 0}px)`}
 	>
 		{#if !$showSideMenu}
-			<div class="hidden md:flex">
+			<div class="hidden w-full md:flex">
 				<QuickAction
 					icon={ChevronRight}
 					on:click={() => {
@@ -84,7 +84,7 @@
 			</div>
 		{/if}
 
-		<div class="h-full w-full">
+		<div class="flex h-full w-full">
 			<slot name="b"></slot>
 		</div>
 	</div>

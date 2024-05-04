@@ -14,5 +14,7 @@
 		{/each}
 	</div>
 {:else}
-	<Store store={i('assignments.noData')} />
+	<div class="flex h-full w-full items-center justify-center">
+		<Store store={i('assignments.noData')} />
+	</div>
 {/if}
