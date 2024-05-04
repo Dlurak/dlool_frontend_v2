@@ -12,6 +12,8 @@
 	import { createClass } from '$lib/dlool/classes/create';
 	import { joinClass } from '$lib/dlool/join';
 	import { sendToast } from '$lib/components/layout/toasts';
+	import { ownUserInfo } from '$lib/dlool/userInfo/own';
+	import { svocal } from '$lib/utils/store/svocal';
 
 	const { isLoggedIn } = useAuth();
 
@@ -101,6 +103,10 @@
 						'Join request created successfully!': i('toast.join.requested'),
 						'Joined class successfully!': i('toast.join.joined')
 					}[res.message];
+
+					ownUserInfo().then((d) => {
+						svocal('dlool.ownUserDetails').set(d.data);
+					});
 
 					sendToast({
 						content,

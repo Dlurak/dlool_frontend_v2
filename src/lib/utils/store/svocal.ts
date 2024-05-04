@@ -1,4 +1,5 @@
 import type { NavigationTarget } from '$lib/components/layout/navigation/types';
+import type { OwnUserDetails } from '$lib/dlool/userInfo/own';
 import type { LocaleAbbr } from '$lib/i18n/i18n';
 import { localstorage } from 'svocal';
 
@@ -30,7 +31,8 @@ const sv = {
 	'auth.access.generatedBy': [
 		'auth.access.generatedBy',
 		() => null satisfies null | 'refreshToken' | 'login' as null | 'refreshToken' | 'login'
-	]
+	],
+	'dlool.ownUserDetails': ['dlool.ownUserDetails', () => null as null | OwnUserDetails]
 } as const;
 
 type SvocalKey = keyof typeof sv;

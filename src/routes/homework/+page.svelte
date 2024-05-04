@@ -3,34 +3,31 @@
 	import LoadingCircle from '$lib/components/utils/LoadingCircle.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { i } from '$lib/i18n/store';
-	import { useAuth } from '$lib/utils/store/auth';
 	import type { PageData } from './$types';
 	import Panes from '$lib/components/panes/Panes.svelte';
+	import SideMenu from '$lib/components/assignment/SideMenu/SideMenu.svelte';
 
 	export let data: PageData;
-
-	const { isLoggedIn } = useAuth();
 </script>
 
 {#if data.data}
 	{#await data.data}
 		<LoadingCircle />
-	{:then data}
+	{:then assignmentData}
 		<div class="flex w-full max-w-[120rem]">
 			<Panes minimum={200}>
 				<div slot="a">
-					<div>
-						<h3>Filters</h3>
-					</div>
-					{#if $isLoggedIn}
-						<div>
-							<h3>Create a new assignment</h3>
-						</div>
-					{/if}
+					<SideMenu query={data.query} />
 				</div>
 
 				<div slot="b">
-					<AssignmentGrid assignments={data.data.assignments} />
+					{#if assignmentData}
+						<AssignmentGrid assignments={assignmentData.data.assignments} />
+					{:else}
+						<div class="flex items-center justify-center">
+							<Store store={i('error')} />
+						</div>
+					{/if}
 				</div>
 			</Panes>
 		</div>

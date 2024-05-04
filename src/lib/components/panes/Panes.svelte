@@ -7,7 +7,7 @@
 	let width: number | null = null;
 	let domWidth = 0;
 
-	export let allowSnapClosing = true
+	export let allowSnapClosing = true;
 	export const minimum = 200;
 
 	/** How many pixels are neccessary to collapse the sidemenu due to width */

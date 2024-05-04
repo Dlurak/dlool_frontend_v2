@@ -11,7 +11,10 @@ export const load: PageLoad = ({ url }) => {
 		.find((i) => i.length > 0);
 
 	if (school && classes && classes.length > 0) {
-		return { data: loadAssignments({ school, classes }) };
+		return {
+			data: loadAssignments({ school, classes }).catch(() => null),
+			query: { school, classes }
+		};
 	}
 
 	return {
