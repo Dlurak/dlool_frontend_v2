@@ -2,7 +2,7 @@
 	import type { Assignment } from '$lib/dlool/assignments/list';
 	import { stringify } from '$lib/utils/dates/custom';
 	import { Icon, Clock } from 'svelte-hero-icons';
-	import Store from '../utils/Store.svelte';
+	import Store from '../../utils/Store.svelte';
 	import { i } from '$lib/i18n/store';
 
 	export let assignment: Assignment;
