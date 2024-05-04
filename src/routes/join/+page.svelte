@@ -46,7 +46,7 @@
 				label: readable(sch.name),
 				value: sch.name
 			}))}
-			bind:value={schoolInput}
+			bind:firstValue={schoolInput}
 			threshold={0.1}
 		/>
 		<Select
@@ -64,7 +64,7 @@
 					query: e.detail
 				}).then((d) => d.data);
 			}}
-			bind:value={classInput}
+			bind:firstValue={classInput}
 			threshold={0.1}
 		/>
 

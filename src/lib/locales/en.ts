@@ -143,6 +143,7 @@ const en = {
 	'assignments.assignment.date': 'From $start to $end',
 	'assignments.filter.needToSet': 'Please specify your school und class',
 	'assignments.filter.apply': 'Apply',
+	'assignments.noData': "There aren't any assignments ＼(●´ϖ`●)／",
 
 	literal: '$literal'
 } as const satisfies I18nDict;

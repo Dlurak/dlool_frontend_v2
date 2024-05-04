@@ -9,12 +9,12 @@
 	import Store from '$lib/components/utils/Store.svelte';
 	import { createEventDispatcher } from 'svelte';
 
-	type Query = {
-		school: string;
+	type Query<S> = {
+		school: S;
 		classes: string[];
 	};
 
-	export let query: Query;
+	export let query: Query<string | null>;
 
 	let schools: School[] = [];
 	let schoolInput = query.school;
@@ -22,7 +22,7 @@
 	let classes: Class[] = [];
 	let classInput = query.classes;
 
-	const dispatch = createEventDispatcher<{ filterApply: Query }>();
+	const dispatch = createEventDispatcher<{ filterApply: Query<string> }>();
 </script>
 
 <h3 class="pb-3 pt-2">Filters</h3>
@@ -41,7 +41,7 @@
 			value: name
 		}))}
 		bind:firstValue={schoolInput}
-		value={[schoolInput]}
+		value={schoolInput ? [schoolInput] : null}
 		threshold={0.25}
 	/>
 
@@ -50,7 +50,7 @@
 		icon={AcademicCap}
 		on:userInput={async (e) => {
 			classes = await listClasses({
-				school: schoolInput,
+				school: schoolInput ?? '',
 				query: e.detail
 			}).then((d) => d.data);
 		}}

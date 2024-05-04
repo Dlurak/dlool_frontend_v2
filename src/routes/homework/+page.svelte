@@ -12,33 +12,34 @@
 	export let data: PageData;
 </script>
 
-{#if data.data}
-	{#await data.data}
-		<LoadingCircle />
-	{:then assignmentData}
-		<div class="flex w-full max-w-[120rem]">
-			<Panes minimum={200}>
-				<div slot="a">
-					<SideMenu
-						query={data.query}
-						on:filterApply={({ detail }) => goto(`?${objToQueryParams(detail)}`)}
-					/>
-				</div>
+<Panes minimum={200}>
+	<div slot="a">
+		<SideMenu
+			query={data.query ?? {
+				school: null,
+				classes: []
+			}}
+			on:filterApply={({ detail }) => goto(`?${objToQueryParams(detail)}`)}
+		/>
+	</div>
 
-				<div slot="b">
-					{#if assignmentData}
-						<AssignmentGrid assignments={assignmentData.data.assignments} />
-					{:else}
-						<div class="flex items-center justify-center">
-							<Store store={i('error')} />
-						</div>
-					{/if}
-				</div>
-			</Panes>
-		</div>
-	{:catch}
-		<Store store={i('error')} />
-	{/await}
-{:else if data.message === 'no school/class provided'}
-	<Store store={i('assignments.filter.needToSet')} />
-{/if}
+	<div slot="b" class="flex w-full justify-center">
+		{#if data.data}
+			{#await data.data}
+					<LoadingCircle />
+			{:then assignmentData}
+				{#if assignmentData}
+					<AssignmentGrid assignments={assignmentData.data.assignments} />
+				{:else}
+					<div class="flex items-center justify-center">
+						<Store store={i('error')} />
+					</div>
+				{/if}
+			{:catch}
+				<Store store={i('error')} />
+			{/await}
+		{:else if data.message === 'no school/class provided'}
+			<Store store={i('assignments.filter.needToSet')} />
+		{/if}
+	</div>
+</Panes>

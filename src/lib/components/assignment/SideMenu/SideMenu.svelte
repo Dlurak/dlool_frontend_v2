@@ -4,7 +4,7 @@
 	import Filter from './Filter.svelte';
 
 	export let query: {
-		school: string;
+		school: string | null;
 		classes: string[];
 	};
 

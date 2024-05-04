@@ -40,7 +40,7 @@
 	const isSmall = mediaQuery('(max-width: 768px)');
 </script>
 
-<div class="flex w-full flex-col gap-2 md:flex-row">
+<div class="flex w-full flex-col items-center gap-2 md:flex-row">
 	{#if $isSmall || $showSideMenu}
 		<div
 			class="flex h-full w-full max-w-[--max-w] flex-col md:w-[--w] md:min-w-[--min-w]"
@@ -84,7 +84,7 @@
 			</div>
 		{/if}
 
-		<div class="w-full">
+		<div class="h-full w-full">
 			<slot name="b"></slot>
 		</div>
 	</div>
