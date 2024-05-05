@@ -32,7 +32,10 @@
 		window.addEventListener('mousemove', handleMouseMove);
 		window.addEventListener(
 			'mouseup',
-			() => window.removeEventListener('mousemove', handleMouseMove),
+			() => {
+				window.removeEventListener('mousemove', handleMouseMove);
+				width = domWidth;
+			},
 			{ once: true }
 		);
 	}

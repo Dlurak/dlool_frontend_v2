@@ -144,6 +144,55 @@ const en = {
 	'assignments.filter.needToSet': 'Please specify your school und class',
 	'assignments.filter.apply': 'Apply',
 	'assignments.noData': "There aren't any assignments ＼(●´ϖ`●)／",
+	'assignments.create': 'Create an assignment',
+	'assignments.create.subject': 'Subject',
+	'assignments.create.description': 'Description',
+	'assignments.create.from': 'From',
+	'assignments.create.due': 'To',
+	'assignments.create.create': 'Add',
+
+	'calendar.month': {
+		counts: {
+			default: '$year',
+			0: 'January $year',
+			1: 'February $year',
+			2: 'March $year',
+			3: 'April $year',
+			4: 'May $year',
+			5: 'June $year',
+			6: 'July $year',
+			7: 'August $year',
+			8: 'September $year',
+			9: 'October $year',
+			10: 'November $year',
+			11: 'December $year'
+		}
+	},
+	'calendar.weekday': {
+		counts: {
+			default: '',
+			0: 'Sunday',
+			1: 'Monday',
+			2: 'Tuesday',
+			3: 'Wednesday',
+			4: 'Thursday',
+			5: 'Friday',
+			6: 'Saturday'
+		}
+	},
+	'calendar.weekday.abbr': {
+		counts: {
+			default: '',
+			0: 'S',
+			1: 'M',
+			2: 'T',
+			3: 'W',
+			4: 'T',
+			5: 'F',
+			6: 'S'
+		}
+	},
+	'calendar.select': 'Select a date',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

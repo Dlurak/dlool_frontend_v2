@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { useAuth } from '$lib/utils/store/auth';
 	import { svocal } from '$lib/utils/store/svocal';
+	import CreateAssignment from './CreateAssignment.svelte';
 	import Filter from './Filter.svelte';
 
 	export let query: {
@@ -20,12 +21,14 @@
 		}) ?? false;
 </script>
 
-<div>
-	<Filter {query} on:filterApply />
-</div>
-
-{#if isInClass && $isLoggedIn}
+<div class="flex flex-col gap-4">
 	<div>
-		<h3>Create a new assignment</h3>
+		<Filter {query} on:filterApply />
 	</div>
-{/if}
+
+	<hr class="border-zinc-300 dark:border-zinc-700" />
+
+	{#if isInClass && $isLoggedIn && query.school}
+		<CreateAssignment school={query.school} />
+	{/if}
+</div>

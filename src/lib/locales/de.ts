@@ -151,6 +151,55 @@ const de = {
 	'assignments.filter.needToSet': 'Spezifiziere bitte die Schule und Klasse',
 	'assignments.filter.apply': 'Anwenden',
 	'assignments.noData': 'Es gibt keine Aufgaben ＼(●´ϖ`●)／',
+	'assignments.create': 'Erstelle eine Aufgabe',
+	'assignments.create.subject': 'Fach',
+	'assignments.create.description': 'Aufgabe',
+	'assignments.create.from': 'Vom',
+	'assignments.create.due': 'Zum',
+	'assignments.create.create': 'Hinzufügen',
+
+	'calendar.month': {
+		counts: {
+			default: '$year',
+			0: 'Januar $year',
+			1: 'Februar $year',
+			2: 'März $year',
+			3: 'April $year',
+			4: 'Mai $year',
+			5: 'Juni $year',
+			6: 'Juli $year',
+			7: 'August $year',
+			8: 'September $year',
+			9: 'Oktober $year',
+			10: 'November $year',
+			11: 'Dezember $year'
+		}
+	},
+	'calendar.weekday': {
+		counts: {
+			default: '',
+			0: 'Sonntag',
+			1: 'Montag',
+			2: 'Dienstag',
+			3: 'Mittwoch',
+			4: 'Donnerstag',
+			5: 'Freitag',
+			6: 'Samstag'
+		}
+	},
+	'calendar.weekday.abbr': {
+		counts: {
+			default: '',
+			0: 'S',
+			1: 'M',
+			2: 'D',
+			3: 'M',
+			4: 'D',
+			5: 'F',
+			6: 'S'
+		}
+	},
+	'calendar.select': 'Wähle ein Datum aus',
 
 	literal: '$literal'
 } as const satisfies I18nDict;
