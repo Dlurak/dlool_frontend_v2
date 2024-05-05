@@ -5,12 +5,13 @@
 	import AssignmentBox from './AssignmentBox.svelte';
 
 	export let assignments: Assignment[];
+	export let school: string;
 </script>
 
 {#if assignments.length}
 	<div class="grid w-full grid-cols-[repeat(auto-fill,minmax(min(20rem,100%),1fr))] gap-4">
 		{#each assignments as assignment}
-			<AssignmentBox {assignment} />
+			<AssignmentBox {assignment} {school} on:delete />
 		{/each}
 	</div>
 {:else}

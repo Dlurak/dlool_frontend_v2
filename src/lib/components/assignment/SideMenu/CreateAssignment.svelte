@@ -30,9 +30,10 @@
 	export let allowedClasses: string[];
 
 	$: selectableClasses = allowedClasses.filter(showClass);
+	const initiallySelected = allowedClasses.filter(showClass);
 
 	let classes: Class[] = [];
-	let classInput = allowedClasses.filter(showClass).length === 1 ? selectableClasses[0] : '';
+	let classInput = initiallySelected.length === 1 ? initiallySelected[0] : '';
 
 	let subject = '';
 	let description = '';

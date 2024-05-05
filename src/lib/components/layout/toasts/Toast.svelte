@@ -10,6 +10,7 @@
 		ExclamationCircle
 	} from 'svelte-hero-icons';
 	import type { Readable } from 'svelte/store';
+	import { confirmation } from '../confirmation';
 
 	export let type: 'success' | 'error' | 'warning' | 'info' = 'success';
 	export let content: Readable<string>;
@@ -24,7 +25,9 @@
 
 	const [isHovered, hoverRef] = useHover();
 
-	const timePassed = counterMs({ isPaused: () => $isHovered || !document.hasFocus() });
+	const timePassed = counterMs({
+		isPaused: () => !!($isHovered || !document.hasFocus() || $confirmation)
+	});
 
 	const manuallyFinished = useToggle(false);
 

@@ -158,6 +158,9 @@ const de = {
 	'assignments.create.due': 'Zum',
 	'assignments.create.create': 'Hinzufügen',
 	'assignments.create.success': 'Aufgabe erfolgreich erstellt',
+	'assignments.delete.desc': 'Möchtest Du diese Aufgabe wirklich löschen?',
+	'assignments.delete.ok': 'Löschen',
+	'assignments.delete.success': 'Erfolgreich gelöscht',
 
 	'calendar.month': {
 		counts: {

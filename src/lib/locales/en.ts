@@ -151,6 +151,9 @@ const en = {
 	'assignments.create.due': 'To',
 	'assignments.create.create': 'Add',
 	'assignments.create.success': 'Successfully created assignment',
+	'assignments.delete.desc': 'Do you really want to delete this assignment?',
+	'assignments.delete.ok': 'Delete',
+	'assignments.delete.success': 'Successfully deleted',
 
 	'calendar.month': {
 		counts: {

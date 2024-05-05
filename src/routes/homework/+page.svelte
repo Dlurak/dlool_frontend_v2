@@ -55,7 +55,13 @@
 			{:then assignmentData}
 				{#if assignmentData}
 					<div class="h-full w-full">
-						<AssignmentGrid assignments={assignmentData.data.assignments} />
+						<AssignmentGrid
+							assignments={assignmentData.data.assignments}
+							school={data.query.school}
+							on:delete={() => {
+								invalidateAll();
+							}}
+						/>
 					</div>
 				{:else}
 					<div class="flex items-center justify-center">

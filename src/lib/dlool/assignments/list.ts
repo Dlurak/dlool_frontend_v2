@@ -22,6 +22,7 @@ const assignmentScheme = z.object({
 			time: z.number().int().min(0)
 		})
 	),
+	class: z.object({ name: z.string() }),
 	id: z.string()
 });
 
