@@ -16,10 +16,15 @@
 	import Frame from '../Frame.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
+	import { svocal } from '$lib/utils/store/svocal';
 
 	export let date: CustomDate | null = currentCustomDate();
 	export let normalDate = date && customDateToNormal(date);
 	export let icon = CalendarDays;
+
+	$: displayMonth = normalDate ?? new Date();
+
+	const monthStartsOn = svocal('settings.weekStartsOn');
 
 	const [floatingRef, floatingContent] = createFloatingActions({
 		strategy: 'absolute',
@@ -33,10 +38,7 @@
 		date: Date;
 		customDate: CustomDate;
 	}
-
 	const dispatch = createEventDispatcher<{ change: EventDetails }>();
-
-	$: displayMonth = normalDate ?? new Date();
 </script>
 
 <svelte:window
@@ -99,13 +101,13 @@
 			<div class="grid grid-cols-7">
 				{#each { length: 7 } as _, ind}
 					<b class="text-center">
-						<Store store={i('calendar.weekday.abbr', {}, { count: ind })} />
+						<Store store={i('calendar.weekday.abbr', {}, { count: (ind + $monthStartsOn) % 7 })} />
 					</b>
 				{/each}
 				<div class="col-span-7 flex items-center py-1">
 					<hr class="w-full border-zinc-200 dark:border-zinc-800" />
 				</div>
-				{#each { length: getPaddingDays(displayMonth, 1) } as _}
+				{#each { length: getPaddingDays(displayMonth, $monthStartsOn) } as _}
 					<span />
 				{/each}
 				{#each { length: getDaysInMonth(displayMonth) } as _, ind}

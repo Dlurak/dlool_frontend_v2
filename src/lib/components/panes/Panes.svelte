@@ -46,7 +46,7 @@
 <div class="flex h-full w-full flex-1 flex-col items-stretch gap-2 md:flex-row">
 	{#if $isSmall || $showSideMenu}
 		<div
-			class="flex h-full w-full max-w-full flex-col md:w-[--w] md:min-w-[--min-w] md:max-w-[--max-w]"
+			class="flex h-full w-full max-w-full flex-col py-2 md:w-[--w] md:min-w-[--min-w] md:max-w-[--max-w] md:py-0"
 			style:--w={`${width}px`}
 			style:--min-w={`${minimum}px`}
 			style:--max-w={`${max}rem`}

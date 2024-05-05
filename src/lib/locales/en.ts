@@ -150,6 +150,7 @@ const en = {
 	'assignments.create.from': 'From',
 	'assignments.create.due': 'To',
 	'assignments.create.create': 'Add',
+	'assignments.create.success': 'Successfully created assignment',
 
 	'calendar.month': {
 		counts: {

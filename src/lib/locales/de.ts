@@ -157,6 +157,7 @@ const de = {
 	'assignments.create.from': 'Vom',
 	'assignments.create.due': 'Zum',
 	'assignments.create.create': 'Hinzufügen',
+	'assignments.create.success': 'Aufgabe erfolgreich erstellt',
 
 	'calendar.month': {
 		counts: {

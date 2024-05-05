@@ -6,20 +6,45 @@
 	import type { PageData } from './$types';
 	import Panes from '$lib/components/panes/Panes.svelte';
 	import SideMenu from '$lib/components/assignment/SideMenu/SideMenu.svelte';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import { objToQueryParams } from '$lib/utils/url/query';
+	import { createAssignment } from '$lib/dlool/assignments/create';
+	import { sendToast } from '$lib/components/layout/toasts';
 
 	export let data: PageData;
+
+	let sideMenuEle: SideMenu | null = null;
 </script>
 
 <Panes minimum={200}>
 	<div slot="a">
 		<SideMenu
+			bind:this={sideMenuEle}
 			query={data.query ?? {
 				school: null,
 				classes: []
 			}}
 			on:filterApply={({ detail }) => goto(`?${objToQueryParams(detail)}`)}
+			on:submit={async ({ detail }) => {
+				createAssignment(detail)
+					.then(invalidateAll)
+					.then(() => {
+						sendToast({
+							type: 'success',
+							content: i('assignments.create.success'),
+							timeout: 5_000
+						});
+						sideMenuEle?.postCreate(true);
+					})
+					.catch(() => {
+						sendToast({
+							type: 'error',
+							content: i('error'),
+							timeout: 5_000
+						});
+						sideMenuEle?.postCreate(false);
+					});
+			}}
 		/>
 	</div>
 

@@ -78,7 +78,7 @@
 <div class="entire relative">
 	<div use:floatingRef>
 		<TextInput
-			isValid={!!value?.length}
+			isValid={!!value?.filter((i) => i).length}
 			{icon}
 			{placeholder}
 			bind:value={userInput}
