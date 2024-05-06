@@ -17,7 +17,7 @@ const de = {
 	'toast.join.alreadyInClass': 'Du bist bereits in dieser Klasse.',
 	'toast.join.requestExists': 'Du hast bereits angefragt dieser Klasse beizutreten.',
 
-	'toast.mod.foreing.accept.success': 'Erfolgreich akezeptiert!',
+	'toast.mod.foreing.accept.success': 'Erfolgreich akzeptiert!',
 	'toast.mod.foreing.reject.success': 'Erfolgreich abgelehnt!',
 
 	'register.register': 'Registrieren',
@@ -34,16 +34,16 @@ const de = {
 	'moderation.state.Rejected': 'Abgelehnt',
 	'moderation.state.Pending': 'Ausstehend',
 	'moderation.state.all': 'Alle',
-	'moderation.own.noData': 'Es gibt keine Anfragen für dich.',
+	'moderation.own.noData': 'Es gibt keine Anfragen für Dich.',
 	'moderation.own.review': 'Überprüfung',
-	'moderation.foreign.noData': 'Es gibt keine Anfragen, die du überprüfen darfst.',
+	'moderation.foreign.noData': 'Es gibt keine Anfragen, Die Du überprüfen darfst.',
 	'moderation.foreign.acceptedIn.others': {
 		counts: {
 			default: 'Und $count anderen Klassen',
 			1: 'Und einer anderen Klasse'
 		}
 	},
-	'moderation.foreign.accept': 'Akezptieren',
+	'moderation.foreign.accept': 'Akzeptieren',
 	'moderation.foreign.reject': 'Ablehnen',
 
 	'nav.homework': 'Hausaufgaben',
@@ -90,7 +90,7 @@ const de = {
 		'Dank fachspezifischen Icons und Farben, ist es leicht die Fächer auf anhieb zu erkennen.',
 	'home.homeworkBut.convenient.3':
 		'Der Stundenplan und die Voreinstellungen erlauben schnelle und präzise Änderungen',
-	'home.homeworkBut.convenient.4': 'Exporitere deine Daten als ical oder todo.txt',
+	'home.homeworkBut.convenient.4': 'Exportiere Deine Daten als ical oder todo.txt',
 	'home.homeworkBut.convenient.5':
 		'Nutze einen Siri-Kurzbefehl um die Dlool Hausaufgaben mit Apple Erinnerungen zu synchronisieren',
 
@@ -114,7 +114,7 @@ const de = {
 		'Der Kollaborative Grundgedanke war von Beginn an sehr wichtig',
 	'home.boxes.customizable': 'Personalisierbar',
 	'home.boxes.customizable.description':
-		'Viele Einstellungen erlauben es dir wirklich dein Dlool zu nutzen!',
+		'Viele Einstellungen erlauben es Dir wirklich Dein Dlool zu nutzen!',
 	'home.boxes.libre': 'Frei',
 	'home.boxes.libre.description':
 		'Jede einzige Zeile Code sowie alle Bibliotheken und APIs sind freie Software',
