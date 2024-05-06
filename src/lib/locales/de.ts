@@ -23,7 +23,7 @@ const de = {
 	'register.register': 'Registrieren',
 	'register.nametaken': 'Nutzername vergeben :(',
 	'register.nametaken.desc':
-		'Aber Du kannst noch immer den selben Anzeigenamen und das selbe Passwort nutzen',
+		'Aber Du kannst noch immer denselben Anzeigenamen und dasselbe Passwort nutzen',
 	'register.success': 'Erfolgreich registriert (ﾉ◕ヮ◕)ﾉ',
 
 	'login.login': 'Einloggen',
@@ -34,16 +34,16 @@ const de = {
 	'moderation.state.Rejected': 'Abgelehnt',
 	'moderation.state.Pending': 'Ausstehend',
 	'moderation.state.all': 'Alle',
-	'moderation.own.noData': 'Es gibt keine Anfragen für dich.',
+	'moderation.own.noData': 'Es gibt keine Anfragen für Dich.',
 	'moderation.own.review': 'Überprüfung',
-	'moderation.foreign.noData': 'Es gibt keine Anfragen, die du überprüfen darfst.',
+	'moderation.foreign.noData': 'Es gibt keine Anfragen, die Du überprüfen darfst.',
 	'moderation.foreign.acceptedIn.others': {
 		counts: {
 			default: 'Und $count anderen Klassen',
 			1: 'Und einer anderen Klasse'
 		}
 	},
-	'moderation.foreign.accept': 'Akezptieren',
+	'moderation.foreign.accept': 'Akzeptieren',
 	'moderation.foreign.reject': 'Ablehnen',
 
 	'nav.homework': 'Hausaufgaben',
