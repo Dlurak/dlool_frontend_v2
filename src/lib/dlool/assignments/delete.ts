@@ -1,4 +1,4 @@
-import { getApibase, getHeader } from '$lib/utils/api';
+import { getApibase, getAuthHeader } from '$lib/utils/api';
 import { z } from 'zod';
 
 const scheme = z.object({
@@ -10,7 +10,9 @@ const scheme = z.object({
 export async function deleteAssignment(id: string) {
 	const res = await fetch(`${getApibase()}/assignments/${id}`, {
 		method: 'DELETE',
-		headers: getHeader()
+		headers: {
+			Authorization: getAuthHeader()
+		}
 	}).then((r) => r.json());
 
 	return scheme.parse(res);

@@ -1,4 +1,4 @@
-import { getApibase, getHeader } from '$lib/utils/api';
+import { getApibase, getAuthHeader } from '$lib/utils/api';
 import type { CustomDate } from '$lib/utils/dates/custom';
 import { z } from 'zod';
 
@@ -22,7 +22,10 @@ interface CreateAssignmentProps {
 export async function createAssignment(props: CreateAssignmentProps) {
 	const res = await fetch(`${getApibase()}/assignments`, {
 		method: 'POST',
-		headers: getHeader(),
+		headers: {
+			Authorization: getAuthHeader(),
+			'Content-Type': 'application/json'
+		},
 		body: JSON.stringify({ ...props })
 	}).then((r) => r.json());
 

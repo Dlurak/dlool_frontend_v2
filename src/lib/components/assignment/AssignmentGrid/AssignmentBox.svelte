@@ -82,10 +82,10 @@
 				small
 				color="red"
 				on:click={async () => {
-					const isConfirmed = !(await confirm({
+					const isConfirmed = await confirm({
 						desc: i('assignments.delete.desc'),
 						ok: i('assignments.delete.ok')
-					}));
+					});
 					if (!isConfirmed) return;
 
 					await deleteAssignment(assignment.id);

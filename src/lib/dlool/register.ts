@@ -1,4 +1,4 @@
-import { getApibase, getHeader } from '$lib/utils/api';
+import { getApibase } from '$lib/utils/api';
 import { z } from 'zod';
 
 const scheme = z.union([
@@ -24,7 +24,7 @@ interface RegisterProps {
 export async function register(props: RegisterProps) {
 	const res = await fetch(`${getApibase()}/auth/register/password`, {
 		method: 'POST',
-		headers: getHeader(),
+		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			username: props.username,
 			displayname: props.displayname,

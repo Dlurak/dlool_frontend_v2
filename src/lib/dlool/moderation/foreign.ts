@@ -1,4 +1,4 @@
-import { getApibase, getHeader } from '$lib/utils/api';
+import { getApibase, getAuthHeader } from '$lib/utils/api';
 import { z } from 'zod';
 
 const reqScheme = z.union([
@@ -73,7 +73,7 @@ export interface ForeignReqProps {
 
 export async function foreignRequests(props: ForeignReqProps = { type: 'all' }) {
 	const res = await fetch(`${getApibase()}/mod?type=${props.type}`, {
-		headers: getHeader()
+		headers: { Authorization: getAuthHeader() }
 	}).then((r) => r.json());
 
 	return scheme.parse(res);

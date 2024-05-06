@@ -1,4 +1,4 @@
-import { getApibase, getHeader } from '$lib/utils/api';
+import { getApibase, getAuthHeader } from '$lib/utils/api';
 import { z } from 'zod';
 
 const scheme = z.union([
@@ -28,7 +28,10 @@ interface JoinProps {
 export async function joinClass(props: JoinProps) {
 	const res = await fetch(`${getApibase()}/mod`, {
 		method: 'POST',
-		headers: getHeader(),
+		headers: {
+			Authorization: getAuthHeader(),
+			'Content-Type': 'application/json'
+		},
 		body: JSON.stringify({
 			school: props.school,
 			class: props.class

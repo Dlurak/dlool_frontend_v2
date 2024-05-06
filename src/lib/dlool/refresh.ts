@@ -1,4 +1,4 @@
-import { getApibase, getHeader } from '$lib/utils/api';
+import { getApibase } from '$lib/utils/api';
 import { currentMs } from '$lib/utils/dates/current';
 import { svocal } from '$lib/utils/store/svocal';
 import { z } from 'zod';
@@ -19,7 +19,7 @@ interface RefreshProps {
 export async function refresh(props: RefreshProps) {
 	const res = await fetch(`${getApibase()}/auth/access-token/`, {
 		method: 'POST',
-		headers: getHeader(),
+		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			refreshToken: props.refreshToken
 		})

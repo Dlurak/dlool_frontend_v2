@@ -1,4 +1,4 @@
-import { getApibase, getHeader } from '$lib/utils/api';
+import { getApibase, getAuthHeader } from '$lib/utils/api';
 import { z } from 'zod';
 
 const reqScheme = z.union([
@@ -40,7 +40,7 @@ const scheme = z.object({
 
 export async function ownRequests() {
 	const res = await fetch(`${getApibase()}/mod/own`, {
-		headers: getHeader()
+		headers: { Authorization: getAuthHeader() }
 	}).then((r) => r.json());
 
 	const parsed = scheme.parse(res);

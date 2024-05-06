@@ -1,4 +1,4 @@
-import { getApibase, getHeader } from '$lib/utils/api';
+import { getApibase, getAuthHeader } from '$lib/utils/api';
 import { z } from 'zod';
 
 const scheme = z.object({
@@ -15,7 +15,10 @@ interface ReviewProps {
 export async function review(props: ReviewProps) {
 	const res = await fetch(`${getApibase()}/mod/${props.id}`, {
 		method: 'PATCH',
-		headers: getHeader(),
+		headers: {
+			Authorization: getAuthHeader(),
+			'Content-Type': 'application/json'
+		},
 		body: JSON.stringify({
 			status: props.operation
 		})
