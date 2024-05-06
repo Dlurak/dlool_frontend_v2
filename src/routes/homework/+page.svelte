@@ -58,9 +58,8 @@
 						<AssignmentGrid
 							assignments={assignmentData.data.assignments}
 							school={data.query.school}
-							on:delete={() => {
-								invalidateAll();
-							}}
+							on:delete={invalidateAll}
+							on:update={invalidateAll}
 						/>
 					</div>
 				{:else}

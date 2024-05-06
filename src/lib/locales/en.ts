@@ -154,6 +154,7 @@ const en = {
 	'assignments.delete.desc': 'Do you really want to delete this assignment?',
 	'assignments.delete.ok': 'Delete',
 	'assignments.delete.success': 'Successfully deleted',
+	'assignments.update.success': 'Successfully updated',
 
 	'calendar.month': {
 		counts: {

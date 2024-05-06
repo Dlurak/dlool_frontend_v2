@@ -161,6 +161,7 @@ const de = {
 	'assignments.delete.desc': 'Möchtest Du diese Aufgabe wirklich löschen?',
 	'assignments.delete.ok': 'Löschen',
 	'assignments.delete.success': 'Erfolgreich gelöscht',
+	'assignments.update.success': 'Erfolgreich aktualisiert',
 
 	'calendar.month': {
 		counts: {

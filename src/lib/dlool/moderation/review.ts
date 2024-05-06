@@ -24,6 +24,5 @@ export async function review(props: ReviewProps) {
 		})
 	}).then((r) => r.json());
 
-	console.log(res.message);
 	return scheme.parse(res);
 }

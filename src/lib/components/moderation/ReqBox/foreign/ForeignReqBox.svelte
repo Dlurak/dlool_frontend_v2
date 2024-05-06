@@ -1,6 +1,6 @@
 <script lang="ts">
 	import PrimaryButton from '$lib/components/buttons/PrimaryButton.svelte';
-	import { sendToast } from '$lib/components/layout/toasts';
+	import { sendDefaultErrorToast, sendToast } from '$lib/components/layout/toasts';
 	import Store from '$lib/components/utils/Store.svelte';
 	import type { ForeignReq } from '$lib/dlool/moderation/foreign';
 	import { review } from '$lib/dlool/moderation/review';
@@ -38,14 +38,7 @@
 					timeout: 5_000
 				});
 			})
-			.catch((e) => {
-				console.log(e);
-				sendToast({
-					type: 'error',
-					content: i('error'),
-					timeout: 5_000
-				});
-			});
+			.catch(sendDefaultErrorToast);
 
 		dispatch('review', action);
 	};

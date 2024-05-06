@@ -11,7 +11,7 @@
 {#if assignments.length}
 	<div class="grid w-full grid-cols-[repeat(auto-fill,minmax(min(20rem,100%),1fr))] gap-4">
 		{#each assignments as assignment}
-			<AssignmentBox {assignment} {school} on:delete />
+			<AssignmentBox {assignment} {school} on:delete on:update />
 		{/each}
 	</div>
 {:else}

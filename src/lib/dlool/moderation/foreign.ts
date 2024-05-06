@@ -76,6 +76,5 @@ export async function foreignRequests(props: ForeignReqProps = { type: 'all' }) 
 		headers: { Authorization: getAuthHeader() }
 	}).then((r) => r.json());
 
-	console.log(res);
 	return scheme.parse(res);
 }
