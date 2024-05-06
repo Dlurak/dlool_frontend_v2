@@ -9,8 +9,6 @@
 	import { writable } from 'svelte/store';
 	import { sendToast } from '$lib/components/layout/toasts';
 
-	let it = 0;
-
 	let username = '';
 	let pwd = '';
 

@@ -1,4 +1,4 @@
-import { getApibase, getAuthHeader } from '$lib/utils/api';
+import { getApibase, getHeader } from '$lib/utils/api';
 import { z } from 'zod';
 
 const userDetailsScheme = z.object({
@@ -25,7 +25,7 @@ const scheme = z.object({
 
 export async function ownUserInfo() {
 	const res = await fetch(`${getApibase()}/user/info/me`, {
-		headers: { Authorization: getAuthHeader() }
+		headers: getHeader()
 	}).then((r) => r.json());
 
 	return scheme.parse(res);

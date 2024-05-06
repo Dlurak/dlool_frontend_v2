@@ -1,4 +1,4 @@
-import { getApibase, getAuthHeader } from '$lib/utils/api';
+import { getApibase, getHeader } from '$lib/utils/api';
 import { z } from 'zod';
 
 const scheme = z.union([
@@ -20,10 +20,7 @@ interface SchoolProps {
 export async function createSchool(props: SchoolProps) {
 	const res = await fetch(`${getApibase()}/school`, {
 		method: 'POST',
-		headers: {
-			Authorization: getAuthHeader(),
-			'Content-Type': 'application/json'
-		},
+		headers: getHeader(),
 		body: JSON.stringify({
 			name: props.name,
 			description: props.name

@@ -2,6 +2,7 @@
 	import { Icon, type IconSource } from 'svelte-hero-icons';
 	import type { Readable } from 'svelte/store';
 	import Frame from './Frame.svelte';
+	import { createEventDispatcher } from 'svelte';
 
 	export let placeholder: Readable<string>;
 	export let icon: IconSource | null = null;
@@ -11,6 +12,10 @@
 	export let showSecondLine = false;
 
 	export let isValid: boolean | null = null;
+
+	const dispatch = createEventDispatcher<{
+		input: string;
+	}>();
 </script>
 
 <Frame>
@@ -24,7 +29,9 @@
 				type="text"
 				class="w-full bg-transparent focus:outline-none"
 				placeholder={$placeholder}
-				on:input
+				on:input={({ currentTarget }) => {
+					dispatch('input', currentTarget.value);
+				}}
 				on:focus
 				on:blur
 				bind:value

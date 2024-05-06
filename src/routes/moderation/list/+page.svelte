@@ -54,7 +54,7 @@
 		<ForeignReqBox
 			req={d}
 			on:review={async () => {
-				// @ts-ignore
+				// @ts-expect-error filterValue is only a string, type requires something more precise
 				data = await foreignRequests({ type: filterValue }).then((d) => d.data);
 			}}
 		/>

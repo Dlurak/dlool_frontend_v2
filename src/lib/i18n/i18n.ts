@@ -40,7 +40,7 @@ export type Pairs<
 	Tok extends Token,
 	Opt extends I18nProps,
 	Loc extends LocaleAbbr
-	// @ts-ignore
+	// @ts-expect-error Basestring is a string, ts doesn't know it
 > = Record<ExtractWordsAfterSign<BaseString<Tok, Opt, Loc>, '$'>[number], string>;
 
 export type I18nProps = { count?: Amount };
@@ -62,18 +62,17 @@ export const int = <
 	const unproccessedString = (
 		typeof baseVal === 'string'
 			? baseVal
-			: // @ts-ignore
+			: // @ts-expect-error count can't index counts, but i know it and ?? catches it
 				baseVal.counts[count] ?? baseVal.counts.default
 	) as Base;
 
-	// @ts-ignore
+	// @ts-expect-error unprocessedstring isn't a string for ts
 	const parted = unproccessedString.replace(
 		/\$([a-zA-Z]+)/g,
-		// @ts-ignore
+		// @ts-expect-error the params can't be typesave
 		(match, key) => pairs[key] || match
-		// @ts-ignore
+		// @ts-expect-error base makes problems
 	) as ReplaceSubstringType<Base, Pai>;
 
-	// @ts-ignore
 	return parted;
 };

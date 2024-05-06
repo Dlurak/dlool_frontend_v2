@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { navHeight } from '$lib/stores';
-	import { fly } from 'svelte/transition';
 	import Toast from './Toast.svelte';
 	import { toasts } from './store';
 

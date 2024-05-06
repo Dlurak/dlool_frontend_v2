@@ -14,7 +14,7 @@ type Confirmation = BaseConfirmation & {
 export const confirmation = writable<Confirmation | null>(null);
 
 export const confirm = (props: BaseConfirmation = {}) => {
-	return new Promise<boolean>((resolve, reject) => {
+	return new Promise<boolean>((resolve) => {
 		confirmation.set({
 			...props,
 			callback: (status) => {

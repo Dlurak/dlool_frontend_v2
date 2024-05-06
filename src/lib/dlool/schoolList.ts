@@ -1,4 +1,4 @@
-import { getApibase, getAuthHeader } from '$lib/utils/api';
+import { getApibase, getHeader } from '$lib/utils/api';
 import { z } from 'zod';
 
 const schoolScheme = z.object({
@@ -26,7 +26,7 @@ export async function listSchools(props: SchoolProps) {
 	const query = props.query ? `query=${props.query}&` : '';
 
 	const res = await fetch(`${getApibase()}/school?${limit}${offset}${query}`, {
-		headers: { Authorization: getAuthHeader() }
+		headers: getHeader()
 	}).then((r) => r.json());
 
 	const parsed = scheme.parse(res);

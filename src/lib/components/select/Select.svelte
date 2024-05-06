@@ -83,21 +83,18 @@
 			{placeholder}
 			bind:value={userInput}
 			showSecondLine={allowMultiple && (value?.length ?? 0) > 0}
-			on:input={(e) => {
+			on:input={({ detail }) => {
 				showSuggestions = true;
 				currentlyFocused.reset();
 
-				// @ts-ignore
-				const newVal = e.target?.value;
-
 				if (allowCustomval) {
-					value = newVal ? [newVal] : null;
-					firstValue = newVal ?? null;
-					dispatch('userInput', newVal);
+					value = detail ? [detail] : null;
+					firstValue = detail ?? null;
+					dispatch('userInput', detail);
 					return;
 				}
 
-				const typedOption = options.find(({ label }) => get(label) === newVal);
+				const typedOption = options.find(({ label }) => get(label) === detail);
 
 				if (typedOption && !allowMultiple) {
 					value = [typedOption.value];
@@ -106,7 +103,7 @@
 					value = null;
 				}
 
-				dispatch('userInput', newVal);
+				dispatch('userInput', detail);
 			}}
 		>
 			<div slot="secondLine" class="flex flex-wrap gap-2 text-sm empty:hidden">

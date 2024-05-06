@@ -12,7 +12,7 @@
 
 	export let req: ForeignReq;
 
-	const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher<{ review: 'accept' | 'reject' }>();
 
 	const operate = async (action: 'accept' | 'reject') => {
 		if (
