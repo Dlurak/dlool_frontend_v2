@@ -23,7 +23,7 @@ const de = {
 	'register.register': 'Registrieren',
 	'register.nametaken': 'Nutzername vergeben :(',
 	'register.nametaken.desc':
-		'Aber Du kannst noch immer denselben Anzeigenamen und dasselbe Passwort nutzen',
+		'Aber Du kannst noch immer den selben Anzeigenamen und das selbe Passwort nutzen',
 	'register.success': 'Erfolgreich registriert (ﾉ◕ヮ◕)ﾉ',
 
 	'login.login': 'Einloggen',
