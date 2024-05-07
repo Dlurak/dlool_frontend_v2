@@ -21,7 +21,7 @@ const en = {
 
 	'register.register': 'Register',
 	'register.nametaken': 'Username taken :(',
-	'register.nametaken.desc': 'But you can stil use the same displayname and password',
+	'register.nametaken.desc': 'But you can still use the same displayname and password',
 	'register.success': 'Successfully registered (ﾉ◕ヮ◕)ﾉ',
 
 	'login.login': 'Login',
@@ -121,7 +121,7 @@ const en = {
 	'lang.en': 'English',
 
 	'footer.creator': 'Created by Dlurak',
-	'footer.creator.license': 'Liscenced under the GNU General Public License Version 3',
+	'footer.creator.license': 'Licensed under the GNU General Public License Version 3',
 	'footer.contact': 'Contact',
 	'footer.contact.backend': 'Backend on GitHub',
 	'footer.contact.frontend': 'Frontend on GitHub',
