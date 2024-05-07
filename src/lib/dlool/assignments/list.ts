@@ -40,6 +40,15 @@ const scheme = z.object({
 interface AssignmentProps {
 	school: string;
 	classes: string[];
+	filter?: {
+		from?: {
+			earliest?: string;
+			latest?: string;
+		};
+	};
+	orderKey?: 'due' | 'from' | 'subject' | 'description' | 'versionsCount';
+	limit?: number;
+	offset?: number;
 }
 
 export async function loadAssignments(props: AssignmentProps) {

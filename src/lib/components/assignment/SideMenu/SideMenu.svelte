@@ -3,11 +3,17 @@
 	import { svocal } from '$lib/utils/store/svocal';
 	import CreateAssignment from './CreateAssignment.svelte';
 	import Filter from './Filter.svelte';
+	import PageSelector from './PageSelector/PageSelector.svelte';
 
 	export let query: {
 		school: string | null;
 		classes: string[];
+
+		limit: number;
+		offset: number;
 	};
+
+	export let totalAmount: Promise<number | undefined> | undefined;
 
 	let createEle: CreateAssignment | null = null;
 	export const postCreate = (b: boolean) => createEle?.postCreate(b);
@@ -38,5 +44,13 @@
 			allowedClasses={query.classes}
 			on:submit
 		/>
+	{/if}
+
+	{#if totalAmount}
+		{#await totalAmount then totalAmountNum}
+			{#if totalAmountNum}
+				<PageSelector {query} totalAmount={totalAmountNum} on:pageChage />
+			{/if}
+		{/await}
 	{/if}
 </div>

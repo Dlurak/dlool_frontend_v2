@@ -10,10 +10,20 @@ export const load: PageLoad = ({ url }) => {
 		.map((q) => split(search.get(q) ?? '').filter((i) => i))
 		.find((i) => i.length > 0);
 
+	const limit = Math.max(
+		parseInt(['limit', 'l', 'lim'].map((i) => search.get(i)).find((i) => i) ?? '0') || 25,
+		5
+	);
+
+	const offset = Math.max(
+		parseInt(['offset', 'off', 'o'].map((i) => search.get(i)).find((i) => i) ?? '0') || 0,
+		0
+	);
+
 	if (school && classes && classes.length > 0) {
 		return {
-			data: loadAssignments({ school, classes }).catch(() => null),
-			query: { school, classes }
+			data: loadAssignments({ school, classes, limit, offset }).catch(() => null),
+			query: { school, classes, limit, offset }
 		};
 	}
 

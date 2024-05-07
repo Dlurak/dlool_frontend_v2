@@ -22,8 +22,11 @@
 			bind:this={sideMenuEle}
 			query={data.query ?? {
 				school: null,
-				classes: []
+				classes: [],
+				limit: 5,
+				offset: 0
 			}}
+			totalAmount={data.data?.then((d) => d?.data.totalCount)}
 			on:filterApply={({ detail }) => goto(`?${objToQueryParams(detail)}`)}
 			on:submit={async ({ detail }) => {
 				createAssignment(detail)
@@ -44,6 +47,9 @@
 						});
 						sideMenuEle?.postCreate(false);
 					});
+			}}
+			on:pageChage={({ detail }) => {
+				goto(`?${objToQueryParams({ ...data.query, ...detail })}`);
 			}}
 		/>
 	</div>

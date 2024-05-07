@@ -11,7 +11,7 @@
 	import { createSchool } from '$lib/dlool/school/create';
 	import { createClass } from '$lib/dlool/classes/create';
 	import { joinClass } from '$lib/dlool/join';
-	import { sendToast } from '$lib/components/layout/toasts';
+	import { sendDefaultErrorToast, sendToast } from '$lib/components/layout/toasts';
 	import { ownUserInfo } from '$lib/dlool/userInfo/own';
 	import { svocal } from '$lib/utils/store/svocal';
 
@@ -115,11 +115,7 @@
 					});
 				} catch (e) {
 					isDisabled = false;
-					sendToast({
-						type: 'error',
-						content: i('error'),
-						timeout: 5_000
-					});
+					sendDefaultErrorToast();
 				}
 			}}
 		>
