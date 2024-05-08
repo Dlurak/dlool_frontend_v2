@@ -24,7 +24,7 @@
 	}>();
 
 	$: pageCount = Math.ceil(totalAmount / query.limit);
-	$: currentPage = query.offset / query.limit;
+	$: currentPage = Math.round(query.offset / query.limit);
 </script>
 
 <div class="grid grid-cols-2 gap-1 overflow-hidden rounded-md">
@@ -40,11 +40,12 @@
 	/>
 	<PageButton
 		icon={ChevronRight}
-		disabled={currentPage >= pageCount}
+		disabled={currentPage + 1 >= pageCount}
 		on:click={() => {
+			console.log(query.offset + query.limit, totalAmount - 1)
 			dispatch('pageChage', {
 				limit: Math.max(query.limit, 1),
-				offset: Math.min(query.offset + query.limit, totalAmount - query.limit)
+				offset: Math.min(query.offset + query.limit, totalAmount - 1)
 			});
 		}}
 	/>
@@ -61,7 +62,7 @@
 	/>
 	<PageButton
 		icon={ChevronDoubleRight}
-		disabled={currentPage >= pageCount}
+		disabled={currentPage + 1 >= pageCount}
 		on:click={() => {
 			dispatch('pageChage', {
 				limit: Math.max(query.limit, 1),
@@ -74,7 +75,7 @@
 		<Store
 			store={i('assignments.pages.currently', {
 				current: `${currentPage + 1}`,
-				total: `${pageCount + 1}`
+				total: `${pageCount}`
 			})}
 		/>
 	</div>

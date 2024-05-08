@@ -35,9 +35,8 @@
 		<Filter {query} on:filterApply />
 	</div>
 
-	<hr class="border-zinc-300 dark:border-zinc-700" />
-
 	{#if isInClass && $isLoggedIn && query.school}
+		<hr class="border-zinc-300 dark:border-zinc-700" />
 		<CreateAssignment
 			bind:this={createEle}
 			school={query.school}
@@ -48,7 +47,8 @@
 
 	{#if totalAmount}
 		{#await totalAmount then totalAmountNum}
-			{#if totalAmountNum}
+			{#if totalAmountNum && totalAmountNum > query.limit}
+				<hr class="border-zinc-300 dark:border-zinc-700" />
 				<PageSelector {query} totalAmount={totalAmountNum} on:pageChage />
 			{/if}
 		{/await}
