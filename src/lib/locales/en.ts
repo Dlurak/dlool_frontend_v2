@@ -213,6 +213,112 @@ const en = {
 	'notes.delete.desc': 'Do you really want to delete this note?',
 	'note.delete.success': 'Successfully deleted',
 
+	'time.ago.created.seconds': {
+		counts: {
+			default: 'Created $diff seconds ago by $name',
+			1: 'Created one second ago by $name'
+		}
+	},
+	'time.ago.created.minutes': {
+		counts: {
+			default: 'Created $diff seconds ago by $name',
+			1: 'Created 1 second ago by $name',
+			2: 'Created 2 seconds ago by $name',
+			3: 'Created 3 seconds ago by $name'
+		}
+	},
+	'time.ago.created.hours': {
+		counts: {
+			default: 'Created $diff hours ago by $name',
+			1: 'Created one hours ago by $name',
+			2: 'Created two hours ago by $name',
+			3: 'Created three hours ago by $name',
+			4: 'Created four hours ago by $name'
+		}
+	},
+	'time.ago.created.days': {
+		counts: {
+			default: 'Created $diff days ago by $name',
+			1: 'Created one day ago by $name',
+			2: 'Created two days ago by $name',
+			3: 'Created three days ago by $name',
+			4: 'Created four days ago by $name',
+			5: 'Created five days ago by $name',
+			6: 'Created six days ago by $name'
+		}
+	},
+	'time.ago.created.weeks': {
+		counts: {
+			default: 'Created $diff weeks ago by $name',
+			1: 'Created one week ago by $name'
+		}
+	},
+	'time.ago.created.months': {
+		counts: {
+			default: 'Created $diff months ago by $name',
+			1: 'Created one month ago by $name'
+		}
+	},
+	'time.ago.created.years': {
+		counts: {
+			default: 'Created $diff years ago by $name',
+			1: 'Created one year ago by $name'
+		}
+	},
+
+	'time.ago.edited.seconds': {
+		counts: {
+			default: 'Edited $diff seconds ago by $name',
+			1: 'Edited one second ago by $name'
+		}
+	},
+	'time.ago.edited.minutes': {
+		counts: {
+			default: 'Edited $diff seconds ago by $name',
+			1: 'Edited 1 second ago by $name',
+			2: 'Edited 2 seconds ago by $name',
+			3: 'Edited 3 seconds ago by $name'
+		}
+	},
+	'time.ago.edited.hours': {
+		counts: {
+			default: 'Edited $diff hours ago by $name',
+			1: 'Edited one hours ago by $name',
+			2: 'Edited two hours ago by $name',
+			3: 'Edited three hours ago by $name',
+			4: 'Edited four hours ago by $name'
+		}
+	},
+	'time.ago.edited.days': {
+		counts: {
+			default: 'Edited $diff days ago by $name',
+			1: 'Edited one day ago by $name',
+			2: 'Edited two days ago by $name',
+			3: 'Edited three days ago by $name',
+			4: 'Edited four days ago by $name',
+			5: 'Edited five days ago by $name',
+			6: 'Edited six days ago by $name'
+		}
+	},
+	'time.ago.edited.weeks': {
+		counts: {
+			default: 'Edited $diff weeks ago by $name',
+			1: 'Edited one week ago by $name'
+		}
+	},
+	'time.ago.edited.months': {
+		counts: {
+			default: 'Edited $diff months ago by $name',
+			1: 'Edited one month ago by $name'
+		}
+	},
+	'time.ago.edited.years': {
+		counts: {
+			default: 'Edited $diff years ago by $name',
+			1: 'Edited one year ago by $name'
+		}
+	},
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 

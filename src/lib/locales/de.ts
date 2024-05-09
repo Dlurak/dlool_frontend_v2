@@ -220,6 +220,114 @@ const de = {
 	'notes.delete.desc': 'Willst du diese Notiz wirklich löschnen?',
 	'note.delete.success': 'Erfolgreich gelöscht',
 
+	'time.ago.created.seconds': {
+		counts: {
+			default: 'Vor $diff Sekunden von $name erstellt',
+			1: 'Vor einer Sekunde von $name erstellt'
+		}
+	},
+	'time.ago.created.minutes': {
+		counts: {
+			default: 'Vor $diff Minuten von $name erstellt',
+			1: 'Vor einer Minute von $name erstellt',
+			2: 'Vor zwei Minute von $name erstellt',
+			3: 'Vor drei Minute von $name erstellt'
+		}
+	},
+	'time.ago.created.hours': {
+		counts: {
+			default: 'Vor $diff Stunden von $name erstellt',
+			1: 'Vor einer Stunde von $name erstellt',
+			2: 'Vor zwei Stunden von $name erstellt',
+			3: 'Vor drei Stunden von $name erstellt',
+			4: 'Vor vier Stunden von $name erstellt'
+		}
+	},
+	'time.ago.created.days': {
+		counts: {
+			default: 'Vor $diff Stunden von $name erstellt',
+			1: 'Vor einem Tag von $name erstellt',
+			2: 'Vor zwei Tagen von $name erstellt',
+			3: 'Vor drei Tagen von $name erstellt',
+			4: 'Vor vier Tagen von $name erstellt',
+			5: 'Vor fünf Tagen von $name erstellt',
+			6: 'Vor sechs Tagen von $name erstellt'
+		}
+	},
+	'time.ago.created.weeks': {
+		counts: {
+			default: 'Vor $diff Wochen von $name erstellt',
+			1: 'Vor einer Woche von $name erstellt'
+		}
+	},
+	'time.ago.created.months': {
+		counts: {
+			default: 'Vor $diff Monaten von $name erstellt',
+			1: 'Vor einem Monat von $name erstellt'
+		}
+	},
+	'time.ago.created.years': {
+		counts: {
+			default: 'Vor $diff Jahren von $name erstellt',
+			1: 'Vor einem Jahr von $name erstellt',
+			10: 'Vor einem Jahrzehnt von $name erstellt'
+		}
+	},
+
+	'time.ago.edited.seconds': {
+		counts: {
+			default: 'Vor $diff Sekunden von $name bearbeitet worden',
+			1: 'Vor einer Sekunde von $name bearbeitet worden'
+		}
+	},
+	'time.ago.edited.minutes': {
+		counts: {
+			default: 'Vor $diff Minuten von $name bearbeitet worden',
+			1: 'Vor einer Minute von $name bearbeitet worden',
+			2: 'Vor zwei Minute von $name bearbeitet worden',
+			3: 'Vor drei Minute von $name bearbeitet worden'
+		}
+	},
+	'time.ago.edited.hours': {
+		counts: {
+			default: 'Vor $diff Stunden von $name bearbeitet worden',
+			1: 'Vor einer Stunde von $name bearbeitet worden',
+			2: 'Vor zwei Stunden von $name bearbeitet worden',
+			3: 'Vor drei Stunden von $name bearbeitet worden',
+			4: 'Vor vier Stunden von $name bearbeitet worden'
+		}
+	},
+	'time.ago.edited.days': {
+		counts: {
+			default: 'Vor $diff Stunden von $name bearbeitet worden',
+			1: 'Vor einem Tag von $name bearbeitet worden',
+			2: 'Vor zwei Tagen von $name bearbeitet worden',
+			3: 'Vor drei Tagen von $name bearbeitet worden',
+			4: 'Vor vier Tagen von $name bearbeitet worden',
+			5: 'Vor fünf Tagen von $name bearbeitet worden',
+			6: 'Vor sechs Tagen von $name bearbeitet worden'
+		}
+	},
+	'time.ago.edited.weeks': {
+		counts: {
+			default: 'Vor $diff Wochen von $name bearbeitet worden',
+			1: 'Vor einer Woche von $name bearbeitet worden'
+		}
+	},
+	'time.ago.edited.months': {
+		counts: {
+			default: 'Vor $diff Monaten von $name bearbeitet worden',
+			1: 'Vor einem Monat von $name bearbeitet worden'
+		}
+	},
+	'time.ago.edited.years': {
+		counts: {
+			default: 'Vor $diff Jahren von $name bearbeitet worden',
+			1: 'Vor einem Jahr von $name bearbeitet worden',
+			10: 'Vor einem Jahrzehnt von $name bearbeitet worden'
+		}
+	},
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 
