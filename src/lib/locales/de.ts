@@ -216,6 +216,9 @@ const de = {
 	'calendar.select': 'Wähle ein Datum aus',
 
 	'notes.nothing': 'Hier gibt es nichts zu sehen :]',
+	'notes.delete.ok': 'Löschen',
+	'notes.delete.desc': 'Willst du diese Notiz wirklich löschnen?',
+	'note.delete.success': 'Erfolgreich gelöscht',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

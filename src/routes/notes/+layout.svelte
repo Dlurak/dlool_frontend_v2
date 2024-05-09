@@ -45,7 +45,7 @@
 			{:then notes}
 				{@const totalAmount = notes.data.totalCount}
 				{#each notes.data.notes as note}
-					<NoteBox {note} />
+					<NoteBox {note} on:delete={invalidateAll} />
 				{/each}
 
 				{#if totalAmount > data.query.limit}

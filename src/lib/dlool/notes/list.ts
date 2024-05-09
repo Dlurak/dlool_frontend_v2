@@ -31,7 +31,6 @@ const noteScheme = z.object({
 			time: z.number().int()
 		})
 	),
-	id: z.string(),
 	editScope: z.optional(z.union([z.literal('Self'), z.literal('Class'), z.literal('School')])),
 	class: z.object({
 		name: z.string(),
@@ -49,15 +48,32 @@ const scheme = z.object({
 	message: z.literal('Successfully retrieved data'),
 	data: z.object({
 		totalCount: z.number().int().min(0),
-		notes: z.array(noteScheme)
+		notes: z.array(noteScheme.extend({ id: z.string() }))
 	})
 });
 
 export async function listNotes(props: NoteProps) {
 	const url = `${getApibase()}/notes?${objToQueryParams({ ...props })}`;
-	const res = await fetch(url, {
-		headers: { Authorization: getAuthHeader() }
-	}).then((r) => r.json());
+	const res = await fetch(url).then((r) => r.json());
 
 	return scheme.parse(res);
+}
+
+const specificSuccess = z.object({
+	status: z.literal('success'),
+	message: z.literal('Successfully retrieved note'),
+	data: noteScheme
+});
+
+const specificNotFound = z.object({
+	status: z.literal('error'),
+	error: z.literal('Note not found')
+});
+
+export async function specifcNote(id: string) {
+	const url = `${getApibase()}/notes/${id}`;
+
+	const res = await fetch(url).then((r) => r.json());
+
+	return z.union([specificSuccess, specificNotFound]).parse(res);
 }

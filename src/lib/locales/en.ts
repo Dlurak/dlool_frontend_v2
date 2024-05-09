@@ -209,6 +209,9 @@ const en = {
 	'calendar.select': 'Select a date',
 
 	'notes.nothing': "Here's nothing to see :]",
+	'notes.delete.ok': 'Delete',
+	'notes.delete.desc': 'Do you really want to delete this note?',
+	'note.delete.success': 'Successfully deleted',
 
 	literal: '$literal'
 } as const satisfies I18nDict;
