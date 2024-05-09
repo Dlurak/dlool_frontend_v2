@@ -4,7 +4,7 @@
 	import { svocal } from '$lib/utils/store/svocal';
 	import CreateAssignment from './CreateAssignment.svelte';
 	import Filter from './Filter/Filter.svelte';
-	import PageSelector from './PageSelector/PageSelector.svelte';
+	import PageSelector from '$lib/components/pageSelector/DefaultLimitOffsetSelector.svelte';
 
 	export let query: {
 		school: string | null;

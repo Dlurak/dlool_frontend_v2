@@ -10,42 +10,33 @@
 	import Store from '$lib/components/utils/Store.svelte';
 	import { i } from '$lib/i18n/store';
 
-	type Query = {
-		limit: number;
-		offset: number;
-	};
+	export let pageCount: number;
+	export let currentPage: number;
 
-	export let query: Query;
-
-	export let totalAmount: number;
+	export let leftIsDisabled = false;
+	export let rightIsDisabled = false;
 
 	const dispatch = createEventDispatcher<{
-		pageChage: Query;
+		prev: null;
+		first: null;
+		next: null;
+		last: null;
 	}>();
-
-	$: pageCount = Math.ceil(totalAmount / query.limit);
-	$: currentPage = Math.round(query.offset / query.limit);
 </script>
 
 <div class="grid grid-cols-2 gap-1 overflow-hidden rounded-md">
 	<PageButton
 		icon={ChevronLeft}
-		disabled={currentPage === 0}
+		disabled={leftIsDisabled}
 		on:click={() => {
-			dispatch('pageChage', {
-				limit: Math.max(query.limit, 1),
-				offset: Math.max(query.offset - query.limit, 0)
-			});
+			dispatch('prev');
 		}}
 	/>
 	<PageButton
 		icon={ChevronRight}
 		disabled={currentPage + 1 >= pageCount}
 		on:click={() => {
-			dispatch('pageChage', {
-				limit: Math.max(query.limit, 1),
-				offset: Math.min(query.offset + query.limit, totalAmount - 1)
-			});
+			dispatch('next');
 		}}
 	/>
 
@@ -53,20 +44,14 @@
 		icon={ChevronDoubleLeft}
 		disabled={currentPage === 0}
 		on:click={() => {
-			dispatch('pageChage', {
-				limit: Math.max(query.limit, 1),
-				offset: 0
-			});
+			dispatch('first');
 		}}
 	/>
 	<PageButton
 		icon={ChevronDoubleRight}
 		disabled={currentPage + 1 >= pageCount}
 		on:click={() => {
-			dispatch('pageChage', {
-				limit: Math.max(query.limit, 1),
-				offset: Math.max(totalAmount - query.limit, 0)
-			});
+			dispatch('last');
 		}}
 	/>
 

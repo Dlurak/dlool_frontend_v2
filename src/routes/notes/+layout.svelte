@@ -11,6 +11,7 @@
 	import { objToQueryParams } from '$lib/utils/url/query';
 	import { sendToast } from '$lib/components/layout/toasts';
 	import { i } from '$lib/i18n/store';
+	import PageSelector from '$lib/components/pageSelector/DefaultLimitOffsetSelector.svelte';
 
 	const isRootPage = derived(page, ($page) => $page.route.id === '/notes');
 	const isSmall = mediaQuery('(max-width: 768px)');
@@ -42,9 +43,22 @@
 			{#await data.data}
 				<LoadingCircle />
 			{:then notes}
+				{@const totalAmount = notes.data.totalCount}
 				{#each notes.data.notes as note}
 					<NoteBox {note} />
 				{/each}
+
+				{#if totalAmount > data.query.limit}
+					<hr class="border-zinc-300 dark:border-zinc-700" />
+
+					<PageSelector
+						{totalAmount}
+						query={data.query}
+						on:pageChage={({ detail }) => {
+							goto(`?${objToQueryParams({ ...data.query, ...detail })}`);
+						}}
+					/>
+				{/if}
 			{/await}
 		{/if}
 	</div>
