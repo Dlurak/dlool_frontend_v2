@@ -2,29 +2,26 @@
 	import {
 		stringify,
 		currentCustomDate,
-		normalToCustomDate,
 		customDateToNormal,
-		type CustomDate
+		type CustomDate,
+		normalToCustomDate
 	} from '$lib/utils/dates/custom';
 	import { i } from '$lib/i18n/store';
-	import { getDaysInMonth, getPaddingDays } from '$lib/utils/dates/calendar';
 	import { createFloatingActions } from 'svelte-floating-ui';
 	import { offset, flip, shift } from '@floating-ui/core';
 	import { createEventDispatcher } from 'svelte';
 	import { useToggle } from 'nutzlich';
-	import { Icon, CalendarDays, ChevronLeft, ChevronRight } from 'svelte-hero-icons';
+	import { Icon, CalendarDays } from 'svelte-hero-icons';
 	import Frame from '../Frame.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
-	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
-	import { svocal } from '$lib/utils/store/svocal';
+	import Cal from './Cal.svelte';
 
 	export let date: CustomDate | null = currentCustomDate();
 	export let normalDate = date && customDateToNormal(date);
 	export let icon = CalendarDays;
 
-	$: displayMonth = normalDate ?? new Date();
-
-	const monthStartsOn = svocal('settings.weekStartsOn');
+	export let earliest: CustomDate | null = null;
+	export let latest: CustomDate | null = null;
 
 	const [floatingRef, floatingContent] = createFloatingActions({
 		strategy: 'absolute',
@@ -49,9 +46,11 @@
 
 <Frame>
 	<button class="flex w-full items-stretch gap-1" use:floatingRef on:click={() => show.toggle()}>
-		<Icon src={icon} mini class="h-6 w-6" />
+		<span class="flex items-center">
+			<Icon src={icon} mini class="h-6 w-6" />
+		</span>
 
-		<div class="px-1">
+		<div class="flex items-center px-1">
 			<slot name="postIcon" />
 		</div>
 
@@ -71,68 +70,17 @@
 
 {#if $show}
 	<div class="z-10 px-2 py-2" use:floatingContent>
-		<div class="rounded bg-zinc-300 px-2 py-2 dark:bg-zinc-700">
-			<div class="flex items-center justify-between gap-2">
-				<QuickAction
-					icon={ChevronLeft}
-					on:click={() => {
-						displayMonth.setMonth(displayMonth.getMonth() - 1);
-						displayMonth = displayMonth;
-					}}
-				/>
-				<span class="text-nowrap">
-					<Store
-						store={i(
-							'calendar.month',
-							{ year: `${displayMonth.getFullYear()}` },
-							{ count: displayMonth.getMonth() }
-						)}
-					/>
-				</span>
-				<QuickAction
-					icon={ChevronRight}
-					on:click={() => {
-						displayMonth.setMonth(displayMonth.getMonth() + 1);
-						displayMonth = displayMonth;
-					}}
-				/>
-			</div>
+		<Cal
+			{earliest}
+			{latest}
+			displayMonth={new Date(normalDate ?? new Date())}
+			on:change={({ detail }) => {
+				normalDate = new Date(detail.date);
+				date = normalToCustomDate(normalDate);
+				show.set(false);
 
-			<div class="grid grid-cols-7">
-				{#each { length: 7 } as _, ind}
-					<b class="text-center">
-						<Store store={i('calendar.weekday.abbr', {}, { count: (ind + $monthStartsOn) % 7 })} />
-					</b>
-				{/each}
-				<div class="col-span-7 flex items-center py-1">
-					<hr class="w-full border-zinc-200 dark:border-zinc-800" />
-				</div>
-				{#each { length: getPaddingDays(displayMonth, $monthStartsOn) } as _}
-					<span />
-				{/each}
-				{#each { length: getDaysInMonth(displayMonth) } as _, ind}
-					<button
-						class="
-							flex aspect-square items-center justify-center rounded-sm p-1.5
-							hover:bg-zinc-200 focus:bg-zinc-200
-							dark:hover:bg-zinc-800 dark:focus:bg-zinc-800
-						"
-						on:click={() => {
-							displayMonth.setDate(ind + 1);
-							normalDate = new Date(displayMonth);
-							date = normalToCustomDate(normalDate);
-							show.set(false);
-
-							dispatch('change', {
-								date: normalDate,
-								customDate: date
-							});
-						}}
-					>
-						{ind + 1}
-					</button>
-				{/each}
-			</div>
-		</div>
+				dispatch('change', detail);
+			}}
+		/>
 	</div>
 {/if}

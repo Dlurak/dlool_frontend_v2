@@ -9,10 +9,17 @@
 	import Store from '$lib/components/utils/Store.svelte';
 	import { createEventDispatcher } from 'svelte';
 	import Collapseable from '$lib/components/utils/Collapseable.svelte';
+	import TimeRange from './TimeRange.svelte';
+	import type { CustomDate } from '$lib/utils/dates/custom';
 
 	type Query<S> = {
 		school: S;
 		classes: string[];
+		dueStart: CustomDate | null;
+		dueEnd: CustomDate | null;
+
+		fromStart: CustomDate | null;
+		fromEnd: CustomDate | null;
 	};
 
 	export let query: Query<string | null>;
@@ -22,6 +29,12 @@
 
 	let classes: Class[] = [];
 	let classInput = query.classes;
+
+	let dueStart: CustomDate | null = null;
+	let dueEnd: CustomDate | null = null;
+
+	let fromStart: CustomDate | null = null;
+	let fromEnd: CustomDate | null = null;
 
 	const dispatch = createEventDispatcher<{ filterApply: Query<string> }>();
 </script>
@@ -65,12 +78,32 @@
 			threshold={0.1}
 		/>
 
+		<h4><Store store={i('assignments.filter.due')} /></h4>
+
+		<TimeRange bind:start={dueStart} bind:end={dueEnd}>
+			<span slot="start"><Store store={i('assignments.filter.due.earliest')} /></span>
+
+			<span slot="end"><Store store={i('assignments.filter.due.latest')} /></span>
+		</TimeRange>
+
+		<h4><Store store={i('assignments.filter.from')} /></h4>
+
+		<TimeRange bind:start={fromStart} bind:end={fromEnd}>
+			<span slot="start"><Store store={i('assignments.filter.from.earliest')} /></span>
+
+			<span slot="end"><Store store={i('assignments.filter.from.latest')} /></span>
+		</TimeRange>
+
 		<PrimaryButton
 			disabled={classInput.length === 0 || schoolInput === null}
 			on:click={() => {
 				dispatch('filterApply', {
 					classes: classInput,
-					school: schoolInput ?? ''
+					school: schoolInput ?? '',
+					dueStart,
+					dueEnd,
+					fromStart,
+					fromEnd
 				});
 			}}
 		>

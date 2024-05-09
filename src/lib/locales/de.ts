@@ -149,6 +149,12 @@ const de = {
 
 	'assignments.assignment.date': 'Vom $start bis zum $end',
 	'assignments.filter.needToSet': 'Spezifiziere bitte die Schule und Klasse',
+	'assignments.filter.due': 'Bis zum',
+	'assignments.filter.due.earliest': 'Frühstens',
+	'assignments.filter.due.latest': 'Spätestens',
+	'assignments.filter.from': 'Vom',
+	'assignments.filter.from.earliest': 'Frühstens',
+	'assignments.filter.from.latest': 'Spätestens',
 	'assignments.filter.apply': 'Anwenden',
 	'assignments.noData': 'Es gibt keine Aufgaben ＼(●´ϖ`●)／',
 	'assignments.create': 'Erstelle eine Aufgabe',

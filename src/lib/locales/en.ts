@@ -142,6 +142,12 @@ const en = {
 
 	'assignments.assignment.date': 'From $start to $end',
 	'assignments.filter.needToSet': 'Please specify your school und class',
+	'assignments.filter.due': 'Until',
+	'assignments.filter.due.earliest': 'Earlist',
+	'assignments.filter.due.latest': 'Latest',
+	'assignments.filter.from': 'From',
+	'assignments.filter.from.earliest': 'Earlist',
+	'assignments.filter.from.latest': 'Latest',
 	'assignments.filter.apply': 'Apply',
 	'assignments.noData': "There aren't any assignments ＼(●´ϖ`●)／",
 	'assignments.create': 'Create an assignment',

@@ -42,7 +42,6 @@
 		icon={ChevronRight}
 		disabled={currentPage + 1 >= pageCount}
 		on:click={() => {
-			console.log(query.offset + query.limit, totalAmount - 1)
 			dispatch('pageChage', {
 				limit: Math.max(query.limit, 1),
 				offset: Math.min(query.offset + query.limit, totalAmount - 1)

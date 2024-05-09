@@ -1,8 +1,9 @@
 <script lang="ts">
+	import type { CustomDate } from '$lib/utils/dates/custom';
 	import { useAuth } from '$lib/utils/store/auth';
 	import { svocal } from '$lib/utils/store/svocal';
 	import CreateAssignment from './CreateAssignment.svelte';
-	import Filter from './Filter.svelte';
+	import Filter from './Filter/Filter.svelte';
 	import PageSelector from './PageSelector/PageSelector.svelte';
 
 	export let query: {
@@ -11,6 +12,12 @@
 
 		limit: number;
 		offset: number;
+
+		dueStart: CustomDate | null;
+		dueEnd: CustomDate | null;
+
+		fromStart: CustomDate | null;
+		fromEnd: CustomDate | null;
 	};
 
 	export let totalAmount: Promise<number | undefined> | undefined;

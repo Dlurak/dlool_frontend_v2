@@ -10,6 +10,8 @@
 	import { objToQueryParams } from '$lib/utils/url/query';
 	import { createAssignment } from '$lib/dlool/assignments/create';
 	import { sendToast } from '$lib/components/layout/toasts';
+	import { safeMap } from '$lib/utils/null/safeMap';
+	import { serialize } from '$lib/utils/dates/custom';
 
 	export let data: PageData;
 
@@ -24,10 +26,24 @@
 				school: null,
 				classes: [],
 				limit: 5,
-				offset: 0
+				offset: 0,
+				dueStart: null,
+				dueEnd: null,
+				fromStart: null,
+				fromEnd: null
 			}}
 			totalAmount={data.data?.then((d) => d?.data.totalCount)}
-			on:filterApply={({ detail }) => goto(`?${objToQueryParams(detail)}`)}
+			on:filterApply={({ detail }) => {
+				goto(
+					`?${objToQueryParams({
+						...detail,
+						dueStart: safeMap(detail.dueStart, serialize),
+						dueEnd: safeMap(detail.dueEnd, serialize),
+						fromStart: safeMap(detail.fromStart, serialize),
+						fromEnd: safeMap(detail.fromEnd, serialize)
+					})}`
+				);
+			}}
 			on:submit={async ({ detail }) => {
 				createAssignment(detail)
 					.then(invalidateAll)

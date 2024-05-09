@@ -37,18 +37,28 @@ const scheme = z.object({
 	})
 });
 
+interface TimeFilter {
+	earliest?: string;
+	latest?: string;
+}
+interface TextFilter {
+	query: number;
+	exact?: boolean;
+}
+
 interface AssignmentProps {
 	school: string;
 	classes: string[];
-	filter?: {
-		from?: {
-			earliest?: string;
-			latest?: string;
-		};
-	};
-	orderKey?: 'due' | 'from' | 'subject' | 'description' | 'versionsCount';
 	limit?: number;
 	offset?: number;
+	orderDirection?: 'asc' | 'desc';
+	orderKey?: 'due' | 'from' | 'subject' | 'description' | 'versionsCount';
+	filter?: {
+		from?: TimeFilter;
+		due?: TimeFilter;
+		subject?: TextFilter;
+		description?: TextFilter;
+	};
 }
 
 export async function loadAssignments(props: AssignmentProps) {

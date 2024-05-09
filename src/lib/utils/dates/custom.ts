@@ -30,3 +30,19 @@ export const stringify = (d: CustomDate) => {
 		year: '2-digit'
 	});
 };
+
+export const serialize = ({ year, month, day }: CustomDate) => {
+	const yearStr = `${year}`.padStart(4, '0');
+	const monthStr = `${month}`.padStart(2, '0');
+	const dayStr = `${day}`.padStart(2, '0');
+
+	return `${yearStr}-${monthStr}-${dayStr}`;
+};
+
+export const deserialize = (d: string) => {
+	const [year, month, day] = d.split('-').map((i) => parseInt(i));
+
+	if (!year || !month || !day) return null;
+
+	return { year, month, day } satisfies CustomDate as CustomDate;
+};

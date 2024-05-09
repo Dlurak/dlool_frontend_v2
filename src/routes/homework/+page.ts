@@ -1,4 +1,7 @@
+import { DATE } from '$lib/constants/regex';
 import { loadAssignments } from '$lib/dlool/assignments/list';
+import { deserialize } from '$lib/utils/dates/custom';
+import { safeMap } from '$lib/utils/null/safeMap';
 import { split } from '$lib/utils/strings/split';
 import type { PageLoad } from './$types';
 
@@ -20,10 +23,40 @@ export const load: PageLoad = ({ url }) => {
 		0
 	);
 
+	const dueStart = search.get('dueStart');
+	const dueEnd = search.get('dueEnd');
+
+	const fromStart = search.get('fromStart');
+	const fromEnd = search.get('fromEnd');
+
 	if (school && classes && classes.length > 0) {
 		return {
-			data: loadAssignments({ school, classes, limit, offset }).catch(() => null),
-			query: { school, classes, limit, offset }
+			data: loadAssignments({
+				school,
+				classes,
+				limit,
+				offset,
+				filter: {
+					due: {
+						earliest: (DATE.test(dueStart ?? '') && dueStart) || undefined,
+						latest: (DATE.test(dueEnd ?? '') && dueEnd) || undefined
+					},
+					from: {
+						earliest: (DATE.test(fromStart ?? '') && fromStart) || undefined,
+						latest: (DATE.test(fromEnd ?? '') && fromEnd) || undefined
+					}
+				}
+			}).catch(() => null),
+			query: {
+				school,
+				classes,
+				limit,
+				offset,
+				dueStart: safeMap(dueStart, deserialize),
+				dueEnd: safeMap(dueEnd, deserialize),
+				fromStart: safeMap(fromStart, deserialize),
+				fromEnd: safeMap(fromEnd, deserialize)
+			}
 		};
 	}
 
