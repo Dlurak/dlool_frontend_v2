@@ -20,6 +20,8 @@ const de = {
 	'toast.mod.foreing.accept.success': 'Erfolgreich akzeptiert!',
 	'toast.mod.foreing.reject.success': 'Erfolgreich abgelehnt!',
 
+	'toast.filter.applied': 'Erfolgreich Filter angewendet',
+
 	'register.register': 'Registrieren',
 	'register.nametaken': 'Nutzername vergeben :(',
 	'register.nametaken.desc':
@@ -212,6 +214,8 @@ const de = {
 		}
 	},
 	'calendar.select': 'Wähle ein Datum aus',
+
+	'notes.nothing': 'Hier gibt es nichts zu sehen :]',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

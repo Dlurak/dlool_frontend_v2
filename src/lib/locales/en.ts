@@ -19,6 +19,8 @@ const en = {
 	'toast.mod.foreing.accept.success': 'Successfully accepted!',
 	'toast.mod.foreing.reject.success': 'Successfully rejected!',
 
+	'toast.filter.applied': 'Successfully applied filters',
+
 	'register.register': 'Register',
 	'register.nametaken': 'Username taken :(',
 	'register.nametaken.desc': 'But you can still use the same displayname and password',
@@ -205,6 +207,8 @@ const en = {
 		}
 	},
 	'calendar.select': 'Select a date',
+
+	'notes.nothing': "Here's nothing to see :]",
 
 	literal: '$literal'
 } as const satisfies I18nDict;
