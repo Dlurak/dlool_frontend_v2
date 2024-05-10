@@ -1,17 +1,8 @@
 <script lang="ts">
 	import type { Note } from '$lib/dlool/notes/list';
-	import { Trash } from 'svelte-hero-icons';
-	import QuickAction from '../buttons/QuickAction.svelte';
-	import { confirm } from '../layout/confirmation';
-	import { i } from '$lib/i18n/store';
-	import { sendToast } from '../layout/toasts';
-	import { createEventDispatcher } from 'svelte';
-	import { deleteNote } from '$lib/dlool/notes/delete';
 	import { page } from '$app/stores';
 
 	export let note: Note & { id: string };
-
-	const dispatch = createEventDispatcher<{ delete: null }>();
 </script>
 
 <div

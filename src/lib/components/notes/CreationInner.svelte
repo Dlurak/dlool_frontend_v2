@@ -17,15 +17,12 @@
 </script>
 
 <h4><Store store={i('note.title')} /></h4>
-
 <TextInput placeholder={i('note.title.placeholder')} bind:value={title} />
 
 <h4><Store store={i('note.summary')} /></h4>
-
 <TextArea placeholder={i('note.summary.placeholder')} bind:value={summary} />
 
 <h4><Store store={i('note.priority')} /></h4>
-
 <NotTyppable
 	options={priorities.map((prio) => ({
 		label: i(`note.priority.${prio}`),
@@ -35,7 +32,6 @@
 />
 
 <h4><Store store={i('note.scope')} /></h4>
-
 <NotTyppable
 	options={scopes.map((sc) => ({
 		label: i(`note.scope.${sc}`),

@@ -10,6 +10,7 @@
 	export let value: string = '';
 
 	export let isValid: boolean | null = null;
+	export let rows = 2;
 
 	const dispatch = createEventDispatcher<{
 		input: string;
@@ -25,6 +26,7 @@
 
 	<textarea
 		bind:value
+		{rows}
 		placeholder={$placeholder}
 		class="w-full resize-none bg-transparent focus:outline-none"
 		on:input={({ currentTarget }) => {

@@ -33,7 +33,7 @@
 	bind:this={dialogElement}
 	class="min-w-[min(24rem,90%)] rounded-md bg-gray-200 text-black shadow-2xl backdrop:bg-black backdrop:opacity-50 backdrop:saturate-50 dark:bg-zinc-800 dark:text-white"
 >
-	<div class="flex items-center gap-6 border-b-gray-500 bg-gray-300 px-3 py-1 dark:bg-zinc-900">
+	<div class=" flex items-center gap-6 border-b-gray-500 bg-gray-300 px-3 py-1 dark:bg-zinc-900">
 		<div class="w-full">
 			<b><slot name="title" /></b>
 		</div>

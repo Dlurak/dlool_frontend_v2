@@ -5,7 +5,7 @@
 	import { deepEqual } from '$lib/utils/objects/deepEqual';
 	import { updateNote } from '$lib/dlool/notes/update';
 	import { createEventDispatcher } from 'svelte';
-	import { sendToast } from '../layout/toasts';
+	import { sendDefaultErrorToast, sendToast } from '../layout/toasts';
 	import CreationInner from './CreationInner.svelte';
 	import type { Note } from '$lib/dlool/notes/list';
 	import Store from '../utils/Store.svelte';
@@ -37,7 +37,13 @@
 		<PrimaryButton
 			disabled={!hasChanges}
 			on:click={async () => {
-				await updateNote({ id, title, summary, editScope, priority: priority ?? 'Minimal' });
+				await updateNote({
+					id,
+					title,
+					summary,
+					editScope,
+					priority: priority ?? 'Minimal'
+				}).catch(sendDefaultErrorToast);
 
 				isOpen = false;
 

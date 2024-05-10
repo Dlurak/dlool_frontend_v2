@@ -235,6 +235,9 @@ const de = {
 	'note.scope.class': 'Die Klasse',
 	'note.scope.school': 'Die Schule',
 	'note.update.success': 'Erfolgreich bearbeitet',
+	'note.create.success': 'Erfolgreich erstellt',
+	'note.create.new': 'Erstellen',
+	'note.noData': 'Es gibt keine Notizen',
 
 	'time.ago.created.seconds': {
 		counts: {
