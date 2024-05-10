@@ -16,6 +16,7 @@
 	import { useAuth } from '$lib/utils/store/auth';
 	import { svocal } from '$lib/utils/store/svocal';
 	import Store from '$lib/components/utils/Store.svelte';
+	import { Icon, ArrowLeft } from 'svelte-hero-icons';
 
 	const isRootPage = derived(page, ($page) => $page.route.id === '/notes');
 	const isSmall = mediaQuery('(max-width: 768px)');
@@ -36,63 +37,72 @@
 
 <Panes>
 	<div slot="a" class="flex flex-col gap-4">
-		<Filter
-			query={data.query ?? {
-				school: null,
-				classes: []
-			}}
-			on:change={({ detail }) => {
-				goto(`?${objToQueryParams(detail)}`)
-					.then(invalidateAll)
-					.then(() => {
-						sendToast({
-							type: 'success',
-							content: i('toast.filter.applied'),
-							timeout: 5_000
-						});
-					});
-			}}
-		/>
-
-		{#if isInClass && $isLoggedIn && data.query?.school}
-			<New
-				query={{
-					school: data.query.school,
-					classes: data.query.classes
+		{#if !$isSmall || $isRootPage}
+			<Filter
+				query={data.query ?? {
+					school: null,
+					classes: []
 				}}
-				on:create={() => {
-					invalidateAll();
+				on:change={({ detail }) => {
+					goto(`?${objToQueryParams(detail)}`)
+						.then(invalidateAll)
+						.then(() => {
+							sendToast({
+								type: 'success',
+								content: i('toast.filter.applied'),
+								timeout: 5_000
+							});
+						});
 				}}
 			/>
-		{/if}
 
-		{#if data.data}
-			{#await data.data}
-				<LoadingCircle />
-			{:then notes}
-				{@const totalAmount = notes.data.totalCount}
-				{#each notes.data.notes as note}
-					<NoteBox {note} on:delete={invalidateAll} />
-				{:else}
-					<span class="w-full text-center"><Store store={i('note.noData')} /></span>
-				{/each}
+			{#if isInClass && $isLoggedIn && data.query?.school}
+				<New
+					query={{
+						school: data.query.school,
+						classes: data.query.classes
+					}}
+					on:create={() => {
+						invalidateAll();
+					}}
+				/>
+			{/if}
 
-				{#if totalAmount > data.query.limit}
-					<hr class="border-zinc-300 dark:border-zinc-700" />
+			{#if data.data}
+				{#await data.data}
+					<LoadingCircle />
+				{:then notes}
+					{@const totalAmount = notes.data.totalCount}
+					{#each notes.data.notes as note}
+						<NoteBox {note} on:delete={invalidateAll} />
+					{:else}
+						<span class="w-full text-center"><Store store={i('note.noData')} /></span>
+					{/each}
 
-					<PageSelector
-						{totalAmount}
-						query={data.query}
-						on:pageChage={({ detail }) => {
-							goto(`?${objToQueryParams({ ...data.query, ...detail })}`);
-						}}
-					/>
-				{/if}
-			{/await}
+					{#if totalAmount > data.query.limit}
+						<hr class="border-zinc-300 dark:border-zinc-700" />
+
+						<PageSelector
+							{totalAmount}
+							query={data.query}
+							on:pageChage={({ detail }) => {
+								goto(`?${objToQueryParams({ ...data.query, ...detail })}`);
+							}}
+						/>
+					{/if}
+				{/await}
+			{/if}
 		{/if}
 	</div>
 
 	<div slot="b" class="h-full w-full">
+		{#if $isSmall && !$isRootPage}
+			<div>
+				<a href={`/notes${$page.url.search}`}>
+					<Icon src={ArrowLeft} mini class="h-6 w-6 text-black dark:text-white" />
+				</a>
+			</div>
+		{/if}
 		{#if !($isSmall && $isRootPage)}
 			<slot />
 		{/if}
