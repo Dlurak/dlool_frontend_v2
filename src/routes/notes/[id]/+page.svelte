@@ -2,14 +2,30 @@
 	import type { PageData } from './$types';
 	import UpdatedAt from '$lib/components/utils/UpdatedAt.svelte';
 	import { AcademicCap, BuildingLibrary, Icon } from 'svelte-hero-icons';
+	import { page } from '$app/stores';
+	import { goto, invalidateAll } from '$app/navigation';
+	import Actions from '$lib/components/notes/specific/Actions.svelte';
 
 	export let data: PageData;
 </script>
 
-{#if data.data.status === 'success'}
+{#if data.data}
 	{@const note = data.data.data}
 
-	<h2>{note.title}</h2>
+	<div class="flex items-center justify-between">
+		<h2>{note.title}</h2>
+
+		<Actions
+			{note}
+			id={$page.params.id}
+			on:update={() => {
+				invalidateAll();
+			}}
+			on:delete={() => {
+				goto(`/notes${$page.url.search}`);
+			}}
+		/>
+	</div>
 
 	{#if note.summary}
 		<p>{note.summary}</p>
@@ -17,9 +33,19 @@
 		<p class="italic text-gray-600 dark:text-gray-400">No summary provided</p>
 	{/if}
 
-	<div
-		class="flex w-fit min-w-[50%] max-w-full flex-wrap justify-between gap-4 text-sm text-gray-600 dark:text-gray-400"
-	>
+	<div class="flex flex-col gap-2 pt-4 text-sm text-gray-600 dark:text-gray-400">
+		<div>
+			<span class="flex items-center gap-1">
+				<Icon src={BuildingLibrary} class="h-5 w-5" mini />
+				{note.class.school.name}
+			</span>
+
+			<span class="flex items-center gap-1">
+				<Icon src={AcademicCap} class="h-5 w-5" mini />
+				{note.class.name}
+			</span>
+		</div>
+
 		<span class="flex flex-col">
 			{#if note.updates[0]}
 				{@const update = note.updates[0]}
@@ -39,17 +65,5 @@
 				</span>
 			{/if}
 		</span>
-
-		<div>
-			<span class="flex items-center gap-1">
-				<Icon src={BuildingLibrary} class="h-5 w-5" mini />
-				{note.class.name}
-			</span>
-
-			<span class="flex items-center gap-1">
-				<Icon src={AcademicCap} class="h-5 w-5" mini />
-				{note.class.school.name}
-			</span>
-		</div>
 	</div>
 {/if}

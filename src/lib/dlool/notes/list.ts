@@ -1,4 +1,4 @@
-import { getApibase, getAuthHeader } from '$lib/utils/api';
+import { getApibase } from '$lib/utils/api';
 import { objToQueryParams } from '$lib/utils/url/query';
 import { z } from 'zod';
 
@@ -31,7 +31,7 @@ const noteScheme = z.object({
 			time: z.number().int()
 		})
 	),
-	editScope: z.optional(z.union([z.literal('Self'), z.literal('Class'), z.literal('School')])),
+	editScope: z.union([z.literal('Self'), z.literal('Class'), z.literal('School')]),
 	class: z.object({
 		name: z.string(),
 		school: z.object({

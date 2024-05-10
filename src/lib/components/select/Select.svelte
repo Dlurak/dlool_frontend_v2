@@ -8,7 +8,8 @@
 	import type { Option } from './types';
 	import { useCycle } from '$lib/utils/store/cycle';
 	import { createEventDispatcher } from 'svelte';
-	import { Icon, XMark, type IconSource } from 'svelte-hero-icons';
+	import { ChevronDown, Icon, XMark, type IconSource } from 'svelte-hero-icons';
+	import QuickAction from '../buttons/QuickAction.svelte';
 
 	export let placeholder: Readable<string>;
 	export let options: Option[] = [];
@@ -18,6 +19,7 @@
 
 	export let allowMultiple = false;
 	export let allowCustomval = false;
+	export let showArrow = false;
 	export let threshold = 0.2;
 	export let icon: IconSource | null = null;
 
@@ -106,6 +108,18 @@
 				dispatch('userInput', detail);
 			}}
 		>
+			<div slot="postInput" class="flex h-full items-center">
+				{#if showArrow}
+					<QuickAction
+						small
+						icon={ChevronDown}
+						on:click={() => {
+							showSuggestions = !showSuggestions;
+						}}
+					/>
+				{/if}
+			</div>
+
 			<div slot="secondLine" class="flex flex-wrap gap-2 text-sm empty:hidden">
 				{#if allowMultiple}
 					{#each value ?? [] as v}

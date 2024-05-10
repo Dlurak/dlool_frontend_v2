@@ -7,7 +7,7 @@
 	export let placeholder: Readable<string>;
 	export let icon: IconSource | null = null;
 
-	export let value: string = '';
+	export let value = '';
 
 	export let showSecondLine = false;
 
@@ -36,6 +36,8 @@
 				on:blur
 				bind:value
 			/>
+
+			<slot name="postInput" />
 
 			{#if isValid !== null}
 				<div class="flex h-full items-center px-2">

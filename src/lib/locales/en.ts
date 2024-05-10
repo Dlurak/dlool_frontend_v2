@@ -3,6 +3,7 @@ import type { I18nDict } from './types';
 const en = {
 	error: 'Something went wrong',
 	loading: 'Loading',
+	update: 'Update',
 
 	school: 'School',
 	class: 'Class',
@@ -208,10 +209,25 @@ const en = {
 	},
 	'calendar.select': 'Select a date',
 
+	'note.title': 'Title',
+	'note.title.placeholder': 'Title',
+	'note.summary': 'Summary',
+	'note.summary.placeholder': 'Summary',
 	'notes.nothing': "Here's nothing to see :]",
 	'notes.delete.ok': 'Delete',
 	'notes.delete.desc': 'Do you really want to delete this note?',
 	'note.delete.success': 'Successfully deleted',
+	'note.priority': 'Priority',
+	'note.priority.critical': 'Critical',
+	'note.priority.high': 'High',
+	'note.priority.medium': 'Medium',
+	'note.priority.low': 'Low',
+	'note.priority.minimal': 'Minimal',
+	'note.scope': 'Bearbeitungsrechte',
+	'note.scope.self': 'Nur der Ersteller',
+	'note.scope.class': 'Die Klasse',
+	'note.scope.school': 'Die Schule',
+	'note.update.success': 'Successfully edited',
 
 	'time.ago.created.seconds': {
 		counts: {
@@ -318,6 +334,8 @@ const en = {
 			1: 'Edited one year ago by $name'
 		}
 	},
+
+	'select.select': 'Select an option',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

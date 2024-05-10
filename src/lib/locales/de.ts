@@ -3,6 +3,7 @@ import type { I18nDict } from './types';
 const de = {
 	error: 'Etwas ist schief gelaufen',
 	loading: 'Lädt',
+	update: 'Aktualisieren',
 
 	school: 'Schule',
 	class: 'Klasse',
@@ -215,10 +216,25 @@ const de = {
 	},
 	'calendar.select': 'Wähle ein Datum aus',
 
+	'note.title': 'Titel',
+	'note.title.placeholder': 'Titel',
+	'note.summary': 'Zusammenfassung',
+	'note.summary.placeholder': 'Zusammenfassung',
 	'notes.nothing': 'Hier gibt es nichts zu sehen :]',
 	'notes.delete.ok': 'Löschen',
 	'notes.delete.desc': 'Willst du diese Notiz wirklich löschnen?',
 	'note.delete.success': 'Erfolgreich gelöscht',
+	'note.priority': 'Priorität',
+	'note.priority.critical': 'Kritisch',
+	'note.priority.high': 'Hoch',
+	'note.priority.medium': 'Mittel',
+	'note.priority.low': 'Niedrig',
+	'note.priority.minimal': 'Minimal',
+	'note.scope': 'Bearbeitungsrechte',
+	'note.scope.self': 'Nur der Ersteller',
+	'note.scope.class': 'Die Klasse',
+	'note.scope.school': 'Die Schule',
+	'note.update.success': 'Erfolgreich bearbeitet',
 
 	'time.ago.created.seconds': {
 		counts: {
@@ -327,6 +343,8 @@ const de = {
 			10: 'Vor einem Jahrzehnt von $name bearbeitet worden'
 		}
 	},
+
+	'select.select': 'Wähle eine Option aus',
 
 	literal: '$literal'
 } as const satisfies I18nDict;
