@@ -47,8 +47,8 @@ export type I18nProps = { count?: Amount };
 
 export const int = <
 	Tok extends Token,
-	Opt extends I18nProps,
-	Pai extends Pairs<Tok, Opt, LocaleAbbr>
+	const Opt extends I18nProps,
+	const Pai extends Pairs<Tok, Opt, LocaleAbbr>
 >(
 	token: Tok,
 	pairs = {} as Pai,

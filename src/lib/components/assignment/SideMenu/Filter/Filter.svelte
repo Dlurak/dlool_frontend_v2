@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { i } from '$lib/i18n/store';
-	import { type Class } from '$lib/dlool/classList';
 	import PrimaryButton from '$lib/components/buttons/PrimaryButton.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { createEventDispatcher } from 'svelte';

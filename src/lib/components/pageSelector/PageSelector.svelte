@@ -34,7 +34,7 @@
 	/>
 	<PageButton
 		icon={ChevronRight}
-		disabled={currentPage + 1 >= pageCount}
+		disabled={rightIsDisabled}
 		on:click={() => {
 			dispatch('next');
 		}}
@@ -42,14 +42,14 @@
 
 	<PageButton
 		icon={ChevronDoubleLeft}
-		disabled={currentPage === 0}
+		disabled={leftIsDisabled}
 		on:click={() => {
 			dispatch('first');
 		}}
 	/>
 	<PageButton
 		icon={ChevronDoubleRight}
-		disabled={currentPage + 1 >= pageCount}
+		disabled={rightIsDisabled}
 		on:click={() => {
 			dispatch('last');
 		}}
