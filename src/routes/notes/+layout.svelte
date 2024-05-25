@@ -6,7 +6,7 @@
 	import { mediaQuery } from 'nutzlich';
 	import { derived } from 'svelte/store';
 	import LoadingCircle from '$lib/components/utils/LoadingCircle.svelte';
-	import Filter from '$lib/components/notes/Filter.svelte';
+	import Filter from '$lib/components/filter/SchoolAndClass.svelte';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { objToQueryParams } from '$lib/utils/url/query';
 	import { sendToast } from '$lib/components/layout/toasts';

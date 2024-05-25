@@ -29,6 +29,8 @@
 		<School bind:school />
 		<Classes {school} bind:classes />
 
+		<slot />
+
 		<PrimaryButton
 			disabled={!(school && classes.length >= 1)}
 			on:click={() => {
