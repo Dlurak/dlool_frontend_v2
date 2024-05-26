@@ -10,7 +10,7 @@ const config = {
 		}
 	},
 
-	plugins: []
+	plugins: [require('@tailwindcss/container-queries')]
 };
 
 module.exports = config;

@@ -61,7 +61,7 @@
 				</span>
 			</div>
 
-			<div class="flex min-h-4 flex-col gap-2 p-2">
+			<div class="flex min-h-4 flex-wrap gap-2 p-2 @container">
 				{#each todaysEvents as ev}
 					<EventPreview event={ev} />
 				{/each}
