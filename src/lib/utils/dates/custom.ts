@@ -79,3 +79,24 @@ export const deserialize = (d: string) => {
 
 	return { year, month, day } satisfies CustomDate as CustomDate;
 };
+
+export const sort = (
+	date1: CustomDate | CustomDateTime,
+	date2: CustomDate | CustomDateTime
+): -1 | 0 | 1 => {
+	const ts1 = customDateToNormal(date1).getTime();
+	const ts2 = customDateToNormal(date2).getTime();
+
+	if (ts1 < ts2) return -1;
+	if (ts1 > ts2) return 1;
+
+	return 0;
+};
+
+export const UNIX_TIME_EPOCHE_START: CustomDateTime = {
+	year: 1970,
+	month: 0,
+	day: 1,
+	hour: 0,
+	min: 0
+};

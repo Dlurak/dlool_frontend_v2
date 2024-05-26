@@ -21,16 +21,17 @@ const customDateScheme = z.object({
 const calendarScheme = z.object({
 	title: z.string(),
 	beginning: customDateScheme,
-	ending: customDateScheme,
-	location: z.string(),
-	priority: z.union([
-		z.literal('Minimal'),
-		z.literal('Low'),
-		z.literal('Medium'),
-		z.literal('High'),
-		z.literal('Critical'),
-		z.null()
-	]),
+	ending: z.nullable(customDateScheme),
+	location: z.nullable(z.string()),
+	priority: z.nullable(
+		z.union([
+			z.literal('Minimal'),
+			z.literal('Low'),
+			z.literal('Medium'),
+			z.literal('High'),
+			z.literal('Critical')
+		])
+	),
 	updates: z.array(
 		z.object({
 			user: z.object({
