@@ -340,6 +340,9 @@ const en = {
 
 	'select.select': 'Select an option',
 
+	'calendar.title': 'Title',
+	'calendar.title.placeholder': 'Title',
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 

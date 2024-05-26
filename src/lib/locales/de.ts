@@ -349,6 +349,9 @@ const de = {
 
 	'select.select': 'Wähle eine Option aus',
 
+	'calendar.title': 'Titel',
+	'calendar.title.placeholder': 'Titel',
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 

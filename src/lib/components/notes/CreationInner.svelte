@@ -6,13 +6,13 @@
 	import { capitalize } from '$lib/utils/strings/case';
 	import TextArea from '../input/TextArea.svelte';
 	import TextInput from '../input/Text.svelte';
+	import { priorities } from '$lib/constants/priorities';
 
 	export let title = '';
 	export let summary = '';
 	export let priority: Note['priority'] | null = null;
 	export let editScope: Note['editScope'] | null = null;
 
-	const priorities = ['critical', 'high', 'medium', 'low', 'minimal'] as const;
 	const scopes = ['self', 'class', 'school'] as const;
 </script>
 

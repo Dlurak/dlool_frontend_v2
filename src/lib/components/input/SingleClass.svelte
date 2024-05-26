@@ -6,16 +6,15 @@
 	import { listClasses, type Class } from '$lib/dlool/classList';
 
 	export let school: string | null;
-	export let classes: string[] = [];
-	export let threshold = 0.1;
+	export let selectedClass: string | null = null;
 
+	export let threshold = 0.1;
 	export let filter: (c: Class) => boolean = () => true;
 
 	let classBucket: Class[] = [];
 </script>
 
 <Select
-	allowMultiple
 	{threshold}
 	icon={AcademicCap}
 	placeholder={i('class')}
@@ -23,7 +22,7 @@
 		label: readable(name),
 		value: name
 	}))}
-	bind:value={classes}
+	bind:firstValue={selectedClass}
 	on:userInput={async (e) => {
 		if (school) {
 			classBucket = await listClasses({

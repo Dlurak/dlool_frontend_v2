@@ -33,3 +33,11 @@ export type ReplaceSubstringType<
 	T extends string,
 	R extends Record<ExtractWordsAfterDollarSign<T>, string>
 > = Trimmed<ReplaceSubstringTypeBase<AddSpaces<T>, R>>;
+
+export type Length<
+	S extends string,
+	Result extends number = 0
+> = S extends `${infer _}${infer Right}`
+	? // @ts-ignore
+		Length<Right, Add<Result, 1>>
+	: Result;
