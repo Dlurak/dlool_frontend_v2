@@ -359,6 +359,11 @@ const de = {
 	'calendar.priority.High': 'Sehr wichtig',
 	'calendar.priority.Critical': 'Extrem wichtig',
 
+	// the i18n system stops dynamic parts only at space not `?`or `"`
+	'calendar.delete.confirm': 'Willst du das Kalendar Event $name wirklich löschen?',
+	'calendar.delete.confirm.ok': 'Löschen',
+	'calendar.delete.success': 'Erfolgreich gelöscht',
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 

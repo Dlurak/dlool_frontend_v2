@@ -1,11 +1,28 @@
 <script lang="ts">
+	import { confirm } from '$lib/components/layout/confirmation';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { i } from '$lib/i18n/store';
 	import { stringify } from '$lib/utils/dates/custom';
-	import { Icon, MapPin } from 'svelte-hero-icons';
+	import { Icon, MapPin, Pencil, Trash } from 'svelte-hero-icons';
 	import type { PageData } from './$types';
+	import { useAuth } from '$lib/utils/store/auth';
+	import { derived } from 'svelte/store';
+	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
+	import { sendDefaultErrorToast, sendToast } from '$lib/components/layout/toasts';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+	import { deleteCalendar } from '$lib/dlool/calendar/delete';
 
 	export let data: PageData;
+
+	const { isInClass, isLoggedIn } = useAuth({
+		query: {
+			school: data.data?.class.school.name ?? '',
+			classes: data.data?.class.name ? [data.data?.class.name] : []
+		}
+	});
+
+	const hasEditRights = derived([isInClass, isLoggedIn], ([a, b]) => a && b);
 </script>
 
 <div class="flex h-full w-full flex-col gap-2">
@@ -16,7 +33,39 @@
 			includeDate: false
 		})}
 
-		<h3 class="border-b border-zinc-300 leading-loose dark:border-zinc-700">{event.title}</h3>
+		<div class="flex items-center justify-between border-b border-zinc-300 dark:border-zinc-700">
+			<h3 class=" leading-loose">{event.title}</h3>
+			{#if $hasEditRights}
+				<div class="flex gap-2">
+					<QuickAction
+						icon={Trash}
+						color="red"
+						small
+						on:click={async () => {
+							const isConfirmed = await confirm({
+								ok: i('calendar.delete.confirm.ok'),
+								desc: i('calendar.delete.confirm', {
+									name: event.title
+								})
+							});
+							if (!isConfirmed) return;
+
+							deleteCalendar(event.id)
+								.then(() => {
+									sendToast({
+										type: 'success',
+										content: i('calendar.delete.success'),
+										timeout: 5_000
+									});
+									return goto(`/calendar${$page.url.search}`);
+								})
+								.catch(sendDefaultErrorToast);
+						}}
+					/>
+					<QuickAction icon={Pencil} color="blue" small disabled />
+				</div>
+			{/if}
+		</div>
 
 		<div class="grid grid-cols-2">
 			<span>

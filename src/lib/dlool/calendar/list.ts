@@ -35,6 +35,10 @@ const calendarScheme = z.object({
 			z.literal('Critical')
 		])
 	),
+	class: z.object({
+		name: z.string(),
+		school: z.object({ name: z.string() })
+	}),
 	updates: z.array(
 		z.object({
 			user: z.object({
