@@ -1,23 +1,26 @@
+import type { Priority } from '$lib/types/priority';
 import { getApibase, getAuthHeader } from '$lib/utils/api';
 import { z } from 'zod';
 
-interface NoteProps {
+interface CalendarProps {
 	id: string;
 
 	title?: string;
 	summary?: string;
-	priority?: 'Critical' | 'High' | 'Medium' | 'Low' | 'Minimal';
-	editScope?: 'Self' | 'Class' | 'School';
+	beginning?: number;
+	ending?: number;
+	location?: string;
+	priority?: Priority
 }
 
 const scheme = z.object({
 	status: z.literal('success'),
-	message: z.literal('Successfully updated note'),
+	message: z.literal("Successfully updated calendar event"),
 	data: z.null()
 });
 
-export async function updateNote({ id, ...body }: NoteProps) {
-	const res = await fetch(`${getApibase()}/notes/${id}`, {
+export async function updateCalendar({ id, ...body }: CalendarProps) {
+	const res = await fetch(`${getApibase()}/calendar/${id}`, {
 		headers: {
 			Authorization: getAuthHeader(),
 			'Content-Type': 'application/json'

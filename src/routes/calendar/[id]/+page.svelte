@@ -12,6 +12,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { deleteCalendar } from '$lib/dlool/calendar/delete';
+	import EditModal from '$lib/components/calendar/List/EditModal.svelte';
 
 	export let data: PageData;
 
@@ -23,6 +24,8 @@
 	});
 
 	const hasEditRights = derived([isInClass, isLoggedIn], ([a, b]) => a && b);
+
+	let showEditModal = false
 </script>
 
 <div class="flex h-full w-full flex-col gap-2">
@@ -62,7 +65,14 @@
 								.catch(sendDefaultErrorToast);
 						}}
 					/>
-					<QuickAction icon={Pencil} color="blue" small disabled />
+					<QuickAction
+						icon={Pencil}
+						color="blue"
+						small
+						on:click={() => {
+							showEditModal = true
+						}}
+					/>
 				</div>
 			{/if}
 		</div>
@@ -103,9 +113,10 @@
 		</div>
 
 		{#if event.summary}
-			<span>
-				{event.summary}
-			</span>
+			<span>{event.summary}</span>
 		{/if}
+
+		<EditModal bind:showEditModal {event} />
 	{/if}
 </div>
+

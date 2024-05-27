@@ -354,6 +354,7 @@ const en = {
 	'calendar.delete.confirm': 'Are you sure you want to delete the calendar event $name ?',
 	'calendar.delete.confirm.ok': 'Delete',
 	'calendar.delete.success': 'Successfully deleted',
+	'calendar.update.success': 'Successfully updated',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

@@ -363,6 +363,7 @@ const de = {
 	'calendar.delete.confirm': 'Willst du das Kalendar Event $name wirklich löschen?',
 	'calendar.delete.confirm.ok': 'Löschen',
 	'calendar.delete.success': 'Erfolgreich gelöscht',
+	'calendar.update.success': 'Erfolgreich aktualisiert',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

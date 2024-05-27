@@ -1,16 +1,7 @@
 <script lang="ts">
 	import Modal from '$lib/components/modal/Modal.svelte';
-	import { priorities } from '$lib/constants/priorities';
 	import { isUserInClass } from '$lib/utils/dlool/isInClass';
 	import SingleClass from '$lib/components/input/SingleClass.svelte';
-	import { i } from '$lib/i18n/store';
-	import Store from '$lib/components/utils/Store.svelte';
-	import TextInput from '$lib/components/input/Text.svelte';
-	import TimeSelector from '$lib/components/input/date/time/DateTime.svelte';
-	import Collapseable from '$lib/components/utils/Collapseable.svelte';
-	import { MapPin } from 'svelte-hero-icons';
-	import NotTyppable from '$lib/components/select/NotTyppable.svelte';
-	import { capitalize } from '$lib/utils/strings/case';
 	import PrimaryButton from '$lib/components/buttons/PrimaryButton.svelte';
 	import {
 		customDateToNormal,
@@ -22,6 +13,8 @@
 	import { sendDefaultErrorToast, sendToast } from '$lib/components/layout/toasts';
 	import { invalidateAll } from '$app/navigation';
 	import { safeMap } from '$lib/utils/null/safeMap';
+	import NewInner from './NewInner.svelte';
+	import { i } from '$lib/i18n/store';
 
 	export let query: {
 		school: string;
@@ -71,48 +64,14 @@
 			<SingleClass bind:selectedClass school={query.school} filter={showClass} />
 		{/if}
 
-		<h4><Store store={i('calendar.title')} /></h4>
-		<TextInput placeholder={i('calendar.title.placeholder')} bind:value={title} />
-
-		<!-- TODO: i18n -->
-		<h4>Beginning</h4>
-		<TimeSelector bind:date={beginning} />
-
-		<Collapseable id="create-cal-optional">
-			<div slot="heading">
-				<!-- TODO: i18n -->
-				<h3>Optional but recommended</h3>
-			</div>
-
-			<div slot="content" class="flex flex-col gap-3">
-				<!-- TODO: i18n -->
-				<h4>Ending</h4>
-				<TimeSelector showResetButton bind:date={ending} />
-
-				<!-- TODO: i18n -->
-				<h4>Location</h4>
-				<TextInput
-					placeholder={i('calendar.title.placeholder')}
-					icon={MapPin}
-					bind:value={location}
-				/>
-
-				<!-- TODO: i18n -->
-				<h4>Summary</h4>
-				<TextInput placeholder={i('calendar.title.placeholder')} bind:value={summary} />
-
-				<!-- TODO: i18n -->
-				<h4>Priority</h4>
-				<NotTyppable
-					options={priorities.map((prio) => ({
-						// TODO: i18n
-						label: i(`note.priority.${prio}`),
-						value: capitalize(prio)
-					}))}
-					bind:value={priority}
-				/>
-			</div>
-		</Collapseable>
+		<NewInner
+			bind:title
+			bind:beginning
+			bind:ending
+			bind:summary
+			bind:location
+			bind:priority
+		/>
 
 		<hr class="border-zinc-300 dark:border-zinc-700" />
 
