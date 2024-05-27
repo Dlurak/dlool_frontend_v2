@@ -59,9 +59,28 @@ const scheme = z.object({
 	})
 });
 
+const specifcScheme = z.union([
+	z.object({
+		status: z.literal('success'),
+		message: z.literal('Successfully retrieved calendar event'),
+		data: calendarScheme
+	}),
+	z.object({
+		status: z.literal('error'),
+		error: z.literal('Calendar event not found')
+	})
+]);
+
 export async function listCalendar(props: CalendarProps) {
 	const url = `${getApibase()}/calendar/?${objToQueryParams({ ...props })}`;
 	const res = await fetch(url).then((r) => r.json());
 
 	return scheme.parse(res);
+}
+
+export async function specificCalendar(id: string) {
+	const url = `${getApibase()}/calendar/${id}`;
+	const res = await fetch(url).then((r) => r.json());
+
+	return specifcScheme.parse(res);
 }

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Store from '$lib/components/utils/Store.svelte';
+	import { page } from '$app/stores';
 	import type { Calendar } from '$lib/dlool/calendar/list';
 	import { i } from '$lib/i18n/store';
 	import { stringify } from '$lib/utils/dates/custom';
@@ -13,8 +14,12 @@
 	});
 </script>
 
-<div
-	class="flex flex-col gap-2 rounded px-2 py-1 outline outline-2 outline-zinc-300 dark:outline-zinc-700"
+<a
+	href={`/calendar/${event.id}${$page.url.search}`}
+	class="
+		flex flex-col gap-2 rounded px-2 py-1 text-black outline outline-2 outline-zinc-300
+		dark:text-white dark:outline-zinc-700
+	"
 >
 	<h4>{event.title}</h4>
 
@@ -58,4 +63,4 @@
 			{event.summary}
 		</span>
 	{/if}
-</div>
+</a>
