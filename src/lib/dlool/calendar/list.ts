@@ -15,13 +15,16 @@ interface CalendarProps {
 const customDateScheme = z.object({
 	year: z.number().int(),
 	month: z.number().int(),
-	day: z.number().int()
+	day: z.number().int(),
+	hour: z.number().int(),
+	min: z.number().int()
 });
 
 const calendarScheme = z.object({
 	title: z.string(),
 	beginning: customDateScheme,
 	ending: z.nullable(customDateScheme),
+	summary: z.nullable(z.string()),
 	location: z.nullable(z.string()),
 	priority: z.nullable(
 		z.union([

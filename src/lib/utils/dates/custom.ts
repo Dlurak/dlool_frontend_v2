@@ -22,6 +22,12 @@ const customToDateTime = (d: CustomDate | CustomDateTime) => {
 	} satisfies CustomDateTime as CustomDateTime;
 };
 
+export const dateTimeTocustom = (d: CustomDateTime | CustomDate): CustomDate => {
+	const { year, month, day } = d;
+
+	return { year, month, day };
+};
+
 export const customDateToNormal = (d: CustomDate | CustomDateTime) => {
 	const { year, month, day, hour, min } = customToDateTime(d);
 
@@ -42,25 +48,31 @@ export const currentCustomDate = () => normalToCustomDate(new Date());
 
 interface StringifyProps {
 	includeTime?: boolean;
+	includeDate?: boolean;
 }
 
 export const stringify = (d: CustomDate, props: StringifyProps = {}) => {
-	const baseOptions: Intl.DateTimeFormatOptions = {
-		day: '2-digit',
-		month: '2-digit',
-		year: '2-digit'
-	};
+	const includeTime = props.includeTime ?? false;
+	const includeDate = props.includeDate ?? true;
 
-	const specificOptions: Intl.DateTimeFormatOptions = props.includeTime
+	const timeOptions: Intl.DateTimeFormatOptions = includeTime
 		? {
 				hour: 'numeric',
 				minute: 'numeric'
 			}
 		: {};
 
+	const dateOptions: Intl.DateTimeFormatOptions = includeDate
+		? {
+				day: '2-digit',
+				month: '2-digit',
+				year: '2-digit'
+			}
+		: {};
+
 	return customDateToNormal(d).toLocaleString(get(currentLang), {
-		...baseOptions,
-		...specificOptions
+		...timeOptions,
+		...dateOptions
 	});
 };
 

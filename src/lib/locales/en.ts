@@ -342,6 +342,13 @@ const en = {
 
 	'calendar.title': 'Title',
 	'calendar.title.placeholder': 'Title',
+	'calendar.timeRange.withEnd': '$start until $end',
+	'calendar.timeRange.withoutEnd': '$start',
+	'calendar.priority.Minimal': 'Unimportant',
+	'calendar.priority.Low': 'Kinda important',
+	'calendar.priority.Medium': 'Medium important',
+	'calendar.priority.High': 'Very important',
+	'calendar.priority.Critical': 'Extremely important',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

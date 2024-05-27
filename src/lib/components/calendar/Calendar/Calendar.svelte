@@ -10,6 +10,7 @@
 	import EventPreview from './EventPreview.svelte';
 	import { sortBy } from '$lib/utils/arrays/sort';
 	import { priorities } from '$lib/constants/priorities';
+	import { dateTimeTocustom } from '$lib/utils/dates/custom';
 
 	const weekStartsOn = svocal('settings.weekStartsOn');
 	const isSmall = mediaQuery('(max-width: 768px)');
@@ -55,7 +56,7 @@
 			day: ind + 1
 		}}
 		{@const todaysEvents = sortBy(
-			events.filter(({ beginning }) => deepEqual(beginning, date)),
+			events.filter(({ beginning }) => deepEqual(dateTimeTocustom(beginning), date)),
 			priorities,
 			({ priority }) => priority ?? 'Minimal'
 		)}
