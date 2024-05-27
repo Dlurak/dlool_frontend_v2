@@ -8,6 +8,8 @@
 	import Store from '$lib/components/utils/Store.svelte';
 	import Header from './Header.svelte';
 	import EventPreview from './EventPreview.svelte';
+	import { sortBy } from '$lib/utils/arrays/sort';
+	import { priorities } from '$lib/constants/priorities';
 
 	const weekStartsOn = svocal('settings.weekStartsOn');
 	const isSmall = mediaQuery('(max-width: 768px)');
@@ -52,7 +54,11 @@
 			month: displayMonth.getMonth() + 1,
 			day: ind + 1
 		}}
-		{@const todaysEvents = events.filter(({ beginning }) => deepEqual(beginning, date))}
+		{@const todaysEvents = sortBy(
+			events.filter(({ beginning }) => deepEqual(beginning, date)),
+			priorities,
+			({ priority }) => priority ?? 'Minimal'
+		)}
 
 		<div class="border border-solid dark:border-white">
 			<div>
