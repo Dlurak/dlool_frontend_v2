@@ -64,14 +64,7 @@
 			<SingleClass bind:selectedClass school={query.school} filter={showClass} />
 		{/if}
 
-		<NewInner
-			bind:title
-			bind:beginning
-			bind:ending
-			bind:summary
-			bind:location
-			bind:priority
-		/>
+		<NewInner bind:title bind:beginning bind:ending bind:summary bind:location bind:priority />
 
 		<hr class="border-zinc-300 dark:border-zinc-700" />
 

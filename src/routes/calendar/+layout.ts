@@ -1,4 +1,5 @@
 import type { LayoutLoad } from './$types';
+import { listCalendar } from '$lib/dlool/calendar/list';
 import { getClasses, getSchool, parseNumber } from '$lib/utils/url/parts';
 
 export const load: LayoutLoad = ({ url }) => {
@@ -9,7 +10,7 @@ export const load: LayoutLoad = ({ url }) => {
 	const limit = parseNumber({
 		attributes: ['limit', 'l', 'lim'],
 		default: 25,
-		min: 5,
+		min: 2,
 		params: search
 	});
 	const offset = parseNumber({
@@ -25,7 +26,5 @@ export const load: LayoutLoad = ({ url }) => {
 
 	const query = { school, classes, limit, offset };
 
-	return {
-		query
-	};
+	return { data: listCalendar(query), query };
 };

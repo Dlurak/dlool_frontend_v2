@@ -51,17 +51,20 @@
 					title: event.title,
 					summary: event.summary ?? undefined,
 					beginning: customDateToNormal(event.beginning).getTime(),
-					ending: safeMap(event.ending, (ending) => customDateToNormal(ending).getTime()) ?? undefined,
+					ending:
+						safeMap(event.ending, (ending) => customDateToNormal(ending).getTime()) ?? undefined,
 					location: event.location ?? undefined,
 					priority: event.priority ?? undefined
-				}).then(() => {
-					sendToast({
-						type: "success",
-						content: i("calendar.update.success"),
-						timeout: 5_000,
+				})
+					.then(() => {
+						sendToast({
+							type: 'success',
+							content: i('calendar.update.success'),
+							timeout: 5_000
+						});
+						invalidateAll();
 					})
-					invalidateAll()
-				}).catch(sendDefaultErrorToast)
+					.catch(sendDefaultErrorToast);
 			}}
 		>
 			<!-- TODO: i18n -->

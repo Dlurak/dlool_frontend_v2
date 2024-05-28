@@ -10,6 +10,20 @@ interface CalendarProps {
 	offset?: number;
 	orderDirection?: 'asc' | 'desc';
 	orderKey?: 'beginning' | 'location';
+	filter?: {
+		start?: {
+			earliest: string;
+			latest: string;
+		};
+		title?: {
+			query: string;
+			exact: boolean;
+		};
+		summary?: {
+			query: string;
+			exact: boolean;
+		};
+	};
 }
 
 const customDateScheme = z.object({

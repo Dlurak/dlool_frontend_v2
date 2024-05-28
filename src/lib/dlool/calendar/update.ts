@@ -10,12 +10,12 @@ interface CalendarProps {
 	beginning?: number;
 	ending?: number;
 	location?: string;
-	priority?: Priority
+	priority?: Priority;
 }
 
 const scheme = z.object({
 	status: z.literal('success'),
-	message: z.literal("Successfully updated calendar event"),
+	message: z.literal('Successfully updated calendar event'),
 	data: z.null()
 });
 

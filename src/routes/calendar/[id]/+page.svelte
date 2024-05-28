@@ -25,7 +25,7 @@
 
 	const hasEditRights = derived([isInClass, isLoggedIn], ([a, b]) => a && b);
 
-	let showEditModal = false
+	let showEditModal = false;
 </script>
 
 <div class="flex h-full w-full flex-col gap-2">
@@ -70,7 +70,7 @@
 						color="blue"
 						small
 						on:click={() => {
-							showEditModal = true
+							showEditModal = true;
 						}}
 					/>
 				</div>
@@ -119,4 +119,3 @@
 		<EditModal bind:showEditModal {event} />
 	{/if}
 </div>
-

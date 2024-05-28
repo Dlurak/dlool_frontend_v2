@@ -13,8 +13,11 @@
 		<SidePanel
 			query={data.query ?? {
 				school: null,
-				classes: []
+				classes: [],
+				limit: 1,
+				offset: 0
 			}}
+			totalCount={data.data?.then(({ data }) => data.totalCount)}
 			on:change={async ({ detail }) => {
 				await goto(`?${objToQueryParams(detail)}`);
 				invalidateAll();

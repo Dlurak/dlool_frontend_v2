@@ -1,15 +1,19 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import Filter from '$lib/components/filter/SchoolAndClass.svelte';
+	import PageSelector from '$lib/components/pageSelector/DefaultLimitOffsetSelector.svelte';
+	import { wrapWithPromise } from '$lib/utils/promises';
 	import { useAuth } from '$lib/utils/store/auth';
+	import { objToQueryParams } from '$lib/utils/url/query';
 	import New from './New.svelte';
 
 	export let query: {
 		school: string | null;
 		classes: string[];
-	} = {
-		school: null,
-		classes: []
+		limit: number;
+		offset: number;
 	};
+	export let totalCount: undefined | Promise<number>;
 
 	const { isInClass, isLoggedIn } = useAuth({ query });
 </script>
@@ -25,4 +29,18 @@
 			}}
 		/>
 	{/if}
+	{#await wrapWithPromise(totalCount) then tc}
+		{#if tc && tc > query.limit}
+			<PageSelector
+				totalAmount={tc}
+				query={{
+					limit: query.limit,
+					offset: query.offset
+				}}
+				on:pageChage={({ detail }) => {
+					goto(`?${objToQueryParams({ ...query, ...detail })}`);
+				}}
+			/>
+		{/if}
+	{/await}
 </div>
