@@ -8,7 +8,8 @@ import {
 	UserPlus,
 	PencilSquare,
 	Calendar,
-	RectangleGroup
+	RectangleGroup,
+    Cog
 } from 'svelte-hero-icons';
 
 type Link = {
@@ -83,6 +84,16 @@ export const links: LinkGroup[] = [
 				name: i('nav.footer.calendar.calendar'),
 				action: () => goto('/calendar'),
 				icon: Calendar
+			}
+		]
+	},
+	{
+		name: i('nav.footer.else'),
+		entries: [
+			{
+				name: i('nav.footer.else.settings'),
+				action: () => goto('/settings'),
+				icon: Cog
 			}
 		]
 	}

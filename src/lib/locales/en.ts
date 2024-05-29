@@ -67,6 +67,8 @@ const en = {
 	'nav.footer.mod': 'Moderation',
 	'nav.footer.mod.own': 'Own requests',
 	'nav.footer.mod.list': 'Foreign requests',
+	'nav.footer.else': "Else",
+	'nav.footer.else.settings': "Settings",
 
 	'home.subtitle': 'Next generation homework for your entire class',
 	'home.digitalEra': 'A homework management system for the digital era',
@@ -355,6 +357,25 @@ const en = {
 	'calendar.delete.confirm.ok': 'Delete',
 	'calendar.delete.success': 'Successfully deleted',
 	'calendar.update.success': 'Successfully updated',
+
+	'settings.noneSelected': "Select a category",
+	'settings.profile': "Account",
+
+	'settings.logout': 'Logout',
+	'settings.logout.all': 'Logout from all sessions',
+	'settings.logout.success': 'Successfully logged out',
+	'settings.logout.all.success': {
+		counts: {
+			1: 'Successfully logged out of one sessions',
+			2: 'Successfully logged out of two sessions',
+			3: 'Successfully logged out of three sessions',
+			default: 'Successfully logged out of $count sessions'
+		}
+	},
+	'settings.logout.confirm.ok': 'Logout',
+	'settings.logout.confirm.desc': 'Are you sure you want to log out from this sessions?',
+	'settings.logout.all.confirm.desc':
+		'Are you sure you want to log out from all sessions?',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

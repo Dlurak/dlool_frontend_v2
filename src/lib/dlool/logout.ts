@@ -17,5 +17,21 @@ export async function logout(props: LogoutProps) {
 		headers: { Authorization: getAuthHeader() }
 	}).then((r) => r.json());
 
-	scheme.parse(res);
+	return scheme.parse(res);
+}
+
+const allScheme = z.object({
+	message: z.literal('Logged out from all sessions'),
+	data: z.object({
+		sessionCount: z.number()
+	})
+});
+
+export async function logoutFromAll() {
+	const res = await fetch(`${getApibase()}/auth/refresh-token/all`, {
+		method: 'DELETE',
+		headers: { Authorization: getAuthHeader() }
+	}).then((r) => r.json());
+
+	return allScheme.parse(res);
 }

@@ -69,6 +69,8 @@ const de = {
 	'nav.footer.mod': 'Moderation',
 	'nav.footer.mod.own': 'Eigene Anfragen',
 	'nav.footer.mod.list': 'Fremde Anfragen',
+	'nav.footer.else': 'Sonstige',
+	'nav.footer.else.settings': 'Einstellungen',
 
 	'home.subtitle': 'Das Hausaufgabenheft der nächsten Generation für Deine ganze Klasse',
 	'home.digitalEra': 'Ein Hausaufgabenheft für das digitale Zeitalter',
@@ -364,6 +366,25 @@ const de = {
 	'calendar.delete.confirm.ok': 'Löschen',
 	'calendar.delete.success': 'Erfolgreich gelöscht',
 	'calendar.update.success': 'Erfolgreich aktualisiert',
+
+	'settings.noneSelected': 'Wähle eine Kategorie aus',
+	'settings.profile': 'Profil',
+
+	'settings.logout': 'Abmelden',
+	'settings.logout.all': 'Von allen Sitzungen Abmelden',
+	'settings.logout.success': 'Erfolgreich Abgemeldet',
+	'settings.logout.all.success': {
+		counts: {
+			1: 'Erfolgreich aus einer Sitzungen abgemeldet.',
+			2: 'Erfolgreich aus zwei Sitzungen abgemeldet.',
+			3: 'Erfolgreich aus drei Sitzungen abgemeldet.',
+			default: 'Erfolgreich aus $count Sitzungen abgemeldet.',
+		}
+	},
+	'settings.logout.confirm.ok': 'Abmelden',
+	'settings.logout.confirm.desc': 'Willst Du Dich wirklich abmelden? Du kannst Dich anschließend wieder einloggen.',
+	'settings.logout.all.confirm.desc':
+		'Willst Du Dich wirklich von allen Sitzungen (inklusiver dieser) abmelden? Du kannst dich anschließend wieder einloggen.',
 
 	literal: '$literal'
 } as const satisfies I18nDict;
