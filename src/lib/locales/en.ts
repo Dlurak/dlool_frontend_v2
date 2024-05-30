@@ -67,8 +67,8 @@ const en = {
 	'nav.footer.mod': 'Moderation',
 	'nav.footer.mod.own': 'Own requests',
 	'nav.footer.mod.list': 'Foreign requests',
-	'nav.footer.else': "Else",
-	'nav.footer.else.settings': "Settings",
+	'nav.footer.else': 'Else',
+	'nav.footer.else.settings': 'Settings',
 
 	'home.subtitle': 'Next generation homework for your entire class',
 	'home.digitalEra': 'A homework management system for the digital era',
@@ -358,8 +358,8 @@ const en = {
 	'calendar.delete.success': 'Successfully deleted',
 	'calendar.update.success': 'Successfully updated',
 
-	'settings.noneSelected': "Select a category",
-	'settings.profile': "Account",
+	'settings.noneSelected': 'Select a category',
+	'settings.profile': 'Account',
 
 	'settings.logout': 'Logout',
 	'settings.logout.all': 'Logout from all sessions',
@@ -374,8 +374,20 @@ const en = {
 	},
 	'settings.logout.confirm.ok': 'Logout',
 	'settings.logout.confirm.desc': 'Are you sure you want to log out from this sessions?',
-	'settings.logout.all.confirm.desc':
-		'Are you sure you want to log out from all sessions?',
+	'settings.logout.all.confirm.desc': 'Are you sure you want to log out from all sessions?',
+
+	'settings.profileDetails.change': 'Change your account details',
+	'settings.profileDetails.displayname': 'Displayname',
+	'settings.profileDetails.password': 'Password',
+	'settings.deleteAccount': 'Delete your Account',
+	'settings.deleteAccount.delete': 'Delete',
+	'settings.deleteAccount.confirm.title': 'Delete your account',
+	'settings.deleteAccount.confirm.desc':
+		"Are you sure you want to delete your account $name This can't be undone!",
+	'settings.deleteAccount.confirm.ok': 'Delete',
+	'settings.deleteAccount.success': 'Successfully deleted the account $name',
+
+	'settings.save': 'Save',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

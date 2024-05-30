@@ -14,7 +14,7 @@ export const useAuth = (props: AuthProps = {}) => {
 	const userDetails = svocal('dlool.ownUserDetails');
 
 	return {
-		userDetails,
+		userDetails: { subscribe: userDetails.subscribe },
 		isInClass: derived(userDetails, ($ud) => {
 			const matches = $ud?.classes.some(({ school, name }) => {
 				const schoolMatches = props.query?.school === school.name;

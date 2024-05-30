@@ -20,7 +20,7 @@
 		{/each}
 	</div>
 
-	<div slot="b" class="w-full hidden md:block">
+	<div slot="b" class="hidden w-full md:block">
 		<slot />
 	</div>
 </Panes>

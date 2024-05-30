@@ -9,7 +9,7 @@ import {
 	PencilSquare,
 	Calendar,
 	RectangleGroup,
-    Cog
+	Cog
 } from 'svelte-hero-icons';
 
 type Link = {

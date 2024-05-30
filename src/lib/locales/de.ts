@@ -378,13 +378,27 @@ const de = {
 			1: 'Erfolgreich aus einer Sitzungen abgemeldet.',
 			2: 'Erfolgreich aus zwei Sitzungen abgemeldet.',
 			3: 'Erfolgreich aus drei Sitzungen abgemeldet.',
-			default: 'Erfolgreich aus $count Sitzungen abgemeldet.',
+			default: 'Erfolgreich aus $count Sitzungen abgemeldet.'
 		}
 	},
 	'settings.logout.confirm.ok': 'Abmelden',
-	'settings.logout.confirm.desc': 'Willst Du Dich wirklich abmelden? Du kannst Dich anschließend wieder einloggen.',
+	'settings.logout.confirm.desc':
+		'Willst Du Dich wirklich abmelden? Du kannst Dich anschließend wieder einloggen.',
 	'settings.logout.all.confirm.desc':
 		'Willst Du Dich wirklich von allen Sitzungen (inklusiver dieser) abmelden? Du kannst dich anschließend wieder einloggen.',
+
+	'settings.profileDetails.change': 'Ändere Deine Profil Details',
+	'settings.profileDetails.displayname': 'Anzeigename',
+	'settings.profileDetails.password': 'Passwort',
+	'settings.deleteAccount': 'Deinen Account löschen',
+	'settings.deleteAccount.delete': 'Löschen',
+	'settings.deleteAccount.confirm.title': 'Account löschen',
+	'settings.deleteAccount.confirm.desc':
+		'Möchstest Du Deinen Account $name wirklich löschen, dass kann nicht rückgemacht werden!',
+	'settings.deleteAccount.confirm.ok': 'Löschen',
+	'settings.deleteAccount.success': 'Den Account $name erfolgreich gelöscht',
+
+	'settings.save': 'Speichern',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

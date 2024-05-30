@@ -13,12 +13,14 @@
 
 	export let isValid: boolean | null = null;
 
+	export let disabled = false;
+
 	const dispatch = createEventDispatcher<{
 		input: string;
 	}>();
 </script>
 
-<Frame>
+<Frame {disabled}>
 	<div class="flex w-full flex-col">
 		<div class="flex w-full items-center gap-2">
 			{#if icon}
@@ -26,8 +28,9 @@
 			{/if}
 
 			<input
+				{disabled}
 				type="text"
-				class="w-full bg-transparent focus:outline-none"
+				class="w-full bg-transparent focus:outline-none disabled:cursor-not-allowed"
 				placeholder={$placeholder}
 				on:input={({ currentTarget }) => {
 					dispatch('input', currentTarget.value);

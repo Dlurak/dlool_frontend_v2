@@ -9,3 +9,11 @@ export const getAuthHeader = () => {
 	if (!tok) return '';
 	return `Bearer ${tok}`;
 };
+
+export enum Method {
+	GET = 'GET',
+	POST = 'POST',
+	PUT = 'PUT',
+	PATCH = 'PATCH',
+	DELETE = 'DELETE'
+}
