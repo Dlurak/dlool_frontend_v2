@@ -142,7 +142,7 @@ const de = {
 	displayname: 'Anzeigename',
 
 	password: 'Passwort',
-	'password.validation.length': 'Muss läner als 7 Zeichen seien',
+	'password.validation.length': 'Muss länger als 7 Zeichen seien',
 	'password.validation.lowercase': 'Muss min. einen Kleinbuchstaben enthalten',
 	'password.validation.upper': 'Muss min. einen Großbuchstaben enthalten',
 	'password.validation.digit': 'Muss min. eine Ziffer enthalten',
@@ -389,7 +389,11 @@ const de = {
 
 	'settings.profileDetails.change': 'Ändere Deine Profil Details',
 	'settings.profileDetails.displayname': 'Anzeigename',
+	'settings.profileDetails.displayname.success': 'Anzeigenamen auf $name geändert',
 	'settings.profileDetails.password': 'Passwort',
+	'settings.profileDetails.password.success': 'Erfolgreich Passwort geändert',
+	'settings.profileDetails.password.error': 'Dein Passwort wurde nicht geändert',
+
 	'settings.deleteAccount': 'Deinen Account löschen',
 	'settings.deleteAccount.delete': 'Löschen',
 	'settings.deleteAccount.confirm.title': 'Account löschen',

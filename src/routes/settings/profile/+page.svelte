@@ -9,7 +9,7 @@
 
 	const { isLoggedIn } = useAuth();
 	isLoggedIn.subscribe((isLoggedIn) => {
-		if (!isLoggedIn && browser) goto(`/login`);
+		if (!isLoggedIn && browser) goto(`/login?redirect=/settings/profile`);
 	});
 
 	const reset = () => {
@@ -23,6 +23,6 @@
 
 <div class="flex flex-col gap-4">
 	<Logout on:reset={reset} />
-	<Details />
+	<Details on:reset={reset} />
 	<Delete on:reset={reset} />
 </div>

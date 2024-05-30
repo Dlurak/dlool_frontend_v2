@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import TextInput from '$lib/components/input/Text.svelte';
 	import PasswordInput from '$lib/components/input/Password.svelte';
 	import SettingsButton from '$lib/components/buttons/SettingsButton.svelte';
@@ -6,8 +6,18 @@
 	import { svocal } from '$lib/utils/store/svocal';
 	import { derived } from 'svelte/store';
 	import Store from '$lib/components/utils/Store.svelte';
+	import { changeDetails } from '$lib/dlool/userSettings/settings';
+	import { sendDefaultErrorToast, sendToast } from '$lib/components/layout/toasts';
+	import { getConditions } from '$lib/utils/strings/password';
+	import PwdStrength from '$lib/components/passwordStrength/PwdStrength.svelte';
+	import { createEventDispatcher } from 'svelte';
 
 	const generatedByLogin = derived(svocal('auth.access.generatedBy'), (gb) => gb === 'login');
+
+	let displayname = '';
+	let pwd = '';
+
+	const dispatch = createEventDispatcher<{ reset: null }>();
 </script>
 
 <div>
@@ -21,10 +31,28 @@
 
 			<span class="flex h-full min-w-[50%] items-stretch gap-2">
 				<TextInput
+					bind:value={displayname}
 					placeholder={i('settings.profileDetails.displayname')}
-					disabled={!$generatedByLogin}
 				/>
-				<SettingsButton disabled={!$generatedByLogin}>
+				<SettingsButton
+					disabled={!($generatedByLogin && displayname.trim())}
+					on:click={async () => {
+						changeDetails({ displayname: displayname.trim() })
+							.then(() => {
+								sendToast({
+									type: 'success',
+									timeout: 5_000,
+									content: i('settings.profileDetails.displayname.success', {
+										name: displayname.trim()
+									})
+								});
+								displayname = '';
+
+								dispatch('reset', null);
+							})
+							.catch(sendDefaultErrorToast);
+					}}
+				>
 					<Store store={i('settings.save')} />
 				</SettingsButton>
 			</span>
@@ -33,11 +61,37 @@
 		<div class="flex items-center justify-between">
 			<span><Store store={i('settings.profileDetails.password')} /></span>
 
-			<span class="flex h-full min-w-[50%] items-stretch gap-2">
-				<PasswordInput placeholder={i('settings.profileDetails.password')} />
-				<SettingsButton disabled={!$generatedByLogin}>
-					<Store store={i('settings.save')} />
-				</SettingsButton>
+			<span class="flex h-full min-w-[50%] flex-col gap-2">
+				<span class="flex w-full items-stretch gap-2">
+					<PasswordInput placeholder={i('settings.profileDetails.password')} bind:value={pwd} />
+					<SettingsButton
+						disabled={!(
+							$generatedByLogin && getConditions(pwd.trim()).every(({ isValid }) => isValid)
+						)}
+						on:click={async () => {
+							changeDetails({ password: pwd.trim() })
+								.then(() => {
+									sendToast({
+										type: 'success',
+										timeout: 5_000,
+										content: i('settings.profileDetails.password.success')
+									});
+									pwd = '';
+									dispatch('reset', null);
+								})
+								.catch(() => {
+									sendToast({
+										type: 'error',
+										timeout: 5_000,
+										content: i('settings.profileDetails.password.error')
+									});
+								});
+						}}
+					>
+						<Store store={i('settings.save')} />
+					</SettingsButton>
+				</span>
+				<PwdStrength {pwd} />
 			</span>
 		</div>
 	</div>

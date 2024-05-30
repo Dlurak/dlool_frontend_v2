@@ -378,7 +378,11 @@ const en = {
 
 	'settings.profileDetails.change': 'Change your account details',
 	'settings.profileDetails.displayname': 'Displayname',
+	'settings.profileDetails.displayname.success': 'Change displayname to $name',
 	'settings.profileDetails.password': 'Password',
+	'settings.profileDetails.password.success': 'Successfully changed password',
+	'settings.profileDetails.password.error': "Your password wasn't changed",
+
 	'settings.deleteAccount': 'Delete your Account',
 	'settings.deleteAccount.delete': 'Delete',
 	'settings.deleteAccount.confirm.title': 'Delete your account',
