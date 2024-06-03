@@ -18,6 +18,8 @@
 
 			setTimeout(
 				() => {
+					if (!$refreshToken) return;
+
 					refresh({
 						refreshToken: $refreshToken
 					}).catch(() => {

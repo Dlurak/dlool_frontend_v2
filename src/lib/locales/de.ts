@@ -23,6 +23,33 @@ const de = {
 
 	'toast.filter.applied': 'Erfolgreich Filter angewendet',
 
+	'launcher.placeholder': 'Deine Suche...',
+	'launcher.home': 'Startseite',
+	'launcher.home.terms': 'Homepage',
+	'launcher.login': 'Einloggen',
+	'launcher.login.terms': 'Login\nAnmelden',
+	'launcher.homework': 'Hausaufgaben',
+	'launcher.homework.terms': 'Aufgaben\nArbeitsauftrag',
+	'launcher.register': 'Registrieren',
+	'launcher.register.terms': 'Account',
+	'launcher.join': 'Einer Klasse beitreten',
+	'launcher.join.terms': 'Klasse\nbeitreten\nKurs\nGruppe\nhinzufügen',
+	'launcher.mod.own': 'Eigene Anfragen',
+	'launcher.mod.own.terms': 'Moderation\nEigeneAnfragen',
+	'launcher.mod.own.desc': 'Hier kannst du sehen in welchene Klassen Du angeommen wurdest',
+	'launcher.mod.list': 'Fremde Anfragen',
+	'launcher.mod.list.terms': 'Moderation\nFremde\nAnfragen',
+	'launcher.mod.list.desc':
+		'Hier kannst Du Anfragen, Deinen Klassen beizutreten, anderer moderiereren',
+	'launcher.notes': 'Notizen',
+	'launcher.notes.terms': 'Notizbuch',
+	'launcher.calendar': 'Kalender',
+	'launcher.calendar.terms': 'Arbeiten\nTest\nTermin\nKlausur\nKlassenarbeit\nLernkontrolle\nEvent',
+	'launcher.settings': 'Einstellungen',
+	'launcher.settings.terms': 'Option \nKonfiguration\nPräferenzen',
+	'launcher.logout': 'Ausloggen',
+	'launcher.logout.terms': 'Signout\nAnonymous',
+
 	'register.register': 'Registrieren',
 	'register.nametaken': 'Nutzername vergeben :(',
 	'register.nametaken.desc':

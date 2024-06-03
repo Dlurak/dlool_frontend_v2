@@ -11,6 +11,7 @@
 	} from 'svelte-hero-icons';
 	import type { Readable } from 'svelte/store';
 	import { confirmation } from '../confirmation';
+	import { useLauncher } from '../launcher/hook';
 
 	export let type: 'success' | 'error' | 'warning' | 'info' = 'success';
 	export let content: Readable<string>;
@@ -25,8 +26,16 @@
 
 	const [isHovered, hoverRef] = useHover();
 
+	const { isOpen: isLauncherOpened } = useLauncher();
 	const timePassed = counterMs({
-		isPaused: () => !!($isHovered || !document.hasFocus() || $confirmation)
+		isPaused: () => {
+			if ($isHovered) return true;
+			if (!document.hasFocus()) return true;
+			if ($confirmation) return true;
+			if ($isLauncherOpened) return true;
+
+			return false;
+		}
 	});
 
 	const manuallyFinished = useToggle(false);

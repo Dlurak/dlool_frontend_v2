@@ -8,6 +8,7 @@
 	import { mediaQuery } from 'nutzlich';
 	import { navHeight, footerHeight } from '$lib/stores';
 	import '../app.css';
+	import Launcher from '$lib/components/layout/launcher/Launcher.svelte';
 
 	const isBig = mediaQuery('(min-width: 640px)');
 
@@ -29,4 +30,5 @@
 	<UserInfo />
 	<ToastContainer />
 	<Confirmation />
+	<Launcher />
 </div>
