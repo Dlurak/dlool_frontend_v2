@@ -193,6 +193,7 @@ const en = {
 	'assignments.delete.success': 'Successfully deleted',
 	'assignments.update.success': 'Successfully updated',
 	'assignments.pages.currently': 'Page $current of $total',
+	'assignments.edit': 'Edit assignment',
 
 	'calendar.month': {
 		counts: {

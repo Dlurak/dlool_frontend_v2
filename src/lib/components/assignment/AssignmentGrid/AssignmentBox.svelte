@@ -12,6 +12,8 @@
 	import EditAssignmentBox from './EditAssignmentBox.svelte';
 	import { writable, type Writable } from 'svelte/store';
 	import { updateAssignment } from '$lib/dlool/assignments/update';
+	import Modal from '$lib/components/modal/Modal.svelte';
+	import Store from '$lib/components/utils/Store.svelte';
 
 	export let assignment: Assignment;
 	export let school: string;
@@ -45,35 +47,7 @@
 <div
 	class="flex flex-col gap-2 rounded px-2 py-1 outline outline-2 outline-zinc-300 dark:outline-zinc-700"
 >
-	{#if $state.view === 'read'}
-		<ReadAssignmentBox {assignment} />
-	{:else}
-		<EditAssignmentBox
-			{assignment}
-			disabled={!$state.hasUnsavedEdits}
-			on:change={({ detail }) => {
-				state.set({
-					view: 'write',
-					hasUnsavedEdits: !detail.isOriginal
-				});
-			}}
-			on:submit={({ detail }) => {
-				updateAssignment({
-					id: assignment.id,
-					...detail
-				})
-					.then(() => {
-						sendToast({
-							type: 'success',
-							content: i('assignments.update.success'),
-							timeout: 5_000
-						});
-						dispatch('update', null);
-					})
-					.catch(sendDefaultErrorToast);
-			}}
-		/>
-	{/if}
+	<ReadAssignmentBox {assignment} />
 
 	{#if hasEditRights}
 		<div class="flex w-full justify-evenly pt-2">
@@ -106,6 +80,7 @@
 				on:click={() => {
 					state.update((val) => {
 						if (val.view === 'write') return { view: 'read' };
+
 						return { view: 'write', hasUnsavedEdits: false };
 					});
 				}}
@@ -113,3 +88,43 @@
 		</div>
 	{/if}
 </div>
+
+<Modal
+	isOpen={$state.view === 'write'}
+	closeDisabled={$state.view === 'write' && $state.hasUnsavedEdits}
+	on:close={() => {
+		$state.view = 'read';
+	}}
+>
+	<div slot="title">
+		<Store store={i('assignments.edit')} />
+	</div>
+
+	<div slot="body" class="flex flex-col gap-3 py-1">
+		<EditAssignmentBox
+			{assignment}
+			disabled={$state.view === 'write' && !$state.hasUnsavedEdits}
+			on:change={({ detail }) => {
+				state.set({
+					view: 'write',
+					hasUnsavedEdits: !detail.isOriginal
+				});
+			}}
+			on:submit={({ detail }) => {
+				updateAssignment({
+					id: assignment.id,
+					...detail
+				})
+					.then(() => {
+						sendToast({
+							type: 'success',
+							content: i('assignments.update.success'),
+							timeout: 5_000
+						});
+						dispatch('update', null);
+					})
+					.catch(sendDefaultErrorToast);
+			}}
+		/>
+	</div>
+</Modal>

@@ -12,16 +12,14 @@
 	import { sendToast } from '$lib/components/layout/toasts';
 	import { safeMap } from '$lib/utils/null/safeMap';
 	import { serialize } from '$lib/utils/dates/custom';
+	import { wasSuccessfull } from '$lib/components/assignment/SideMenu/CreateAssignmentInner.svelte';
 
 	export let data: PageData;
-
-	let sideMenuEle: SideMenu | null = null;
 </script>
 
 <Panes minimum={200}>
 	<div slot="a">
 		<SideMenu
-			bind:this={sideMenuEle}
 			query={data.query ?? {
 				school: null,
 				classes: [],
@@ -53,7 +51,7 @@
 							content: i('assignments.create.success'),
 							timeout: 5_000
 						});
-						sideMenuEle?.postCreate(true);
+						wasSuccessfull.set(true);
 					})
 					.catch(() => {
 						sendToast({
@@ -61,7 +59,7 @@
 							content: i('error'),
 							timeout: 5_000
 						});
-						sideMenuEle?.postCreate(false);
+						wasSuccessfull.set(false);
 					});
 			}}
 			on:pageChage={({ detail }) => {
