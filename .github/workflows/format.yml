@@ -4,6 +4,8 @@ on:
   push:
     branches: ["master", "actions"]
   workflow_dispatch:
+permissions: 
+  actions: read
 
 jobs:
   formatting:
