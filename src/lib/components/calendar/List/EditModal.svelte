@@ -3,6 +3,7 @@
 	import PrimaryButton from '$lib/components/buttons/PrimaryButton.svelte';
 	import { sendDefaultErrorToast, sendToast } from '$lib/components/layout/toasts';
 	import Modal from '$lib/components/modal/Modal.svelte';
+	import Store from '$lib/components/utils/Store.svelte';
 	import type { Calendar } from '$lib/dlool/calendar/list';
 	import { updateCalendar } from '$lib/dlool/calendar/update';
 	import { i } from '$lib/i18n/store';
@@ -67,8 +68,7 @@
 					.catch(sendDefaultErrorToast);
 			}}
 		>
-			<!-- TODO: i18n -->
-			Update
+			<Store store={i('calendar.update.update')} />
 		</PrimaryButton>
 	</div>
 </Modal>

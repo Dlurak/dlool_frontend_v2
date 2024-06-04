@@ -1,3 +1,4 @@
+import type { Add, Multiply, PowerOf, SubtractOne } from '$lib/types/math';
 import type { Length } from './strings';
 
 type DigitMap = {
@@ -21,19 +22,18 @@ type FirstDigitToNum<
 > = S extends `${infer First}${infer _}`
 	? Length<S> extends 1
 		? DigitToNum<First>
-		: // @ts-ignore
-			Multiply<DigitToNum<First>, PowerOf<10, SubtractOne<Length<S>>>>
+		: Multiply<DigitToNum<First>, PowerOf<10, SubtractOne<Length<S>>>>
 	: Result;
 
 type PrivateNumberToString<
 	S extends string,
 	Result extends number = 0
 > = S extends `${infer _}${infer Right}`
-	? // @ts-ignore
+	? // @ts-expect-error Too deep
 		Add<FirstDigitToNum<S>, PrivateNumberToString<Right>>
 	: Result;
 
 export type NumberToString<S extends string | number> = S extends number
 	? S
-	: //@ts-ignore
+	: //@ts-expect-error S isn't identified as a string
 		PrivateNumberToString<S>;

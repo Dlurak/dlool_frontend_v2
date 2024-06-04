@@ -1,5 +1,3 @@
-// TODO: Write unit test
-
 type Convertable = string | number | null | Record<string, unknown>;
 
 export const objToQueryParams = (obj: Record<string, Convertable | Convertable[]>) => {

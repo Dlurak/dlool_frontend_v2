@@ -21,9 +21,8 @@
 	}>();
 </script>
 
-<Collapseable id="note-filter">
-	<!-- TODO: I18n -->
-	<h3 class="pb-3 pt-2" slot="heading">Filters</h3>
+<Collapseable id="school-class-filter">
+	<h3 class="pb-3 pt-2" slot="heading"><Store store={i('filter.filter')} /></h3>
 
 	<div class="flex flex-col gap-3" slot="content">
 		<School bind:school />

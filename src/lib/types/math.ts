@@ -41,7 +41,7 @@ export type SubtractOne<T extends number> = LastItem<Enumerate<T>, 0>;
  */
 export type Multiply<T extends number, N extends number> = N extends 1
 	? T
-	: // @ts-ignore
+	: // @ts-expect-error Isn't a number for ts (but in reality it is)
 		Add<T, Multiply<T, SubtractOne<N>>>;
 
 type PrivatePowerOf<

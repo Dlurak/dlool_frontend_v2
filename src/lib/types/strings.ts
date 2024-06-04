@@ -1,3 +1,5 @@
+import type { Add } from '$lib/types/math';
+
 type AddSpaces<T extends string> = ` ${T} `;
 type Trimmed<T extends string> = T extends `${' ' | '\t' | '\n'}${infer R}`
 	? Trimmed<R>
@@ -38,6 +40,6 @@ export type Length<
 	S extends string,
 	Result extends number = 0
 > = S extends `${infer _}${infer Right}`
-	? // @ts-ignore
+	? // @ts-expect-error Add<> isn't a number
 		Length<Right, Add<Result, 1>>
 	: Result;

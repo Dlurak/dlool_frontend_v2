@@ -394,6 +394,7 @@ const de = {
 	'calendar.delete.confirm.ok': 'Löschen',
 	'calendar.delete.success': 'Erfolgreich gelöscht',
 	'calendar.update.success': 'Erfolgreich aktualisiert',
+	'calendar.update.update': 'Aktualisieren',
 
 	'settings.noneSelected': 'Wähle eine Kategorie aus',
 	'settings.profile': 'Profil',
@@ -431,6 +432,8 @@ const de = {
 	'settings.deleteAccount.success': 'Den Account $name erfolgreich gelöscht',
 
 	'settings.save': 'Speichern',
+
+	'filter.filter': 'Filter',
 
 	literal: '$literal'
 } as const satisfies I18nDict;
