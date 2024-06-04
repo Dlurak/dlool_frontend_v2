@@ -4,8 +4,8 @@ on:
   push:
     branches: ["master", "actions"]
   workflow_dispatch:
-permissions: 
-  actions: read
+permissions:
+  actions: write
 
 jobs:
   formatting:
@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN}}
 
       - uses: pnpm/action-setup@v2
         with:
