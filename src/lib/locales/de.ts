@@ -431,6 +431,9 @@ const de = {
 	'settings.deleteAccount.confirm.ok': 'Löschen',
 	'settings.deleteAccount.success': 'Den Account $name erfolgreich gelöscht',
 
+	'settings.general': 'Allgemein',
+	'settings.general.nav.texts': 'Texte in der Navigationsleiste anzeigen',
+
 	'settings.save': 'Speichern',
 
 	'filter.filter': 'Filter',

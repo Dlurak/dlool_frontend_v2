@@ -1,12 +1,16 @@
 <script>
+	import { page } from '$app/stores';
 	import Panes from '$lib/components/panes/Panes.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { settings } from '$lib/constants/settings';
 	import { Icon } from 'svelte-hero-icons';
+	import { derived } from 'svelte/store';
+
+	const isOverviewPage = derived(page, (p) => p.route.id === '/settings');
 </script>
 
 <Panes>
-	<div slot="a">
+	<div slot="a" class="flex flex-col gap-1 md:block" class:hidden={!$isOverviewPage}>
 		{#each settings as s}
 			<a
 				href={`/settings${s.uri}`}
@@ -20,7 +24,7 @@
 		{/each}
 	</div>
 
-	<div slot="b" class="hidden w-full md:block">
+	<div slot="b" class="w-full" class:hidden={$isOverviewPage} class:md:block={$isOverviewPage}>
 		<slot />
 	</div>
 </Panes>

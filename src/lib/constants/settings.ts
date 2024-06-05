@@ -1,5 +1,5 @@
 import type { Readable } from 'svelte/store';
-import { User, type IconSource } from 'svelte-hero-icons';
+import { Cog, User, type IconSource } from 'svelte-hero-icons';
 import { i } from '$lib/i18n/store';
 
 type Setting = {
@@ -13,5 +13,10 @@ export const settings: Setting[] = [
 		uri: '/profile',
 		label: i('settings.profile'),
 		icon: User
+	},
+	{
+		uri: '/general',
+		label: i('settings.general'),
+		icon: Cog
 	}
 ];
