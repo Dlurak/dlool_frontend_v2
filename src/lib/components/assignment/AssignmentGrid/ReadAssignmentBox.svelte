@@ -8,7 +8,7 @@
 
 	export let assignment: Assignment;
 
-	$: icon = getSubjectIcon(assignment.subject)
+	$: icon = getSubjectIcon(assignment.subject);
 </script>
 
 <div class="flex items-center gap-2">

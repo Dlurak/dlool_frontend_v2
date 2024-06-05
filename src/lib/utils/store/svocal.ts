@@ -46,3 +46,16 @@ export const svocal = <T extends SvocalKey>(key: T) => {
 
 	return localstorage(svocalKey, fallback);
 };
+
+const svNoCallback = {
+	'filter.school': null as string | null,
+	'filter.classes': [] as string[]
+} as const;
+
+type SvocalNoFallback = keyof typeof svNoCallback;
+type SvocalFallback<T extends SvocalNoFallback> = (typeof svNoCallback)[T];
+
+export const svocalWithFallback = <T extends SvocalNoFallback, F extends SvocalFallback<T>>(
+	key: T,
+	fallback: F
+) => localstorage<F>(key, fallback);

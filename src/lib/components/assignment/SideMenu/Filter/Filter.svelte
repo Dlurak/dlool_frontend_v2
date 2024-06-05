@@ -8,6 +8,7 @@
 	import type { CustomDate } from '$lib/utils/dates/custom';
 	import School from '$lib/components/input/School.svelte';
 	import Classes from '$lib/components/input/Classes.svelte';
+	import SchoolAndClass from '$lib/components/filter/SchoolAndClass.svelte';
 
 	type Query<S> = {
 		school: S;
@@ -34,13 +35,20 @@
 	const dispatch = createEventDispatcher<{ filterApply: Query<string> }>();
 </script>
 
-<Collapseable id="homework-filter">
-	<h3 class="pb-3 pt-2" slot="heading">Filters</h3>
-
-	<div class="flex flex-col gap-3" slot="content">
-		<School bind:school />
-		<Classes {school} bind:classes />
-
+<div class="flex flex-col gap-3">
+	<SchoolAndClass
+		{query}
+		on:change={({ detail }) => {
+			dispatch('filterApply', {
+				classes: detail.classes,
+				school: detail.school,
+				dueStart,
+				dueEnd,
+				fromStart,
+				fromEnd
+			});
+		}}
+	>
 		<h4><Store store={i('assignments.filter.due')} /></h4>
 
 		<TimeRange bind:start={dueStart} bind:end={dueEnd}>
@@ -56,21 +64,5 @@
 
 			<span slot="end"><Store store={i('assignments.filter.from.latest')} /></span>
 		</TimeRange>
-
-		<PrimaryButton
-			disabled={classes.length === 0 || school === null}
-			on:click={() => {
-				dispatch('filterApply', {
-					classes: classes,
-					school: school ?? '',
-					dueStart,
-					dueEnd,
-					fromStart,
-					fromEnd
-				});
-			}}
-		>
-			<Store store={i('assignments.filter.apply')} />
-		</PrimaryButton>
-	</div>
-</Collapseable>
+	</SchoolAndClass>
+</div>
