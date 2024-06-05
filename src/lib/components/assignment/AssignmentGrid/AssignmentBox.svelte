@@ -105,6 +105,8 @@
 			{assignment}
 			disabled={$state.view === 'write' && !$state.hasUnsavedEdits}
 			on:change={({ detail }) => {
+				if ($state.view === 'read') return;
+
 				state.set({
 					view: 'write',
 					hasUnsavedEdits: !detail.isOriginal
