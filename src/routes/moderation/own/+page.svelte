@@ -3,7 +3,10 @@
 	import Store from '$lib/components/utils/Store.svelte';
 	import { ownRequests, type JoinReq } from '$lib/dlool/moderation/own';
 	import { i } from '$lib/i18n/store';
+	import { title } from '$lib/stores';
 	import { onMount } from 'svelte';
+
+	title.set(i('title.moderation.own'))
 
 	let data: JoinReq[] = [];
 

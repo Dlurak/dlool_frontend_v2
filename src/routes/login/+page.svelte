@@ -10,6 +10,9 @@
 	import { sendToast } from '$lib/components/layout/toasts';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
+	import { title } from '$lib/stores';
+
+	title.set(i('title.login'))
 
 	let username = '';
 	let pwd = '';

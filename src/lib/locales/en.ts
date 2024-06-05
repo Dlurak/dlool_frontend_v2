@@ -96,6 +96,18 @@ const en = {
 	'nav.footer.else': 'Else',
 	'nav.footer.else.settings': 'Settings',
 
+	'title.calendar': 'Calendar',
+	'title.homework': 'Homework',
+	'title.join': 'Join a class',
+	'title.login': 'Login',
+	'title.moderation.list': 'Foreign joinrequests',
+	'title.moderation.own': 'Own joinrequests',
+	'title.notes': 'Notes',
+	'title.register': 'Register',
+	'title.settings': 'Settings',
+	'title.settings.profile': 'Profile settings',
+	'title.settings.general': 'General settings',
+
 	'home.subtitle': 'Next generation homework for your entire class',
 	'home.digitalEra': 'A homework management system for the digital era',
 	'home.quick.getStarted': '🚀 Get Started',

@@ -99,6 +99,18 @@ const de = {
 	'nav.footer.else': 'Sonstige',
 	'nav.footer.else.settings': 'Einstellungen',
 
+	'title.calendar': 'Kalendar',
+	'title.homework': 'Hausaufgaben',
+	'title.join': 'Klasse beitreten',
+	'title.login': 'Einloggen',
+	'title.moderation.list': 'Fremde Beitritsanfragen',
+	'title.moderation.own': 'Eigene Beitritsanfragen',
+	'title.notes': 'Notizen',
+	'title.register': 'Registrieren',
+	'title.settings': 'Einstellungen',
+	'title.settings.profile': 'Profil Einstellungen',
+	'title.settings.general': 'Allgemeine Einstellungen',
+
 	'home.subtitle': 'Das Hausaufgabenheft der nächsten Generation für Deine ganze Klasse',
 	'home.digitalEra': 'Ein Hausaufgabenheft für das digitale Zeitalter',
 	'home.quick.getStarted': '🚀 Loslegen',

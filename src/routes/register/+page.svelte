@@ -10,6 +10,9 @@
 	import Confetti from 'svelte-confetti';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { login } from '$lib/dlool/login';
+	import { title } from '$lib/stores';
+
+	title.set(i('title.register'))
 
 	let username = '';
 	let displayname = '';

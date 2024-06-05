@@ -13,8 +13,11 @@
 	import { safeMap } from '$lib/utils/null/safeMap';
 	import { serialize } from '$lib/utils/dates/custom';
 	import { wasSuccessfull } from '$lib/components/assignment/SideMenu/CreateAssignmentInner.svelte';
+	import { title } from '$lib/stores';
 
 	export let data: PageData;
+
+	title.set(i('title.homework'))
 </script>
 
 <Panes minimum={200}>

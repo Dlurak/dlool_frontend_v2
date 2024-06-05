@@ -6,6 +6,10 @@
 	import Logout from '$lib/components/settings/profile/Logout.svelte';
 	import Delete from '$lib/components/settings/profile/Delete.svelte';
 	import Details from '$lib/components/settings/profile/Details.svelte';
+	import { title } from '$lib/stores';
+	import { i } from '$lib/i18n/store';
+
+	title.set(i('title.settings.profile'))
 
 	const { isLoggedIn } = useAuth();
 	isLoggedIn.subscribe((isLoggedIn) => {

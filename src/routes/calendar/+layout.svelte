@@ -4,8 +4,12 @@
 	import Panes from '$lib/components/panes/Panes.svelte';
 	import { objToQueryParams } from '$lib/utils/url/query';
 	import type { LayoutData } from './$types';
+	import { i } from '$lib/i18n/store';
+	import { title } from '$lib/stores';
 
 	export let data: LayoutData;
+
+	title.set(i('title.calendar'))
 </script>
 
 <Panes>

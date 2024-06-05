@@ -4,6 +4,7 @@
 	import Store from '$lib/components/utils/Store.svelte';
 	import { foreignRequests, type ForeignReq } from '$lib/dlool/moderation/foreign';
 	import { i } from '$lib/i18n/store';
+	import { title } from '$lib/stores';
 	import { onMount } from 'svelte';
 
 	let data: ForeignReq[] = [];
@@ -17,6 +18,8 @@
 	const chipHandler = async (d: CustomEvent<'all' | 'Pending' | 'Accepted' | 'Rejected'>) => {
 		data = await foreignRequests({ type: d.detail }).then((d) => d.data);
 	};
+
+	title.set(i('title.moderation.list'))
 </script>
 
 {#if !(filterValue === 'all' && data.length === 0)}
