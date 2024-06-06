@@ -1,23 +1,21 @@
 import { goto } from '$app/navigation';
-import { confirm } from '$lib/components/layout/confirmation';
 import { closeLauncher } from '$lib/components/layout/launcher/hook';
-import { sendDefaultErrorToast, sendToast } from '$lib/components/layout/toasts';
-import { logout } from '$lib/dlool/logout';
+import { logoutListener } from '$lib/dlool/logout';
 import { i } from '$lib/i18n/store';
 import { svocal } from '$lib/utils/store/svocal';
 import {
 	Home,
 	BookOpen,
-	type IconSource,
 	User,
 	UserPlus,
 	RectangleGroup,
 	PencilSquare,
 	Calendar,
 	Cog,
-	UserMinus
+	UserMinus,
+	type IconSource
 } from 'svelte-hero-icons';
-import { derived, get, type Readable } from 'svelte/store';
+import { derived, type Readable } from 'svelte/store';
 
 const split = (store: Readable<string>) => derived(store, (str) => str.split('\n'));
 
@@ -147,33 +145,7 @@ export const launcherItems: LauncherItem[] = [
 		description: null,
 		icon: UserMinus,
 		callback: async () => {
-			const token = get(svocal('auth.refresh.token'));
-			if (!token) return;
-
-			closeLauncher();
-
-			const confimred = await confirm({
-				ok: i('settings.logout.confirm.ok'),
-				desc: i('settings.logout.confirm.desc'),
-				title: i('settings.logout')
-			});
-			if (!confimred) return;
-
-			logout({ refreshToken: token })
-				.then(() => {
-					svocal('auth.refresh.token').set(null);
-					svocal('auth.refresh.expires').set(null);
-					svocal('auth.access.token').set(null);
-					svocal('auth.access.expires').set(null);
-					svocal('auth.access.generatedBy').set(null);
-
-					sendToast({
-						type: 'success',
-						content: i('settings.logout.success'),
-						timeout: 5_000
-					});
-				})
-				.catch(sendDefaultErrorToast);
+			logoutListener({ postValidation: closeLauncher });
 		},
 		searchTerms: split(i('launcher.logout.terms')),
 		enabled: derived(svocal('auth.access.generatedBy'), (gb) => gb === 'login')

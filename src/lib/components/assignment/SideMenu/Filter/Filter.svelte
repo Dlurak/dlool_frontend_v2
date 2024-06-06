@@ -1,13 +1,9 @@
 <script lang="ts">
 	import { i } from '$lib/i18n/store';
-	import PrimaryButton from '$lib/components/buttons/PrimaryButton.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { createEventDispatcher } from 'svelte';
-	import Collapseable from '$lib/components/utils/Collapseable.svelte';
 	import TimeRange from './TimeRange.svelte';
 	import type { CustomDate } from '$lib/utils/dates/custom';
-	import School from '$lib/components/input/School.svelte';
-	import Classes from '$lib/components/input/Classes.svelte';
 	import SchoolAndClass from '$lib/components/filter/SchoolAndClass.svelte';
 
 	type Query<S> = {
@@ -21,10 +17,6 @@
 	};
 
 	export let query: Query<string | null>;
-
-	let school = query.school;
-
-	let classes = query.classes;
 
 	let dueStart: CustomDate | null = null;
 	let dueEnd: CustomDate | null = null;

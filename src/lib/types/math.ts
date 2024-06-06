@@ -50,8 +50,8 @@ type PrivatePowerOf<
 	Result extends number = Base
 > = Top extends 1
 	? Result
-	: // @ts-ignore
-		PowerOf<Base, SubtractOne<Top>, Multiply<Result, Base>>;
+	: // @ts-expect-error Infinite deep
+		PrivatePowerOf<Base, SubtractOne<Top>, Multiply<Result, Base>>;
 
 /**
  * Computes the power of `Base` raised to `Top`.

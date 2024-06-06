@@ -12,6 +12,7 @@
 
 	export let options: {
 		label: Readable<string>;
+		// eslint-disable-next-line no-undef
 		value: V;
 	}[];
 
