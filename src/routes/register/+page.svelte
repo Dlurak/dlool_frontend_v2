@@ -12,7 +12,6 @@
 	import { login } from '$lib/dlool/login';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
 
-
 	let username = '';
 	let displayname = '';
 	let pwd = '';

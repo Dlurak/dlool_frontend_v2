@@ -25,7 +25,7 @@
 			{step}
 			bind:value
 			type="range"
-			class="bg-emerald-400 dark:bg-emerald-600 my-4 h-1 cursor-pointer appearance-none rounded-md"
+			class="my-4 h-1 cursor-pointer appearance-none rounded-md bg-emerald-400 dark:bg-emerald-600"
 		/>
 
 		<span>{valueFmt(value)}</span>

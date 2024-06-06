@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Readable } from "svelte/store";
+	import type { Readable } from 'svelte/store';
 
 	export let title: Readable<string> | null = null;
 </script>

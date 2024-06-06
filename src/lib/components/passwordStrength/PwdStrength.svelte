@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Repeat } from '$lib/types/array';
 	import { getConditions } from '$lib/utils/strings/password';
 	import Store from '../utils/Store.svelte';
 	import Tooltipped from '../utils/Tooltipped.svelte';
@@ -6,13 +7,7 @@
 
 	export let pwd: string;
 
-	const colorPairs: [
-		[string, string],
-		[string, string],
-		[string, string],
-		[string, string],
-		[string, string]
-	] = [
+	const colorPairs: Repeat<[string, string], 5> = [
 		['#ef4444', '#f97316'],
 		['#f97316', '#eab308'],
 		['#eab308', '#84cc16'],

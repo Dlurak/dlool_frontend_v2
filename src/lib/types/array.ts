@@ -1,3 +1,5 @@
+import type { SubtractOne } from '$lib/types/math';
+
 type PrivateEnumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
 	? Acc
 	: PrivateEnumerate<N, [...Acc, Acc['length']]>;
@@ -26,3 +28,35 @@ export type Enumerate<N extends number> = PrivateEnumerate<N>;
  * ```
  */
 export type LastItem<T extends unknown[], Alt> = T extends [...infer _, infer Last] ? Last : Alt;
+
+type PrivateRepeat<T, N extends number, Acc extends T[] = []> = N extends 0
+	? Acc
+	: PrivateRepeat<T, SubtractOne<N>, [...Acc, T]>;
+
+/**
+ * Creates a tuple type with the specified element type `T` repeated `N` times.
+ *
+ * This utility type is helpful when you need a tuple of a specific length and type.
+ *
+ * @template T - The type of elements in the tuple.
+ * @template N - The number of times to repeat the type `T` in the tuple. Must be a positive integer.
+ *
+ * @example
+ * ```typescript
+ * // Creates a tuple of numbers repeated 3 times
+ * type ThreeNumbers = Repeat<number, 3>; // [number, number, number]
+ * ```
+ *
+ * @example
+ * ```typescript
+ * // Creates a tuple of strings repeated 2 times
+ * type TwoStrings = Repeat<string, 2>; // [string, string]
+ * ```
+ * // Creates a tuple of strings repeated 2 times
+ *
+ * @param {T} T - The type of each element in the resulting tuple.
+ * @param {number} N - The number of elements in the resulting tuple.
+ *
+ * @returns {T[]} - A tuple type with `T` repeated `N` times.
+ */
+export type Repeat<T, N extends number> = PrivateRepeat<T, N>;

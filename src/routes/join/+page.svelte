@@ -15,7 +15,7 @@
 	import { ownUserInfo } from '$lib/dlool/userInfo/own';
 	import { svocal } from '$lib/utils/store/svocal';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
-	
+
 	const { isLoggedIn } = useAuth();
 
 	let schoolInput = '';
