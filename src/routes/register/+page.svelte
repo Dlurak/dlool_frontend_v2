@@ -10,9 +10,8 @@
 	import Confetti from 'svelte-confetti';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { login } from '$lib/dlool/login';
-	import { title } from '$lib/stores';
+	import MetaData from '$lib/components/utils/MetaData.svelte';
 
-	title.set(i('title.register'));
 
 	let username = '';
 	let displayname = '';
@@ -37,6 +36,8 @@
 			});
 	};
 </script>
+
+<MetaData title={i('title.register')} />
 
 <div
 	class="flex w-[min(100%,28rem)] flex-col gap-4 rounded-md p-4 outline outline-2 outline-gray-400"

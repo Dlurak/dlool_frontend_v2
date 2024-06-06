@@ -14,9 +14,8 @@
 	import { sendDefaultErrorToast, sendToast } from '$lib/components/layout/toasts';
 	import { ownUserInfo } from '$lib/dlool/userInfo/own';
 	import { svocal } from '$lib/utils/store/svocal';
-	import { title } from '$lib/stores';
-
-	title.set(i('title.calendar'));
+	import MetaData from '$lib/components/utils/MetaData.svelte';
+	
 	const { isLoggedIn } = useAuth();
 
 	let schoolInput = '';
@@ -27,6 +26,8 @@
 
 	let isDisabled = false;
 </script>
+
+<MetaData title={i('title.calendar')} />
 
 <div
 	class="flex w-[min(100%,28rem)] flex-col gap-4 rounded-md p-4 outline outline-2 outline-gray-400"

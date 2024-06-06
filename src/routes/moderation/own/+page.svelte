@@ -1,12 +1,10 @@
 <script lang="ts">
 	import ReqBox from '$lib/components/moderation/ReqBox/ReqBox.svelte';
+	import MetaData from '$lib/components/utils/MetaData.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { ownRequests, type JoinReq } from '$lib/dlool/moderation/own';
 	import { i } from '$lib/i18n/store';
-	import { title } from '$lib/stores';
 	import { onMount } from 'svelte';
-
-	title.set(i('title.moderation.own'));
 
 	let data: JoinReq[] = [];
 
@@ -15,6 +13,8 @@
 		data = await ownRequests().then((d) => d.data);
 	});
 </script>
+
+<MetaData title={i('title.moderation.own')} />
 
 <div
 	class="grid w-full gap-3"

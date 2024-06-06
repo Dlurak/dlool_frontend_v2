@@ -6,10 +6,8 @@
 	import Logout from '$lib/components/settings/profile/Logout.svelte';
 	import Delete from '$lib/components/settings/profile/Delete.svelte';
 	import Details from '$lib/components/settings/profile/Details.svelte';
-	import { title } from '$lib/stores';
 	import { i } from '$lib/i18n/store';
-
-	title.set(i('title.settings.profile'));
+	import MetaData from '$lib/components/utils/MetaData.svelte';
 
 	const { isLoggedIn } = useAuth();
 	isLoggedIn.subscribe((isLoggedIn) => {
@@ -24,6 +22,8 @@
 		svocal('auth.access.generatedBy').set(null);
 	};
 </script>
+
+<MetaData title={i('title.settings.profile')} />
 
 <div class="flex flex-col gap-4">
 	<Logout on:reset={reset} />

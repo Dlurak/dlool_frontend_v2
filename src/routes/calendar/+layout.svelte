@@ -5,12 +5,12 @@
 	import { objToQueryParams } from '$lib/utils/url/query';
 	import type { LayoutData } from './$types';
 	import { i } from '$lib/i18n/store';
-	import { title } from '$lib/stores';
+	import MetaData from '$lib/components/utils/MetaData.svelte';
 
 	export let data: LayoutData;
-
-	title.set(i('title.calendar'));
 </script>
+
+<MetaData title={i('title.calendar')} />
 
 <Panes>
 	<div slot="a">

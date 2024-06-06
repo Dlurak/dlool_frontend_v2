@@ -10,9 +10,7 @@
 	import { sendToast } from '$lib/components/layout/toasts';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { title } from '$lib/stores';
-
-	title.set(i('title.login'));
+	import MetaData from '$lib/components/utils/MetaData.svelte';
 
 	let username = '';
 	let pwd = '';
@@ -27,6 +25,8 @@
 		$state === 'base'
 	);
 </script>
+
+<MetaData title={i('title.login')} />
 
 <div
 	class="flex w-[min(100%,28rem)] flex-col gap-4 rounded-md p-4 outline outline-2 outline-gray-400"

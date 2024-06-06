@@ -13,12 +13,12 @@
 	import { safeMap } from '$lib/utils/null/safeMap';
 	import { serialize } from '$lib/utils/dates/custom';
 	import { wasSuccessfull } from '$lib/components/assignment/SideMenu/CreateAssignmentInner.svelte';
-	import { title } from '$lib/stores';
+	import MetaData from '$lib/components/utils/MetaData.svelte';
 
 	export let data: PageData;
-
-	title.set(i('title.homework'));
 </script>
+
+<MetaData title={i('title.homework')} />
 
 <Panes minimum={200}>
 	<div slot="a">

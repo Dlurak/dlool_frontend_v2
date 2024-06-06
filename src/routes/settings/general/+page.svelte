@@ -2,14 +2,14 @@
 	import BoolSetting from '$lib/components/settings/BoolSetting.svelte';
 	import { i } from '$lib/i18n/store';
 	import { svocal } from '$lib/utils/store/svocal';
-	import { title } from '$lib/stores';
 	import SelectSetting from '$lib/components/settings/SelectSetting.svelte';
-
-	title.set(i('title.settings.general'));
+	import MetaData from '$lib/components/utils/MetaData.svelte';
 
 	const navTexts = svocal('settings.nav.texts');
 	const weekStartsOn = svocal('settings.weekStartsOn');
 </script>
+
+<MetaData title={i('title.settings.general')} />
 
 <div class="flex flex-col gap-2">
 	<BoolSetting label={i('settings.general.nav.texts')} bind:value={$navTexts} />

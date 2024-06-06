@@ -17,9 +17,7 @@
 	import { svocal } from '$lib/utils/store/svocal';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { Icon, ArrowLeft } from 'svelte-hero-icons';
-	import { title } from '$lib/stores';
-
-	title.set(i('title.notes'));
+	import MetaData from '$lib/components/utils/MetaData.svelte';
 
 	const isRootPage = derived(page, ($page) => $page.route.id === '/notes');
 	const isSmall = mediaQuery('(max-width: 768px)');
@@ -37,6 +35,8 @@
 			return schoolMatches && classMatches;
 		}) ?? false;
 </script>
+
+<MetaData title={i('title.notes')} />
 
 <Panes>
 	<div slot="a" class="flex flex-col gap-4">

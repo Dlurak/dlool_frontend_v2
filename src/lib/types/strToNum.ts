@@ -22,7 +22,8 @@ type FirstDigitToNum<
 > = S extends `${infer First}${infer _}`
 	? Length<S> extends 1
 		? DigitToNum<First>
-		: Multiply<DigitToNum<First>, PowerOf<10, SubtractOne<Length<S>>>>
+		: // @ts-expect-error possibly infinite 
+			Multiply<DigitToNum<First>, PowerOf<10, SubtractOne<Length<S>>>>
 	: Result;
 
 type PrivateNumberToString<
