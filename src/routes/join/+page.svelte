@@ -16,7 +16,7 @@
 	import { svocal } from '$lib/utils/store/svocal';
 	import { title } from '$lib/stores';
 
-	title.set(i('title.calendar'))
+	title.set(i('title.calendar'));
 	const { isLoggedIn } = useAuth();
 
 	let schoolInput = '';

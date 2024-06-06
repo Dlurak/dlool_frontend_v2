@@ -433,6 +433,7 @@ const en = {
 
 	'settings.general': 'General',
 	'settings.general.nav.texts': 'Texte in der Navigationsleiste anzeigen',
+	'settings.general.weekStartsOn': 'First day of the week',
 
 	'settings.save': 'Save',
 

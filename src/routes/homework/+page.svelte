@@ -17,7 +17,7 @@
 
 	export let data: PageData;
 
-	title.set(i('title.homework'))
+	title.set(i('title.homework'));
 </script>
 
 <Panes minimum={200}>

@@ -9,7 +9,7 @@
 	import { title } from '$lib/stores';
 	import { i } from '$lib/i18n/store';
 
-	title.set(i('title.settings.profile'))
+	title.set(i('title.settings.profile'));
 
 	const { isLoggedIn } = useAuth();
 	isLoggedIn.subscribe((isLoggedIn) => {

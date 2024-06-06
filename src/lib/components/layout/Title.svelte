@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { title } from '$lib/stores';
 
-	let t =$title
+	let t = $title;
 </script>
 
 <svelte:head>

@@ -12,7 +12,6 @@
 
 	export let options: {
 		label: Readable<string>;
-		// eslint-disable-next-line no-undef
 		value: V;
 	}[];
 
@@ -33,7 +32,14 @@
 <div class="relative w-full">
 	<Frame>
 		{@const selected = options.find(({ value: optValue }) => optValue === value)}
-		<div class="flex w-full items-center justify-between" use:floatingRef>
+
+		<button
+			class="flex w-full items-center justify-between text-start"
+			use:floatingRef
+			on:click={() => {
+				showOptions = !showOptions;
+			}}
+		>
 			{#if selected}
 				<span class="w-full">
 					<Store store={selected.label} />
@@ -49,7 +55,7 @@
 					showOptions = !showOptions;
 				}}
 			/>
-		</div>
+		</button>
 	</Frame>
 
 	{#if showOptions}

@@ -445,6 +445,7 @@ const de = {
 
 	'settings.general': 'Allgemein',
 	'settings.general.nav.texts': 'Texte in der Navigationsleiste anzeigen',
+	'settings.general.weekStartsOn': 'Erster Tag der Woche',
 
 	'settings.save': 'Speichern',
 

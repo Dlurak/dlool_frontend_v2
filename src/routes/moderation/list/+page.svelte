@@ -19,7 +19,7 @@
 		data = await foreignRequests({ type: d.detail }).then((d) => d.data);
 	};
 
-	title.set(i('title.moderation.list'))
+	title.set(i('title.moderation.list'));
 </script>
 
 {#if !(filterValue === 'all' && data.length === 0)}

@@ -6,7 +6,7 @@
 	import { title } from '$lib/stores';
 	import { onMount } from 'svelte';
 
-	title.set(i('title.moderation.own'))
+	title.set(i('title.moderation.own'));
 
 	let data: JoinReq[] = [];
 

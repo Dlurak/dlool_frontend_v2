@@ -9,7 +9,7 @@
 
 	export let data: LayoutData;
 
-	title.set(i('title.calendar'))
+	title.set(i('title.calendar'));
 </script>
 
 <Panes>

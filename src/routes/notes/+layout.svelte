@@ -19,7 +19,7 @@
 	import { Icon, ArrowLeft } from 'svelte-hero-icons';
 	import { title } from '$lib/stores';
 
-	title.set(i('title.notes'))
+	title.set(i('title.notes'));
 
 	const isRootPage = derived(page, ($page) => $page.route.id === '/notes');
 	const isSmall = mediaQuery('(max-width: 768px)');

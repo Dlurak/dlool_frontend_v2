@@ -12,7 +12,7 @@
 	import { login } from '$lib/dlool/login';
 	import { title } from '$lib/stores';
 
-	title.set(i('title.register'))
+	title.set(i('title.register'));
 
 	let username = '';
 	let displayname = '';
