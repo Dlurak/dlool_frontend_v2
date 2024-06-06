@@ -14,6 +14,7 @@
 	import { updateAssignment } from '$lib/dlool/assignments/update';
 	import Modal from '$lib/components/modal/Modal.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
+	import { currentCustomDate, sort } from '$lib/utils/dates/custom';
 
 	export let assignment: Assignment;
 	export let school: string;
@@ -30,6 +31,7 @@
 	const state: Writable<State> = writable({ view: 'read' });
 
 	const userDetails = svocal('dlool.ownUserDetails');
+	const transparencyOfOverdue = svocal('settings.homework.transparency');
 
 	$: hasEditRights = $userDetails?.classes.some(({ name, school: schoolObj }) => {
 		const classMatches = assignment.class.name === name;
@@ -38,95 +40,101 @@
 		return classMatches && schoolMatches;
 	});
 
+	$: isOverdue = sort(assignment.due, currentCustomDate()) === -1;
+
 	const dispatch = createEventDispatcher<{
 		delete: null;
 		update: null;
 	}>();
 </script>
 
-<div
-	class="flex flex-col gap-2 rounded px-2 py-1 outline outline-2 outline-zinc-300 dark:outline-zinc-700"
->
-	<ReadAssignmentBox {assignment} />
+{#if !(isOverdue && $transparencyOfOverdue === 0)}
+	<div
+		style:--opac={$transparencyOfOverdue}
+		class:opacity-[--opac]={isOverdue}
+		class="flex flex-col gap-2 rounded px-2 py-1 outline outline-2 outline-zinc-300 dark:outline-zinc-700"
+	>
+		<ReadAssignmentBox {assignment} />
 
-	{#if hasEditRights}
-		<div class="flex w-full justify-evenly pt-2">
-			<QuickAction
-				icon={Trash}
-				small
-				color="red"
-				on:click={async () => {
-					const isConfirmed = await confirm({
-						desc: i('assignments.delete.desc'),
-						ok: i('assignments.delete.ok')
+		{#if hasEditRights}
+			<div class="flex w-full justify-evenly pt-2">
+				<QuickAction
+					icon={Trash}
+					small
+					color="red"
+					on:click={async () => {
+						const isConfirmed = await confirm({
+							desc: i('assignments.delete.desc'),
+							ok: i('assignments.delete.ok')
+						});
+						if (!isConfirmed) return;
+
+						await deleteAssignment(assignment.id);
+
+						sendToast({
+							type: 'success',
+							content: i('assignments.delete.success'),
+							timeout: 5_000
+						});
+						dispatch('delete', null);
+					}}
+				/>
+				<QuickAction
+					icon={Pencil}
+					color="blue"
+					disabled={$state.view === 'write' && $state.hasUnsavedEdits}
+					small
+					on:click={() => {
+						state.update((val) => {
+							if (val.view === 'write') return { view: 'read' };
+
+							return { view: 'write', hasUnsavedEdits: false };
+						});
+					}}
+				/>
+			</div>
+		{/if}
+	</div>
+
+	<Modal
+		isOpen={$state.view === 'write'}
+		closeDisabled={$state.view === 'write' && $state.hasUnsavedEdits}
+		on:close={() => {
+			$state.view = 'read';
+		}}
+	>
+		<div slot="title">
+			<Store store={i('assignments.edit')} />
+		</div>
+
+		<div slot="body" class="flex flex-col gap-3 py-1">
+			<EditAssignmentBox
+				{assignment}
+				disabled={$state.view === 'write' && !$state.hasUnsavedEdits}
+				on:change={({ detail }) => {
+					if ($state.view === 'read') return;
+
+					state.set({
+						view: 'write',
+						hasUnsavedEdits: !detail.isOriginal
 					});
-					if (!isConfirmed) return;
-
-					await deleteAssignment(assignment.id);
-
-					sendToast({
-						type: 'success',
-						content: i('assignments.delete.success'),
-						timeout: 5_000
-					});
-					dispatch('delete', null);
 				}}
-			/>
-			<QuickAction
-				icon={Pencil}
-				color="blue"
-				disabled={$state.view === 'write' && $state.hasUnsavedEdits}
-				small
-				on:click={() => {
-					state.update((val) => {
-						if (val.view === 'write') return { view: 'read' };
-
-						return { view: 'write', hasUnsavedEdits: false };
-					});
+				on:submit={({ detail }) => {
+					updateAssignment({
+						id: assignment.id,
+						...detail
+					})
+						.then(() => {
+							sendToast({
+								type: 'success',
+								content: i('assignments.update.success'),
+								timeout: 5_000
+							});
+							dispatch('update', null);
+						})
+						.catch(sendDefaultErrorToast);
 				}}
 			/>
 		</div>
-	{/if}
-</div>
-
-<Modal
-	isOpen={$state.view === 'write'}
-	closeDisabled={$state.view === 'write' && $state.hasUnsavedEdits}
-	on:close={() => {
-		$state.view = 'read';
-	}}
->
-	<div slot="title">
-		<Store store={i('assignments.edit')} />
-	</div>
-
-	<div slot="body" class="flex flex-col gap-3 py-1">
-		<EditAssignmentBox
-			{assignment}
-			disabled={$state.view === 'write' && !$state.hasUnsavedEdits}
-			on:change={({ detail }) => {
-				if ($state.view === 'read') return;
-
-				state.set({
-					view: 'write',
-					hasUnsavedEdits: !detail.isOriginal
-				});
-			}}
-			on:submit={({ detail }) => {
-				updateAssignment({
-					id: assignment.id,
-					...detail
-				})
-					.then(() => {
-						sendToast({
-							type: 'success',
-							content: i('assignments.update.success'),
-							timeout: 5_000
-						});
-						dispatch('update', null);
-					})
-					.catch(sendDefaultErrorToast);
-			}}
-		/>
-	</div>
-</Modal>
+	</Modal>
+{/if}

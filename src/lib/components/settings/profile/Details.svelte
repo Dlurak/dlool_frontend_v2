@@ -26,10 +26,10 @@
 	</h3>
 
 	<div class="flex flex-col gap-3">
-		<div class="flex items-center justify-between">
+		<div class="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
 			<span><Store store={i('settings.profileDetails.displayname')} /></span>
 
-			<span class="flex h-full min-w-[50%] items-stretch gap-2">
+			<span class="flex h-full w-full min-w-[50%] items-stretch gap-2 sm:w-fit">
 				<TextInput
 					bind:value={displayname}
 					placeholder={i('settings.profileDetails.displayname')}
@@ -58,10 +58,10 @@
 			</span>
 		</div>
 
-		<div class="flex items-center justify-between">
+		<div class="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
 			<span><Store store={i('settings.profileDetails.password')} /></span>
 
-			<span class="flex h-full min-w-[50%] flex-col gap-2">
+			<span class="flex h-full w-full min-w-[50%] flex-col gap-2 sm:w-fit">
 				<span class="flex w-full items-stretch gap-2">
 					<PasswordInput placeholder={i('settings.profileDetails.password')} bind:value={pwd} />
 					<SettingsButton

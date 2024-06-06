@@ -33,7 +33,8 @@ const sv = {
 		'auth.access.generatedBy',
 		() => null satisfies null | 'refreshToken' | 'login' as null | 'refreshToken' | 'login'
 	],
-	'dlool.ownUserDetails': ['dlool.ownUserDetails', () => null as null | OwnUserDetails]
+	'dlool.ownUserDetails': ['dlool.ownUserDetails', () => null as null | OwnUserDetails],
+	'settings.homework.transparency': ['settings.homework.transparency', () => 0.6],
 } as const;
 
 type SvocalKey = keyof typeof sv;

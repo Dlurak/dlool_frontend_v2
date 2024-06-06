@@ -444,8 +444,12 @@ const de = {
 	'settings.deleteAccount.success': 'Den Account $name erfolgreich gelöscht',
 
 	'settings.general': 'Allgemein',
+	'settings.general.nav': 'Navigation',
 	'settings.general.nav.texts': 'Texte in der Navigationsleiste anzeigen',
-	'settings.general.weekStartsOn': 'Erster Tag der Woche',
+	'settings.general.calendar': 'Kalender',
+	'settings.general.calendar.weekStartsOn': 'Erster Tag der Woche',
+	'settings.general.assignments': 'Hausaufgaben',
+	'settings.general.assignments.transparency': 'Transparenz überfälliger Hausaufgaben',
 
 	'settings.save': 'Speichern',
 
