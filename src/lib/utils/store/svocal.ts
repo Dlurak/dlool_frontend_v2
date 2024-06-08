@@ -34,7 +34,8 @@ const sv = {
 		() => null satisfies null | 'refreshToken' | 'login' as null | 'refreshToken' | 'login'
 	],
 	'dlool.ownUserDetails': ['dlool.ownUserDetails', () => null as null | OwnUserDetails],
-	'settings.homework.transparency': ['settings.homework.transparency', () => 0.6]
+	'settings.homework.transparency': ['settings.homework.transparency', () => 0.6],
+	'settings.color': ['settings.color', () => ({}) as Record<string, string>]
 } as const;
 
 type SvocalKey = keyof typeof sv;

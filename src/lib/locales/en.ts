@@ -439,6 +439,10 @@ const en = {
 	'settings.general.assignments': 'Assignments',
 	'settings.general.assignments.transparency': 'transparency of overdue assignments',
 
+	'settings.color': 'Colors',
+	'settings.color.new': 'Add a subject',
+	'settings.color.subject.placeholder': 'Subject',
+
 	'settings.save': 'Save',
 
 	'filter.filter': 'Filters',

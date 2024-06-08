@@ -5,28 +5,43 @@
 	import Store from '../../utils/Store.svelte';
 	import { i } from '$lib/i18n/store';
 	import { getSubjectIcon } from '$lib/utils/icons/subjectIcons';
+	import { svocal } from '$lib/utils/store/svocal';
 
 	export let assignment: Assignment;
 
 	$: icon = getSubjectIcon(assignment.subject);
+
+	const colors = svocal('settings.color');
+
+	$: color = $colors[assignment.subject] || undefined;
 </script>
 
-<div class="flex items-center gap-2">
-	{#if icon}
-		<Icon src={icon} class="h-6 w-6" mini />
+<div class="flex gap-3">
+	{#if color}
+		<div class="box-content h-full w-1.5 px-1">
+			<div class="h-full w-full rounded bg-[--bg]" style:--bg={color} />
+		</div>
 	{/if}
 
-	<h3>{assignment.subject}</h3>
-</div>
+	<div class="flex flex-col gap-2">
+		<div class="flex items-center gap-2">
+			{#if icon}
+				<Icon src={icon} class="h-6 w-6" mini />
+			{/if}
 
-<p>{assignment.description}</p>
+			<h3>{assignment.subject}</h3>
+		</div>
 
-<div class="flex items-center gap-1 text-sm">
-	<Icon src={Clock} class="h-4 w-4" micro />
-	<Store
-		store={i('assignments.assignment.date', {
-			start: stringify(assignment.from),
-			end: stringify(assignment.due)
-		})}
-	/>
+		<p>{assignment.description}</p>
+
+		<div class="flex items-center gap-1 text-sm">
+			<Icon src={Clock} class="h-4 w-4" micro />
+			<Store
+				store={i('assignments.assignment.date', {
+					start: stringify(assignment.from),
+					end: stringify(assignment.due)
+				})}
+			/>
+		</div>
+	</div>
 </div>

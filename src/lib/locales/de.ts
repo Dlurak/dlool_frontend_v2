@@ -451,6 +451,10 @@ const de = {
 	'settings.general.assignments': 'Hausaufgaben',
 	'settings.general.assignments.transparency': 'Transparenz überfälliger Hausaufgaben',
 
+	'settings.color': 'Farben',
+	'settings.color.new': 'Fach hinzufügen',
+	'settings.color.subject.placeholder': 'Fach',
+
 	'settings.save': 'Speichern',
 
 	'filter.filter': 'Filter',
