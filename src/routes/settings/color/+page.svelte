@@ -3,19 +3,82 @@
 	import TextInput from '$lib/components/input/Text.svelte';
 	import { i } from '$lib/i18n/store';
 	import { svocal } from '$lib/utils/store/svocal';
-	import { Icon, Plus, Trash } from 'svelte-hero-icons';
+	import { DocumentArrowDown, DocumentArrowUp, Icon, Plus, Trash } from 'svelte-hero-icons';
 	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
 	import ColorPreview from '$lib/components/settings/color/ColorPreview.svelte';
 	import { DEFAULT_SUBJECT_COLOR } from '$lib/constants/settings';
 	import { removeKey } from '$lib/utils/objects/removeKey';
 	import { replaceKey } from '$lib/utils/objects/replaceKey';
+	import BoolSetting from '$lib/components/settings/BoolSetting.svelte';
+	import SettingsButton from '$lib/components/buttons/SettingsButton.svelte';
+	import { downloadJSON } from '$lib/utils/files/download';
+	import { readJSON } from '$lib/utils/files/upload';
+	import { z } from 'zod';
+	import { sendToast } from '$lib/components/layout/toasts';
+	import { confirm } from '$lib/components/layout/confirmation';
 
 	const colors = svocal('settings.color');
+	const showHex = svocal('settings.color.showHex');
 </script>
 
-<div class="flex w-full flex-col gap-4">
+<div class="flex w-full flex-col gap-2">
+	<div class="flex justify-between">
+		<Store store={i('settings.color.importAndExport')} />
+
+		<span class="flex gap-2">
+			<SettingsButton
+				on:click={async () => {
+					const confirmed =
+						Object.keys($colors).length === 0 ||
+						(await confirm({
+							ok: i('settings.color.import'),
+							desc: i(
+								'settings.color.import.confirm',
+								{ amount: `${Object.keys($colors).length}` },
+								{ count: Object.keys($colors).length }
+							)
+						}));
+					if (!confirmed) return;
+
+					const newColors = await readJSON(
+						z.record(z.string(), z.string().regex(/^#?(([a-f\d]{3})|([a-f\d]{6}))$/i))
+					).catch(() => null);
+
+					if (newColors === null) {
+						sendToast({
+							type: 'error',
+							timeout: 5_000,
+							content: i('settings.color.import.error')
+						});
+						return;
+					}
+
+					sendToast({
+						type: 'success',
+						timeout: 5_000,
+						content: i('settings.color.import.success')
+					});
+					colors.set(newColors);
+				}}
+			>
+				<Icon src={DocumentArrowDown} class="h-5 w-5" />
+				<Store store={i('settings.color.import')} />
+			</SettingsButton>
+
+			<SettingsButton
+				color="blue"
+				on:click={() => {
+					downloadJSON($colors, 'dlool-colors.json');
+				}}
+			>
+				<Icon src={DocumentArrowUp} class="h-5 w-5" />
+				<Store store={i('settings.color.export')} />
+			</SettingsButton>
+		</span>
+	</div>
+
 	{#each Object.entries($colors) as [subject, hexColor]}
-		<div class="flex justify-between">
+		<div class="flex flex-col justify-between gap-2 sm:flex-row">
 			<ColorPreview
 				{hexColor}
 				on:change={({ detail: color }) => {
@@ -61,4 +124,6 @@
 		<Store store={i('settings.color.new')} />
 		<Icon class="h-6 w-6" src={Plus} />
 	</button>
+
+	<BoolSetting label={i('settings.color.showHex')} bind:value={$showHex} />
 </div>

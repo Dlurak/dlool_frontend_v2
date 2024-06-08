@@ -11,6 +11,9 @@
 	import Store from '$lib/components/utils/Store.svelte';
 	import { i } from '$lib/i18n/store';
 	import { createEventDispatcher } from 'svelte';
+	import { colorNames } from '$lib/constants/colors';
+	import { currentLang } from '$lib/stores';
+	import { svocal } from '$lib/utils/store/svocal';
 
 	export let hexColor: string;
 	$: txtColor = blackOrWhiteText(parseHexIntoRgb(hexColor));
@@ -22,6 +25,8 @@
 	const dispatch = createEventDispatcher<{
 		change: string;
 	}>();
+
+	const showHex = svocal('settings.color.showHex');
 </script>
 
 <button
@@ -33,13 +38,16 @@
 		isModalOpened = !isModalOpened;
 	}}
 >
-	{safeMap(colorToName(hexColor), capitalize) || hexColor}
+	{#if $showHex}
+		{hexColor}
+	{:else}
+		{safeMap(colorToName(hexColor, colorNames[$currentLang]), capitalize) || hexColor}
+	{/if}
 </button>
 
 <Modal bind:isOpen={isModalOpened}>
 	<div slot="title">
-		<!-- TODO: i18n -->
-		Pick a color
+		<Store store={i('settings.color.modal.title')} />
 	</div>
 
 	<div slot="body" class="flex flex-col gap-3 py-3">

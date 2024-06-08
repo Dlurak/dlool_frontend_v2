@@ -442,6 +442,21 @@ const en = {
 	'settings.color': 'Colors',
 	'settings.color.new': 'Add a subject',
 	'settings.color.subject.placeholder': 'Subject',
+	'settings.color.showHex': 'Show hex values',
+	'settings.color.modal.title': 'Pick a color',
+	'settings.color.importAndExport': 'Import and export',
+	'settings.color.import': 'Import',
+	'settings.color.import.error': "The file couldn't be imported. Is it in the right format?",
+	'settings.color.import.success': 'Successfully imported colors!',
+	'settings.color.import.confirm': {
+		counts: {
+			default:
+				'Are you sure, that you want to import the colors from a file? Your current $amount colors will be overwritten!',
+			1: 'Are you sure, that you want to import the colors from a file? Your current one will be overwritten!',
+			2: 'Are you sure, that you want to import the colors from a file? Your current two colors will be overwritten!'
+		}
+	},
+	'settings.color.export': 'Export',
 
 	'settings.save': 'Save',
 

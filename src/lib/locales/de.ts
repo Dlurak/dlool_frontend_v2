@@ -454,6 +454,22 @@ const de = {
 	'settings.color': 'Farben',
 	'settings.color.new': 'Fach hinzufügen',
 	'settings.color.subject.placeholder': 'Fach',
+	'settings.color.showHex': 'Farbcode anzeigen',
+	'settings.color.modal.title': 'Eine Farbe auswählen',
+	'settings.color.importAndExport': 'Import und export',
+	'settings.color.import': 'Importieren',
+	'settings.color.import.error':
+		'Die Datei konnte nicht importiert werden. Hat sie das richtige Format?',
+	'settings.color.import.success': 'Farben erfolgreich importiert!',
+	'settings.color.import.confirm': {
+		counts: {
+			default:
+				'Bist Du Dir sicher, dass du die Farben importieren willst? Deine bisherigen $amount werden dann überschrieben!',
+			1: 'Bist Du Dir sicher, dass du die Farben importieren willst? Deine bisherige Farbe wird dann überschrieben!',
+			2: 'Bist Du Dir sicher, dass du die Farben importieren willst? Deine bisherigen zwei werden dann überschrieben!'
+		}
+	},
+	'settings.color.export': 'Exportieren',
 
 	'settings.save': 'Speichern',
 

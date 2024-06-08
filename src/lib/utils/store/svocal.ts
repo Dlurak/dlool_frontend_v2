@@ -35,7 +35,8 @@ const sv = {
 	],
 	'dlool.ownUserDetails': ['dlool.ownUserDetails', () => null as null | OwnUserDetails],
 	'settings.homework.transparency': ['settings.homework.transparency', () => 0.6],
-	'settings.color': ['settings.color', () => ({}) as Record<string, string>]
+	'settings.color': ['settings.color', () => ({}) as Record<string, string>],
+	'settings.color.showHex': ['settings.color.showHex', () => false]
 } as const;
 
 type SvocalKey = keyof typeof sv;
