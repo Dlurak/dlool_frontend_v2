@@ -10,7 +10,7 @@
 	import { createFloatingActions } from 'svelte-floating-ui';
 	import { offset, flip, shift } from '@floating-ui/core';
 	import { createEventDispatcher } from 'svelte';
-	import { useToggle } from 'nutzlich';
+	import { useToggle, clickOutside } from 'nutzlich';
 	import { Icon, CalendarDays } from 'svelte-hero-icons';
 	import Frame from '../Frame.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
@@ -69,7 +69,13 @@
 </Frame>
 
 {#if $show}
-	<div class="z-10 px-2 py-2" use:floatingContent>
+	<div
+		class="z-10 px-2 py-2"
+		use:floatingContent
+		use:clickOutside={{
+			callback: () => show.set(false)
+		}}
+	>
 		<Cal
 			{earliest}
 			{latest}

@@ -24,8 +24,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       nutzlich:
-        specifier: ^0.4.0
-        version: 0.4.0(@sveltejs/kit@2.5.7(@sveltejs/vite-plugin-svelte@3.1.0(svelte@4.2.15)(vite@5.2.10))(svelte@4.2.15)(vite@5.2.10))(svelte@4.2.15)
+        specifier: ^0.5.0
+        version: 0.5.0(@sveltejs/kit@2.5.7(@sveltejs/vite-plugin-svelte@3.1.0(svelte@4.2.15)(vite@5.2.10))(svelte@4.2.15)(vite@5.2.10))(svelte@4.2.15)
       svelte-bootstrap-icons:
         specifier: ^3.1.1
         version: 3.1.1
@@ -1203,8 +1203,8 @@ packages:
     resolution: {integrity: sha512-ppwTtiJZq0O/ai0z7yfudtBpWIoxM8yE6nHi1X47eFR2EWORqfbu6CnPlNsjeN683eT0qG6H/Pyf9fCcvjnnnQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  nutzlich@0.4.0:
-    resolution: {integrity: sha512-s4MALMYYuZS/LOh1CwKsxPPQpIwGuJcvTkuFR98ge7arywJlXM0Dut9Yw4zK/PAZBLrkFmILmaMNe9bts3znEQ==}
+  nutzlich@0.5.0:
+    resolution: {integrity: sha512-AB7oWa2MZ794g5iDpxMxx5TXzEZhSnsTBz7sisCzXJQPuBJZqFzZyub7StUDcNJmPX5kklfLoMYOJ00gM0FQaQ==}
     peerDependencies:
       '@sveltejs/kit': '*'
       svelte: ^4.0.0
@@ -2921,7 +2921,7 @@ snapshots:
     dependencies:
       path-key: 4.0.0
 
-  nutzlich@0.4.0(@sveltejs/kit@2.5.7(@sveltejs/vite-plugin-svelte@3.1.0(svelte@4.2.15)(vite@5.2.10))(svelte@4.2.15)(vite@5.2.10))(svelte@4.2.15):
+  nutzlich@0.5.0(@sveltejs/kit@2.5.7(@sveltejs/vite-plugin-svelte@3.1.0(svelte@4.2.15)(vite@5.2.10))(svelte@4.2.15)(vite@5.2.10))(svelte@4.2.15):
     dependencies:
       '@sveltejs/kit': 2.5.7(@sveltejs/vite-plugin-svelte@3.1.0(svelte@4.2.15)(vite@5.2.10))(svelte@4.2.15)(vite@5.2.10)
       svelte: 4.2.15

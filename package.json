@@ -47,7 +47,7 @@
 		"color-convert": "^2.0.1",
 		"colorame": "^0.0.1",
 		"dice-coefficient": "^2.1.1",
-		"nutzlich": "^0.4.0",
+		"nutzlich": "^0.5.0",
 		"svelte-bootstrap-icons": "^3.1.1",
 		"svelte-confetti": "^1.4.0",
 		"svelte-floating-ui": "^1.5.8",

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Store from '$lib/components/utils/Store.svelte'
+	import Store from '$lib/components/utils/Store.svelte';
 	import TextInput from '$lib/components/input/Text.svelte';
 	import { i } from '$lib/i18n/store';
 	import { svocal } from '$lib/utils/store/svocal';
