@@ -15,6 +15,7 @@
 	import { currentLang } from '$lib/stores';
 	import { svocal } from '$lib/utils/store/svocal';
 
+	export let subject: string;
 	export let hexColor: string;
 	$: txtColor = blackOrWhiteText(parseHexIntoRgb(hexColor));
 
@@ -47,7 +48,7 @@
 
 <Modal bind:isOpen={isModalOpened}>
 	<div slot="title">
-		<Store store={i('settings.color.modal.title')} />
+		<Store store={i('settings.color.modal.title', { subject }, {})} />
 	</div>
 
 	<div slot="body" class="flex flex-col gap-3 py-3">

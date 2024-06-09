@@ -16,13 +16,16 @@
 	import { z } from 'zod';
 	import { sendToast } from '$lib/components/layout/toasts';
 	import { confirm } from '$lib/components/layout/confirmation';
+	import MetaData from '$lib/components/utils/MetaData.svelte';
 
 	const colors = svocal('settings.color');
 	const showHex = svocal('settings.color.showHex');
 </script>
 
+<MetaData title={i('settings.color.title')} />
+
 <div class="flex w-full flex-col gap-2">
-	<div class="flex justify-between">
+	<div class="flex justify-between flex-col gap-2 sm:flex-row">
 		<Store store={i('settings.color.importAndExport')} />
 
 		<span class="flex gap-2">
@@ -77,10 +80,12 @@
 		</span>
 	</div>
 
-	{#each Object.entries($colors) as [subject, hexColor]}
+	{#each Object.entries($colors) as [subject, hexColor], ind}
+	{@const isLast = ind === Object.keys($colors).length - 1}
 		<div class="flex flex-col justify-between gap-2 sm:flex-row">
 			<ColorPreview
 				{hexColor}
+				{subject}
 				on:change={({ detail: color }) => {
 					colors.update((obj) => {
 						obj[subject] = color;
@@ -109,6 +114,9 @@
 				/>
 			</span>
 		</div>
+		{#if !isLast}
+			<hr class="border-2 border-zinc-200 dark:border-zinc-800" />
+		{/if}
 	{/each}
 
 	<button
