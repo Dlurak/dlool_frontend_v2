@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Store from '$lib/components/utils/Store.svelte';
+	import Store from '$lib/components/utils/Store.svelte'
 	import TextInput from '$lib/components/input/Text.svelte';
 	import { i } from '$lib/i18n/store';
 	import { svocal } from '$lib/utils/store/svocal';
@@ -12,11 +12,8 @@
 	import BoolSetting from '$lib/components/settings/BoolSetting.svelte';
 	import SettingsButton from '$lib/components/buttons/SettingsButton.svelte';
 	import { downloadJSON } from '$lib/utils/files/download';
-	import { readJSON } from '$lib/utils/files/upload';
-	import { z } from 'zod';
-	import { sendToast } from '$lib/components/layout/toasts';
-	import { confirm } from '$lib/components/layout/confirmation';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
+	import { loadFromFile } from '$lib/components/settings/color/loadFromFile';
 
 	const colors = svocal('settings.color');
 	const showHex = svocal('settings.color.showHex');
@@ -25,45 +22,11 @@
 <MetaData title={i('settings.color.title')} />
 
 <div class="flex w-full flex-col gap-2">
-	<div class="flex justify-between flex-col gap-2 sm:flex-row">
+	<div class="flex flex-col justify-between gap-2 sm:flex-row">
 		<Store store={i('settings.color.importAndExport')} />
 
 		<span class="flex gap-2">
-			<SettingsButton
-				on:click={async () => {
-					const confirmed =
-						Object.keys($colors).length === 0 ||
-						(await confirm({
-							ok: i('settings.color.import'),
-							desc: i(
-								'settings.color.import.confirm',
-								{ amount: `${Object.keys($colors).length}` },
-								{ count: Object.keys($colors).length }
-							)
-						}));
-					if (!confirmed) return;
-
-					const newColors = await readJSON(
-						z.record(z.string(), z.string().regex(/^#?(([a-f\d]{3})|([a-f\d]{6}))$/i))
-					).catch(() => null);
-
-					if (newColors === null) {
-						sendToast({
-							type: 'error',
-							timeout: 5_000,
-							content: i('settings.color.import.error')
-						});
-						return;
-					}
-
-					sendToast({
-						type: 'success',
-						timeout: 5_000,
-						content: i('settings.color.import.success')
-					});
-					colors.set(newColors);
-				}}
-			>
+			<SettingsButton on:click={loadFromFile}>
 				<Icon src={DocumentArrowDown} class="h-5 w-5" />
 				<Store store={i('settings.color.import')} />
 			</SettingsButton>
@@ -81,7 +44,7 @@
 	</div>
 
 	{#each Object.entries($colors) as [subject, hexColor], ind}
-	{@const isLast = ind === Object.keys($colors).length - 1}
+		{@const isLast = ind === Object.keys($colors).length - 1}
 		<div class="flex flex-col justify-between gap-2 sm:flex-row">
 			<ColorPreview
 				{hexColor}
