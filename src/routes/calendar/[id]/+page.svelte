@@ -6,7 +6,7 @@
 	import { Icon, MapPin, Pencil, Trash } from 'svelte-hero-icons';
 	import type { PageData } from './$types';
 	import { useAuth } from '$lib/utils/store/auth';
-	import { derived } from 'svelte/store';
+	import { derived, writable } from 'svelte/store';
 	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
 	import { sendDefaultErrorToast, sendToast } from '$lib/components/layout/toasts';
 	import { goto } from '$app/navigation';
@@ -16,16 +16,23 @@
 
 	export let data: PageData;
 
+	let showEditModal = false;
+
+	const queryStore = writable({
+		school: data.data?.class.school.name ?? '',
+		classes: data.data?.class.name ? [data.data?.class.name] : []
+	});
+
 	const { isInClass, isLoggedIn } = useAuth({
-		query: {
-			school: data.data?.class.school.name ?? '',
-			classes: data.data?.class.name ? [data.data?.class.name] : []
-		}
+		query: queryStore
 	});
 
 	const hasEditRights = derived([isInClass, isLoggedIn], ([a, b]) => a && b);
 
-	let showEditModal = false;
+	$: queryStore.set({
+		school: data.data?.class.school.name ?? '',
+		classes: data.data?.class.name ? [data.data?.class.name] : []
+	});
 </script>
 
 <div class="flex h-full w-full flex-col gap-2">

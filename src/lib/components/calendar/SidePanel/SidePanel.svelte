@@ -5,6 +5,7 @@
 	import { wrapWithPromise } from '$lib/utils/promises';
 	import { useAuth } from '$lib/utils/store/auth';
 	import { objToQueryParams } from '$lib/utils/url/query';
+	import { writable } from 'svelte/store';
 	import New from './New.svelte';
 
 	export let query: {
@@ -13,15 +14,18 @@
 		limit: number;
 		offset: number;
 	};
+	const queryStore = writable(query);
 	export let totalCount: undefined | Promise<number>;
 
-	const { isInClass, isLoggedIn } = useAuth({ query });
+	$: queryStore.set(query);
+
+	const { isInClass, isLoggedIn } = useAuth({ query: queryStore });
 </script>
 
 <div class="flex flex-col gap-4">
 	<Filter on:change {query} />
 
-	{#if $isInClass && $isLoggedIn && query?.school}
+	{#if $isInClass && $isLoggedIn && query.school}
 		<New
 			query={{
 				school: query.school,

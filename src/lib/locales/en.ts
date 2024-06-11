@@ -385,6 +385,9 @@ const en = {
 	'calendar.title.placeholder': 'Title',
 	'calendar.timeRange.withEnd': '$start until $end',
 	'calendar.timeRange.withoutEnd': '$start',
+	'calendar.new': 'New Event',
+	'calendar.new.create': 'Create',
+	'calendar.new.modal.title': 'Create a new event',
 	'calendar.priority.Minimal': 'Unimportant',
 	'calendar.priority.Low': 'Kinda important',
 	'calendar.priority.Medium': 'Medium important',
@@ -397,6 +400,7 @@ const en = {
 	'calendar.delete.success': 'Successfully deleted',
 	'calendar.update.success': 'Successfully updated',
 	'calendar.update.update': 'Update',
+	'calendar.create.success': 'Erreignis erfolgreich erstellt',
 
 	'settings.noneSelected': 'Select a category',
 	'settings.profile': 'Account',

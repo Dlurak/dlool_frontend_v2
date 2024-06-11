@@ -395,6 +395,9 @@ const de = {
 	'calendar.title.placeholder': 'Titel',
 	'calendar.timeRange.withEnd': 'Von $start bis $end',
 	'calendar.timeRange.withoutEnd': 'Ab $start',
+	'calendar.new': 'Neues Ereignis',
+	'calendar.new.create': 'Erstellen',
+	'calendar.new.modal.title': 'Neues Ereignis erstellen',
 	'calendar.priority.Minimal': 'Unwichtig',
 	'calendar.priority.Low': 'Bischen wichtig',
 	'calendar.priority.Medium': 'Mittelwichtig',
@@ -407,6 +410,7 @@ const de = {
 	'calendar.delete.success': 'Erfolgreich gelöscht',
 	'calendar.update.success': 'Erfolgreich aktualisiert',
 	'calendar.update.update': 'Aktualisieren',
+	'calendar.create.success': 'Erreignis erfolgreich erstellt',
 
 	'settings.noneSelected': 'Wähle eine Kategorie aus',
 	'settings.profile': 'Profil',

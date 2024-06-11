@@ -1,12 +1,12 @@
-import { derived } from 'svelte/store';
+import { derived, readable, type Readable } from 'svelte/store';
 import { svocal } from './svocal';
 import { currentMs } from '../dates/current';
 
 interface AuthProps {
-	query?: {
+	query?: Readable<{
 		school: string | null;
 		classes: string[];
-	};
+	}>;
 }
 
 export const useAuth = (props: AuthProps = {}) => {
@@ -15,16 +15,19 @@ export const useAuth = (props: AuthProps = {}) => {
 
 	return {
 		userDetails: { subscribe: userDetails.subscribe },
-		isInClass: derived(userDetails, ($ud) => {
-			const matches = $ud?.classes.some(({ school, name }) => {
-				const schoolMatches = props.query?.school === school.name;
-				const classMatches = props.query?.classes.includes(name);
+		isInClass: derived(
+			[userDetails, props.query ?? readable({ school: null, classes: [] })],
+			([$ud, $query]) => {
+				const matches = $ud?.classes.some(({ school, name }) => {
+					const schoolMatches = $query?.school === school.name;
+					const classMatches = $query?.classes.includes(name);
 
-				return schoolMatches && classMatches;
-			});
+					return schoolMatches && classMatches;
+				});
 
-			return matches ?? false;
-		}),
+				return matches ?? false;
+			}
+		),
 		isLoggedIn: derived(tokenExpires, ($tokenExpires) => {
 			return $tokenExpires !== null && $tokenExpires > currentMs();
 		})

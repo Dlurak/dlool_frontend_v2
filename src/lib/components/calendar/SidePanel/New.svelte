@@ -15,6 +15,7 @@
 	import { safeMap } from '$lib/utils/null/safeMap';
 	import NewInner from './NewInner.svelte';
 	import { i } from '$lib/i18n/store';
+	import Store from '$lib/components/utils/Store.svelte';
 
 	export let query: {
 		school: string;
@@ -51,13 +52,13 @@
 		isOpen = !isOpen;
 	}}
 >
-	<!-- TODO: i18n -->
-	New Note
+	<Store store={i('calendar.new')} />
 </button>
 
 <Modal bind:isOpen>
-	<!-- TODO: i18n -->
-	<div slot="title">Create a new event</div>
+	<div slot="title">
+		<Store store={i('calendar.new.modal.title')} />
+	</div>
 
 	<div slot="body" class="flex flex-col gap-3 py-3">
 		{#if query.classes.filter(directShowClass).length > 1}
@@ -86,8 +87,7 @@
 					.then(() => {
 						sendToast({
 							type: 'success',
-							// TODO: i18n
-							content: i('note.create.success'),
+							content: i('calendar.create.success'),
 							timeout: 5_000
 						});
 						return invalidateAll();
@@ -95,8 +95,7 @@
 					.catch(sendDefaultErrorToast);
 			}}
 		>
-			<!-- TODO: i18n -->
-			Create
+			<Store store={i('calendar.new.create')} />
 		</PrimaryButton>
 	</div>
 </Modal>

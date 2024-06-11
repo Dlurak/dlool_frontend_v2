@@ -6,7 +6,7 @@
 
 	const dispatch = createEventDispatcher<{ open: null; close: null }>();
 
-	let dialogElement: HTMLDialogElement;
+	let dialogElement: HTMLDialogElement | undefined;
 	export let isOpen = false;
 
 	export const open = () => {
