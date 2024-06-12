@@ -1,4 +1,5 @@
 import type { NavigationTarget } from '$lib/components/layout/navigation/types';
+import type { Timetable } from '$lib/components/settings/timetable/types';
 import type { OwnUserDetails } from '$lib/dlool/userInfo/own';
 import type { LocaleAbbr } from '$lib/i18n/i18n';
 import { localstorage } from 'svocal';
@@ -36,7 +37,20 @@ const sv = {
 	'dlool.ownUserDetails': ['dlool.ownUserDetails', () => null as null | OwnUserDetails],
 	'settings.homework.transparency': ['settings.homework.transparency', () => 0.6],
 	'settings.color': ['settings.color', () => ({}) as Record<string, string>],
-	'settings.color.showHex': ['settings.color.showHex', () => false]
+	'settings.color.showHex': ['settings.color.showHex', () => false],
+	'settings.timetable': [
+		'settings.timetable',
+		() =>
+			({
+				sun: [],
+				mon: [],
+				tue: [],
+				wed: [],
+				thu: [],
+				fri: [],
+				sat: []
+			}) satisfies Timetable as Timetable
+	]
 } as const;
 
 type SvocalKey = keyof typeof sv;

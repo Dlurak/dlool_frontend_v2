@@ -463,6 +463,9 @@ const en = {
 	},
 	'settings.color.export': 'Export',
 
+	'settings.timetable': 'Timetable',
+	'settings.timetable.subject.placeholder': 'Subject',
+
 	'settings.save': 'Save',
 
 	'filter.filter': 'Filters',

@@ -1,5 +1,5 @@
 import type { Readable } from 'svelte/store';
-import { Cog, PaintBrush, User, type IconSource } from 'svelte-hero-icons';
+import { Calendar, Cog, PaintBrush, User, type IconSource } from 'svelte-hero-icons';
 import { i } from '$lib/i18n/store';
 
 type Setting = {
@@ -18,6 +18,11 @@ export const settings: Setting[] = [
 		uri: '/general',
 		label: i('settings.general'),
 		icon: Cog
+	},
+	{
+		uri: '/timetable',
+		label: i('settings.timetable'),
+		icon: Calendar
 	},
 	{
 		uri: '/color',

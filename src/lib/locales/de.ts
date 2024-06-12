@@ -476,6 +476,9 @@ const de = {
 	},
 	'settings.color.export': 'Exportieren',
 
+	'settings.timetable': 'Stundenplan',
+	'settings.timetable.subject.placeholder': 'Fach',
+
 	'settings.save': 'Speichern',
 
 	'filter.filter': 'Filter',

@@ -17,6 +17,7 @@
 
 	const dispatch = createEventDispatcher<{
 		input: string;
+		enter: null;
 	}>();
 </script>
 
@@ -34,6 +35,9 @@
 				placeholder={$placeholder}
 				on:input={({ currentTarget }) => {
 					dispatch('input', currentTarget.value);
+				}}
+				on:keydown={({ key }) => {
+					if (key === 'Enter') dispatch('enter', null);
 				}}
 				on:focus
 				on:blur
