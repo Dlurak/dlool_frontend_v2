@@ -1,7 +1,3 @@
-<script lang="ts" context="module">
-	const WEEKDAYS: TimetableWeekday[] = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-</script>
-
 <script lang="ts">
 	import {
 		addRow,
@@ -17,13 +13,13 @@
 	import { svocal } from '$lib/utils/store/svocal';
 	import { mediaQuery } from 'nutzlich';
 	import { DocumentArrowDown, DocumentArrowUp, Icon, Plus, Trash } from 'svelte-hero-icons';
-	import type { TimetableWeekday } from '$lib/components/settings/timetable/types';
 	import { onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import SettingsButton from '$lib/components/buttons/SettingsButton.svelte';
 	import { downloadJSON } from '$lib/utils/files/download';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
 	import { loadFromFile } from '$lib/components/settings/timetable/loadFromFile';
+	import { WEEKDAYS } from '$lib/components/settings/timetable/weekdays';
 
 	const timetable = svocal('settings.timetable');
 	const weekStartsOn = svocal('settings.weekStartsOn');

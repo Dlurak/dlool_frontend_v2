@@ -3,6 +3,7 @@
 	import type { Readable } from 'svelte/store';
 	import Frame from './Frame.svelte';
 	import { createEventDispatcher } from 'svelte';
+	import { randomStr } from '$lib/utils/random';
 
 	export let placeholder: Readable<string>;
 	export let icon: IconSource | null = null;
@@ -14,7 +15,9 @@
 	export let isValid: boolean | null = null;
 
 	export let disabled = false;
+	export let options: string[] = [];
 
+	const id = randomStr(16);
 	const dispatch = createEventDispatcher<{
 		input: string;
 		enter: null;
@@ -32,6 +35,7 @@
 				{disabled}
 				type="text"
 				class="w-full bg-transparent focus:outline-none disabled:cursor-not-allowed"
+				list={id}
 				placeholder={$placeholder}
 				on:input={({ currentTarget }) => {
 					dispatch('input', currentTarget.value);
@@ -64,3 +68,9 @@
 		{/if}
 	</div>
 </Frame>
+
+<datalist {id}>
+	{#each options as option}
+		<option value={option} />
+	{/each}
+</datalist>

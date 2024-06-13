@@ -1,5 +1,13 @@
 <script context="module" lang="ts">
 	export const wasSuccessfull = writable<boolean | null>(null);
+
+	function safeDaysUntil(props: DaysUntilProps) {
+		try {
+			return daysUntil(props);
+		} catch {
+			return 7;
+		}
+	}
 </script>
 
 <script lang="ts">
@@ -11,10 +19,19 @@
 	import { createEventDispatcher } from 'svelte';
 	import { AcademicCap } from 'svelte-hero-icons';
 	import { readable, writable } from 'svelte/store';
-	import { currentCustomDate, customDateToNormal, type CustomDate } from '$lib/utils/dates/custom';
+	import {
+		currentCustomDate,
+		customDateToNormal,
+		normalToCustomDate,
+		type CustomDate
+	} from '$lib/utils/dates/custom';
 	import DateSelector from '$lib/components/input/date/DateSelector.svelte';
 	import PrimaryButton from '$lib/components/buttons/PrimaryButton.svelte';
 	import { isUserInClass } from '$lib/utils/dlool/isInClass';
+	import { WEEKDAYS } from '$lib/components/settings/timetable/weekdays';
+	import { svocal } from '$lib/utils/store/svocal';
+	import { isString } from '$lib/utils/arrays/filter';
+	import { daysUntil, type DaysUntilProps } from '$lib/components/settings/timetable/daysUntil';
 
 	interface CreationPayload {
 		school: string;
@@ -24,6 +41,8 @@
 		from: CustomDate;
 		due: CustomDate;
 	}
+
+	const timetable = svocal('settings.timetable');
 
 	const dispatch = createEventDispatcher<{ submit: CreationPayload }>();
 
@@ -50,6 +69,19 @@
 		description &&
 		customDateToNormal(due) > customDateToNormal(from)
 	);
+
+	$: {
+		const dueInDays = safeDaysUntil({
+			subject,
+			timetable: $timetable,
+			currentDay: WEEKDAYS[customDateToNormal(from).getDay()]
+		});
+
+		const date = customDateToNormal(from);
+		date.setDate(date.getDate() + dueInDays);
+
+		due = normalToCustomDate(date);
+	}
 
 	wasSuccessfull.subscribe((successfull) => {
 		if (successfull) {
@@ -86,6 +118,7 @@
 		placeholder={i('assignments.create.subject')}
 		bind:value={subject}
 		isValid={!!subject}
+		options={$timetable[WEEKDAYS[customDateToNormal(from).getDay()]].filter(isString)}
 	/>
 
 	<!-- TODO: Replace description input with a textarea -->

@@ -52,6 +52,27 @@ export function wrapWithPromise<T>(data: T) {
 	return promise(data) as AllPromise<T>;
 }
 
+/**
+ * Wraps a promise to return an object indicating success or failure.
+ *
+ * @template T The type of the resolved value of the promise.
+ * @param data - The promise to be handled.
+ * @returns A promise that resolves to an object with either the resolved data and a type of 'success',
+ *          or the caught error and a type of 'error'.
+ *
+ * @example
+ * ```typescript
+ * const myPromise = fetch('/api/data').then(response => response.json());
+ *
+ * safePromise(myPromise).then(result => {
+ *   if (result.type === 'success') {
+ *     console.log('Data:', result.data);
+ *   } else {
+ *     console.error('Error:', result.error);
+ *   }
+ * });
+ * ```
+ */
 export async function safePromise<T>(data: Promise<T>) {
 	return data
 		.then((data) => ({
