@@ -464,7 +464,15 @@ const en = {
 	'settings.color.export': 'Export',
 
 	'settings.timetable': 'Timetable',
+	'settings.timetable.title': 'Timetable',
 	'settings.timetable.subject.placeholder': 'Subject',
+	'settings.timetable.importAndExport': 'Import and export',
+	'settings.timetable.export': 'Export',
+	'settings.timetable.import': 'Import',
+	'settings.timetable.import.success': 'Timetable successfully imported',
+	'settings.timetable.import.error':
+		"The file couldn't be imported. Does it contain a correctly formatted timetable?",
+	'settings.timetable.confirm.desc': 'Are you sure you want to overwrite your current timetable?',
 
 	'settings.save': 'Save',
 

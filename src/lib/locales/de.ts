@@ -477,7 +477,15 @@ const de = {
 	'settings.color.export': 'Exportieren',
 
 	'settings.timetable': 'Stundenplan',
+	'settings.timetable.title': 'Stundenplan',
 	'settings.timetable.subject.placeholder': 'Fach',
+	'settings.timetable.importAndExport': 'Import und Export',
+	'settings.timetable.export': 'Exportieren',
+	'settings.timetable.import': 'Importieren',
+	'settings.timetable.import.success': 'Stundenplan erfolgreich importiert',
+	'settings.timetable.import.error':
+		'Die Datei konnte nicht importiert werden. Enthält sie einen gültigen Stundenplan?',
+	'settings.timetable.confirm.desc': 'Möchtest du wirklich deine bisherigen Farben überschreiben?',
 
 	'settings.save': 'Speichern',
 

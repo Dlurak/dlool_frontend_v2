@@ -51,3 +51,15 @@ export function wrapWithPromise<T>(data: T) {
 
 	return promise(data) as AllPromise<T>;
 }
+
+export async function safePromise<T>(data: Promise<T>) {
+	return data
+		.then((data) => ({
+			data,
+			type: 'success' as const
+		}))
+		.catch((error) => ({
+			error,
+			type: 'error' as const
+		}));
+}

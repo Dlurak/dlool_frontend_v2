@@ -6,6 +6,7 @@
 
 	let width: number | null = null;
 	let domWidth = 0;
+	let dividerWidth = 0;
 
 	export let allowSnapClosing = true;
 	export let minimum = 200;
@@ -25,7 +26,6 @@
 
 			const isGettingSmaller = diff < 0;
 			const isTooSmall = width < threshold;
-
 			if (isGettingSmaller && isTooSmall && allowSnapClosing) showSideMenu.set(false);
 		};
 
@@ -43,7 +43,7 @@
 	const isSmall = mediaQuery('(max-width: 768px)');
 </script>
 
-<div class="flex h-full w-full flex-1 flex-col items-stretch gap-2 md:flex-row">
+<div class="flex h-full w-full flex-1 flex-col items-stretch md:flex-row">
 	{#if $isSmall || $showSideMenu}
 		<div
 			class="flex h-full w-full max-w-full flex-col py-2 md:w-[--w] md:min-w-[--min-w] md:max-w-[--max-w] md:py-0"
@@ -63,7 +63,12 @@
 			<slot name="a"></slot>
 		</div>
 
-		<button class="hidden flex-1 md:flex" on:mousedown={handleMouseDown} tabindex="-1">
+		<button
+			class="hidden flex-1 px-1 md:flex"
+			on:mousedown={handleMouseDown}
+			tabindex="-1"
+			bind:clientWidth={dividerWidth}
+		>
 			<slot name="resizer">
 				<div class="h-full cursor-col-resize px-2">
 					<div class="h-full w-1 rounded bg-zinc-300 dark:bg-zinc-700" />
@@ -74,7 +79,7 @@
 
 	<div
 		class="flex w-full flex-col items-center justify-center gap-2 md:w-[--w]"
-		style:--w={`calc(100% - ${$showSideMenu ? domWidth : 0}px)`}
+		style:--w={`calc(100% - ${dividerWidth}px - ${$showSideMenu ? domWidth : 0}px)`}
 	>
 		{#if !$showSideMenu}
 			<div class="hidden w-full md:flex">
@@ -87,7 +92,7 @@
 			</div>
 		{/if}
 
-		<div class="flex h-full w-full">
+		<div class="flex h-full w-full max-w-full">
 			<slot name="b"></slot>
 		</div>
 	</div>

@@ -1,4 +1,8 @@
-import type { Timetable, TimetableWeekday } from '$lib/components/settings/timetable/types';
+import type {
+	Timetable,
+	TimetableBuilder,
+	TimetableWeekday
+} from '$lib/components/settings/timetable/types';
 import { filterOutDuplicates } from '$lib/utils/arrays/filter';
 import { lengthenUntil } from '$lib/utils/arrays/lengthen';
 import { removeNthElement } from '$lib/utils/arrays/remove';
@@ -36,7 +40,10 @@ export function removeNthLesson(timetable: Timetable, lessonIndex: number): Time
 	);
 }
 
-export function cleanUpTimeTable(timetable: Timetable): Timetable {
+export function cleanUpTimeTable(
+	timetable: Timetable | TimetableBuilder<string | null>
+): Timetable {
+	// @ts-expect-error Trust me it works
 	const entries = objectEntries(timetable).map(
 		([day, lessons]) => [day, filterOutDuplicates(lessons.filter((x) => x))] as TimeTableEntry
 	);
@@ -46,4 +53,10 @@ export function cleanUpTimeTable(timetable: Timetable): Timetable {
 	return fromEntries(
 		entries.map(([day, lessons]) => [day, lengthenUntil(lessons, undefined, maxLength)] as const)
 	);
+}
+
+const isString = (x: unknown): x is string => typeof x === 'string';
+
+export function allLessons(timetable: Timetable) {
+	return Object.values(timetable).flat().filter(isString);
 }
