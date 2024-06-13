@@ -10,6 +10,7 @@
 	const navTexts = svocal('settings.nav.texts');
 	const weekStartsOn = svocal('settings.weekStartsOn');
 	const homeworkTransparency = svocal('settings.homework.transparency');
+	const launcherOutlineWidth = svocal('settings.launcher.outlineWidth')
 </script>
 
 <MetaData title={i('title.settings.general')} />
@@ -48,6 +49,18 @@
 					value: num
 				};
 			})}
+		/>
+	</section>
+
+	<section class="flex flex-col gap-2">
+		<h3><Store store={i('settings.general.launcher')} /></h3>
+
+		<RangeSettings
+			label={i('settings.general.launcher.outlineWidth')}
+			bind:value={$launcherOutlineWidth}
+			min={0}
+			max={10}
+			step={1}
 		/>
 	</section>
 </div>

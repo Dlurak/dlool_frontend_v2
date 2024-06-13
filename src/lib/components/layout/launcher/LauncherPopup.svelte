@@ -4,6 +4,7 @@
 	import LauncherItem from './LauncherItem.svelte';
 	import { tick } from 'svelte';
 	import { i } from '$lib/i18n/store';
+	import { svocal } from '$lib/utils/store/svocal';
 
 	const { search, filteredAndSortedOptions, focusedIndex, isOpen } = useLauncher();
 
@@ -17,14 +18,16 @@
 	});
 
 	const inputPlaceholder = i('launcher.placeholder');
+	const launcherOutlineWidth = svocal('settings.launcher.outlineWidth')
 </script>
 
 <div
 	class="
 		w-full max-w-[min(90%,46rem)] rounded
 		bg-zinc-500 bg-opacity-25 text-white
-		outline outline-2 outline-emerald-400 backdrop-blur-md
+		outline outline-emerald-400 backdrop-blur-md
 	"
+	style:outline-width={`${$launcherOutlineWidth}px`}
 >
 	<div class="flex items-center gap-2 p-4 px-4 text-xl">
 		<Icon src={MagnifyingGlass} class="h-5 w-5" />

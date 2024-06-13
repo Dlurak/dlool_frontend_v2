@@ -442,6 +442,8 @@ const en = {
 	'settings.general.calendar.weekStartsOn': 'First day of the week',
 	'settings.general.assignments': 'Assignments',
 	'settings.general.assignments.transparency': 'transparency of overdue assignments',
+	'settings.general.launcher': 'Launcher',
+	'settings.general.launcher.outlineWidth': 'Width of the green outline',
 
 	'settings.color': 'Colors',
 	'settings.color.title': 'Color settings',

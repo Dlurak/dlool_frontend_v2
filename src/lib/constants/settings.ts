@@ -6,7 +6,7 @@ type Setting = {
 	uri: string;
 	label: Readable<string>;
 	icon?: IconSource;
-};
+} | 'hr';
 
 export const settings: Setting[] = [
 	{
@@ -14,6 +14,7 @@ export const settings: Setting[] = [
 		label: i('settings.profile'),
 		icon: User
 	},
+	'hr',
 	{
 		uri: '/general',
 		label: i('settings.general'),

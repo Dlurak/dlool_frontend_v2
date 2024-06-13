@@ -50,6 +50,10 @@ const sv = {
 				fri: [],
 				sat: []
 			}) satisfies Timetable as Timetable
+	],
+	'settings.launcher.outlineWidth': [
+		'settings.launcher.outlineWidth',
+		() => 2
 	]
 } as const;
 

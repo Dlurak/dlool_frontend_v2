@@ -454,6 +454,8 @@ const de = {
 	'settings.general.calendar.weekStartsOn': 'Erster Tag der Woche',
 	'settings.general.assignments': 'Hausaufgaben',
 	'settings.general.assignments.transparency': 'Transparenz überfälliger Hausaufgaben',
+	'settings.general.launcher': 'Suche',
+	'settings.general.launcher.outlineWidth': 'Breite der grünen Umrandung',
 
 	'settings.color': 'Farben',
 	'settings.color.title': 'Farbeinstellungen',
