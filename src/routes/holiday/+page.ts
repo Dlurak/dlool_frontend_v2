@@ -47,9 +47,11 @@ export const load: PageLoad = async ({ url, data }) => {
 	const nextMonth = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 1);
 	const endDate = new Date(nextMonth.getTime() - 86400000);
 
-	const [publicHolidays, schoolHolidays] = await Promise.all([
+	const [publicHolidays, schoolHolidays, subdivisions, countries] = await Promise.all([
 		holiday.getPublicHolidays(country, startDate, endDate),
-		holiday.getSchoolHolidays(country, startDate, endDate)
+		holiday.getSchoolHolidays(country, startDate, endDate),
+		holiday.getSubdivisions(country),
+		holiday.getCountries()
 	]);
 
 	const allHolidays = [...publicHolidays, ...schoolHolidays].filter(
@@ -63,7 +65,12 @@ export const load: PageLoad = async ({ url, data }) => {
 	return {
 		startDate,
 		endDate,
-		location: { state, country },
+		location: {
+			state,
+			country,
+			apiSubdivision: subdivisions.find(({ shortName }) => shortName === state),
+			apiCountry: countries.find(({ isoCode }) => isoCode === country)
+		},
 		type: 'success' as const,
 		holidays: allHolidays
 	};

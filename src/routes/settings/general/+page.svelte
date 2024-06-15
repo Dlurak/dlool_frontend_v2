@@ -105,14 +105,14 @@
 				<SelectSetting
 					typpable
 					label={i('settings.genral.holiday.state')}
-					options={d.map(({ isoCode, name }) => ({
+					options={d.map(({ shortName, name }) => ({
 						label: readable(
 							(
 								name.find(({ language }) => language === $currentLang.toUpperCase()) ??
 								name.find(({ language }) => language === 'EN')
 							)?.text ?? ''
 						),
-						value: isoCode
+						value: shortName
 					}))}
 					bind:value={$holidayState}
 					on:select

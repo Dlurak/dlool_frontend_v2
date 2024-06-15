@@ -88,7 +88,7 @@
 	}}
 />
 
-<div class="entire relative">
+<div class="entire relative w-full">
 	<div use:floatingRef>
 		<TextInput
 			isValid={!!value?.filter((i) => i).length}

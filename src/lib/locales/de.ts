@@ -503,22 +503,6 @@ const de = {
 	'holiday.date': 'Am $date',
 	'holiday.quality.mandatory': 'Verpflichtend',
 	'holiday.quality.optional': 'Optional',
-	'holiday.location.brandenburg': 'Brandenburg',
-	'holiday.location.berlin': 'Berlin',
-	'holiday.location.baden-wuerttemberg': 'Baden-Württemberg',
-	'holiday.location.bavaria': 'Bayern',
-	'holiday.location.bremen': 'Bremen',
-	'holiday.location.hesse': 'Hessen',
-	'holiday.location.hamburg': 'Hamburg',
-	'holiday.location.mecklenburg-vorpommern': 'Mecklenburg-Vorpommern',
-	'holiday.location.lower-saxony': 'Nieder-Sachsen',
-	'holiday.location.northrhine-westfalia': 'Nordrhein-Westfalen',
-	'holiday.location.rhineland': 'Rheinland-Pfalz',
-	'holiday.location.schleswig-holstein': 'Schleswig-Holstein',
-	'holiday.location.saarland': 'Saarland',
-	'holiday.location.saxony': 'Sachsen',
-	'holiday.location.saxony-anhalt': 'Sachsen-anhalt',
-	'holiday.location.thuringia': 'Thüringen',
 
 	/*
 	 * TODO:Add some specific to countries, e.g
