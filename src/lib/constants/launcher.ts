@@ -149,5 +149,15 @@ export const launcherItems: LauncherItem[] = [
 		},
 		searchTerms: split(i('launcher.logout.terms')),
 		enabled: derived(svocal('auth.access.generatedBy'), (gb) => gb === 'login')
+	},
+	{
+		label: i('launcher.holidays'),
+		description: null,
+		icon: Calendar,
+		callback: () => {
+			goto('/holiday');
+			closeLauncher();
+		},
+		searchTerms: split(i('launcher.holidays.terms'))
 	}
 ];

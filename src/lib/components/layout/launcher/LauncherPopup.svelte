@@ -18,7 +18,7 @@
 	});
 
 	const inputPlaceholder = i('launcher.placeholder');
-	const launcherOutlineWidth = svocal('settings.launcher.outlineWidth')
+	const launcherOutlineWidth = svocal('settings.launcher.outlineWidth');
 </script>
 
 <div

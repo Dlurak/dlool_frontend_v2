@@ -49,6 +49,8 @@ const de = {
 	'launcher.settings.terms': 'Option \nKonfiguration\nPräferenzen',
 	'launcher.logout': 'Ausloggen',
 	'launcher.logout.terms': 'Signout\nAnonymous',
+	'launcher.holidays': 'Ferien',
+	'launcher.holidays.terms': 'Ferien\nFeiertage\nSchulfrei\nFreizeit',
 
 	'register.register': 'Registrieren',
 	'register.nametaken': 'Nutzername vergeben :(',
@@ -489,7 +491,41 @@ const de = {
 		'Die Datei konnte nicht importiert werden. Enthält sie einen gültigen Stundenplan?',
 	'settings.timetable.confirm.desc': 'Möchtest du wirklich deine bisherigen Farben überschreiben?',
 
+	'settings.general.holiday': 'Ferien & Feiertage',
+	'settings.genral.holiday.autoDetect': 'Erkenne den Standort automatisch',
+	'settings.genral.holiday.country': 'Staat',
+	'settings.genral.holiday.state': 'Bundesland',
+
 	'settings.save': 'Speichern',
+
+	'holiday.noData': 'Es gibt keine Daten für diesen Monat',
+	'holiday.timeRange': 'Vom $start bis zum $end',
+	'holiday.date': 'Am $date',
+	'holiday.quality.mandatory': 'Verpflichtend',
+	'holiday.quality.optional': 'Optional',
+	'holiday.location.brandenburg': 'Brandenburg',
+	'holiday.location.berlin': 'Berlin',
+	'holiday.location.baden-wuerttemberg': 'Baden-Württemberg',
+	'holiday.location.bavaria': 'Bayern',
+	'holiday.location.bremen': 'Bremen',
+	'holiday.location.hesse': 'Hessen',
+	'holiday.location.hamburg': 'Hamburg',
+	'holiday.location.mecklenburg-vorpommern': 'Mecklenburg-Vorpommern',
+	'holiday.location.lower-saxony': 'Nieder-Sachsen',
+	'holiday.location.northrhine-westfalia': 'Nordrhein-Westfalen',
+	'holiday.location.rhineland': 'Rheinland-Pfalz',
+	'holiday.location.schleswig-holstein': 'Schleswig-Holstein',
+	'holiday.location.saarland': 'Saarland',
+	'holiday.location.saxony': 'Sachsen',
+	'holiday.location.saxony-anhalt': 'Sachsen-anhalt',
+	'holiday.location.thuringia': 'Thüringen',
+
+	/*
+	 * TODO:Add some specific to countries, e.g
+	 * `Bund` and `Bundesländer` for germany
+	 */
+	'holiday.nationwide.true': 'Im gesamten Land',
+	'holiday.nationwide.false': 'Nur in einigen Provinzen',
 
 	'filter.filter': 'Filter',
 

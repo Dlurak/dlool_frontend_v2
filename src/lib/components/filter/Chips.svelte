@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" generics="V">
 	import { Icon, ChevronDown } from 'svelte-hero-icons';
 	import type { Option } from '../select/types';
 	import Store from '../utils/Store.svelte';
@@ -8,7 +8,8 @@
 	import { readable } from 'svelte/store';
 	import { createEventDispatcher } from 'svelte';
 
-	export let options: Option[];
+	// eslint-disable-next-line no-undef
+	export let options: Option<V>[];
 
 	let selectedIndex = 0;
 	export let value = options[selectedIndex].value;

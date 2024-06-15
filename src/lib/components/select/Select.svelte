@@ -1,6 +1,6 @@
-<script lang="ts">
+<script lang="ts" generics="V">
 	import TextInput from '$lib/components/input/Text.svelte';
-	import { get, type Readable } from 'svelte/store';
+	import { get, readable, type Readable } from 'svelte/store';
 	import Store from '../utils/Store.svelte';
 	import { createFloatingActions } from 'svelte-floating-ui';
 	import { flip, offset, shift } from '@floating-ui/core';
@@ -12,10 +12,15 @@
 	import QuickAction from '../buttons/QuickAction.svelte';
 
 	export let placeholder: Readable<string>;
-	export let options: Option[] = [];
-	export let value: null | string[] = null;
-	export let firstValue: string | null = value ? value[0] ?? null : null;
-	export let userInput = Array.isArray(value) ? value[0] : value ?? '';
+	// eslint-disable-next-line no-undef
+	export let options: Option<V>[] = [];
+	// eslint-disable-next-line no-undef
+	export let value: null | V[] = null;
+	// eslint-disable-next-line no-undef
+	export let firstValue: V | null = value ? value[0] ?? null : null;
+	export let userInput = firstValue
+		? get(options.find(({ value: v }) => v === firstValue)?.label ?? readable(''))
+		: '';
 
 	export let allowMultiple = false;
 	export let allowCustomval = false;
@@ -28,8 +33,7 @@
 	$: sortedAndFiltered = options
 		.map((opt) => [opt, diceCoefficient(get(opt.label), userInput)] as const)
 		.filter(([_, n]) => n >= threshold)
-		.sort(([_, a], [__, b]) => a - b)
-		.map(([opt]) => opt)
+		.sort(([_, a], [__, b]) => b - a)
 		.slice(0, 5);
 
 	let currentlyFocused = useCycle({ max: () => sortedAndFiltered.length - 1 });
@@ -39,10 +43,15 @@
 		placement: 'bottom',
 		middleware: [flip(), shift(), offset(6)]
 	});
-	const dispatch = createEventDispatcher();
+
+	const dispatch = createEventDispatcher<{
+		userInput: string;
+		// eslint-disable-next-line no-undef
+		change: V[];
+	}>();
 
 	const select = (n: number) => {
-		const item = sortedAndFiltered[n];
+		const item = sortedAndFiltered[n][0];
 
 		if (!item) return;
 		if (value?.includes(item.value)) return;
@@ -57,6 +66,8 @@
 		} else {
 			value = [item.value];
 		}
+
+		dispatch('change', value);
 	};
 </script>
 
@@ -90,7 +101,9 @@
 				currentlyFocused.reset();
 
 				if (allowCustomval) {
+					// @ts-expect-error Allow custom val allows for strings
 					value = detail ? [detail] : null;
+					// @ts-expect-error Allow custom val allows for strings
 					firstValue = detail ?? null;
 					dispatch('userInput', detail);
 					return;
@@ -143,7 +156,7 @@
 		class:hidden={!showSuggestions}
 		use:floatingContent
 	>
-		{#each sortedAndFiltered as opt, index}
+		{#each sortedAndFiltered as [opt], index}
 			<button
 				role="option"
 				aria-selected={$currentlyFocused === index ? 'true' : 'false'}

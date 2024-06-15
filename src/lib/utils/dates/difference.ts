@@ -50,3 +50,10 @@ export function getDifference(original: Date, current: Date): Diff {
 		unit: 'years'
 	};
 }
+
+export function hasSameTimestamp(date: Date, date2: Date) {
+	const ts1 = date.getTime();
+	const ts2 = date2.getTime();
+
+	return ts1 === ts2;
+}

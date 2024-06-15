@@ -1,6 +1,6 @@
 import type { Readable } from 'svelte/motion';
 
-export type Option = {
-	value: string;
+export type Option<T> = {
+	value: T;
 	label: Readable<string>;
 };

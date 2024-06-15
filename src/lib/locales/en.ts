@@ -47,6 +47,8 @@ const en = {
 	'launcher.settings.terms': 'Option\nConfiguration\nPreference',
 	'launcher.logout': 'Ausloggen',
 	'launcher.logout.terms': 'Abmelden\nAnonym',
+	'launcher.holidays': 'Holidays',
+	'launcher.holidays.terms': 'Holidays\nPublic holidays\nSchool holidays',
 
 	'register.register': 'Register',
 	'register.nametaken': 'Username taken :(',
@@ -476,7 +478,41 @@ const en = {
 		"The file couldn't be imported. Does it contain a correctly formatted timetable?",
 	'settings.timetable.confirm.desc': 'Are you sure you want to overwrite your current timetable?',
 
+	'settings.general.holiday': 'Holidays',
+	'settings.genral.holiday.autoDetect': 'Detect your location automatically',
+	'settings.genral.holiday.country': 'Country',
+	'settings.genral.holiday.state': 'State',
+
 	'settings.save': 'Save',
+
+	'holiday.noData': 'There is not data for this month',
+	'holiday.timeRange': 'From $start until $end',
+	'holiday.date': 'Am $date',
+	'holiday.quality.mandatory': 'Mandatory',
+	'holiday.quality.optional': 'Optional',
+	'holiday.location.brandenburg': 'Brandenburg',
+	'holiday.location.berlin': 'Berlin',
+	'holiday.location.baden-wuerttemberg': 'Baden-wuerttemberg',
+	'holiday.location.bavaria': 'Bavaria',
+	'holiday.location.bremen': 'Bremen',
+	'holiday.location.hesse': 'Hesse',
+	'holiday.location.hamburg': 'Hamburg',
+	'holiday.location.mecklenburg-vorpommern': 'Mecklenburg-vorpommern',
+	'holiday.location.lower-saxony': 'Lower-saxony',
+	'holiday.location.northrhine-westfalia': 'Northrhine-westfalia',
+	'holiday.location.rhineland': 'Rhineland',
+	'holiday.location.schleswig-holstein': 'Schleswig-holstein',
+	'holiday.location.saarland': 'Saarland',
+	'holiday.location.saxony': 'Saxony',
+	'holiday.location.saxony-anhalt': 'Saxony-anhalt',
+	'holiday.location.thuringia': 'Thuringia',
+
+	/*
+	 * TODO:Add some specific to countries, e.g
+	 * `Bund` and `Bundesländer` for germany
+	 */
+	'holiday.nationwide.true': 'In the entire country',
+	'holiday.nationwide.false': 'Only in some subdivisions',
 
 	'filter.filter': 'Filters',
 

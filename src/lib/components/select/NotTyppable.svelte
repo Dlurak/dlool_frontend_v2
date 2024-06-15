@@ -27,7 +27,8 @@
 		middleware: [flip(), shift(), offset(6)]
 	});
 
-	const dispatch = createEventDispatcher<{ change: null }>();
+	// eslint-disable-next-line no-undef
+	const dispatch = createEventDispatcher<{ change: V }>();
 </script>
 
 <div class="relative w-full">
@@ -70,7 +71,7 @@
 					on:click={() => {
 						value = opt.value;
 						showOptions = false;
-						dispatch('change');
+						dispatch('change', value);
 					}}
 				>
 					<Store store={opt.label} />

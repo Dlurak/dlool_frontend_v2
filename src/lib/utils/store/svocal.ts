@@ -51,10 +51,10 @@ const sv = {
 				sat: []
 			}) satisfies Timetable as Timetable
 	],
-	'settings.launcher.outlineWidth': [
-		'settings.launcher.outlineWidth',
-		() => 2
-	]
+	'settings.launcher.outlineWidth': ['settings.launcher.outlineWidth', () => 2],
+	'holidays.country': ['holidays.country', () => 'DE'],
+	'holidays.state': ['holidays.state', () => 'HE'],
+	'holidays.autoDetect': ['holidays.autoDetect', () => true]
 } as const;
 
 type SvocalKey = keyof typeof sv;

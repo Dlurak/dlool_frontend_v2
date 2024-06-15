@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import BoolSetting from '$lib/components/settings/BoolSetting.svelte';
 	import { i } from '$lib/i18n/store';
 	import { svocal } from '$lib/utils/store/svocal';
@@ -6,11 +6,23 @@
 	import MetaData from '$lib/components/utils/MetaData.svelte';
 	import RangeSettings from '$lib/components/settings/RangeSettings.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
+	import type { PageData } from './$types';
+	import { readable } from 'svelte/store';
+	import { currentLang } from '$lib/stores';
+	import { Holiday } from 'open-holiday-js';
 
 	const navTexts = svocal('settings.nav.texts');
 	const weekStartsOn = svocal('settings.weekStartsOn');
 	const homeworkTransparency = svocal('settings.homework.transparency');
-	const launcherOutlineWidth = svocal('settings.launcher.outlineWidth')
+	const launcherOutlineWidth = svocal('settings.launcher.outlineWidth');
+
+	const holidayAutoDetect = svocal('holidays.autoDetect');
+	const holidayCountry = svocal('holidays.country');
+	const holidayState = svocal('holidays.state');
+
+	const holiday = new Holiday();
+
+	export let data: PageData;
 </script>
 
 <MetaData title={i('title.settings.general')} />
@@ -62,5 +74,50 @@
 			max={10}
 			step={1}
 		/>
+	</section>
+
+	<section class="flex flex-col gap-2">
+		<h3><Store store={i('settings.general.holiday')} /></h3>
+
+		<BoolSetting label={i('settings.genral.holiday.autoDetect')} bind:value={$holidayAutoDetect} />
+
+		<SelectSetting
+			typpable
+			label={i('settings.genral.holiday.country')}
+			options={data.countries.map(({ isoCode, name }) => ({
+				label: readable(
+					(
+						name.find(({ language }) => language === $currentLang.toUpperCase()) ??
+						name.find(({ language }) => language === 'EN')
+					)?.text ?? ''
+				),
+				value: isoCode
+			}))}
+			bind:value={$holidayCountry}
+			on:select={() => {
+				// @ts-expect-error I am certain
+				holidayState.set(null);
+			}}
+		/>
+
+		{#await holiday.getSubdivisions($holidayCountry) then d}
+			{#if d.length > 0}
+				<SelectSetting
+					typpable
+					label={i('settings.genral.holiday.state')}
+					options={d.map(({ isoCode, name }) => ({
+						label: readable(
+							(
+								name.find(({ language }) => language === $currentLang.toUpperCase()) ??
+								name.find(({ language }) => language === 'EN')
+							)?.text ?? ''
+						),
+						value: isoCode
+					}))}
+					bind:value={$holidayState}
+					on:select
+				/>
+			{/if}
+		{/await}
 	</section>
 </div>
