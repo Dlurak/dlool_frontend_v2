@@ -51,6 +51,8 @@ const sv = {
 				sat: []
 			}) satisfies Timetable as Timetable
 	],
+	'settings.timetable.showWeekend': ['settings.timetable.showWeekend', () => false],
+	'settings.timetable.highlightToday': ['settings.timetable.highlightToday', () => false],
 	'settings.launcher.outlineWidth': ['settings.launcher.outlineWidth', () => 2],
 	'holidays.country': ['holidays.country', () => 'DE'],
 	'holidays.state': ['holidays.state', () => 'HE'],

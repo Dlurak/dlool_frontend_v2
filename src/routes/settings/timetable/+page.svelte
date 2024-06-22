@@ -20,15 +20,19 @@
 	import MetaData from '$lib/components/utils/MetaData.svelte';
 	import { loadFromFile } from '$lib/components/settings/timetable/loadFromFile';
 	import { WEEKDAYS } from '$lib/components/settings/timetable/weekdays';
+	import BoolSetting from '$lib/components/settings/BoolSetting.svelte';
 
 	const timetable = svocal('settings.timetable');
 	const weekStartsOn = svocal('settings.weekStartsOn');
+	const showWeekend = svocal('settings.timetable.showWeekend');
 	const isSmall = mediaQuery('(max-width: 768px)');
 
 	onDestroy(() => {
 		if (!browser) return;
 		timetable.update(cleanUpTimeTable);
 	});
+
+	const currentWeekday = WEEKDAYS[new Date().getDay()];
 </script>
 
 <MetaData title={i('settings.timetable.title')} />
@@ -61,15 +65,20 @@
 				<tr>
 					<th />
 					{#each { length: 7 } as _, ind}
-						<th class="pb-2 text-center">
-							<Store
-								store={i(
-									$isSmall ? 'calendar.weekday.abbr' : 'calendar.weekday',
-									{},
-									{ count: (ind + $weekStartsOn) % 7 }
-								)}
-							/>
-						</th>
+						{@const day = WEEKDAYS[(ind + $weekStartsOn) % 7]}
+						{@const show = $showWeekend ? true : !(day === 'sat' || day === 'sun')}
+
+						{#if show}
+							<th class="pb-2 text-center">
+								<Store
+									store={i(
+										$isSmall ? 'calendar.weekday.abbr' : 'calendar.weekday',
+										{},
+										{ count: (ind + $weekStartsOn) % 7 }
+									)}
+								/>
+							</th>
+						{/if}
 					{/each}
 				</tr>
 			</thead>
@@ -79,6 +88,7 @@
 					<tr class="border-b border-zinc-300 dark:border-zinc-700">
 						<th class="p-2">
 							<QuickAction
+								small
 								icon={Trash}
 								on:click={() => {
 									timetable.update((t) => removeNthLesson(t, lessonIndex));
@@ -88,21 +98,30 @@
 
 						{#each WEEKDAYS as _, ind}
 							{@const day = WEEKDAYS[(ind + $weekStartsOn) % 7]}
+							{@const isToday = currentWeekday === day}
+							{@const show = $showWeekend ? true : !(day === 'sat' || day === 'sun')}
 
-							<td class="px-1 py-3">
-								<TextInput
-									placeholder={i('settings.timetable.subject.placeholder')}
-									bind:value={$timetable[day][lessonIndex]}
-									on:enter={() => {
-										const isOnlyNull = getLastLessons($timetable).every((x) => x === null);
-										const hasLessons = countMaxLessons($timetable) > 0;
+							{#if show}
+								<td
+									class="bg-opacity-20 px-1 py-3 dark:bg-opacity-10"
+									class:bg-emerald-200={isToday}
+									class:dark:bg-emerald-800={isToday}
+								>
+									<TextInput
+										minimal
+										placeholder={i('settings.timetable.subject.placeholder')}
+										bind:value={$timetable[day][lessonIndex]}
+										on:enter={() => {
+											const isOnlyNull = getLastLessons($timetable).every((x) => x === null);
+											const hasLessons = countMaxLessons($timetable) > 0;
 
-										if (!(isOnlyNull && hasLessons)) timetable.update(addRow);
+											if (!(isOnlyNull && hasLessons)) timetable.update(addRow);
 
-										// TODO: Focus the TextInput one below
-									}}
-								/>
-							</td>
+											// TODO: Focus the TextInput one below
+										}}
+									/>
+								</td>
+							{/if}
 						{/each}
 					</tr>
 				{/each}
@@ -122,4 +141,6 @@
 			</tbody>
 		</table>
 	</div>
+
+	<BoolSetting bind:value={$showWeekend} label={i('settings.timetable.showWeekend')} />
 </div>

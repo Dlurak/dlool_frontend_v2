@@ -69,6 +69,8 @@
 
 		dispatch('change', value);
 	};
+
+	$: isValid = options.some(({ label }) => get(label) === userInput);
 </script>
 
 <svelte:window
@@ -91,7 +93,7 @@
 <div class="entire relative w-full">
 	<div use:floatingRef>
 		<TextInput
-			isValid={!!value?.filter((i) => i).length}
+			{isValid}
 			{icon}
 			{placeholder}
 			bind:value={userInput}

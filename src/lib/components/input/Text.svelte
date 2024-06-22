@@ -17,6 +17,8 @@
 	export let disabled = false;
 	export let options: string[] = [];
 
+	export let minimal = false;
+
 	const id = randomStr(16);
 	const dispatch = createEventDispatcher<{
 		input: string;
@@ -24,7 +26,7 @@
 	}>();
 </script>
 
-<Frame {disabled}>
+<Frame {disabled} {minimal}>
 	<div class="flex w-full flex-col">
 		<div class="flex w-full items-center gap-2">
 			{#if icon}

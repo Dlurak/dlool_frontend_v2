@@ -44,9 +44,11 @@
 </script>
 
 <script lang="ts">
-	export let position = 160;
+	import { clamp } from '$lib/utils/numbers/clamp';
+
 	export let min = 120;
 	export let max = 550;
+	export let position = clamp(min, 160, max);
 
 	const handler = handleMouseDownOrTouchStart({
 		max,
@@ -57,14 +59,14 @@
 </script>
 
 <div
-	class="grid h-full w-full grid-cols-1 grid-rows-1 gap-2 md:grid-cols-[var(--w),1fr]"
+	class="grid h-full w-full max-w-full grid-cols-1 grid-rows-1 gap-2 md:grid-cols-[var(--w),1fr]"
 	style:--w={`${position}px`}
 >
 	<div class="h-full">
 		<slot name="a" />
 	</div>
 
-	<div class="flex h-full gap-2">
+	<div class="flex h-full w-full max-w-full gap-2 overflow-hidden">
 		<button
 			class="hidden cursor-col-resize px-1 md:inline-block"
 			tabindex="-1"
@@ -74,7 +76,7 @@
 			<div class="h-full w-1 rounded-full bg-zinc-200 touch:w-1.5 dark:bg-zinc-700" />
 		</button>
 
-		<div class="flex w-full items-center justify-center">
+		<div class="flex w-full max-w-full overflow-hidden">
 			<slot name="b" />
 		</div>
 	</div>

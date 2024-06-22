@@ -490,6 +490,7 @@ const de = {
 	'settings.timetable.import.error':
 		'Die Datei konnte nicht importiert werden. Enthält sie einen gültigen Stundenplan?',
 	'settings.timetable.confirm.desc': 'Möchtest du wirklich deine bisherigen Farben überschreiben?',
+	'settings.timetable.showWeekend': 'Zeige das Wochende im Editor an',
 
 	'settings.general.holiday': 'Ferien & Feiertage',
 	'settings.genral.holiday.autoDetect': 'Erkenne den Standort automatisch',

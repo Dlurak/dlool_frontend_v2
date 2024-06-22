@@ -20,7 +20,7 @@
 
 <MetaData title={i('title.homework')} />
 
-<Panes min={200}>
+<Panes min={200} position={300}>
 	<div slot="a">
 		<SideMenu
 			query={data.query ?? {

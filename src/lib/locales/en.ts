@@ -477,6 +477,7 @@ const en = {
 	'settings.timetable.import.error':
 		"The file couldn't be imported. Does it contain a correctly formatted timetable?",
 	'settings.timetable.confirm.desc': 'Are you sure you want to overwrite your current timetable?',
+	'settings.timetable.showWeekend': 'Show the weekend in the editor',
 
 	'settings.general.holiday': 'Holidays',
 	'settings.genral.holiday.autoDetect': 'Detect your location automatically',
