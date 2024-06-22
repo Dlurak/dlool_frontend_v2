@@ -12,8 +12,8 @@
 	const showText = svocal('settings.nav.texts');
 </script>
 
-<button class="flex w-full flex-col items-center" on:click={() => data.action()}>
-	<div class="h-8 p-0.5">
+<button class="flex w-full flex-1 flex-col items-center px-3" on:click={data.action}>
+	<div class="h-8 w-8 p-0.5">
 		<Icon src={data.icon} micro />
 	</div>
 

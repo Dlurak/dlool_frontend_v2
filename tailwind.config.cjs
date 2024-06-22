@@ -5,7 +5,8 @@ const config = {
 	theme: {
 		extend: {
 			screens: {
-				print: { raw: 'print' }
+				print: { raw: 'print' },
+				touch: { raw: '(hover: none) and (pointer: coarse)' }
 			}
 		}
 	},
