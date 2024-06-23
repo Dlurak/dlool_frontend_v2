@@ -76,7 +76,7 @@
 			<div class="h-full w-1 rounded-full bg-zinc-200 touch:w-1.5 dark:bg-zinc-700" />
 		</button>
 
-		<div class="flex w-full max-w-full overflow-hidden">
+		<div class="flex w-full max-w-full overflow-hidden p-1">
 			<slot name="b" />
 		</div>
 	</div>

@@ -3,7 +3,7 @@
 
 	import { flip, offset, shift } from '@floating-ui/core';
 	import { createFloatingActions } from 'svelte-floating-ui';
-	import { ChevronDown } from 'svelte-hero-icons';
+	import { ChevronDown, Icon } from 'svelte-hero-icons';
 	import QuickAction from '../buttons/QuickAction.svelte';
 	import Frame from '../input/Frame.svelte';
 	import type { Readable } from 'svelte/store';
@@ -50,13 +50,15 @@
 				<Store store={i('select.select')} />
 			{/if}
 
-			<QuickAction
-				small
-				icon={ChevronDown}
-				on:click={() => {
-					showOptions = !showOptions;
-				}}
-			/>
+			<div
+				class="
+					rounded p-1
+					hover:bg-zinc-200 focus:bg-zinc-200
+					dark:hover:bg-zinc-800 dark:focus:bg-zinc-800
+				"
+			>
+				<Icon src={ChevronDown} micro class="h-5 w-5" />
+			</div>
 		</button>
 	</Frame>
 

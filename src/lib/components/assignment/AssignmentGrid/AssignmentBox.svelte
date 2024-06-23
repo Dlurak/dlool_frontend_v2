@@ -15,6 +15,7 @@
 	import Modal from '$lib/components/modal/Modal.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { currentCustomDate, sort } from '$lib/utils/dates/custom';
+	import { useAuth } from '$lib/utils/store/auth';
 
 	export let assignment: Assignment;
 	export let school: string;
@@ -30,15 +31,13 @@
 
 	const state: Writable<State> = writable({ view: 'read' });
 
-	const userDetails = svocal('dlool.ownUserDetails');
 	const transparencyOfOverdue = svocal('settings.homework.transparency');
 
-	$: hasEditRights = $userDetails?.classes.some(({ name, school: schoolObj }) => {
-		const classMatches = assignment.class.name === name;
-		const schoolMatches = school === schoolObj.name;
+	const queryStore = writable({ school, classes: [assignment.class.name] });
+	$: queryStore.update((props) => ({ ...props, school }));
+	$: queryStore.update((props) => ({ ...props, classes: [assignment.class.name] }));
 
-		return classMatches && schoolMatches;
-	});
+	const { isLoggedIn, isInClass } = useAuth({ query: queryStore });
 
 	$: isOverdue = sort(assignment.due, currentCustomDate()) === -1;
 
@@ -56,7 +55,7 @@
 	>
 		<ReadAssignmentBox {assignment} />
 
-		{#if hasEditRights}
+		{#if $isInClass && $isLoggedIn}
 			<div class="flex w-full justify-evenly pt-2">
 				<QuickAction
 					icon={Trash}
