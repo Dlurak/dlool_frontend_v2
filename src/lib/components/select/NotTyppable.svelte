@@ -4,7 +4,6 @@
 	import { flip, offset, shift } from '@floating-ui/core';
 	import { createFloatingActions } from 'svelte-floating-ui';
 	import { ChevronDown, Icon } from 'svelte-hero-icons';
-	import QuickAction from '../buttons/QuickAction.svelte';
 	import Frame from '../input/Frame.svelte';
 	import type { Readable } from 'svelte/store';
 	import Store from '../utils/Store.svelte';
