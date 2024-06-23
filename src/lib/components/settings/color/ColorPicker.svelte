@@ -7,14 +7,50 @@
 			height: rect.bottom - rect.top
 		};
 	}
+
+	const getCoordinates = (e: TouchEvent | MouseEvent) => {
+		const data = 'touches' in e ? e.touches[0] : e;
+
+		return {
+			x: data.clientX,
+			y: data.clientY
+		};
+	};
+
+	interface Props {
+		getCanvas: () => HTMLCanvasElement | undefined;
+		coords: Writable<{ x: number; y: number }>;
+		setHsl: (color: HSL) => void;
+		getHsl: () => HSL;
+	}
+
+	const handler =
+		({ getCanvas, coords, setHsl, getHsl }: Props) =>
+		(e: TouchEvent | MouseEvent) => {
+			e.preventDefault()
+			const canvas = getCanvas()
+
+			if (!canvas) return;
+			const rect = canvas.getBoundingClientRect();
+			const { height, width } = size(canvas);
+
+			const { x: rawX, y: rawY } = getCoordinates(e);
+
+			const x = calculatePercentage(rawX - rect.left, width);
+			const y = 100 - calculatePercentage(rawY - rect.top, height);
+
+			coords.set({ x, y });
+			setHsl([getHsl()[0], x, y]);
+		};
 </script>
 
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { writable } from 'svelte/store';
+	import { writable, type Writable } from 'svelte/store';
 	import { drawGradient } from './drawGradient';
 	import convert from 'color-convert';
 	import { calculatePercentage } from '$lib/utils/math/percentages';
+	import type { HSL } from 'color-convert/conversions';
 
 	export let hexColor: string;
 	export let hsl = convert.hex.hsl(hexColor);
@@ -26,6 +62,13 @@
 	const coords = writable({
 		x: hsl[1],
 		y: hsl[2]
+	});
+
+	const defaultHandler = handler({
+		coords,
+		getCanvas: () => canvas,
+		getHsl: () => hsl,
+		setHsl: (h) => (hsl = h)
 	});
 
 	onMount(() => {
@@ -49,23 +92,15 @@
 	<canvas
 		bind:this={canvas}
 		class="h-full w-full"
-		on:click={(e) => {
-			if (!canvas) return;
-			const rect = canvas.getBoundingClientRect();
-			const { height, width } = size(canvas);
-
-			const x = calculatePercentage(e.clientX - rect.left, width);
-			const y = 100 - calculatePercentage(e.clientY - rect.top, height);
-
-			coords.set({ x, y });
-			hsl = [hsl[0], x, y];
-		}}
+		on:click={defaultHandler}
+		on:touchstart={defaultHandler}
+		on:touchmove={defaultHandler}
 	/>
 	<div
 		style:--top={`${100 - $coords.y}%`}
 		style:--left={`${$coords.x}%`}
 		style="transform: translate(-50%, -50%);"
-		class="absolute left-[--left] top-[--top] h-3 w-3 rounded-full bg-white outline outline-2 outline-black"
+		class="absolute left-[--left] top-[--top] h-3 w-3 rounded-full bg-white outline outline-2 outline-black pointer-events-none"
 	/>
 </div>
 
@@ -74,7 +109,7 @@
 	min="0"
 	max="360"
 	bind:value={$hue}
-	class="hue-slider h-3 w-full appearance-none rounded-full outline-none focus:outline-none"
+	class="hue-slider h-3 w-full appearance-none rounded-full outline-none focus:outline-none touch:h-5"
 />
 
 <style>

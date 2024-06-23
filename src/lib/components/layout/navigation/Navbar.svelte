@@ -19,7 +19,7 @@
 			</a>
 		</div>
 
-		<div class="flex w-fit items-center justify-evenly sm:w-fit">
+		<div class="flex w-full items-center justify-evenly sm:w-fit">
 			{#each $navEntries as navTarget}
 				<NavigationButton target={navTarget} />
 			{/each}

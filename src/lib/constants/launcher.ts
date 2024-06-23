@@ -13,7 +13,8 @@ import {
 	Calendar,
 	Cog,
 	UserMinus,
-	type IconSource
+	PaintBrush,
+	type IconSource,
 } from 'svelte-hero-icons';
 import { derived, type Readable } from 'svelte/store';
 
@@ -141,14 +142,24 @@ export const launcherItems: LauncherItem[] = [
 		searchTerms: split(i('launcher.settings.terms'))
 	},
 	{
-		label: i('launcher.logout'),
+		label: i('launcher.settings.color'),
 		description: null,
-		icon: UserMinus,
-		callback: async () => {
-			logoutListener({ postValidation: closeLauncher });
+		icon: PaintBrush,
+		callback: () => {
+			goto('/settings/color');
+			closeLauncher();
 		},
-		searchTerms: split(i('launcher.logout.terms')),
-		enabled: derived(svocal('auth.access.generatedBy'), (gb) => gb === 'login')
+		searchTerms: split(i('launcher.settings.color.terms'))
+	},
+	{
+		label: i('launcher.settings.timetable'),
+		description: null,
+		icon: Calendar,
+		callback: () => {
+			goto('/settings/timetable');
+			closeLauncher();
+		},
+		searchTerms: split(i('launcher.settings.timetable.terms'))
 	},
 	{
 		label: i('launcher.holidays'),
@@ -159,5 +170,15 @@ export const launcherItems: LauncherItem[] = [
 			closeLauncher();
 		},
 		searchTerms: split(i('launcher.holidays.terms'))
-	}
+	},
+	{
+		label: i('launcher.logout'),
+		description: null,
+		icon: UserMinus,
+		callback: async () => {
+			logoutListener({ postValidation: closeLauncher });
+		},
+		searchTerms: split(i('launcher.logout.terms')),
+		enabled: derived(svocal('auth.access.generatedBy'), (gb) => gb === 'login')
+	},
 ];
