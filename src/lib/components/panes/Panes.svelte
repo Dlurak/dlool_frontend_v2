@@ -51,7 +51,7 @@
 				if (percentage >= 70) setShowSideBar(false);
 
 				const intervalId = setInterval(() => {
-					percentage -= 2
+					percentage -= 2;
 					setPercentages(percentage);
 					if (percentage <= 0) clearInterval(intervalId);
 				}, 2);
@@ -92,7 +92,10 @@
 	class:grid-cols-1={!showSidebar}
 	style:--w={`${position}px`}
 >
-	<div class="relative flex h-full flex-col gap-2 px-2 py-1 scale-x-[--effect]" class:hidden={!showSidebar}>
+	<div
+		class="relative flex h-full scale-x-[--effect] flex-col gap-2 px-2 py-1"
+		class:hidden={!showSidebar}
+	>
 		<div class="hidden md:inline-block">
 			<QuickAction
 				icon={ChevronLeft}

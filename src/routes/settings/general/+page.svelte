@@ -15,12 +15,15 @@
 	const weekStartsOn = svocal('settings.weekStartsOn');
 	const homeworkTransparency = svocal('settings.homework.transparency');
 	const launcherOutlineWidth = svocal('settings.launcher.outlineWidth');
+	const launcherWidth = svocal('settings.launcher.width');
 
 	const holidayAutoDetect = svocal('holidays.autoDetect');
 	const holidayCountry = svocal('holidays.country');
 	const holidayState = svocal('holidays.state');
 
 	const holiday = new Holiday();
+
+	const sizes = ['small', 'medium', 'large'] as const;
 
 	export let data: PageData;
 </script>
@@ -66,6 +69,15 @@
 
 	<section class="flex flex-col gap-2">
 		<h3><Store store={i('settings.general.launcher')} /></h3>
+
+		<SelectSetting
+			label={i('settings.general.launcher.width')}
+			options={sizes.map((t) => ({
+				value: t,
+				label: i(`settings.general.launcher.width.${t}`)
+			}))}
+			bind:value={$launcherWidth}
+		/>
 
 		<RangeSettings
 			label={i('settings.general.launcher.outlineWidth')}

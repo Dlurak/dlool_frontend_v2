@@ -53,6 +53,8 @@ const en = {
 	'launcher.logout.terms': 'Abmelden\nAnonym',
 	'launcher.holidays': 'Holidays',
 	'launcher.holidays.terms': 'Holidays\nPublic holidays\nSchool holidays',
+	'launcher.width': 'Width of this launcher',
+	'launcher.width.terms': 'Width',
 
 	'register.register': 'Register',
 	'register.nametaken': 'Username taken :(',
@@ -450,6 +452,10 @@ const en = {
 	'settings.general.assignments.transparency': 'transparency of overdue assignments',
 	'settings.general.launcher': 'Launcher',
 	'settings.general.launcher.outlineWidth': 'Width of the green outline',
+	'settings.general.launcher.width': 'Width',
+	'settings.general.launcher.width.small': 'Small',
+	'settings.general.launcher.width.medium': 'Medium',
+	'settings.general.launcher.width.large': 'Large',
 
 	'settings.color': 'Colors',
 	'settings.color.title': 'Color settings',

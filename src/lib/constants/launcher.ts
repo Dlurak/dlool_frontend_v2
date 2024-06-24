@@ -1,5 +1,5 @@
 import { goto } from '$app/navigation';
-import { closeLauncher } from '$lib/components/layout/launcher/hook';
+import { closeLauncher, setNewList } from '$lib/components/layout/launcher/hook';
 import { logoutListener } from '$lib/dlool/logout';
 import { i } from '$lib/i18n/store';
 import { svocal } from '$lib/utils/store/svocal';
@@ -14,7 +14,8 @@ import {
 	Cog,
 	UserMinus,
 	PaintBrush,
-	type IconSource,
+	ViewColumns,
+	type IconSource
 } from 'svelte-hero-icons';
 import { derived, type Readable } from 'svelte/store';
 
@@ -181,4 +182,24 @@ export const launcherItems: LauncherItem[] = [
 		searchTerms: split(i('launcher.logout.terms')),
 		enabled: derived(svocal('auth.access.generatedBy'), (gb) => gb === 'login')
 	},
+	{
+		label: i('launcher.width'),
+		description: null,
+		icon: ViewColumns,
+		callback: () => {
+			const launcherWidth = svocal('settings.launcher.width');
+			const launcherWidths = ['small', 'medium', 'large'] as const;
+
+			setNewList(
+				launcherWidths.map((size) => ({
+					label: i(`settings.general.launcher.width.${size}`),
+					callback: () => launcherWidth.set(size),
+					searchTerms: split(i(`settings.general.launcher.width.${size}`)),
+					icon: null,
+					description: null
+				}))
+			);
+		},
+		searchTerms: split(i('launcher.width.terms'))
+	}
 ];

@@ -1,30 +1,30 @@
 import { browser } from '$app/environment';
-import { launcherItems, type LauncherSelectableItem } from '$lib/constants/launcher';
+import {
+	launcherItems,
+	type LauncherItem,
+	type LauncherSelectableItem
+} from '$lib/constants/launcher';
 import { useCycle } from '$lib/utils/store/cycle';
 import { diceCoefficient } from 'dice-coefficient';
 import { get, writable } from 'svelte/store';
 
-const getBaseSelectableItems = () => {
+const getBaseSelectableItems = (launcherItems: LauncherItem[]) => {
 	return launcherItems
 		.map((item) => ({
 			...item,
 			matchedBy: null,
 			coefficient: 0
 		}))
-		.filter(({ enabled }) => {
-			if (enabled === undefined) {
-				return true;
-			}
-
-			return get(enabled);
-		});
+		.filter(({ enabled }) => enabled === undefined || get(enabled));
 };
 
+const allOptions = writable(launcherItems);
 const isOpen = writable(false);
 const search = writable<string | null>(null);
 const isdetailed = writable(true);
-const allOptions = writable(launcherItems);
-const filteredAndSortedOptions = writable<LauncherSelectableItem[]>(getBaseSelectableItems());
+const filteredAndSortedOptions = writable<LauncherSelectableItem[]>(
+	getBaseSelectableItems(launcherItems)
+);
 const focusedIndex = useCycle({
 	max: () => get(filteredAndSortedOptions).length - 1
 });
@@ -44,17 +44,16 @@ isOpen.subscribe((isOpen) => {
 	document.body.style.overflow = 'initial';
 });
 
-allOptions.subscribe(() => {
+allOptions.subscribe((opts) => {
 	search.set(null);
+	focusedIndex.set(0);
+	filteredAndSortedOptions.set(getBaseSelectableItems(opts));
 });
 
 search.subscribe((searchTermRaw) => {
 	const searchTerm = searchTermRaw?.trim();
 
-	if (!searchTerm) {
-		filteredAndSortedOptions.set(getBaseSelectableItems());
-		return;
-	}
+	if (!searchTerm) return filteredAndSortedOptions.set(getBaseSelectableItems(get(allOptions)));
 
 	const mapped = get(allOptions)
 		.filter(({ enabled }) => {
@@ -132,4 +131,11 @@ export function useLauncher() {
  */
 export function closeLauncher() {
 	isOpen.set(false);
+}
+
+/**
+ * Set a new list => a new submenu
+ */
+export function setNewList(list: LauncherItem[]) {
+	allOptions.set(list);
 }

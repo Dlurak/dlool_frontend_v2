@@ -20,14 +20,19 @@
 
 	const inputPlaceholder = i('launcher.placeholder');
 	const launcherOutlineWidth = svocal('settings.launcher.outlineWidth');
+	const launcherWidth = svocal('settings.launcher.width');
 </script>
 
 <div
 	class="
-		w-full max-w-[min(90%,46rem)] rounded
+		absolute top-[15%]
+		w-full rounded
 		bg-zinc-500 bg-opacity-25 text-white
 		outline outline-emerald-400 backdrop-blur-md
 	"
+	class:max-w-[min(90%,32rem)]={$launcherWidth === 'small'}
+	class:max-w-[min(90%,42rem)]={$launcherWidth === 'medium'}
+	class:max-w-[min(90%,52rem)]={$launcherWidth === 'large'}
 	style:outline-width={`${$launcherOutlineWidth}px`}
 	use:clickOutside={{ callback: isOpen.close }}
 >

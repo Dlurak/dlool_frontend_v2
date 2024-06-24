@@ -55,6 +55,8 @@ const de = {
 	'launcher.logout.terms': 'Signout\nAnonymous',
 	'launcher.holidays': 'Ferien',
 	'launcher.holidays.terms': 'Ferien\nFeiertage\nSchulfrei\nFreizeit',
+	'launcher.width': 'Breite von diesem Launcher',
+	'launcher.width.terms': 'Breite',
 
 	'register.register': 'Registrieren',
 	'register.nametaken': 'Nutzername vergeben :(',
@@ -462,6 +464,10 @@ const de = {
 	'settings.general.assignments.transparency': 'Transparenz überfälliger Hausaufgaben',
 	'settings.general.launcher': 'Suche',
 	'settings.general.launcher.outlineWidth': 'Breite der grünen Umrandung',
+	'settings.general.launcher.width': 'Breite',
+	'settings.general.launcher.width.small': 'Klein',
+	'settings.general.launcher.width.medium': 'Mittel',
+	'settings.general.launcher.width.large': 'Groß',
 
 	'settings.color': 'Farben',
 	'settings.color.title': 'Farbeinstellungen',

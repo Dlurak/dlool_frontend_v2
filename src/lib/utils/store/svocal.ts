@@ -54,6 +54,10 @@ const sv = {
 	'settings.timetable.showWeekend': ['settings.timetable.showWeekend', () => false],
 	'settings.timetable.highlightToday': ['settings.timetable.highlightToday', () => false],
 	'settings.launcher.outlineWidth': ['settings.launcher.outlineWidth', () => 2],
+	'settings.launcher.width': [
+		'settings.launcher.width',
+		() => 'medium' as 'small' | 'medium' | 'large'
+	],
 	'holidays.country': ['holidays.country', () => 'DE'],
 	'holidays.state': ['holidays.state', () => 'HE'],
 	'holidays.autoDetect': ['holidays.autoDetect', () => true]
