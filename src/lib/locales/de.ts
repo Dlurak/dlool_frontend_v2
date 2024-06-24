@@ -460,7 +460,8 @@ const de = {
 	'settings.general.nav.texts': 'Texte in der Navigationsleiste anzeigen',
 	'settings.general.nav.composer.your': 'Deine Navigation',
 	'settings.general.nav.composer.available': 'Verfügbare Navigationseinheiten',
-	'settings.general.nav.composer.empty': 'Ziehe ein Rechteck hier her, um es zu aus der Navigation zu entfernen.',
+	'settings.general.nav.composer.empty':
+		'Ziehe ein Rechteck hier her, um es zu aus der Navigation zu entfernen.',
 	'settings.general.calendar': 'Kalender',
 	'settings.general.calendar.weekStartsOn': 'Erster Tag der Woche',
 	'settings.general.assignments': 'Hausaufgaben',

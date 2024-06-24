@@ -448,7 +448,8 @@ const en = {
 	'settings.general.nav.texts': 'Texte in der Navigationsleiste anzeigen',
 	'settings.general.nav.composer.your': 'Your Navigation',
 	'settings.general.nav.composer.available': 'Available navigation units',
-	'settings.general.nav.composer.empty': 'Drag and drop one rectangle here to remove it from your navigation.',
+	'settings.general.nav.composer.empty':
+		'Drag and drop one rectangle here to remove it from your navigation.',
 	'settings.general.calendar': 'Calendar',
 	'settings.general.calendar.weekStartsOn': 'First day of the week',
 	'settings.general.assignments': 'Assignments',
