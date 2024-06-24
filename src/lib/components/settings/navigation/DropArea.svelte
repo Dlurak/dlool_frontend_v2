@@ -24,29 +24,31 @@
 
 <section
 	class="
-		 flex flex-col gap-3
-		 rounded px-4 py-3 outline outline-1 outline-zinc-300
+		flex flex-col gap-3
+		rounded px-4 py-3 outline outline-1 outline-zinc-300
 		dark:outline-zinc-600
 	"
-	use:dndzone={{
-		items,
-		flipDurationMs,
-		dropTargetStyle: {},
-		dragDisabled: items.length <= block
-	}}
-	on:consider={({ detail }) => {
-		items = detail.items;
-	}}
-	on:finalize={({ detail }) => {
-		items = detail.items;
-		dispatch('final', items);
-	}}
 >
 	<div>
 		<slot name="pre-content" />
 	</div>
 
-	<div class="flex min-h-20 flex-wrap items-center justify-center gap-2">
+	<div
+		class="flex min-h-20 flex-wrap items-center justify-center gap-2"
+		use:dndzone={{
+			items,
+			flipDurationMs,
+			dropTargetStyle: {},
+			dragDisabled: items.length <= block
+		}}
+		on:consider={({ detail }) => {
+			items = detail.items;
+		}}
+		on:finalize={({ detail }) => {
+			items = detail.items;
+			dispatch('final', items);
+		}}
+	>
 		{#each items as item (item.id)}
 			{@const obj = navbarEntries[item.name]}
 
