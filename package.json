@@ -51,6 +51,7 @@
 		"open-holiday-js": "^1.0.3",
 		"svelte-bootstrap-icons": "^3.1.1",
 		"svelte-confetti": "^1.4.0",
+		"svelte-dnd-action": "^0.9.49",
 		"svelte-floating-ui": "^1.5.8",
 		"svocal": "^0.2.2",
 		"zod": "^3.23.5"

@@ -35,6 +35,9 @@ importers:
       svelte-confetti:
         specifier: ^1.4.0
         version: 1.4.0(svelte@4.2.15)
+      svelte-dnd-action:
+        specifier: ^0.9.49
+        version: 0.9.49(svelte@4.2.15)
       svelte-floating-ui:
         specifier: ^1.5.8
         version: 1.5.8
@@ -1606,6 +1609,11 @@ packages:
     resolution: {integrity: sha512-B0woNwpsFGwhkEoP48BIDQgvW0bMxPhavLVD+E+tsTWevlpr1aiz1S2wA8ArIXX957BiaZWHRHKmI5/pFRDbdg==}
     peerDependencies:
       svelte: ^4.0.0
+
+  svelte-dnd-action@0.9.49:
+    resolution: {integrity: sha512-kAIDTSMoTZcJCqUpT8COLAkF0/NRBoJ/pIbPUra9UVRnyJljLy6dLgRuL2OojSqyNs3nToBvn5XOGaFMREwjfQ==}
+    peerDependencies:
+      svelte: '>=3.23.0 || ^5.0.0-next.0'
 
   svelte-eslint-parser@0.35.0:
     resolution: {integrity: sha512-CtbPseajW0gjwEvHiuzYJkPDjAcHz2FaHt540j6RVYrZgnE6xWkzUBodQ4I3nV+G5AS0Svt8K6aIA/CIU9xT2Q==}
@@ -3274,6 +3282,10 @@ snapshots:
       - sugarss
 
   svelte-confetti@1.4.0(svelte@4.2.15):
+    dependencies:
+      svelte: 4.2.15
+
+  svelte-dnd-action@0.9.49(svelte@4.2.15):
     dependencies:
       svelte: 4.2.15
 

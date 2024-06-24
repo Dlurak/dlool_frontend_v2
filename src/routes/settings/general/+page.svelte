@@ -10,6 +10,7 @@
 	import { readable } from 'svelte/store';
 	import { currentLang } from '$lib/stores';
 	import { Holiday } from 'open-holiday-js';
+	import NavbarCustomizor from '$lib/components/settings/navigation/NavbarCustomizor.svelte';
 
 	const navTexts = svocal('settings.nav.texts');
 	const weekStartsOn = svocal('settings.weekStartsOn');
@@ -34,6 +35,7 @@
 	<section class="flex flex-col gap-2">
 		<h3><Store store={i('settings.general.nav')} /></h3>
 
+		<NavbarCustomizor />
 		<BoolSetting label={i('settings.general.nav.texts')} bind:value={$navTexts} />
 	</section>
 

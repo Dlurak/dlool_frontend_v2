@@ -1,6 +1,7 @@
 <script>
 	import { navHeight } from '$lib/stores';
 	import { svocal } from '$lib/utils/store/svocal';
+	import { flip } from 'svelte/animate';
 	import NavigationButton from './NavigationButton.svelte';
 
 	const navEntries = svocal('settings.nav.entries');
@@ -20,8 +21,10 @@
 		</div>
 
 		<div class="flex w-full items-center justify-evenly sm:w-fit">
-			{#each $navEntries as navTarget}
-				<NavigationButton target={navTarget} />
+			{#each $navEntries as navTarget (navTarget)}
+				<span class="flex-1" animate:flip={{ duration: 300 }}>
+					<NavigationButton target={navTarget} />
+				</span>
 			{/each}
 		</div>
 	</nav>
