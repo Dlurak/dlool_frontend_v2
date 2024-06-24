@@ -1,3 +1,4 @@
+import { enableScrolling } from '$lib/utils/dom/scroll';
 import { writable, type Readable } from 'svelte/store';
 
 type BaseConfirmation = {
@@ -12,6 +13,12 @@ type Confirmation = BaseConfirmation & {
 };
 
 export const confirmation = writable<Confirmation | null>(null);
+
+confirmation.subscribe((c) => {
+	const confirmationIsOpened = !!c;
+
+	enableScrolling(!confirmationIsOpened);
+});
 
 export const confirm = (props: BaseConfirmation = {}) => {
 	return new Promise<boolean>((resolve) => {

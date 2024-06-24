@@ -4,6 +4,7 @@ import {
 	type LauncherItem,
 	type LauncherSelectableItem
 } from '$lib/constants/launcher';
+import { enableScrolling } from '$lib/utils/dom/scroll';
 import { useCycle } from '$lib/utils/store/cycle';
 import { diceCoefficient } from 'dice-coefficient';
 import { get, writable } from 'svelte/store';
@@ -32,16 +33,14 @@ const focusedIndex = useCycle({
 isOpen.subscribe((isOpen) => {
 	if (!browser) return;
 
-	if (isOpen) {
-		document.body.style.overflow = 'hidden';
-		return;
-	}
+	enableScrolling(!isOpen);
 
 	// close everything
-	search.set(null);
-	focusedIndex.set(0);
-	allOptions.set(launcherItems);
-	document.body.style.overflow = 'initial';
+	if (!isOpen) {
+		search.set(null);
+		focusedIndex.set(0);
+		allOptions.set(launcherItems);
+	}
 });
 
 allOptions.subscribe((opts) => {
