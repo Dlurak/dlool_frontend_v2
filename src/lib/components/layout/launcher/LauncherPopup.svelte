@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Icon, MagnifyingGlass } from 'svelte-hero-icons';
+	import { clickOutside } from 'nutzlich';
 	import { useLauncher } from './hook';
 	import LauncherItem from './LauncherItem.svelte';
 	import { tick } from 'svelte';
@@ -28,6 +29,7 @@
 		outline outline-emerald-400 backdrop-blur-md
 	"
 	style:outline-width={`${$launcherOutlineWidth}px`}
+	use:clickOutside={{ callback: isOpen.close }}
 >
 	<div class="flex items-center gap-2 p-4 px-4 text-xl">
 		<Icon src={MagnifyingGlass} class="h-5 w-5" />

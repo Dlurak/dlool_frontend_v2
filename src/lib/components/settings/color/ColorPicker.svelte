@@ -27,8 +27,8 @@
 	const handler =
 		({ getCanvas, coords, setHsl, getHsl }: Props) =>
 		(e: TouchEvent | MouseEvent) => {
-			e.preventDefault()
-			const canvas = getCanvas()
+			e.preventDefault();
+			const canvas = getCanvas();
 
 			if (!canvas) return;
 			const rect = canvas.getBoundingClientRect();
@@ -36,8 +36,8 @@
 
 			const { x: rawX, y: rawY } = getCoordinates(e);
 
-			const x = calculatePercentage(rawX - rect.left, width);
-			const y = 100 - calculatePercentage(rawY - rect.top, height);
+			const x = clamp(0, calculatePercentage(rawX - rect.left, width), 100);
+			const y = clamp(0, 100 - calculatePercentage(rawY - rect.top, height), 100);
 
 			coords.set({ x, y });
 			setHsl([getHsl()[0], x, y]);
@@ -51,6 +51,7 @@
 	import convert from 'color-convert';
 	import { calculatePercentage } from '$lib/utils/math/percentages';
 	import type { HSL } from 'color-convert/conversions';
+	import { clamp } from '$lib/utils/numbers/clamp';
 
 	export let hexColor: string;
 	export let hsl = convert.hex.hsl(hexColor);
@@ -93,6 +94,10 @@
 		bind:this={canvas}
 		class="h-full w-full"
 		on:click={defaultHandler}
+		on:mousemove={(e) => {
+			if (e.buttons !== 1) return;
+			defaultHandler(e);
+		}}
 		on:touchstart={defaultHandler}
 		on:touchmove={defaultHandler}
 	/>
@@ -100,7 +105,7 @@
 		style:--top={`${100 - $coords.y}%`}
 		style:--left={`${$coords.x}%`}
 		style="transform: translate(-50%, -50%);"
-		class="absolute left-[--left] top-[--top] h-3 w-3 rounded-full bg-white outline outline-2 outline-black pointer-events-none"
+		class="pointer-events-none absolute left-[--left] top-[--top] h-3 w-3 rounded-full bg-white outline outline-2 outline-black"
 	/>
 </div>
 
