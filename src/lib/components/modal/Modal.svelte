@@ -34,10 +34,10 @@
 
 <dialog
 	bind:this={dialogElement}
-	class="min-w-[min(24rem,90%)] overflow-y-auto rounded-md bg-gray-200 text-black shadow-2xl backdrop:bg-black backdrop:opacity-50 backdrop:saturate-50 dark:bg-zinc-800 dark:text-white"
+	class="min-w-[min(24rem,90%)] overflow-visible rounded-md bg-gray-200 text-black shadow-2xl backdrop:bg-black backdrop:opacity-50 backdrop:saturate-50 dark:bg-zinc-800 dark:text-white"
 >
 	<div
-		class=" sticky top-0 flex items-center gap-6 rounded-t-md border-b-gray-500 bg-gray-300 px-3 py-1 dark:bg-zinc-900"
+		class="flex items-center gap-6 rounded-t-md border-b-gray-500 bg-gray-300 px-3 py-1 dark:bg-zinc-900"
 	>
 		<div class="w-full">
 			<b><slot name="title" /></b>
@@ -52,7 +52,7 @@
 		</button>
 	</div>
 
-	<div class="px-3 py-1">
+	<div class="max-h-[calc(100dvh-5rem)] overflow-y-auto px-3 py-1">
 		<slot name="body" />
 	</div>
 </dialog>

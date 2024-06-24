@@ -466,6 +466,7 @@ const de = {
 	'settings.general.calendar.weekStartsOn': 'Erster Tag der Woche',
 	'settings.general.assignments': 'Hausaufgaben',
 	'settings.general.assignments.transparency': 'Transparenz überfälliger Hausaufgaben',
+	'settings.general.assignments.presets': 'Voreinstellungen für neue Hausaufgaben',
 	'settings.general.launcher': 'Suche',
 	'settings.general.launcher.outlineWidth': 'Breite der grünen Umrandung',
 	'settings.general.launcher.width': 'Breite',

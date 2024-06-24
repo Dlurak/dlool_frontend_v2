@@ -135,7 +135,7 @@
 			isValid={!!description}
 		>
 			<svelte:fragment slot="pre-validator">
-				{#if $presets.map(x => x.trim()).filter(self).length > 0}
+				{#if $presets.map((x) => x.trim()).filter(self).length > 0}
 					<QuickAction
 						icon={Bookmark}
 						small

@@ -38,7 +38,7 @@
 	export let data: PageData;
 
 	onDestroy(() => {
-		if (!browser) return
+		if (!browser) return;
 		homeworkPresets.update((old) => old.map((x) => x.trim()).filter(self));
 	});
 </script>
@@ -66,7 +66,7 @@
 		/>
 
 		<div class="flex justify-between">
-			<span> Hi </span>
+			<span><Store store={i('settings.general.assignments.presets')} /></span>
 
 			<div class="flex flex-col gap-2">
 				{#each $homeworkPresets as preset, ind}
