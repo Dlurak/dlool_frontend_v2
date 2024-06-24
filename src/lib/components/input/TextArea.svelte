@@ -35,8 +35,10 @@
 	/>
 
 	{#if isValid !== null}
-		<div class="flex h-full items-center px-2">
+		<div class="flex items-center px-2 flex-col justify-evenly gap-2">
+			<slot name="pre-validator" />
 			<div class="h-2 w-2 rounded-full" class:bg-red-500={!isValid} class:bg-green-500={isValid} />
+			<slot name="post-validator" />
 		</div>
 	{/if}
 </Frame>

@@ -60,7 +60,8 @@ const sv = {
 	],
 	'holidays.country': ['holidays.country', () => 'DE'],
 	'holidays.state': ['holidays.state', () => 'HE'],
-	'holidays.autoDetect': ['holidays.autoDetect', () => true]
+	'holidays.autoDetect': ['holidays.autoDetect', () => true],
+	'settings.homeworkPresets': ['settings.homeworkPresets', () => [] as string[]]
 } as const;
 
 type SvocalKey = keyof typeof sv;

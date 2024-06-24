@@ -22,7 +22,7 @@
 	on:click
 >
 	{#if icon}
-		<Icon src={icon} />
+		<Icon src={icon} class="h-6 w-6" />
 	{/if}
 
 	<slot />

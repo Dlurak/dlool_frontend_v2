@@ -49,14 +49,18 @@
 				<Store store={i('select.select')} />
 			{/if}
 
-			<div
-				class="
-					rounded p-1
-					hover:bg-zinc-200 focus:bg-zinc-200
-					dark:hover:bg-zinc-800 dark:focus:bg-zinc-800
-				"
-			>
-				<Icon src={ChevronDown} micro class="h-5 w-5" />
+			<div class="flex gap-0.5">
+				<slot />
+
+				<div
+					class="
+						rounded p-1
+						hover:bg-zinc-200 focus:bg-zinc-200
+						dark:hover:bg-zinc-800 dark:focus:bg-zinc-800
+					"
+				>
+					<Icon src={ChevronDown} micro class="h-5 w-5" />
+				</div>
 			</div>
 		</button>
 	</Frame>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import TextInput from '$lib/components/input/Text.svelte';
 	import BoolSetting from '$lib/components/settings/BoolSetting.svelte';
 	import { i } from '$lib/i18n/store';
 	import { svocal } from '$lib/utils/store/svocal';
@@ -11,10 +12,18 @@
 	import { currentLang } from '$lib/stores';
 	import { Holiday } from 'open-holiday-js';
 	import NavbarCustomizor from '$lib/components/settings/navigation/NavbarCustomizor.svelte';
+	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
+	import { Plus, Trash } from 'svelte-hero-icons';
+	import { removeNthElement } from '$lib/utils/arrays/remove';
+	import SettingsButton from '$lib/components/buttons/SettingsButton.svelte';
+	import { onDestroy } from 'svelte';
+	import { self } from '$lib/utils/utils';
+	import { browser } from '$app/environment';
 
 	const navTexts = svocal('settings.nav.texts');
 	const weekStartsOn = svocal('settings.weekStartsOn');
 	const homeworkTransparency = svocal('settings.homework.transparency');
+	const homeworkPresets = svocal('settings.homeworkPresets');
 	const launcherOutlineWidth = svocal('settings.launcher.outlineWidth');
 	const launcherWidth = svocal('settings.launcher.width');
 
@@ -27,6 +36,11 @@
 	const sizes = ['small', 'medium', 'large'] as const;
 
 	export let data: PageData;
+
+	onDestroy(() => {
+		if (!browser) return
+		homeworkPresets.update((old) => old.map((x) => x.trim()).filter(self));
+	});
 </script>
 
 <MetaData title={i('title.settings.general')} />
@@ -50,6 +64,31 @@
 			step={0.05}
 			valueFmt={(num) => `${Math.round(num * 100)}%`}
 		/>
+
+		<div class="flex justify-between">
+			<span> Hi </span>
+
+			<div class="flex flex-col gap-2">
+				{#each $homeworkPresets as preset, ind}
+					<span class="flex gap-1">
+						<TextInput placeholder={readable('')} bind:value={preset} />
+						<QuickAction
+							icon={Trash}
+							on:click={() => homeworkPresets.update((old) => removeNthElement(old, ind))}
+						/>
+					</span>
+				{/each}
+
+				<SettingsButton
+					icon={Plus}
+					color="green"
+					disabled={$homeworkPresets.map((x) => x.trim()).includes('')}
+					on:click={() => homeworkPresets.update((old) => ['', ...old])}
+				>
+					<span> Neues hinzufügen </span>
+				</SettingsButton>
+			</div>
+		</div>
 	</section>
 
 	<section class="flex flex-col gap-2">

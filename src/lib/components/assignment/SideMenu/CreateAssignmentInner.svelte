@@ -17,7 +17,7 @@
 	import { listClasses, type Class } from '$lib/dlool/classList';
 	import { i } from '$lib/i18n/store';
 	import { createEventDispatcher } from 'svelte';
-	import { AcademicCap } from 'svelte-hero-icons';
+	import { AcademicCap, Bookmark } from 'svelte-hero-icons';
 	import { readable, writable } from 'svelte/store';
 	import {
 		currentCustomDate,
@@ -32,6 +32,10 @@
 	import { svocal } from '$lib/utils/store/svocal';
 	import { isString } from '$lib/utils/arrays/filter';
 	import { daysUntil, type DaysUntilProps } from '$lib/components/settings/timetable/daysUntil';
+	import TextArea from '$lib/components/input/TextArea.svelte';
+	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
+	import NotTyppable from '$lib/components/select/NotTyppable.svelte';
+	import { self } from '$lib/utils/utils';
 
 	interface CreationPayload {
 		school: string;
@@ -43,6 +47,7 @@
 	}
 
 	const timetable = svocal('settings.timetable');
+	const presets = svocal('settings.homeworkPresets');
 
 	const dispatch = createEventDispatcher<{ submit: CreationPayload }>();
 
@@ -62,6 +67,8 @@
 
 	let from = currentCustomDate();
 	let due = currentCustomDate();
+
+	let inputMode: 'text' | 'presets' = 'text';
 
 	$: disabled = !(
 		classInput &&
@@ -121,12 +128,41 @@
 		options={$timetable[WEEKDAYS[customDateToNormal(from).getDay()]].filter(isString)}
 	/>
 
-	<!-- TODO: Replace description input with a textarea -->
-	<TextInput
-		placeholder={i('assignments.create.description')}
-		bind:value={description}
-		isValid={!!description}
-	/>
+	{#if inputMode === 'text'}
+		<TextArea
+			placeholder={i('assignments.create.description')}
+			bind:value={description}
+			isValid={!!description}
+		>
+			<svelte:fragment slot="pre-validator">
+				{#if $presets.map(x => x.trim()).filter(self).length > 0}
+					<QuickAction
+						icon={Bookmark}
+						small
+						on:click={() => {
+							inputMode = 'presets';
+						}}
+					/>
+				{/if}
+			</svelte:fragment>
+		</TextArea>
+	{:else if inputMode === 'presets'}
+		<NotTyppable
+			options={$presets.filter(self).map((preset) => ({
+				label: readable(preset),
+				value: preset
+			}))}
+			bind:value={description}
+		>
+			<QuickAction
+				icon={Bookmark}
+				small
+				on:click={() => {
+					inputMode = 'text';
+				}}
+			/>
+		</NotTyppable>
+	{/if}
 
 	<DateSelector bind:date={from}>
 		<span slot="postIcon"><Store store={i('assignments.create.from')} /></span>
