@@ -94,6 +94,11 @@ export const links: LinkGroup[] = [
 				name: i('nav.footer.else.settings'),
 				action: () => goto('/settings'),
 				icon: Cog
+			},
+			{
+				name: i('nav.footer.else.holiday'),
+				action: () => goto('/holiday'),
+				icon: Calendar
 			}
 		]
 	}

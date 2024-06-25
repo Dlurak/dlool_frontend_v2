@@ -13,6 +13,7 @@
 	import { page } from '$app/stores';
 	import { deleteCalendar } from '$lib/dlool/calendar/delete';
 	import EditModal from '$lib/components/calendar/List/EditModal.svelte';
+	import MetaData from '$lib/components/utils/MetaData.svelte';
 
 	export let data: PageData;
 
@@ -34,6 +35,8 @@
 		classes: data.data?.class.name ? [data.data?.class.name] : []
 	});
 </script>
+
+<MetaData title={i('title.calendar')} />
 
 <div class="flex h-full w-full flex-col gap-2">
 	{#if data.data}

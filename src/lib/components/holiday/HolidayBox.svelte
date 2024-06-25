@@ -23,6 +23,7 @@
 	import { i } from '$lib/i18n/store';
 	import { Icon, MapPin } from 'svelte-hero-icons';
 	import { hasSameTimestamp } from '$lib/utils/dates/difference';
+	import { fmtNum } from '$lib/utils/intl';
 
 	type HolidayEvent = Awaited<ReturnType<Holiday['getSchoolHolidays']>>[number];
 
@@ -30,6 +31,9 @@
 
 	$: name = getPrefferedString(holiday.name, $currentLang);
 	$: comment = getPrefferedString(holiday.comment ?? [], $currentLang);
+	$: inDays = Math.ceil(
+		(holiday.startDate.getTime() - new Date().getTime()) / (24 * 60 * 60 * 1_000)
+	);
 </script>
 
 <div
@@ -41,24 +45,28 @@
 		<Store
 			store={i(
 				'holiday.date',
-				{
-					date: holiday.startDate.toLocaleDateString($currentLang)
-				},
-				{}
+				{ date: holiday.startDate.toLocaleDateString($currentLang) },
+				{ count: holiday.startDate.getDay() }
 			)}
 		/>
 	{:else}
 		<Store
-			store={i(
-				'holiday.timeRange',
-				{
-					start: holiday.startDate.toLocaleDateString($currentLang),
-					end: holiday.endDate.toLocaleDateString($currentLang)
-				},
-				{}
-			)}
+			store={i('holiday.timeRange', {
+				start: holiday.startDate.toLocaleDateString($currentLang),
+				end: holiday.endDate.toLocaleDateString($currentLang)
+			})}
 		/>
 	{/if}
+
+	<span>
+		{#if inDays === 0}
+			<Store store={i('holiday.today')} />
+		{:else if inDays > 0}
+			<Store store={i('holiday.inDays', { days: fmtNum(inDays) }, { count: inDays })} />
+		{:else}
+			<Store store={i('holiday.daysAgo', { days: fmtNum(inDays * -1) }, { count: inDays })} />
+		{/if}
+	</span>
 
 	{#if comment}
 		{comment}

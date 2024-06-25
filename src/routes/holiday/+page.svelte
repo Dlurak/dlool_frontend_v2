@@ -18,6 +18,7 @@
 	import LocationLine from '$lib/components/holiday/LocationLine.svelte';
 	import HolidayBox from '$lib/components/holiday/HolidayBox.svelte';
 	import Header from '$lib/components/holiday/Header.svelte';
+	import MetaData from '$lib/components/utils/MetaData.svelte';
 
 	export let data: PageData;
 
@@ -27,6 +28,8 @@
 		}
 	}
 </script>
+
+<MetaData title={i('title.holiday')} />
 
 {#if data.type === 'success'}
 	<div class="flex w-full flex-col gap-2">

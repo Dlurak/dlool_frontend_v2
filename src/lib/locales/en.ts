@@ -103,7 +103,9 @@ const en = {
 	'nav.footer.mod.list': 'Foreign requests',
 	'nav.footer.else': 'Else',
 	'nav.footer.else.settings': 'Settings',
+	'nav.footer.else.holiday': 'Holiday',
 
+	title: 'Homepage',
 	'title.calendar': 'Calendar',
 	'title.homework': 'Homework',
 	'title.join': 'Join a class',
@@ -115,6 +117,7 @@ const en = {
 	'title.settings': 'Settings',
 	'title.settings.profile': 'Profile settings',
 	'title.settings.general': 'General settings',
+	'title.holiday': 'Holiday',
 
 	'home.subtitle': 'Next generation homework for your entire class',
 	'home.digitalEra': 'A homework management system for the digital era',
@@ -503,9 +506,37 @@ const en = {
 
 	'holiday.noData': 'There is not data for this month',
 	'holiday.timeRange': 'From $start until $end',
-	'holiday.date': 'Am $date',
+	'holiday.date': {
+		counts: {
+			default: 'On the $date',
+			'0': 'On Sunday the $date',
+			'1': 'On Monday the $date',
+			'2': 'On Tuesday the $date',
+			'3': 'On Wednesday the $date',
+			'4': 'On Thursday the $date',
+			'5': 'On Friday the $date',
+			'6': 'On Saturday the $date'
+		}
+	},
 	'holiday.quality.mandatory': 'Mandatory',
 	'holiday.quality.optional': 'Optional',
+	'holiday.today': 'Today ٩(◕‿◕｡)۶',
+	'holiday.inDays': {
+		counts: {
+			default: 'In $days days',
+			1: 'Tommorow',
+			2: 'In two days',
+			3: 'In three days'
+		}
+	},
+	'holiday.daysAgo': {
+		counts: {
+			default: '$days ago',
+			1: 'Yesterday',
+			2: 'Two days ago',
+			3: 'Three days ago'
+		}
+	},
 
 	/*
 	 * TODO:Add some specific to countries, e.g

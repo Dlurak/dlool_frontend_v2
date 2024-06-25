@@ -106,7 +106,9 @@ const de = {
 	'nav.footer.mod.list': 'Fremde Anfragen',
 	'nav.footer.else': 'Sonstige',
 	'nav.footer.else.settings': 'Einstellungen',
+	'nav.footer.else.holiday': 'Ferien',
 
+	title: 'Startseite',
 	'title.calendar': 'Kalendar',
 	'title.homework': 'Hausaufgaben',
 	'title.join': 'Klasse beitreten',
@@ -118,6 +120,7 @@ const de = {
 	'title.settings': 'Einstellungen',
 	'title.settings.profile': 'Profil Einstellungen',
 	'title.settings.general': 'Allgemeine Einstellungen',
+	'title.holiday': 'Ferien',
 
 	'home.subtitle': 'Das Hausaufgabenheft der nächsten Generation für Deine ganze Klasse',
 	'home.digitalEra': 'Ein Hausaufgabenheft für das digitale Zeitalter',
@@ -516,9 +519,37 @@ const de = {
 
 	'holiday.noData': 'Es gibt keine Daten für diesen Monat',
 	'holiday.timeRange': 'Vom $start bis zum $end',
-	'holiday.date': 'Am $date',
+	'holiday.date': {
+		counts: {
+			default: 'Am $date',
+			0: 'Am Sonntag dem $date',
+			1: 'Am Montag dem $date',
+			2: 'Am Dienstag dem $date',
+			3: 'Am Mittwoch dem $date',
+			4: 'Am Donnerstag dem $date',
+			5: 'Am Freitag dem $date',
+			6: 'Am Samstag dem $date'
+		}
+	},
 	'holiday.quality.mandatory': 'Verpflichtend',
 	'holiday.quality.optional': 'Optional',
+	'holiday.today': 'Heute ٩(◕‿◕｡)۶',
+	'holiday.inDays': {
+		counts: {
+			default: 'In $days Tagen',
+			1: 'Morgen',
+			2: 'Übermorgen',
+			3: 'In drei Tagen'
+		}
+	},
+	'holiday.daysAgo': {
+		counts: {
+			default: 'Vor $days Tagen',
+			1: 'Gestern',
+			2: 'Vorgestern',
+			3: 'Vor drei Tagen'
+		}
+	},
 
 	/*
 	 * TODO:Add some specific to countries, e.g
