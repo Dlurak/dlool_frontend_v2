@@ -10,7 +10,7 @@
 <button
 	{disabled}
 	class="
-		flex items-center justify-center gap-1 rounded px-3 py-1
+		flex flex-1 items-center justify-center gap-1 rounded px-3 py-1
 		disabled:cursor-not-allowed disabled:opacity-60
 	"
 	class:bg-emerald-400={color === 'green'}

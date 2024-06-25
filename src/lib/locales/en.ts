@@ -516,6 +516,24 @@ const en = {
 
 	'filter.filter': 'Filters',
 
+	'intro.nextgen': 'The next generation of',
+	'intro.future': 'The future is now',
+	'into.text': `After months in development the time has finally come: There is a <b>new Dlool Version</b>!
+Your current settings sadly won't be compatible withthe new version. But you can easily set them up again.`,
+	'intro.new': 'News',
+	'intro.new.preambel': 'Here are some of the most important changes:',
+	'intro.features': {
+		counts: {
+			default: '',
+			0: 'Support for multiple classes',
+			1: 'Completely reprogrammed',
+			2: 'More stable',
+			3: 'Completely new and modern design',
+			4: 'Completely new system for moderation'
+		}
+	},
+	'intro.start': "Let's go!",
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 

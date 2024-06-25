@@ -1,5 +1,6 @@
 <script>
 	import Token from '$lib/components/layout/Token.svelte';
+	import Version from '$lib/components/layout/Version.svelte';
 	import UserInfo from '$lib/components/layout/UserInfo.svelte';
 	import Confirmation from '$lib/components/layout/confirmation/Confirmation.svelte';
 	import Footer from '$lib/components/layout/footer/Footer.svelte';
@@ -18,7 +19,7 @@
 <div class="flex min-h-[100dvh] w-full flex-col items-stretch justify-between">
 	<Navbar />
 	<main
-		class="flex h-full min-h-[--h] w-full flex-col items-center px-3 py-3 outline"
+		class="flex h-full min-h-[--h] w-full flex-col items-center px-3 py-3"
 		style:--h={`calc(100dvh - ${accessiourHeight}px)`}
 	>
 		<slot />
@@ -31,4 +32,5 @@
 	<ToastContainer />
 	<Confirmation />
 	<Launcher />
+	<Version />
 </div>

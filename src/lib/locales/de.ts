@@ -529,6 +529,24 @@ const de = {
 
 	'filter.filter': 'Filter',
 
+	'intro.nextgen': 'Die nächste Generation von',
+	'intro.future': 'Die Zukunft ist jetzt',
+	'into.text': `Nach Monaten Entwicklung ist es endlich soweit: Es gibt eine komplett <b>neue Version von Dlool</b>! <br />
+Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibel :(. Du kannst sie, jedoch leicht wieder hinzufügen`,
+	'intro.new': 'Neuerungen',
+	'intro.new.preambel': 'Hier einige der wichtigsten Änderungen:',
+	'intro.features': {
+		counts: {
+			default: '',
+			0: 'Unterstützung für mehrere Klassen',
+			1: 'Komplett neu Programmiert',
+			2: 'Stabiler',
+			3: 'Komplett neues und einheitliches Design',
+			4: 'Komplett neues System für Moderation'
+		}
+	},
+	'intro.start': "Los geht's!",
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 

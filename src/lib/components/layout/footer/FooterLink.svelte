@@ -11,7 +11,7 @@
 <button
 	on:click={action}
 	class="
-		relative flex w-full justify-center gap-2 py-2
+		relative flex flex-1 justify-center gap-2 py-2
 		after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black
 		after:transition-[width] hover:after:w-full after:dark:bg-white
 	"

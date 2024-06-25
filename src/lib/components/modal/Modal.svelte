@@ -11,6 +11,7 @@
 	export let isOpen = false;
 
 	export const open = () => {
+		console.log('Open inside');
 		if (!dialogElement) return;
 		dialogElement.showModal();
 		isOpen = true;
