@@ -515,6 +515,12 @@ const de = {
 	'settings.genral.holiday.country': 'Staat',
 	'settings.genral.holiday.state': 'Bundesland',
 
+	'settings.api': 'API',
+	'settings.api.url': 'URL der API',
+	'settings.api.placeholder': 'URL',
+	'settings.api.success': 'Erfolgreich gespeichert',
+	'settings.api.error': 'Hierbei handelt es sich nicht um einen Dlool Server',
+
 	'settings.save': 'Speichern',
 
 	'holiday.noData': 'Es gibt keine Daten für diesen Monat',

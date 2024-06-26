@@ -19,6 +19,7 @@
 	import { onDestroy } from 'svelte';
 	import { self } from '$lib/utils/utils';
 	import { browser } from '$app/environment';
+	import Api from '$lib/components/settings/Api.svelte';
 
 	const navTexts = svocal('settings.nav.texts');
 	const weekStartsOn = svocal('settings.weekStartsOn');
@@ -173,4 +174,6 @@
 			{/if}
 		{/await}
 	</section>
+
+	<Api />
 </div>
