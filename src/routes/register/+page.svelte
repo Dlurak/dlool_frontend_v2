@@ -15,6 +15,7 @@
 	let username = '';
 	let displayname = '';
 	let pwd = '';
+	let pwdConfirm = '';
 
 	type Status = 'registering' | 'loading' | 'error' | Awaited<ReturnType<typeof register>>;
 	const status = writable<Status>('registering');
@@ -45,6 +46,7 @@
 		<TextInput placeholder={i('username')} bind:value={username} />
 		<TextInput placeholder={i('displayname')} bind:value={displayname} />
 		<PasswordInput placeholder={i('password')} bind:value={pwd} />
+		<PasswordInput placeholder={i('password.confirm')} bind:value={pwdConfirm} />
 
 		<PwdStrength {pwd} />
 
@@ -52,6 +54,7 @@
 			disabled={!(
 				username.trim() &&
 				displayname.trim() &&
+				pwd === pwdConfirm &&
 				getConditions(pwd).every(({ isValid }) => isValid) &&
 				$status === 'registering'
 			)}
@@ -81,7 +84,14 @@
 				<Confetti x={[-0.25, 0.25]} y={[0.75, 1.5]} />
 			</div>
 
-			<h4 class="text-center"><Store store={i('register.success')} /></h4>
+			<div class="text-center">
+				<h4 class="text-center"><Store store={i('register.success')} /></h4>
+				<span class="w-full text-center">
+					<a href="/join">
+						<Store store={i('register.joinLink')} />
+					</a>
+				</span>
+			</div>
 
 			<div class="flex justify-between">
 				<Confetti x={[-0.25, 0.25]} y={[-0.75, -0.25]} />

@@ -12,6 +12,15 @@
 	export let filter: (c: Class) => boolean = () => true;
 
 	let classBucket: Class[] = [];
+
+	$: {
+		if (school) {
+			listClasses({
+				school,
+				query: ''
+			}).then((d) => (classBucket = d.data.filter(filter)));
+		}
+	}
 </script>
 
 <Select
@@ -19,6 +28,7 @@
 	{threshold}
 	icon={AcademicCap}
 	placeholder={i('class')}
+	showArrow
 	options={classBucket.map(({ name }) => ({
 		label: readable(name),
 		value: name

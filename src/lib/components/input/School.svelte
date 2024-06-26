@@ -10,6 +10,8 @@
 	export let threshold = 0.25;
 
 	let schoolBucket: School[] = [];
+
+	listSchools({ query: '' }).then(({ data }) => (schoolBucket = data));
 </script>
 
 <Select

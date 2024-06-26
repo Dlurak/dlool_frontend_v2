@@ -42,9 +42,9 @@
 		style:--w={`min(${width * 1.7}px, 100%)`}
 	>
 		<div class="flex flex-col overflow-hidden rounded bg-neutral-200 shadow-lg dark:bg-neutral-700">
-			{#each abbrevations as abbr}
+			{#each abbrevations as abbr, ind}
 				<button
-					class="w-full px-2 py-1 text-start hover:bg-neutral-300 dark:hover:bg-neutral-600"
+					class="w-full px-2 py-1 text-start hover:bg-neutral-300 touch:px-4 touch:py-2 dark:hover:bg-neutral-600"
 					on:click={() => {
 						lang.set(abbr);
 						isPopoverOpen.set(false);
@@ -52,6 +52,11 @@
 				>
 					<Store store={i(`lang.${abbr}`)} />
 				</button>
+				{#if ind + 1 < abbr.length}
+					<div class="px-2 py-1">
+						<hr class="border-1 rounded-full border-zinc-300 dark:border-zinc-600" />
+					</div>
+				{/if}
 			{/each}
 		</div>
 	</div>

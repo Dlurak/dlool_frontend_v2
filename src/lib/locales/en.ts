@@ -57,6 +57,7 @@ const en = {
 	'launcher.width.terms': 'Width',
 
 	'register.register': 'Register',
+	'register.joinLink': 'Here you can join a class!',
 	'register.nametaken': 'Username taken :(',
 	'register.nametaken.desc': 'But you can still use the same displayname and password',
 	'register.success': 'Successfully registered (ﾉ◕ヮ◕)ﾉ',
@@ -184,6 +185,7 @@ const en = {
 	displayname: 'Displayname',
 
 	password: 'Password',
+	'password.confirm': 'Password confirmation',
 	'password.validation.length': 'Must be longer then 7 charachters',
 	'password.validation.lowercase': 'Must include at least one lowercase charachter',
 	'password.validation.upper': 'Must include at least one uppercase charachter',

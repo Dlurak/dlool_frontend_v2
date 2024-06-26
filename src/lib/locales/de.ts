@@ -60,6 +60,7 @@ const de = {
 
 	'register.register': 'Registrieren',
 	'register.nametaken': 'Nutzername vergeben :(',
+	'register.joinLink': 'Hier kannst du einer Klasse beitreten!',
 	'register.nametaken.desc':
 		'Aber Du kannst noch immer den selben Anzeigenamen und das selbe Passwort nutzen',
 	'register.success': 'Erfolgreich registriert (ﾉ◕ヮ◕)ﾉ',
@@ -192,6 +193,7 @@ const de = {
 	displayname: 'Anzeigename',
 
 	password: 'Passwort',
+	'password.confirm': 'Passwort Wiederholung',
 	'password.validation.length': 'Muss länger als 7 Zeichen seien',
 	'password.validation.lowercase': 'Muss min. einen Kleinbuchstaben enthalten',
 	'password.validation.upper': 'Muss min. einen Großbuchstaben enthalten',

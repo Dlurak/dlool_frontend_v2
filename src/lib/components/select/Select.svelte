@@ -122,6 +122,7 @@
 
 				dispatch('userInput', detail);
 			}}
+			options={options.map(({ label }) => get(label))}
 		>
 			<div slot="postInput" class="flex h-full items-center">
 				{#if showArrow}

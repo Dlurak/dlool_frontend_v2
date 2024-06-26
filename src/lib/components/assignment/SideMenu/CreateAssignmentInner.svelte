@@ -8,6 +8,15 @@
 			return 7;
 		}
 	}
+
+	export interface CreationPayload {
+		school: string;
+		class: string;
+		subject: string;
+		description: string;
+		from: CustomDate;
+		due: CustomDate;
+	}
 </script>
 
 <script lang="ts">
@@ -36,15 +45,6 @@
 	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
 	import NotTyppable from '$lib/components/select/NotTyppable.svelte';
 	import { self } from '$lib/utils/utils';
-
-	interface CreationPayload {
-		school: string;
-		class: string;
-		subject: string;
-		description: string;
-		from: CustomDate;
-		due: CustomDate;
-	}
 
 	const timetable = svocal('settings.timetable');
 	const presets = svocal('settings.homeworkPresets');
