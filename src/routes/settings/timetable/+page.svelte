@@ -110,7 +110,10 @@
 									<TextInput
 										minimal
 										placeholder={i('settings.timetable.subject.placeholder')}
-										bind:value={$timetable[day][lessonIndex]}
+										value={$timetable[day][lessonIndex] ?? undefined}
+										on:input={({ detail }) => {
+											$timetable[day][lessonIndex] = detail;
+										}}
 										on:enter={() => {
 											const isOnlyNull = getLastLessons($timetable).every((x) => x === null);
 											const hasLessons = countMaxLessons($timetable) > 0;

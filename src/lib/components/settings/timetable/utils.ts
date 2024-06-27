@@ -1,12 +1,14 @@
 import type {
+	OldTimetable,
+	OldTimetableDays,
 	Timetable,
-	TimetableBuilder,
 	TimetableWeekday
 } from '$lib/components/settings/timetable/types';
 import { filterOutDuplicates } from '$lib/utils/arrays/filter';
 import { lengthenUntil } from '$lib/utils/arrays/lengthen';
 import { removeNthElement } from '$lib/utils/arrays/remove';
 import { fromEntries, objectEntries } from '$lib/utils/objects/entries';
+import { self } from '$lib/utils/utils';
 
 export function countMaxLessons(timetable: Timetable) {
 	const lessonCounts = Object.values(timetable).map((x) => x.length);
@@ -14,16 +16,14 @@ export function countMaxLessons(timetable: Timetable) {
 	return Math.max(...lessonCounts);
 }
 
-type TimeTableEntry = [TimetableWeekday, (string | undefined)[]];
-
 export function addRow(timetable: Timetable): Timetable {
 	const entries = objectEntries(timetable);
 	const maxLength = countMaxLessons(timetable);
-	const longEntries = entries.map(
-		([day, lessons]) => [day, lengthenUntil(lessons, undefined, maxLength + 1)] as TimeTableEntry
-	);
+	const longEntries = entries.map(([day, lessons]) => {
+		return [day, lengthenUntil(lessons, undefined, maxLength + 1)] as const;
+	});
 
-	return fromEntries(longEntries);
+	return fromEntries(longEntries) as Timetable;
 }
 
 export function getLastLessons(timetable: Timetable) {
@@ -36,22 +36,48 @@ export function removeNthLesson(timetable: Timetable, lessonIndex: number): Time
 	const entries = objectEntries(timetable);
 
 	return fromEntries(
-		entries.map(([day, lessons]) => [day, removeNthElement(lessons, lessonIndex)] as TimeTableEntry)
+		entries.map(([day, lessons]) => [day, removeNthElement(lessons, lessonIndex)] as const)
 	);
 }
 
+function dayToCorrectDay(day: OldTimetableDays | TimetableWeekday): TimetableWeekday {
+	switch (day) {
+		case 'su':
+			return 'sun';
+		case 'mo':
+			return 'mon';
+		case 'tu':
+			return 'tue';
+		case 'we':
+			return 'wed';
+		case 'th':
+			return 'thu';
+		case 'fr':
+			return 'fri';
+		case 'sa':
+			return 'sat';
+		default:
+			return day;
+	}
+}
+
 export function cleanUpTimeTable(
-	timetable: Timetable | TimetableBuilder<string | null>
+	timetable: OldTimetable | Record<TimetableWeekday, (string | null | undefined)[]>
 ): Timetable {
-	// @ts-expect-error Trust me it works
-	const entries = objectEntries(timetable).map(
-		([day, lessons]) => [day, filterOutDuplicates(lessons.filter((x) => x))] as TimeTableEntry
-	);
+	const entries = objectEntries(timetable).map(([day, lessons]) => {
+		return [
+			dayToCorrectDay(day),
+			filterOutDuplicates(lessons.filter(self).filter(isString))
+		] as const;
+	});
 
 	const maxLength = Math.max(...entries.map(([_, lessons]) => lessons.length));
 
 	return fromEntries(
-		entries.map(([day, lessons]) => [day, lengthenUntil(lessons, undefined, maxLength)] as const)
+		entries.map(([day, lessons]) => {
+			const longLessons = lengthenUntil(lessons, null, maxLength);
+			return [day, longLessons] as const;
+		})
 	);
 }
 

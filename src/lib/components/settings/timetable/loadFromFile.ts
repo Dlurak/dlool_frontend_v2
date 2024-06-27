@@ -1,5 +1,6 @@
 import { confirm } from '$lib/components/layout/confirmation';
 import { sendToast } from '$lib/components/layout/toasts';
+import { oldTimetableScheme, timetableScheme } from '$lib/components/settings/timetable/types';
 import { allLessons, cleanUpTimeTable } from '$lib/components/settings/timetable/utils';
 import { i } from '$lib/i18n/store';
 import { readJSON } from '$lib/utils/files/upload';
@@ -8,17 +9,6 @@ import { svocal } from '$lib/utils/store/svocal';
 import { get } from 'svelte/store';
 import { z } from 'zod';
 
-const lessonsScheme = z.array(z.nullable(z.string()));
-
-const timetableScheme = z.object({
-	sun: lessonsScheme,
-	mon: lessonsScheme,
-	tue: lessonsScheme,
-	wed: lessonsScheme,
-	thu: lessonsScheme,
-	fri: lessonsScheme,
-	sat: lessonsScheme
-});
 const timetable = svocal('settings.timetable');
 
 export async function loadFromFile() {
@@ -29,7 +19,7 @@ export async function loadFromFile() {
 		}));
 	if (!confirmed) return;
 
-	const data = await safePromise(readJSON(timetableScheme));
+	const data = await safePromise(readJSON(z.union([timetableScheme, oldTimetableScheme])));
 
 	if (data.type === 'success') {
 		timetable.set(cleanUpTimeTable(data.data));

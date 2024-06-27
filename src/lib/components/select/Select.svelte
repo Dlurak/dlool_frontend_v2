@@ -31,7 +31,9 @@
 		if ($optionsStore.length > 0) return;
 		if (firstValue === null) return;
 
-		userInput = get(options.find(({ value }) => deepEqual(value, firstValue))?.label ?? readable(''))
+		userInput = get(
+			options.find(({ value }) => deepEqual(value, firstValue))?.label ?? readable('')
+		);
 	});
 
 	export let allowMultiple = false;
