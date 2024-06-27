@@ -1,4 +1,6 @@
 <script lang="ts" generics="V">
+	import { deepEqual } from '$lib/utils/objects/deepEqual';
+
 	import TextInput from '$lib/components/input/Text.svelte';
 	import { get, readable, type Readable } from 'svelte/store';
 	import Store from '../utils/Store.svelte';
@@ -19,7 +21,11 @@
 	// eslint-disable-next-line no-undef
 	export let firstValue: V | null = value ? value[0] ?? null : null;
 	export let userInput = firstValue
-		? get(options.find(({ value: v }) => v === firstValue)?.label ?? readable(''))
+		? get(options.find(({ value }) => deepEqual(value, firstValue))?.label ?? readable(''))
+		: '';
+
+	$: userInput = firstValue
+		? get(options.find(({ value }) => deepEqual(value, firstValue))?.label ?? readable(''))
 		: '';
 
 	export let allowMultiple = false;

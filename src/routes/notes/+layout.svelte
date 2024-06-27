@@ -18,6 +18,7 @@
 	import Store from '$lib/components/utils/Store.svelte';
 	import { Icon, ArrowLeft } from 'svelte-hero-icons';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
+	import { removeKey } from '$lib/utils/objects/removeKey';
 
 	const isRootPage = derived(page, ($page) => $page.route.id === '/notes');
 	const isSmall = mediaQuery('(max-width: 768px)');
@@ -47,7 +48,7 @@
 					classes: []
 				}}
 				on:change={({ detail }) => {
-					goto(`?${objToQueryParams(detail)}`)
+					goto(`?${objToQueryParams(removeKey(detail, 'emittedBy'))}`)
 						.then(invalidateAll)
 						.then(() => {
 							sendToast({

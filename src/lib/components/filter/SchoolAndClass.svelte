@@ -13,17 +13,23 @@
 		classes: string[];
 	};
 
+	type DispatchData = {
+		school: string;
+		classes: string[];
+		emittedBy: 'auto' | 'user';
+	};
+
 	export let query: Query<null>;
 
 	const school = svocalWithFallback('filter.school', query.school);
 	const classes = svocalWithFallback('filter.classes', query.classes);
 
 	onMount(() => {
-		dispatch('change', { school: $school ?? '', classes: $classes ?? [] });
+		dispatch('change', { school: $school ?? '', classes: $classes ?? [], emittedBy: 'auto' });
 	});
 
 	const dispatch = createEventDispatcher<{
-		change: Query<string>;
+		change: DispatchData;
 	}>();
 </script>
 
@@ -39,7 +45,7 @@
 		<PrimaryButton
 			disabled={!($school && $classes.length >= 1)}
 			on:click={() => {
-				dispatch('change', { school: $school ?? '', classes: $classes ?? [] });
+				dispatch('change', { school: $school ?? '', classes: $classes ?? [], emittedBy: 'user' });
 			}}
 		>
 			<Store store={i('assignments.filter.apply')} />
