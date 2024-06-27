@@ -62,6 +62,10 @@ const sv = {
 	'holidays.state': ['holidays.state', () => 'HE'],
 	'holidays.autoDetect': ['holidays.autoDetect', () => true],
 	'settings.homeworkPresets': ['settings.homeworkPresets', () => [] as string[]],
+	'settings.homework.defaultSubject': [
+		'settings.homework.defaultSubject',
+		() => ({}) as Record<string, string>
+	],
 	'dlool-version': ['dlool-version', () => '2']
 } as const;
 

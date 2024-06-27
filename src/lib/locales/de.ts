@@ -471,9 +471,6 @@ const de = {
 		'Ziehe ein Rechteck hier her, um es zu aus der Navigation zu entfernen.',
 	'settings.general.calendar': 'Kalender',
 	'settings.general.calendar.weekStartsOn': 'Erster Tag der Woche',
-	'settings.general.assignments': 'Hausaufgaben',
-	'settings.general.assignments.transparency': 'Transparenz überfälliger Hausaufgaben',
-	'settings.general.assignments.presets': 'Voreinstellungen für neue Hausaufgaben',
 	'settings.general.launcher': 'Suche',
 	'settings.general.launcher.outlineWidth': 'Breite der grünen Umrandung',
 	'settings.general.launcher.width': 'Breite',
@@ -525,6 +522,15 @@ const de = {
 	'settings.api.placeholder': 'URL',
 	'settings.api.success': 'Erfolgreich gespeichert',
 	'settings.api.error': 'Hierbei handelt es sich nicht um einen Dlool Server',
+
+	'settings.assignments': 'Hausaufgaben',
+	'settings.assignments.title': 'Hausaufgaben Einstellungen',
+	'settings.assignments.transparency': 'Transparenz überfälliger Hausaufgaben',
+	'settings.assignments.presets': 'Voreinstellungen für neue Hausaufgaben',
+	'settings.assignments.presets.new': 'Neues hinzufügen',
+	'settings.assignments.default': 'Standard Fächer für Kurse',
+	'settings.assignments.default.class.placeholder': 'Klasse/Kurs',
+	'settings.assignments.default.class.subject': 'Fach',
 
 	'settings.save': 'Speichern',
 

@@ -459,9 +459,6 @@ const en = {
 		'Drag and drop one rectangle here to remove it from your navigation.',
 	'settings.general.calendar': 'Calendar',
 	'settings.general.calendar.weekStartsOn': 'First day of the week',
-	'settings.general.assignments': 'Assignments',
-	'settings.general.assignments.transparency': 'transparency of overdue assignments',
-	'settings.general.assignments.presets': 'Presets for new assignments',
 	'settings.general.launcher': 'Launcher',
 	'settings.general.launcher.outlineWidth': 'Width of the green outline',
 	'settings.general.launcher.width': 'Width',
@@ -512,6 +509,15 @@ const en = {
 	'settings.api.placeholder': 'URL',
 	'settings.api.success': 'Successfully saved',
 	'settings.api.error': "This isn't a Dlool-server",
+
+	'settings.assignments': 'Assignments',
+	'settings.assignments.title': 'Assignment-Settings',
+	'settings.assignments.transparency': 'transparency of overdue assignments',
+	'settings.assignments.presets': 'Presets for new assignments',
+	'settings.assignments.presets.new': 'Add a new one',
+	'settings.assignments.default': 'Default subjects for courses',
+	'settings.assignments.default.class.placeholder': 'Course',
+	'settings.assignments.default.class.subject': 'Subject',
 
 	'settings.save': 'Save',
 

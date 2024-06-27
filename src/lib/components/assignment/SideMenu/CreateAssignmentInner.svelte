@@ -45,9 +45,11 @@
 	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
 	import NotTyppable from '$lib/components/select/NotTyppable.svelte';
 	import { self } from '$lib/utils/utils';
+	import { mapObject } from '$lib/utils/objects/map';
 
 	const timetable = svocal('settings.timetable');
 	const presets = svocal('settings.homeworkPresets');
+	const defaultSubjects = svocal('settings.homework.defaultSubject');
 
 	const dispatch = createEventDispatcher<{ submit: CreationPayload }>();
 
@@ -60,7 +62,11 @@
 	const initiallySelected = allowedClasses.filter(showClass);
 
 	let classes: Class[] = [];
-	let classInput = initiallySelected.length === 1 ? initiallySelected[0] : '';
+	const classInput = writable(initiallySelected.length === 1 ? initiallySelected[0] : '');
+	$: {
+		const initiallySelected = selectableClasses.filter(showClass);
+		classInput.set(initiallySelected.length === 1 ? initiallySelected[0] : '');
+	}
 
 	let subject = '';
 	let description = '';
@@ -71,7 +77,7 @@
 	let inputMode: 'text' | 'presets' = 'text';
 
 	$: disabled = !(
-		classInput &&
+		$classInput &&
 		subject &&
 		description &&
 		customDateToNormal(due) > customDateToNormal(from)
@@ -89,6 +95,11 @@
 
 		due = normalToCustomDate(date);
 	}
+
+	classInput.subscribe((cl) => {
+		const lowercased = mapObject($defaultSubjects, (key) => key.toLowerCase(), self);
+		subject = lowercased[cl.toLowerCase()] || subject;
+	});
 
 	wasSuccessfull.subscribe((successfull) => {
 		if (successfull) {
@@ -115,8 +126,8 @@
 				label: readable(name),
 				value: name
 			}))}
-			value={[classInput]}
-			bind:firstValue={classInput}
+			value={[$classInput]}
+			bind:firstValue={$classInput}
 			threshold={0.1}
 		/>
 	{/if}
@@ -175,7 +186,7 @@
 		{disabled}
 		on:click={() => {
 			disabled = true;
-			dispatch('submit', { description, subject, due, from, school, class: classInput });
+			dispatch('submit', { description, subject, due, from, school, class: $classInput });
 		}}
 	>
 		<Store store={i('assignments.create.create')} />
