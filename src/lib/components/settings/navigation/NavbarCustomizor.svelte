@@ -6,9 +6,7 @@
 		id: number;
 	};
 
-	const ITEM_POOL: ItemPool[] = (
-		['homework', 'calendar', 'notes', 'login', 'register', 'launcher'] as const
-	).map((name, id) => ({ name, id }));
+	const ITEM_POOL: ItemPool[] = keys(navbarEntries).map((name, id) => ({ name, id }));
 
 	function createItemsFromNames(names: NavigationTarget[]) {
 		return ITEM_POOL.filter(({ name }) => names.includes(name));
@@ -24,6 +22,8 @@
 	import DropArea from './DropArea.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { i } from '$lib/i18n/store';
+	import { navbarEntries } from '$lib/constants/navbar';
+	import { keys } from '$lib/utils/objects/entries';
 
 	const selectedSvocal = svocal('settings.nav.entries');
 

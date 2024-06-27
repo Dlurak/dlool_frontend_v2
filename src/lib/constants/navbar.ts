@@ -9,6 +9,8 @@ import {
 	Calendar,
 	PencilSquare,
 	MagnifyingGlass,
+	Cog,
+	CalendarDays,
 	type IconSource
 } from 'svelte-hero-icons';
 import { useLauncher } from '$lib/components/layout/launcher/hook';
@@ -30,7 +32,7 @@ export const navbarEntries: Record<
 		text: i('nav.notes')
 	},
 	calendar: {
-		icon: Calendar,
+		icon: CalendarDays,
 		action: () => goto('/calendar'),
 		text: i('nav.calendar')
 	},
@@ -50,5 +52,15 @@ export const navbarEntries: Record<
 		icon: UserPlus,
 		action: () => goto('/register'),
 		text: i('nav.register')
+	},
+	settings: {
+		icon: Cog,
+		action: () => goto('/settings'),
+		text: i('nav.settings')
+	},
+	holiday: {
+		icon: Calendar,
+		action: () => goto('/holiday'),
+		text: i('nav.holiday')
 	}
 };

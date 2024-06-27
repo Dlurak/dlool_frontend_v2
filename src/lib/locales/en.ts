@@ -88,6 +88,8 @@ const en = {
 	'nav.login': 'Login',
 	'nav.register': 'Register',
 	'nav.launcher': 'Launcher',
+	'nav.settings': 'Settings',
+	'nav.holiday': 'Holiday',
 
 	'nav.footer.auth': 'Account',
 	'nav.footer.auth.login': 'Login',

@@ -91,6 +91,8 @@ const de = {
 	'nav.login': 'Einloggen',
 	'nav.register': 'Registrieren',
 	'nav.launcher': 'Suche',
+	'nav.settings': 'Einstellungen',
+	'nav.holiday': 'Ferien',
 
 	'nav.footer.auth': 'Account',
 	'nav.footer.auth.login': 'Einloggen',

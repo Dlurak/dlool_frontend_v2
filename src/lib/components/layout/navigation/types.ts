@@ -4,4 +4,6 @@ export type NavigationTarget =
 	| 'notes'
 	| 'login'
 	| 'register'
-	| 'launcher';
+	| 'launcher'
+	| 'settings'
+	| 'holiday';
