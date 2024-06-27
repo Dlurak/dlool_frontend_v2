@@ -2,7 +2,7 @@
 	import { deepEqual } from '$lib/utils/objects/deepEqual';
 
 	import TextInput from '$lib/components/input/Text.svelte';
-	import { get, readable, type Readable } from 'svelte/store';
+	import { get, readable, writable, type Readable } from 'svelte/store';
 	import Store from '../utils/Store.svelte';
 	import { createFloatingActions } from 'svelte-floating-ui';
 	import { flip, offset, shift } from '@floating-ui/core';
@@ -24,9 +24,15 @@
 		? get(options.find(({ value }) => deepEqual(value, firstValue))?.label ?? readable(''))
 		: '';
 
-	$: userInput = firstValue
-		? get(options.find(({ value }) => deepEqual(value, firstValue))?.label ?? readable(''))
-		: '';
+	const optionsStore = writable(options);
+	$: optionsStore.set(options);
+	optionsStore.subscribe((n) => {
+		if (n.length === 0) return;
+		if ($optionsStore.length > 0) return;
+		if (firstValue === null) return;
+
+		userInput = get(options.find(({ value }) => deepEqual(value, firstValue))?.label ?? readable(''))
+	});
 
 	export let allowMultiple = false;
 	export let allowCustomval = false;
