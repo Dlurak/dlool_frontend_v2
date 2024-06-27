@@ -415,6 +415,8 @@ const en = {
 	'calendar.update.update': 'Update',
 	'calendar.create.success': 'Erreignis erfolgreich erstellt',
 
+	'calendar.noData': 'There are no calendar events',
+
 	'settings.noneSelected': 'Select a category',
 	'settings.profile': 'Account',
 

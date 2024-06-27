@@ -5,6 +5,7 @@
 	import { i } from '$lib/i18n/store';
 	import { stringify } from '$lib/utils/dates/custom';
 	import { Icon, MapPin } from 'svelte-hero-icons';
+	import Updates from '$lib/components/utils/Updates.svelte';
 
 	export let event: Calendar;
 
@@ -63,4 +64,6 @@
 			{event.summary}
 		</span>
 	{/if}
+
+	<Updates updates={event.updates} />
 </a>

@@ -8,6 +8,6 @@
 	export let latest: CustomDate | null;
 </script>
 
-<CalFrame>
+<CalFrame on:close>
 	<CalInner {displayMonth} {earliest} {latest} on:change />
 </CalFrame>

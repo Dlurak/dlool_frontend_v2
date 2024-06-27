@@ -4,7 +4,7 @@ import { z } from 'zod';
 const scheme = z.union([
 	z.object({
 		status: z.literal('success'),
-		message: z.literal('Successfully created school Dlool'),
+		message: z.string(),
 		data: z.null()
 	}),
 	z.object({

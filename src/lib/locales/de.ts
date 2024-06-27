@@ -425,6 +425,8 @@ const de = {
 	'calendar.update.update': 'Aktualisieren',
 	'calendar.create.success': 'Erreignis erfolgreich erstellt',
 
+	'calendar.noData': 'Es gibt keine Kalender Erreignisse',
+
 	'settings.noneSelected': 'Wähle eine Kategorie aus',
 	'settings.profile': 'Profil',
 

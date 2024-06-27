@@ -61,7 +61,7 @@
 			<div class="h-full w-full bg-zinc-200 dark:bg-zinc-800" />
 		</div>
 
-		<span>
+		<span class="flex items-center">
 			{#if date}
 				{stringify(date, { includeTime: true })}
 			{:else}
@@ -89,6 +89,7 @@
 				date = detail.custom;
 				dispatch('change', detail);
 			}}
+			on:close={show.toggle}
 		/>
 	</div>
 {/if}

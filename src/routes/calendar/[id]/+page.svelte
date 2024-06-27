@@ -14,6 +14,7 @@
 	import { deleteCalendar } from '$lib/dlool/calendar/delete';
 	import EditModal from '$lib/components/calendar/List/EditModal.svelte';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
+	import Updates from '$lib/components/utils/Updates.svelte';
 
 	export let data: PageData;
 
@@ -57,9 +58,7 @@
 						on:click={async () => {
 							const isConfirmed = await confirm({
 								ok: i('calendar.delete.confirm.ok'),
-								desc: i('calendar.delete.confirm', {
-									name: event.title
-								})
+								desc: i('calendar.delete.confirm', { name: event.title })
 							});
 							if (!isConfirmed) return;
 
@@ -120,11 +119,14 @@
 					<Store store={i(`calendar.priority.${event.priority}`)} />
 				</span>
 			{/if}
+
+			<Updates updates={event.updates} />
 		</div>
 
 		{#if event.summary}
 			<span>{event.summary}</span>
 		{/if}
+
 
 		<EditModal bind:showEditModal {event} />
 	{/if}

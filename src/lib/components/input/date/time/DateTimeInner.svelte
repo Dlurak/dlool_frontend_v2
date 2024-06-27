@@ -42,7 +42,7 @@
 	}
 </script>
 
-<CalFrame>
+<CalFrame on:close>
 	<CalInner
 		{displayMonth}
 		{earliest}

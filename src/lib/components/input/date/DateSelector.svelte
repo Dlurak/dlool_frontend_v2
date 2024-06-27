@@ -3,8 +3,8 @@
 		stringify,
 		currentCustomDate,
 		customDateToNormal,
+		normalToCustomDate,
 		type CustomDate,
-		normalToCustomDate
 	} from '$lib/utils/dates/custom';
 	import { i } from '$lib/i18n/store';
 	import { createFloatingActions } from 'svelte-floating-ui';
@@ -87,6 +87,7 @@
 
 				dispatch('change', detail);
 			}}
+			on:close={show.toggle}
 		/>
 	</div>
 {/if}

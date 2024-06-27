@@ -1,5 +1,7 @@
 <script lang="ts">
+	import Store from '$lib/components/utils/Store.svelte';
 	import type { Calendar } from '$lib/dlool/calendar/list';
+	import { i } from '$lib/i18n/store';
 	import { stringify } from '$lib/utils/dates/custom';
 	import { groupBy } from '$lib/utils/objects/group';
 	import CalEventListBox from './CalEventListBox.svelte';
@@ -22,4 +24,8 @@
 			<hr class="w-full border-zinc-300 dark:border-zinc-700" />
 		</div>
 	{/if}
+{:else}
+	<div class="flex h-full justify-center items-center">
+		<Store store={i('calendar.noData')} />
+	</div>
 {/each}
