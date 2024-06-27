@@ -466,14 +466,22 @@ const de = {
 
 	'settings.general': 'Allgemein',
 	'settings.general.nav': 'Navigation',
+	'settings.general.nav.description':
+		"Hier kannst du Deine Navigationsleiste anpassen. Bewege die Boxen einfach via Drag'n Drop.",
 	'settings.general.nav.texts': 'Texte in der Navigationsleiste anzeigen',
+	'settings.general.nav.texts.description':
+		'In der Navigationsleiste werden kleine Beschriftungen angezeigt, erfahrene Nutzer, möchten diese eventuell nicht.',
 	'settings.general.nav.composer.your': 'Deine Navigation',
 	'settings.general.nav.composer.available': 'Verfügbare Navigationseinheiten',
 	'settings.general.nav.composer.empty':
 		'Ziehe ein Rechteck hier her, um es zu aus der Navigation zu entfernen.',
 	'settings.general.calendar': 'Kalender',
 	'settings.general.calendar.weekStartsOn': 'Erster Tag der Woche',
+	'settings.general.calendar.weekStartsOn.description':
+		'Hier kannst Du einstellen, welcher Wochentag der erste im Kalender seien sollte.',
 	'settings.general.launcher': 'Suche',
+	'settings.general.launcher.description':
+		'Die Suche kannst Du entweder durch tippen auf das Such Symbol in der Navigation oder durch drücken von Steuerung und K auf der Tastatur öffnen.',
 	'settings.general.launcher.outlineWidth': 'Breite der grünen Umrandung',
 	'settings.general.launcher.width': 'Breite',
 	'settings.general.launcher.width.small': 'Klein',
@@ -481,6 +489,9 @@ const de = {
 	'settings.general.launcher.width.large': 'Groß',
 
 	'settings.color': 'Farben',
+	'settings.color.heading': 'Farben für Fächer',
+	'settings.color.description':
+		'Du kannst jedem Fach eine individuelle Farbe geben, um es noch schneller und leichter zu erkennen. Diese Farben kannst du als Datei exportieren und an deine Mitmenschen versenden, falls sie ähnliche Farben nutzen.',
 	'settings.color.title': 'Farbeinstellungen',
 	'settings.color.new': 'Fach hinzufügen',
 	'settings.color.subject.placeholder': 'Fach',
@@ -516,6 +527,8 @@ const de = {
 
 	'settings.general.holiday': 'Ferien & Feiertage',
 	'settings.genral.holiday.autoDetect': 'Erkenne den Standort automatisch',
+	'settings.genral.holiday.autoDetect.description':
+		'Dein Standort wird automaticsh erkannt. Wenn Du jedoch lieber den Standort für die Ferien und Feirtage manuell setzen willst, kannst Du diese Einstellung ausschalten.',
 	'settings.genral.holiday.country': 'Staat',
 	'settings.genral.holiday.state': 'Bundesland',
 

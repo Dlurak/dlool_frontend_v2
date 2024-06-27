@@ -454,14 +454,22 @@ const en = {
 
 	'settings.general': 'General',
 	'settings.general.nav': 'Navigation',
-	'settings.general.nav.texts': 'Texte in der Navigationsleiste anzeigen',
+	'settings.general.nav.description':
+		"Here you can change your navigation bar.Simply move the boxes via Drag'n Drop.",
+	'settings.general.nav.texts': 'Show texts in the navigationbar',
+	'settings.general.nav.texts.description':
+		'There are labels in the navigation bar, experienced users may want to disable them as they already know the icons.',
 	'settings.general.nav.composer.your': 'Your Navigation',
 	'settings.general.nav.composer.available': 'Available navigation units',
 	'settings.general.nav.composer.empty':
 		'Drag and drop one rectangle here to remove it from your navigation.',
 	'settings.general.calendar': 'Calendar',
 	'settings.general.calendar.weekStartsOn': 'First day of the week',
+	'settings.general.calendar.weekStartsOn.description':
+		'Here you can change on which weekday the week should start in calendar views. In America sundays are typically used for this.',
 	'settings.general.launcher': 'Launcher',
+	'settings.general.launcher.description':
+		'The search can either be opened by tapping on the icon in the navigation or by pressing Controll + K on your keyboard.',
 	'settings.general.launcher.outlineWidth': 'Width of the green outline',
 	'settings.general.launcher.width': 'Width',
 	'settings.general.launcher.width.small': 'Small',
@@ -469,6 +477,9 @@ const en = {
 	'settings.general.launcher.width.large': 'Large',
 
 	'settings.color': 'Colors',
+	'settings.color.heading': 'Colors for subjects',
+	'settings.color.description':
+		'You can give an individual color to each subject to identify it even faster and easier. You can share these colors via a file with others in case they use simmilar ones',
 	'settings.color.title': 'Color settings',
 	'settings.color.new': 'Add a subject',
 	'settings.color.subject.placeholder': 'Subject',
@@ -503,6 +514,8 @@ const en = {
 
 	'settings.general.holiday': 'Holidays',
 	'settings.genral.holiday.autoDetect': 'Detect your location automatically',
+	'settings.genral.holiday.autoDetect.description':
+		'Your location can be automatically discovered. If you would rather set your location manually you can turn this off.',
 	'settings.genral.holiday.country': 'Country',
 	'settings.genral.holiday.state': 'State',
 

@@ -22,6 +22,10 @@
 <MetaData title={i('settings.color.title')} />
 
 <div class="flex w-full flex-col gap-2">
+	<h3><Store store={i('settings.color.heading')} /></h3>
+
+	<p><Store store={i('settings.color.description')} /></p>
+
 	<div class="flex flex-col justify-between gap-2 sm:flex-row">
 		<Store store={i('settings.color.importAndExport')} />
 

@@ -43,9 +43,15 @@
 <div class="flex flex-col gap-2">
 	<section class="flex flex-col gap-2">
 		<h3><Store store={i('settings.general.nav')} /></h3>
-
+		<p>
+			<Store store={i('settings.general.nav.description')} />
+		</p>
 		<NavbarCustomizor />
-		<BoolSetting label={i('settings.general.nav.texts')} bind:value={$navTexts} />
+		<BoolSetting
+			label={i('settings.general.nav.texts')}
+			bind:value={$navTexts}
+			description={i('settings.general.nav.texts.description')}
+		/>
 	</section>
 
 	<section class="flex flex-col gap-2">
@@ -54,6 +60,7 @@
 		<SelectSetting
 			bind:value={$weekStartsOn}
 			label={i('settings.general.calendar.weekStartsOn')}
+			description={i('settings.general.calendar.weekStartsOn.description')}
 			options={new Array(7).fill(0).map((_, ind) => {
 				const num = (ind + 1) % 7;
 
@@ -67,6 +74,10 @@
 
 	<section class="flex flex-col gap-2">
 		<h3><Store store={i('settings.general.launcher')} /></h3>
+
+		<p>
+			<Store store={i('settings.general.launcher.description')} />
+		</p>
 
 		<SelectSetting
 			label={i('settings.general.launcher.width')}
@@ -89,7 +100,11 @@
 	<section class="flex flex-col gap-2">
 		<h3><Store store={i('settings.general.holiday')} /></h3>
 
-		<BoolSetting label={i('settings.genral.holiday.autoDetect')} bind:value={$holidayAutoDetect} />
+		<BoolSetting
+			label={i('settings.genral.holiday.autoDetect')}
+			bind:value={$holidayAutoDetect}
+			description={i('settings.genral.holiday.autoDetect.description')}
+		/>
 
 		<SelectSetting
 			typpable
