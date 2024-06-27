@@ -70,7 +70,7 @@ export const int = <
 	const parted = unproccessedString.replace(
 		/\$([a-zA-Z]+)/g,
 		// @ts-expect-error the params can't be typesave
-		(match, key) => pairs[key] || match
+		(match, key) => pairs[key] ?? match
 		// @ts-expect-error base makes problems
 	) as ReplaceSubstringType<Base, Pai>;
 

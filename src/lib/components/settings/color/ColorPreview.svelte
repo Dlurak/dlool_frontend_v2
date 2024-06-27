@@ -48,7 +48,11 @@
 
 <Modal bind:isOpen={isModalOpened}>
 	<div slot="title">
-		<Store store={i('settings.color.modal.title', { subject }, {})} />
+		{#if subject}
+			<Store store={i('settings.color.modal.title', { subject: subject.trim() })} />
+		{:else}
+			<Store store={i('settings.color.modal.title.none')} />
+		{/if}
 	</div>
 
 	<div slot="body" class="flex flex-col gap-3 py-3">

@@ -485,6 +485,7 @@ const de = {
 	'settings.color.subject.placeholder': 'Fach',
 	'settings.color.showHex': 'Farbcode anzeigen',
 	'settings.color.modal.title': 'Eine Farbe für $subject auswählen',
+	'settings.color.modal.title.none': 'Eine Farbe auswählen',
 	'settings.color.importAndExport': 'Import und export',
 	'settings.color.import': 'Importieren',
 	'settings.color.import.error':

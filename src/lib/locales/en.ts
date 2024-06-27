@@ -473,6 +473,7 @@ const en = {
 	'settings.color.subject.placeholder': 'Subject',
 	'settings.color.showHex': 'Show hex values',
 	'settings.color.modal.title': 'Pick a color for $subject',
+	'settings.color.modal.title.none': 'Pick a color',
 	'settings.color.importAndExport': 'Import and export',
 	'settings.color.import': 'Import',
 	'settings.color.import.error': "The file couldn't be imported. Is it in the right format?",
