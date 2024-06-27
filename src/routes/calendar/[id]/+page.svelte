@@ -127,7 +127,6 @@
 			<span>{event.summary}</span>
 		{/if}
 
-
 		<EditModal bind:showEditModal {event} />
 	{/if}
 </div>

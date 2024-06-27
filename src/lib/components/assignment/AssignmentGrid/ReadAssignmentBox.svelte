@@ -1,24 +1,24 @@
 <script lang="ts">
 	import type { Assignment } from '$lib/dlool/assignments/list';
 	import { stringify } from '$lib/utils/dates/custom';
-	import { Icon, Clock, ChevronDown, ChevronUp } from 'svelte-hero-icons';
+	import { Icon, Clock } from 'svelte-hero-icons';
 	import Store from '../../utils/Store.svelte';
 	import { i } from '$lib/i18n/store';
 	import { getSubjectIcon } from '$lib/utils/icons/subjectIcons';
 	import { svocal } from '$lib/utils/store/svocal';
-	import UpdatedAt from '$lib/components/utils/UpdatedAt.svelte';
-	import { useToggle } from 'nutzlich';
-	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
 	import Updates from '$lib/components/utils/Updates.svelte';
+	import { mapObject } from '$lib/utils/objects/map';
+	import { self } from '$lib/utils/utils';
 
 	export let assignment: Assignment;
 
 	$: icon = getSubjectIcon(assignment.subject);
 
 	const colors = svocal('settings.color');
-	const showAllEdits = useToggle(false);
 
-	$: color = $colors[assignment.subject] || undefined;
+	$: color =
+		mapObject($colors, (key) => key.toLowerCase(), self)[assignment.subject.toLowerCase()] ??
+		undefined;
 </script>
 
 <div class="flex gap-3">

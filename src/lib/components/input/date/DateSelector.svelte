@@ -4,7 +4,7 @@
 		currentCustomDate,
 		customDateToNormal,
 		normalToCustomDate,
-		type CustomDate,
+		type CustomDate
 	} from '$lib/utils/dates/custom';
 	import { i } from '$lib/i18n/store';
 	import { createFloatingActions } from 'svelte-floating-ui';

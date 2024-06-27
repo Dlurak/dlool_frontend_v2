@@ -35,7 +35,7 @@
 		/>
 	</div>
 
-	<div slot="b" class="flex w-full flex-col items-center justify-center gap-2 h-full">
+	<div slot="b" class="flex h-full w-full flex-col items-center justify-center gap-2">
 		{#if data.data}
 			<Tabbar>
 				<Tab value="list" bind:active={currentView}>List</Tab>

@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 const lessonsScheme = z.array(z.nullable(z.string()));
 
@@ -22,11 +22,10 @@ export const timetableScheme = z.object({
 	sat: lessonsScheme
 });
 
-export type Timetable = z.infer<typeof timetableScheme>
-export type OldTimetable = z.infer<typeof oldTimetableScheme>
+export type Timetable = z.infer<typeof timetableScheme>;
+export type OldTimetable = z.infer<typeof oldTimetableScheme>;
 
-export type TimetableWeekday = keyof Timetable
-export type OldTimetableDays = keyof OldTimetable
+export type TimetableWeekday = keyof Timetable;
+export type OldTimetableDays = keyof OldTimetable;
 
 export type TimetableBuilder<T> = Record<TimetableWeekday, T[]>;
-
