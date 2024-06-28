@@ -46,10 +46,12 @@
 	import NotTyppable from '$lib/components/select/NotTyppable.svelte';
 	import { self } from '$lib/utils/utils';
 	import { mapObject } from '$lib/utils/objects/map';
+	import { smartSubject } from '$lib/utils/dlool/smartSubject';
 
 	const timetable = svocal('settings.timetable');
 	const presets = svocal('settings.homeworkPresets');
 	const defaultSubjects = svocal('settings.homework.defaultSubject');
+	const smartDetection = svocal('settings.homework.smart-subjects');
 
 	const dispatch = createEventDispatcher<{ submit: CreationPayload }>();
 
@@ -98,7 +100,9 @@
 
 	classInput.subscribe((cl) => {
 		const lowercased = mapObject($defaultSubjects, (key) => key.toLowerCase(), self);
-		subject = lowercased[cl.toLowerCase()] || subject;
+		const smart = $smartDetection ? smartSubject(cl) : undefined;
+
+		subject = lowercased[cl.toLowerCase()] ?? smart ?? subject;
 	});
 
 	wasSuccessfull.subscribe((successfull) => {

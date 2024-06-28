@@ -28,7 +28,7 @@
 		</div>
 	{/if}
 
-	<div class="flex flex-col gap-2">
+	<div class="flex w-full flex-col gap-2">
 		<div class="flex items-center gap-2">
 			{#if icon}
 				<Icon src={icon} class="h-6 w-6" mini />
@@ -38,6 +38,8 @@
 		</div>
 
 		<p>{assignment.description}</p>
+
+		<hr class="rounded-full border-zinc-300 dark:border-zinc-600" />
 
 		<div class="flex items-center gap-1 text-sm">
 			<Icon src={Clock} class="h-4 w-4" micro />
@@ -49,6 +51,8 @@
 			/>
 		</div>
 
-		<Updates updates={assignment.updates} />
+		<div class="text-sm">
+			<Updates updates={assignment.updates} />
+		</div>
 	</div>
 </div>

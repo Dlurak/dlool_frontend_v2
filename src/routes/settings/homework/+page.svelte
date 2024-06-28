@@ -16,10 +16,12 @@
 	import { objectEntries } from '$lib/utils/objects/entries';
 	import { replaceKey } from '$lib/utils/objects/replaceKey';
 	import { removeKey } from '$lib/utils/objects/removeKey';
+	import BoolSetting from '$lib/components/settings/BoolSetting.svelte';
 
 	const homeworkTransparency = svocal('settings.homework.transparency');
 	const homeworkPresets = svocal('settings.homeworkPresets');
 	const defaultSubjects = svocal('settings.homework.defaultSubject');
+	const smartSubjects = svocal('settings.homework.smart-subjects');
 
 	onDestroy(() => {
 		if (!browser) return;
@@ -40,6 +42,8 @@
 		step={0.05}
 		valueFmt={(num) => `${Math.round(num * 100)}%`}
 	/>
+
+	<BoolSetting label={i('settings.assignments.default.smart')} bind:value={$smartSubjects} />
 
 	<div class="flex justify-between">
 		<span><Store store={i('settings.assignments.presets')} /></span>

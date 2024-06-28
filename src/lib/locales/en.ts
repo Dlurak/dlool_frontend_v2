@@ -533,6 +533,7 @@ const en = {
 	'settings.assignments.default': 'Default subjects for courses',
 	'settings.assignments.default.class.placeholder': 'Course',
 	'settings.assignments.default.class.subject': 'Subject',
+	'settings.assignments.default.smart': 'Automatic subject detection',
 
 	'settings.save': 'Save',
 

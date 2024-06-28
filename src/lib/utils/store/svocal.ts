@@ -66,6 +66,7 @@ const sv = {
 		'settings.homework.defaultSubject',
 		() => ({}) as Record<string, string>
 	],
+	'settings.homework.smart-subjects': ['settings.homework.smart-subjects', () => true],
 	'dlool-version': ['dlool-version', () => '2']
 } as const;
 

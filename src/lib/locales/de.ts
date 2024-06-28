@@ -546,6 +546,7 @@ const de = {
 	'settings.assignments.default': 'Standard Fächer für Kurse',
 	'settings.assignments.default.class.placeholder': 'Klasse/Kurs',
 	'settings.assignments.default.class.subject': 'Fach',
+	'settings.assignments.default.smart': 'Automatische Facherkennung',
 
 	'settings.save': 'Speichern',
 

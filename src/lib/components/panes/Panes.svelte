@@ -66,7 +66,7 @@
 
 <script lang="ts">
 	import { clamp } from '$lib/utils/numbers/clamp';
-	import { ArrowLeft, ChevronLeft, Icon } from 'svelte-hero-icons';
+	import { ArrowLeft, ChevronLeft, ChevronRight, Icon } from 'svelte-hero-icons';
 	import QuickAction from '../buttons/QuickAction.svelte';
 
 	export let min = 120;
@@ -133,7 +133,7 @@
 		<div class="flex w-full max-w-full flex-col gap-2 overflow-hidden p-1">
 			<div class="hidden md:inline-block" class:md:hidden={showSidebar}>
 				<QuickAction
-					icon={ChevronLeft}
+					icon={ChevronRight}
 					small
 					on:click={() => {
 						showSidebar = true;
