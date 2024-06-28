@@ -18,4 +18,6 @@
 	}, 1_000);
 </script>
 
-<Store store={i(`time.ago.${type}.${unit}`, { diff: `${diff}`, name: displayname })} />
+<Store
+	store={i(`time.ago.${type}.${unit}`, { diff: `${diff}`, name: displayname }, { count: diff })}
+/>

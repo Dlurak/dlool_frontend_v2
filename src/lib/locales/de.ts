@@ -321,7 +321,7 @@ const de = {
 	},
 	'time.ago.created.days': {
 		counts: {
-			default: 'Vor $diff Stunden von $name erstellt',
+			default: 'Vor $diff Tagen von $name erstellt',
 			1: 'Vor einem Tag von $name erstellt',
 			2: 'Vor zwei Tagen von $name erstellt',
 			3: 'Vor drei Tagen von $name erstellt',
