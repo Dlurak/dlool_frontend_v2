@@ -13,6 +13,15 @@
 
 		return obj.text;
 	}
+
+	function nationwideLocalizer(country: string) {
+		switch (country.toLowerCase()) {
+			case 'de':
+				return '.germany';
+			default:
+				return '';
+		}
+	}
 </script>
 
 <script lang="ts">
@@ -28,6 +37,7 @@
 	type HolidayEvent = Awaited<ReturnType<Holiday['getSchoolHolidays']>>[number];
 
 	export let holiday: HolidayEvent;
+	export let country: string | undefined;
 
 	$: name = getPrefferedString(holiday.name, $currentLang);
 	$: comment = getPrefferedString(holiday.comment ?? [], $currentLang);
@@ -82,9 +92,9 @@
 		<Icon src={MapPin} class="h-5 w-5" mini />
 
 		{#if holiday.nationwide}
-			<Store store={i('holiday.nationwide.true')} />
+			<Store store={i(`holiday.nationwide.true${nationwideLocalizer(country ?? '')}`)} />
 		{:else}
-			<Store store={i('holiday.nationwide.false')} />
+			<Store store={i(`holiday.nationwide.false${nationwideLocalizer(country ?? '')}`)} />
 		{/if}
 	</div>
 </div>

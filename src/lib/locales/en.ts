@@ -571,12 +571,10 @@ const en = {
 		}
 	},
 
-	/*
-	 * TODO:Add some specific to countries, e.g
-	 * `Bund` and `Bundesländer` for germany
-	 */
 	'holiday.nationwide.true': 'In the entire country',
+	'holiday.nationwide.true.germany': 'In all German states',
 	'holiday.nationwide.false': 'Only in some subdivisions',
+	'holiday.nationwide.false.germany': 'Only in some states',
 
 	'filter.filter': 'Filters',
 

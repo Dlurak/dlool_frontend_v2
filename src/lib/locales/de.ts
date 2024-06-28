@@ -584,12 +584,10 @@ const de = {
 		}
 	},
 
-	/*
-	 * TODO:Add some specific to countries, e.g
-	 * `Bund` and `Bundesländer` for germany
-	 */
 	'holiday.nationwide.true': 'Im gesamten Land',
+	'holiday.nationwide.true.germany': 'Im gesamten Bund',
 	'holiday.nationwide.false': 'Nur in einigen Provinzen',
+	'holiday.nationwide.false.germany': 'Nur in einigen Bundesländern',
 
 	'filter.filter': 'Filter',
 

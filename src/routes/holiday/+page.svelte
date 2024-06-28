@@ -43,7 +43,7 @@
 
 		<div class="grid w-full grid-cols-[repeat(auto-fill,minmax(min(20rem,100%),1fr))] gap-2">
 			{#each data.holidays as holiday}
-				<HolidayBox {holiday} />
+				<HolidayBox {holiday} country={data.location.apiCountry?.isoCode} />
 			{/each}
 		</div>
 
