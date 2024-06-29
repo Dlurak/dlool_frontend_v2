@@ -8,6 +8,7 @@
 	import { createFloatingActions } from 'svelte-floating-ui';
 	import { abbrevations } from '$lib/i18n/i18n';
 	import { fly } from 'svelte/transition';
+	import { animationLength } from '$lib/utils/store/animation';
 
 	const lang = svocal('i18n.currentlang');
 
@@ -38,7 +39,7 @@
 	<div
 		class="absolute h-fit w-[--w] px-2"
 		use:floatingContent
-		transition:fly={{ y: 50 }}
+		transition:fly={{ y: 50, duration: $animationLength }}
 		style:--w={`min(${width * 1.7}px, 100%)`}
 	>
 		<div class="flex flex-col overflow-hidden rounded bg-neutral-200 shadow-lg dark:bg-neutral-700">

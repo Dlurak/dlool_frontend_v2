@@ -7,6 +7,9 @@ const config = {
 			screens: {
 				print: { raw: 'print' },
 				touch: { raw: '(hover: none) and (pointer: coarse)' }
+			},
+			transitionDuration: {
+				DEFAULT: 'var(--transition-duration, 300ms)'
 			}
 		}
 	},

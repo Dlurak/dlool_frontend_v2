@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import {
-	launcherItems,
 	type LauncherItem,
+	launcherItems,
 	type LauncherSelectableItem
 } from '$lib/constants/launcher';
 import { enableScrolling } from '$lib/utils/dom/scroll';
@@ -11,11 +11,7 @@ import { get, writable } from 'svelte/store';
 
 const getBaseSelectableItems = (launcherItems: LauncherItem[]) => {
 	return launcherItems
-		.map((item) => ({
-			...item,
-			matchedBy: null,
-			coefficient: 0
-		}))
+		.map((item, index) => ({ ...item, matchedBy: null, coefficient: 0, index }))
 		.filter(({ enabled }) => enabled === undefined || get(enabled));
 };
 
@@ -26,9 +22,7 @@ const isdetailed = writable(true);
 const filteredAndSortedOptions = writable<LauncherSelectableItem[]>(
 	getBaseSelectableItems(launcherItems)
 );
-const focusedIndex = useCycle({
-	max: () => get(filteredAndSortedOptions).length - 1
-});
+const focusedIndex = useCycle({ max: () => get(filteredAndSortedOptions).length - 1 });
 
 isOpen.subscribe((isOpen) => {
 	if (!browser) return;
@@ -55,6 +49,7 @@ search.subscribe((searchTermRaw) => {
 	if (!searchTerm) return filteredAndSortedOptions.set(getBaseSelectableItems(get(allOptions)));
 
 	const mapped = get(allOptions)
+		.map((data, index) => ({ ...data, index }))
 		.filter(({ enabled }) => {
 			if (enabled === undefined) {
 				return true;
@@ -69,18 +64,10 @@ search.subscribe((searchTermRaw) => {
 				.at(0);
 
 			if (matching === undefined) {
-				return {
-					...opt,
-					matchedBy: null,
-					coefficient: 0
-				};
+				return { ...opt, matchedBy: null, coefficient: 0 };
 			}
 
-			return {
-				...opt,
-				matchedBy: matching[0],
-				coefficient: matching[1]
-			};
+			return { ...opt, matchedBy: matching[0], coefficient: matching[1] };
 		});
 
 	const sorted = mapped
@@ -105,22 +92,14 @@ export function useLauncher() {
 			subscribe: isOpen.subscribe
 		},
 		focusedIndex: { ...focusedIndex },
-		search: {
-			subscribe: search.subscribe,
-			set: search.set
-		},
+		search: { subscribe: search.subscribe, set: search.set },
 		detailed: {
 			setDetailed: () => isdetailed.set(true),
 			setUndetailed: () => isdetailed.set(false),
 			subscribe: isdetailed.subscribe
 		},
-		allOptions: {
-			set: allOptions.set,
-			subscribe: allOptions.subscribe
-		},
-		filteredAndSortedOptions: {
-			subscribe: filteredAndSortedOptions.subscribe
-		}
+		allOptions: { set: allOptions.set, subscribe: allOptions.subscribe },
+		filteredAndSortedOptions: { subscribe: filteredAndSortedOptions.subscribe }
 	};
 }
 

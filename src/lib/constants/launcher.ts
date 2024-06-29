@@ -38,6 +38,7 @@ export type LauncherSelectableItem = {
 	searchTerms: Readable<string[]>;
 	matchedBy: string | null;
 	coefficient: number;
+	index: number;
 	enabled?: Readable<boolean>;
 };
 

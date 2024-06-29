@@ -48,7 +48,7 @@
 	</div>
 
 	<div class="max-h-96 overflow-y-scroll">
-		{#each $filteredAndSortedOptions as item, index}
+		{#each $filteredAndSortedOptions as item, index (item.index)}
 			<LauncherItem
 				{item}
 				{index}

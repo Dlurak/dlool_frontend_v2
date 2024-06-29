@@ -465,6 +465,8 @@ const de = {
 	'settings.deleteAccount.success': 'Den Account $name erfolgreich gelöscht',
 
 	'settings.general': 'Allgemein',
+	'settings.general.general': 'Allgemein',
+	'settings.general.general.animations': 'Bewegung reduzieren',
 	'settings.general.nav': 'Navigation',
 	'settings.general.nav.description':
 		"Hier kannst du Deine Navigationsleiste anpassen. Bewege die Boxen einfach via Drag'n Drop.",

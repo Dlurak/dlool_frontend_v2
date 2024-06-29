@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { animationLength } from '$lib/utils/store/animation';
 	import { Icon, ChevronDown } from 'svelte-hero-icons';
 	import { slide } from 'svelte/transition';
 	import { localstorage } from 'svocal';
@@ -21,7 +22,7 @@
 </div>
 
 {#if $isExpanded}
-	<div transition:slide class="p-0.5">
+	<div transition:slide={{ duration: $animationLength }} class="p-0.5">
 		<slot name="content" />
 	</div>
 {/if}

@@ -1,4 +1,5 @@
 <script>
+	import '../app.css';
 	import Token from '$lib/components/layout/Token.svelte';
 	import Version from '$lib/components/layout/Version.svelte';
 	import UserInfo from '$lib/components/layout/UserInfo.svelte';
@@ -8,8 +9,8 @@
 	import ToastContainer from '$lib/components/layout/toasts/ToastContainer.svelte';
 	import { mediaQuery } from 'nutzlich';
 	import { navHeight, footerHeight } from '$lib/stores';
-	import '../app.css';
 	import Launcher from '$lib/components/layout/launcher/Launcher.svelte';
+	import Style from '$lib/components/layout/Style.svelte';
 
 	const isBig = mediaQuery('(min-width: 640px)');
 
@@ -33,4 +34,5 @@
 	<Confirmation />
 	<Launcher />
 	<Version />
+	<Style />
 </div>

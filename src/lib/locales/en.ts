@@ -453,6 +453,8 @@ const en = {
 	'settings.deleteAccount.success': 'Successfully deleted the account $name',
 
 	'settings.general': 'General',
+	'settings.general.general': 'General',
+	'settings.general.general.animations': 'Reduce motion',
 	'settings.general.nav': 'Navigation',
 	'settings.general.nav.description':
 		"Here you can change your navigation bar.Simply move the boxes via Drag'n Drop.",

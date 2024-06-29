@@ -1,4 +1,5 @@
 <script lang="ts" generics="V">
+	import { animationLength } from '$lib/utils/store/animation';
 	import { QuestionMarkCircle } from 'svelte-hero-icons';
 	import { slide } from 'svelte/transition';
 	import QuickAction from '../buttons/QuickAction.svelte';
@@ -43,7 +44,7 @@
 		{/if}
 	</div>
 	{#if description && showDescription}
-		<div transition:slide class="text-gray-500 dark:text-gray-400">
+		<div transition:slide={{ duration: $animationLength }} class="text-gray-500 dark:text-gray-400">
 			<Store store={description} />
 		</div>
 	{/if}

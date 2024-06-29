@@ -25,6 +25,7 @@
 	const holidayAutoDetect = svocal('holidays.autoDetect');
 	const holidayCountry = svocal('holidays.country');
 	const holidayState = svocal('holidays.state');
+	const reduceMotion = svocal('settings.reduceMotion');
 
 	const holiday = new Holiday();
 
@@ -41,6 +42,11 @@
 <MetaData title={i('title.settings.general')} />
 
 <div class="flex flex-col gap-2">
+	<section class="flex flex-col gap-2">
+		<h3><Store store={i('settings.general.general')} /></h3>
+		<BoolSetting label={i('settings.general.general.animations')} bind:value={$reduceMotion} />
+	</section>
+
 	<section class="flex flex-col gap-2">
 		<h3><Store store={i('settings.general.nav')} /></h3>
 		<p>

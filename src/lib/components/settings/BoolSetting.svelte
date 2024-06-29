@@ -5,6 +5,7 @@
 	import QuickAction from '../buttons/QuickAction.svelte';
 	import { QuestionMarkCircle } from 'svelte-hero-icons';
 	import { slide } from 'svelte/transition';
+	import { animationLength } from '$lib/utils/store/animation';
 
 	export let label: Readable<string>;
 	export let value: boolean;
@@ -29,7 +30,7 @@
 		<Switch bind:checked={value} />
 	</div>
 	{#if description && showDescription}
-		<div transition:slide class="text-gray-500 dark:text-gray-400">
+		<div transition:slide={{ duration: $animationLength }} class="text-gray-500 dark:text-gray-400">
 			<Store store={description} />
 		</div>
 	{/if}

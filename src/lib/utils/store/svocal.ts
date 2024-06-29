@@ -67,6 +67,7 @@ const sv = {
 		() => ({}) as Record<string, string>
 	],
 	'settings.homework.smart-subjects': ['settings.homework.smart-subjects', () => true],
+	'settings.reduceMotion': ['settings.reduceMotion', () => false],
 	'dlool-version': ['dlool-version', () => '2']
 } as const;
 
