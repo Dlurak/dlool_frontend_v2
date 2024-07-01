@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { openedModals } from '$lib/stores';
 	import { enableScrolling } from '$lib/utils/dom/scroll';
 	import { createEventDispatcher } from 'svelte';
 	import { Icon, XMark } from 'svelte-hero-icons';
@@ -11,8 +12,10 @@
 	export let isOpen = false;
 
 	export const open = () => {
-		console.log('Open inside');
 		if (!dialogElement) return;
+		if (dialogElement.open) return;
+
+		openedModals.update((x) => x + 1);
 		dialogElement.showModal();
 		isOpen = true;
 		dispatch('open');
@@ -21,6 +24,9 @@
 
 	export const close = () => {
 		if (!dialogElement) return;
+		if (!dialogElement.open) return;
+
+		openedModals.update((x) => x - 1);
 		dialogElement.close();
 		isOpen = false;
 		dispatch('close');

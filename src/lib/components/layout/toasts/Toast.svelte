@@ -12,6 +12,7 @@
 	import type { Readable } from 'svelte/store';
 	import { confirmation } from '../confirmation';
 	import { useLauncher } from '../launcher/hook';
+	import { openedModals } from '$lib/stores';
 
 	export let type: 'success' | 'error' | 'warning' | 'info' = 'success';
 	export let content: Readable<string>;
@@ -33,6 +34,7 @@
 			if (!document.hasFocus()) return true;
 			if ($confirmation) return true;
 			if ($isLauncherOpened) return true;
+			if ($openedModals > 0) return true;
 
 			return false;
 		}
