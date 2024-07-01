@@ -1,8 +1,15 @@
 <script lang="ts">
 	import type { Note } from '$lib/dlool/notes/list';
 	import { page } from '$app/stores';
+	import TagLabel from '../tags/TagLabel.svelte';
+	import { sortByPredicate } from '$lib/utils/arrays/sort';
+	import { svocal } from '$lib/utils/store/svocal';
+	import { slide } from 'svelte/transition';
+	import { animationLength } from '$lib/utils/store/animation';
 
 	export let note: Note & { id: string };
+
+	const tagsInOverview = svocal('settings.tagsInOverview');
 </script>
 
 <div
@@ -13,6 +20,17 @@
 		class="flex flex-col gap-2 text-black dark:text-white"
 	>
 		<h3>{note.title}</h3>
+
+		{#if $tagsInOverview}
+			<div
+				class="flex flex-wrap gap-1 py-1 text-sm empty:hidden"
+				transition:slide={{ duration: $animationLength }}
+			>
+				{#each sortByPredicate(note.tags, ({ tag }) => tag) as tag (tag.tag)}
+					<TagLabel {tag} />
+				{/each}
+			</div>
+		{/if}
 
 		{#if note.summary}
 			<p>{note.summary}</p>

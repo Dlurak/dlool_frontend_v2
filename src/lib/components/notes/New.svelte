@@ -13,8 +13,11 @@
 	import { createNote } from '$lib/dlool/notes/create';
 	import { sendDefaultErrorToast, sendToast } from '../layout/toasts';
 	import { createEventDispatcher } from 'svelte';
+	import type { Tag } from '../tags/types';
+	import { safePromise } from '$lib/utils/promises';
 
 	let isOpen = false;
+	let onGoing = false;
 
 	export let query: {
 		school: string;
@@ -33,6 +36,7 @@
 	let summary = '';
 	let priority: Note['priority'] = 'Minimal';
 	let editScope: Note['editScope'] = 'Self';
+	let tags: Tag[] = [];
 
 	const dispatch = createEventDispatcher<{ create: null }>();
 </script>
@@ -72,21 +76,37 @@
 			/>
 		{/if}
 
-		<CreationInner bind:title bind:summary bind:priority bind:editScope />
+		<CreationInner
+			bind:title
+			bind:summary
+			bind:priority
+			bind:editScope
+			bind:tags
+			className={classInput}
+			schoolName={query.school}
+		/>
 
 		<hr class="border-zinc-300 dark:border-zinc-700" />
 
 		<PrimaryButton
-			disabled={!(classInput && title)}
+			disabled={!(classInput && title) || onGoing}
 			on:click={async () => {
-				await createNote({
-					title,
-					editScope,
-					summary,
-					priority: priority ?? undefined,
-					school: query.school,
-					class: classInput
-				}).catch(sendDefaultErrorToast);
+				onGoing = true;
+				const res = await safePromise(
+					createNote({
+						title,
+						editScope,
+						summary,
+						tags,
+						priority: priority ?? undefined,
+						school: query.school,
+						class: classInput
+					})
+				);
+
+				onGoing = false;
+
+				if (res.isError) return sendDefaultErrorToast();
 
 				sendToast({
 					type: 'success',
@@ -100,6 +120,7 @@
 				summary = '';
 				priority = 'Minimal';
 				editScope = 'Self';
+				tags = [];
 
 				dispatch('create', null);
 			}}

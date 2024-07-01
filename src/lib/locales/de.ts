@@ -481,6 +481,10 @@ const de = {
 	'settings.general.calendar.weekStartsOn': 'Erster Tag der Woche',
 	'settings.general.calendar.weekStartsOn.description':
 		'Hier kannst Du einstellen, welcher Wochentag der erste im Kalender seien sollte.',
+	'settings.general.notes': 'Notizen',
+	'settings.general.notes.tagsInOverview': 'Tags in der Übersicht',
+	'settings.general.notes.tagsInOverview.description':
+		'In der Notiz übersicht können die Tags bereits angezeigt werden, falls Du das zu voll findest, kannst Du es ausschalten.',
 	'settings.general.launcher': 'Suche',
 	'settings.general.launcher.description':
 		'Die Suche kannst Du entweder durch tippen auf das Such Symbol in der Navigation oder durch drücken von Steuerung und K auf der Tastatur öffnen.',
@@ -610,6 +614,13 @@ Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibe
 		}
 	},
 	'intro.start': "Los geht's!",
+
+	'tags.choose': 'Wähle Tags aus',
+	'tags.choose.choose': 'Wähle Tags aus',
+	'tags.new.placeholder': 'Name',
+	'tags.new.create': 'Erstellen',
+	'tags.new.success': 'Erfolgreich Tag $tag erstellt',
+	'tags.new.error.alreadyTaken': 'Dieses Tag existiert bereits',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

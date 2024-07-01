@@ -13,7 +13,12 @@ interface NoteProps {
 const noteScheme = z.object({
 	title: z.string(),
 	summary: z.nullable(z.string()),
-	tags: z.array(z.unknown()),
+	tags: z.array(
+		z.object({
+			tag: z.string(),
+			color: z.string()
+		})
+	),
 	priority: z.union([
 		z.literal('Minimal'),
 		z.literal('Low'),

@@ -18,6 +18,7 @@
 
 	const navTexts = svocal('settings.nav.texts');
 	const weekStartsOn = svocal('settings.weekStartsOn');
+	const tagsInOverview = svocal('settings.tagsInOverview');
 	const homeworkPresets = svocal('settings.homeworkPresets');
 	const launcherOutlineWidth = svocal('settings.launcher.outlineWidth');
 	const launcherWidth = svocal('settings.launcher.width');
@@ -75,6 +76,16 @@
 					value: num
 				};
 			})}
+		/>
+	</section>
+
+	<section class="flex flex-col gap-2">
+		<h3><Store store={i('settings.general.notes')} /></h3>
+
+		<BoolSetting
+			bind:value={$tagsInOverview}
+			label={i('settings.general.notes.tagsInOverview')}
+			description={i('settings.general.notes.tagsInOverview.description')}
 		/>
 	</section>
 

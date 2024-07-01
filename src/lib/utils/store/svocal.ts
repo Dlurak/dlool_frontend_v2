@@ -68,8 +68,9 @@ const sv = {
 	],
 	'settings.homework.smart-subjects': ['settings.homework.smart-subjects', () => true],
 	'settings.reduceMotion': ['settings.reduceMotion', () => false],
+	'settings.tagsInOverview': ['settings.tagsInOverview', () => true],
 	'dlool-version': ['dlool-version', () => '2']
-} as const;
+} as const satisfies Record<string, [string, () => unknown]>;
 
 type SvocalKey = keyof typeof sv;
 

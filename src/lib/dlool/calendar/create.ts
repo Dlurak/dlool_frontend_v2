@@ -1,4 +1,4 @@
-import { getApibase, getAuthHeader } from '$lib/utils/api';
+import { Method, getApibase, getAuthHeader } from '$lib/utils/api';
 import type { Priority } from '$lib/types/priority';
 import { z } from 'zod';
 
@@ -23,7 +23,7 @@ interface NewCalendarProps {
 
 export async function createCalendar(props: NewCalendarProps) {
 	const res = await fetch(`${getApibase()}/calendar`, {
-		method: 'POST',
+		method: Method.POST,
 		body: JSON.stringify({
 			...props,
 			tags: []

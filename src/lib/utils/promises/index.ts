@@ -77,10 +77,14 @@ export async function safePromise<T>(data: Promise<T>) {
 	return data
 		.then((data) => ({
 			data,
-			type: 'success' as const
+			type: 'success' as const,
+			isSuccessfull: true as const,
+			isError: false as const
 		}))
 		.catch((error) => ({
 			error,
-			type: 'error' as const
+			type: 'error' as const,
+			isSuccessfull: false as const,
+			isError: true as const
 		}));
 }

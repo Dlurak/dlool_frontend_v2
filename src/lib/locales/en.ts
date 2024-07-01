@@ -469,6 +469,10 @@ const en = {
 	'settings.general.calendar.weekStartsOn': 'First day of the week',
 	'settings.general.calendar.weekStartsOn.description':
 		'Here you can change on which weekday the week should start in calendar views. In America sundays are typically used for this.',
+	'settings.general.notes': 'Notes',
+	'settings.general.notes.tagsInOverview': 'Show tags in the overview',
+	'settings.general.notes.tagsInOverview.description':
+		'In the note overviews the tags can be shown. If you find that too much you can disable this here.',
 	'settings.general.launcher': 'Launcher',
 	'settings.general.launcher.description':
 		'The search can either be opened by tapping on the icon in the navigation or by pressing Controll + K on your keyboard.',
@@ -597,6 +601,13 @@ Your current settings sadly won't be compatible withthe new version. But you can
 		}
 	},
 	'intro.start': "Let's go!",
+
+	'tags.choose': 'Choose a tag',
+	'tags.choose.choose': 'Choose tags',
+	'tags.new.placeholder': 'Name',
+	'tags.new.create': 'Create',
+	'tags.new.success': 'Successfully created Tag $tag',
+	'tags.new.error.alreadyTaken': 'This tag already exists',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

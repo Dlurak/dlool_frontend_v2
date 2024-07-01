@@ -1,10 +1,12 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import UpdatedAt from '$lib/components/utils/UpdatedAt.svelte';
 	import { AcademicCap, BuildingLibrary, Icon } from 'svelte-hero-icons';
 	import { page } from '$app/stores';
 	import { goto, invalidateAll } from '$app/navigation';
 	import Actions from '$lib/components/notes/specific/Actions.svelte';
+	import TagLabel from '$lib/components/tags/TagLabel.svelte';
+	import { sortByPredicate } from '$lib/utils/arrays/sort';
+	import Updates from '$lib/components/utils/Updates.svelte';
 
 	export let data: PageData;
 </script>
@@ -27,6 +29,12 @@
 		/>
 	</div>
 
+	<div class="flex flex-wrap gap-1 py-1 empty:hidden">
+		{#each sortByPredicate(note.tags, ({ tag }) => tag) as tag (tag.tag)}
+			<TagLabel {tag} />
+		{/each}
+	</div>
+
 	{#if note.summary}
 		<p>{note.summary}</p>
 	{:else}
@@ -46,24 +54,6 @@
 			</span>
 		</div>
 
-		<span class="flex flex-col">
-			{#if note.updates[0]}
-				{@const update = note.updates[0]}
-				<span>
-					<UpdatedAt type="created" timestamp={update.time} displayname={update.user.displayname} />
-				</span>
-			{/if}
-
-			{#if note.updates.length > 1}
-				{@const lastUpdate = note.updates[note.updates.length - 1]}
-				<span>
-					<UpdatedAt
-						type="edited"
-						timestamp={lastUpdate.time}
-						displayname={lastUpdate.user.displayname}
-					/>
-				</span>
-			{/if}
-		</span>
+		<Updates updates={note.updates} />
 	</div>
 {/if}

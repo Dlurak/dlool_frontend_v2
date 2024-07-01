@@ -14,7 +14,7 @@
 	export let note: Note;
 	export let id: string;
 
-	let { title, priority, editScope } = note;
+	let { title, priority, editScope, tags } = note;
 	let summary = note.summary ?? undefined;
 
 	const dispatch = createEventDispatcher<{ update: null }>();
@@ -24,6 +24,7 @@
 		title,
 		priority,
 		editScope,
+		tags,
 		summary: summary ?? null
 	});
 </script>
@@ -32,7 +33,15 @@
 	<div slot="title">Edit</div>
 
 	<div slot="body" class="flex flex-col gap-3 py-3">
-		<CreationInner bind:title bind:summary bind:priority bind:editScope />
+		<CreationInner
+			bind:title
+			bind:summary
+			bind:priority
+			bind:editScope
+			bind:tags
+			className={note.class.name}
+			schoolName={note.class.school.name}
+		/>
 
 		<PrimaryButton
 			disabled={!hasChanges}
@@ -42,6 +51,7 @@
 					title,
 					summary,
 					editScope,
+					tags,
 					priority: priority ?? 'Minimal'
 				}).catch(sendDefaultErrorToast);
 

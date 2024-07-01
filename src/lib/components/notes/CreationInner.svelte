@@ -7,11 +7,16 @@
 	import TextArea from '../input/TextArea.svelte';
 	import TextInput from '../input/Text.svelte';
 	import { priorities } from '$lib/constants/priorities';
+	import ChooseTag from '../tags/ChooseTag.svelte';
+	import type { Tag } from '../tags/types';
 
 	export let title = '';
 	export let summary = '';
 	export let priority: Note['priority'] | null = null;
 	export let editScope: Note['editScope'] | null = null;
+	export let className: string;
+	export let schoolName: string;
+	export let tags: Tag[] = [];
 
 	const scopes = ['self', 'class', 'school'] as const;
 </script>
@@ -39,3 +44,5 @@
 	}))}
 	bind:value={editScope}
 />
+
+<ChooseTag bind:selected={tags} {className} {schoolName} />

@@ -55,3 +55,30 @@ export function sortBy<TInput, TRef>(
 		return ComparisonResult.Same;
 	});
 }
+
+/**
+ * Sorts an array of items based on a provided predicate function.
+ *
+ * @template T - The type of elements in the array.
+ * @param {T[]} arr - The array to be sorted.
+ * @param {(item: T) => string} predicate - A function that takes an item from the array and returns a string to be used for comparison.
+ * @returns {T[]} - The sorted array.
+ *
+ * @example
+ * ```typescript
+ * const people = [
+ *   { name: 'Alice', age: 25 },
+ *   { name: 'Bob', age: 30 },
+ *   { name: 'Charlie', age: 20 }
+ * ];
+ * const sortedByName = sortByPredicate(people, ({ name }) => name);
+ * // [
+ * //   { name: 'Alice', age: 25 },
+ * //   { name: 'Bob', age: 30 },
+ * //   { name: 'Charlie', age: 20 }
+ * // ]
+ * ```typescript
+ */
+export function sortByPredicate<T>(arr: T[], predicate: (i: T) => string): T[] {
+	return arr.sort((a, b) => predicate(a).localeCompare(predicate(b)));
+}
