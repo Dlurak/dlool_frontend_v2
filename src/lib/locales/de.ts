@@ -51,6 +51,8 @@ const de = {
 	'launcher.settings.color.terms': 'Farben\nBunt',
 	'launcher.settings.timetable': 'Stundenplan',
 	'launcher.settings.timetable.terms': 'Stundenplan\nZeit',
+	'launcher.contributions': 'Mitwirkende',
+	'launcher.contributions.terms': 'Mitwirkende\nHelfende',
 	'launcher.logout': 'Ausloggen',
 	'launcher.logout.terms': 'Signout\nAnonymous',
 	'launcher.holidays': 'Ferien',
@@ -110,6 +112,7 @@ const de = {
 	'nav.footer.else': 'Sonstige',
 	'nav.footer.else.settings': 'Einstellungen',
 	'nav.footer.else.holiday': 'Ferien',
+	'nav.footer.else.contributors': 'Mitwirkende',
 
 	title: 'Startseite',
 	'title.calendar': 'Kalendar',
@@ -623,6 +626,16 @@ Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibe
 	'tags.new.create': 'Erstellen',
 	'tags.new.success': 'Erfolgreich Tag $tag erstellt',
 	'tags.new.error.alreadyTaken': 'Dieses Tag existiert bereits',
+
+	'contributions.title': 'Mitwirkende',
+	'contributions.count': {
+		counts: {
+			default: '$contributions Beiträge',
+			1: 'Ein Beitrag',
+			2: 'Zwei Beiträge',
+			3: 'Drei Beiträge'
+		}
+	},
 
 	literal: '$literal'
 } as const satisfies I18nDict;

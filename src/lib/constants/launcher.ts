@@ -15,7 +15,8 @@ import {
 	UserMinus,
 	PaintBrush,
 	ViewColumns,
-	type IconSource
+	type IconSource,
+	UserGroup
 } from 'svelte-hero-icons';
 import { derived, type Readable } from 'svelte/store';
 
@@ -172,6 +173,16 @@ export const launcherItems: LauncherItem[] = [
 			closeLauncher();
 		},
 		searchTerms: split(i('launcher.holidays.terms'))
+	},
+	{
+		label: i('launcher.contributions'),
+		description: null,
+		icon: UserGroup,
+		callback: () => {
+			goto('/contributions');
+			closeLauncher();
+		},
+		searchTerms: split(i('launcher.contributions.terms'))
 	},
 	{
 		label: i('launcher.logout'),

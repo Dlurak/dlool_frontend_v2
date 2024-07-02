@@ -49,6 +49,8 @@ const en = {
 	'launcher.settings.color.terms': 'Colors',
 	'launcher.settings.timetable': 'Timetable',
 	'launcher.settings.timetable.terms': 'Timetable\nSchedule',
+	'launcher.contributions': 'Contributors',
+	'launcher.contributions.terms': 'Contributors',
 	'launcher.logout': 'Ausloggen',
 	'launcher.logout.terms': 'Abmelden\nAnonym',
 	'launcher.holidays': 'Holidays',
@@ -107,6 +109,7 @@ const en = {
 	'nav.footer.else': 'Else',
 	'nav.footer.else.settings': 'Settings',
 	'nav.footer.else.holiday': 'Holiday',
+	'nav.footer.else.contributors': 'Contributors',
 
 	title: 'Homepage',
 	'title.calendar': 'Calendar',
@@ -610,6 +613,16 @@ Your current settings sadly won't be compatible withthe new version. But you can
 	'tags.new.create': 'Create',
 	'tags.new.success': 'Successfully created Tag $tag',
 	'tags.new.error.alreadyTaken': 'This tag already exists',
+
+	'contributions.title': 'Contributors',
+	'contributions.count': {
+		counts: {
+			default: '$contributions contributions',
+			1: 'One contribution',
+			2: 'Two contribution',
+			3: 'Three contribution'
+		}
+	},
 
 	literal: '$literal'
 } as const satisfies I18nDict;
