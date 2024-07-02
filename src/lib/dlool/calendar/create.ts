@@ -1,6 +1,7 @@
 import { Method, getApibase, getAuthHeader } from '$lib/utils/api';
 import type { Priority } from '$lib/types/priority';
 import { z } from 'zod';
+import type { Tag } from '$lib/components/tags/types';
 
 const scheme = z.object({
 	status: z.literal('success'),
@@ -15,6 +16,7 @@ interface NewCalendarProps {
 	class: string;
 	title: string;
 	beginning: number;
+	tags?: Tag[];
 	ending?: number;
 	summary?: string;
 	location?: string;
@@ -26,7 +28,7 @@ export async function createCalendar(props: NewCalendarProps) {
 		method: Method.POST,
 		body: JSON.stringify({
 			...props,
-			tags: []
+			tags: props.tags?.map(({ tag }) => tag) ?? []
 		}),
 		headers: {
 			Authorization: getAuthHeader(),

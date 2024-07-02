@@ -15,6 +15,7 @@
 	import EditModal from '$lib/components/calendar/List/EditModal.svelte';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
 	import Updates from '$lib/components/utils/Updates.svelte';
+	import TagLabel from '$lib/components/tags/TagLabel.svelte';
 
 	export let data: PageData;
 
@@ -121,6 +122,12 @@
 			{/if}
 
 			<Updates updates={event.updates} />
+		</div>
+
+		<div class="flex gap-1 empty:hidden">
+			{#each event.tags as tag (tag.tag)}
+				<TagLabel {tag} />
+			{/each}
 		</div>
 
 		{#if event.summary}

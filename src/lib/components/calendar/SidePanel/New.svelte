@@ -16,6 +16,7 @@
 	import NewInner from './NewInner.svelte';
 	import { i } from '$lib/i18n/store';
 	import Store from '$lib/components/utils/Store.svelte';
+	import type { Tag } from '$lib/components/tags/types';
 
 	export let query: {
 		school: string;
@@ -35,6 +36,7 @@
 	let summary = '';
 	let location = '';
 	let priority: Priority | null = null;
+	let tags: Tag[] = [];
 
 	const ts = (d: CustomDateTime | null) => {
 		return customDateToNormal(d ?? UNIX_TIME_EPOCHE_START).getTime();
@@ -65,7 +67,17 @@
 			<SingleClass bind:selectedClass school={query.school} filter={showClass} />
 		{/if}
 
-		<NewInner bind:title bind:beginning bind:ending bind:summary bind:location bind:priority />
+		<NewInner
+			schoolName={query.school}
+			className={selectedClass}
+			bind:title
+			bind:beginning
+			bind:ending
+			bind:summary
+			bind:location
+			bind:priority
+			bind:tags
+		/>
 
 		<hr class="border-zinc-300 dark:border-zinc-700" />
 
@@ -75,6 +87,7 @@
 				if (!selectedClass || !beginning) return;
 
 				createCalendar({
+					tags,
 					school: query.school,
 					class: selectedClass,
 					title: title,
@@ -90,6 +103,16 @@
 							content: i('calendar.create.success'),
 							timeout: 5_000
 						});
+
+						title = '';
+						beginning = null;
+						ending = null;
+						summary = '';
+						location = '';
+						priority = null;
+						tags = [];
+
+						isOpen = false;
 						return invalidateAll();
 					})
 					.catch(sendDefaultErrorToast);

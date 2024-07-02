@@ -6,6 +6,7 @@
 	import { stringify } from '$lib/utils/dates/custom';
 	import { Icon, MapPin } from 'svelte-hero-icons';
 	import Updates from '$lib/components/utils/Updates.svelte';
+	import TagLabel from '$lib/components/tags/TagLabel.svelte';
 
 	export let event: Calendar;
 
@@ -24,7 +25,7 @@
 >
 	<h4>{event.title}</h4>
 
-	<div class="grid grid-cols-2">
+	<div class="grid grid-cols-2 gap-2">
 		<span>
 			{#if event.ending}
 				<Store
@@ -56,6 +57,14 @@
 			<span>
 				<Store store={i(`calendar.priority.${event.priority}`)} />
 			</span>
+		{/if}
+
+		{#if event.tags}
+			<div class="flex flex-wrap gap-1">
+				{#each event.tags as tag (tag.tag)}
+					<TagLabel {tag} />
+				{/each}
+			</div>
 		{/if}
 	</div>
 

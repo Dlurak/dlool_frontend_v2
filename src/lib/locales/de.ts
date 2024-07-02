@@ -429,6 +429,8 @@ const de = {
 
 	'calendar.noData': 'Es gibt keine Kalender Erreignisse',
 
+	'calendar.edit.title': 'Editiere das Kalendererreignis $title',
+
 	'settings.noneSelected': 'Wähle eine Kategorie aus',
 	'settings.profile': 'Profil',
 

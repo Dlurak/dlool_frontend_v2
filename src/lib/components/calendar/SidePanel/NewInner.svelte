@@ -11,6 +11,11 @@
 	import { type CustomDateTime } from '$lib/utils/dates/custom';
 	import type { Priority } from '$lib/types/priority';
 	import { createEventDispatcher } from 'svelte';
+	import type { Tag } from '$lib/components/tags/types';
+	import ChooseTag from '$lib/components/tags/ChooseTag.svelte';
+
+	export let className: string | null;
+	export let schoolName: string;
 
 	export let title: string = '';
 	export let beginning: CustomDateTime | null = null;
@@ -18,6 +23,7 @@
 	export let summary = '';
 	export let location = '';
 	export let priority: Priority | null = null;
+	export let tags: Tag[] = [];
 
 	const dispatch = createEventDispatcher<{
 		summary: string | null;
@@ -74,5 +80,11 @@
 			}))}
 			bind:value={priority}
 		/>
+
+		{#if className}
+			<!-- TODO: i18n -->
+			<h4>Tags</h4>
+			<ChooseTag bind:selected={tags} {className} {schoolName} />
+		{/if}
 	</div>
 </Collapseable>

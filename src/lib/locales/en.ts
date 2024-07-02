@@ -419,6 +419,8 @@ const en = {
 
 	'calendar.noData': 'There are no calendar events',
 
+	'calendar.edit.title': 'Edit the calendar event $title',
+
 	'settings.noneSelected': 'Select a category',
 	'settings.profile': 'Account',
 

@@ -62,7 +62,12 @@ const calendarScheme = z.object({
 			time: z.number().int()
 		})
 	),
-	tags: z.array(z.unknown()),
+	tags: z.array(
+		z.object({
+			tag: z.string(),
+			color: z.string()
+		})
+	),
 	id: z.string()
 });
 

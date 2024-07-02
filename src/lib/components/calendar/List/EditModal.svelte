@@ -18,18 +18,25 @@
 	export let showEditModal = false;
 	export let event: Calendar;
 
+	const initialTitle = event.title;
+
 	const ts = (d: CustomDateTime | null) => {
 		return customDateToNormal(d ?? UNIX_TIME_EPOCHE_START).getTime();
 	};
 
 	$: beginningIsEarlierThenEnding = event.ending ? ts(event.beginning) < ts(event.ending) : true;
-
 	$: isEnabled = !!event.title && !!event.beginning && beginningIsEarlierThenEnding;
 </script>
 
 <Modal bind:isOpen={showEditModal}>
+	<div slot="title">
+		<Store store={i('calendar.edit.title', { title: initialTitle })} />
+	</div>
+
 	<div class="flex flex-col gap-2" slot="body">
 		<NewInner
+			className={event.class.name}
+			schoolName={event.class.school.name}
 			bind:title={event.title}
 			bind:beginning={event.beginning}
 			bind:ending={event.ending}
@@ -40,6 +47,7 @@
 				event.location = detail;
 			}}
 			bind:priority={event.priority}
+			bind:tags={event.tags}
 		/>
 
 		<hr class="border-zinc-300 dark:border-zinc-700" />
@@ -55,7 +63,8 @@
 					ending:
 						safeMap(event.ending, (ending) => customDateToNormal(ending).getTime()) ?? undefined,
 					location: event.location ?? undefined,
-					priority: event.priority ?? undefined
+					priority: event.priority ?? undefined,
+					tags: event.tags
 				})
 					.then(() => {
 						sendToast({
@@ -63,6 +72,7 @@
 							content: i('calendar.update.success'),
 							timeout: 5_000
 						});
+						showEditModal = false;
 						invalidateAll();
 					})
 					.catch(sendDefaultErrorToast);

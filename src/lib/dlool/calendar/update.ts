@@ -1,3 +1,4 @@
+import type { Tag } from '$lib/components/tags/types';
 import type { Priority } from '$lib/types/priority';
 import { getApibase, getAuthHeader } from '$lib/utils/api';
 import { z } from 'zod';
@@ -11,6 +12,7 @@ interface CalendarProps {
 	ending?: number;
 	location?: string;
 	priority?: Priority;
+	tags?: Tag[];
 }
 
 const scheme = z.object({
@@ -26,7 +28,10 @@ export async function updateCalendar({ id, ...body }: CalendarProps) {
 			'Content-Type': 'application/json'
 		},
 		method: 'PATCH',
-		body: JSON.stringify(body)
+		body: JSON.stringify({
+			...body,
+			tags: body.tags?.map(({ tag }) => tag) ?? []
+		})
 	}).then((r) => r.json());
 
 	return scheme.parse(res);
