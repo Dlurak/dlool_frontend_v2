@@ -17,16 +17,17 @@
 <Select
 	{threshold}
 	icon={BuildingLibrary}
-	on:userInput={async (e) => {
-		schoolBucket = await listSchools({
-			query: e.detail
-		}).then((d) => d.data);
-	}}
 	placeholder={i('school')}
+	userInput={school ?? ''}
+	value={school ? [school] : null}
 	options={schoolBucket.map(({ name }) => ({
 		label: readable(name),
 		value: name
 	}))}
 	bind:firstValue={school}
-	value={school ? [school] : null}
+	on:userInput={async (e) => {
+		schoolBucket = await listSchools({
+			query: e.detail
+		}).then((d) => d.data);
+	}}
 />

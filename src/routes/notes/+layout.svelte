@@ -39,7 +39,7 @@
 
 <MetaData title={i('title.notes')} />
 
-<Panes>
+<Panes min={200} position={300}>
 	<div slot="a" class="flex flex-col gap-4">
 		{#if !$isSmall || $isRootPage}
 			<Filter
@@ -51,6 +51,8 @@
 					goto(`?${objToQueryParams(removeKey(detail, 'emittedBy'))}`)
 						.then(invalidateAll)
 						.then(() => {
+							if (detail.emittedBy === 'auto') return;
+
 							sendToast({
 								type: 'success',
 								content: i('toast.filter.applied'),

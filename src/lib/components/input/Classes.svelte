@@ -34,6 +34,7 @@
 		value: name
 	}))}
 	bind:value={classes}
+	userInput={classes.at(-1) ?? ''}
 	on:userInput={async (e) => {
 		if (school) {
 			classBucket = await listClasses({
