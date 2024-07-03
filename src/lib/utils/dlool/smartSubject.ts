@@ -18,13 +18,17 @@ const exactPairs = [
 	'Sport',
 	'Spanisch',
 	'Kunst',
-	'Französisch'
+	'Französisch',
+
+	'Spanish',
+	'French',
+	'German'
 ];
 
 const rules: SmartDetectRule[] = [
 	...exactPairs.map((subject) => ({ subject, pattern: genRegex(subject) })),
 	{
-		subject: 'Mathemathik',
+		subject: 'Mathematik',
 		pattern: /^math?e/
 	},
 	{
@@ -48,7 +52,11 @@ const rules: SmartDetectRule[] = [
 		pattern: /^bio/
 	},
 	{
-		subject: 'Biologie',
+		subject: 'Religion',
+		pattern: /^reli/
+	},
+	{
+		subject: 'Religion',
 		pattern: /^reli/
 	}
 ];
