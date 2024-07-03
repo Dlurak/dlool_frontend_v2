@@ -5,8 +5,19 @@
 	import CreateAssignment from './CreateAssignment.svelte';
 	import Filter from './Filter/Filter.svelte';
 	import PageSelector from '$lib/components/pageSelector/DefaultLimitOffsetSelector.svelte';
+	import Sorting from './Sorting.svelte';
+	import { createEventDispatcher } from 'svelte';
+	import type { SortOrder, OrderKey } from '$lib/types/sorting';
 
-	export let query: {
+	let direction: SortOrder = 'desc';
+	let orderKey: OrderKey = 'due';
+
+	type FilterQuery = {
+		direction: SortOrder;
+		orderKey: OrderKey;
+	};
+
+	type Query = {
 		school: string | null;
 		classes: string[];
 
@@ -20,10 +31,16 @@
 		fromEnd: CustomDate | null;
 	};
 
+	export let query: Query;
+
 	export let totalAmount: Promise<number | undefined> | undefined;
 
 	const { isLoggedIn } = useAuth();
 	const userDetails = svocal('dlool.ownUserDetails');
+
+	const dispatch = createEventDispatcher<{
+		change: Query & FilterQuery;
+	}>();
 
 	$: isInClass =
 		$userDetails?.classes.some(({ school, name }) => {
@@ -35,8 +52,23 @@
 </script>
 
 <div class="flex flex-col gap-4">
+	<Sorting
+		bind:direction
+		bind:orderKey
+		on:change={({ detail }) => dispatch('change', { ...query, ...detail })}
+	/>
 	<div>
-		<Filter {query} on:filterApply />
+		<Filter
+			bind:query
+			on:filterApply={({ detail }) =>
+				dispatch('change', {
+					...detail,
+					direction,
+					orderKey,
+					limit: query.limit,
+					offset: query.offset
+				})}
+		/>
 	</div>
 
 	{#if isInClass && $isLoggedIn && query.school}

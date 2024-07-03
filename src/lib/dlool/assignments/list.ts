@@ -46,7 +46,7 @@ interface TextFilter {
 	exact?: boolean;
 }
 
-interface AssignmentProps {
+export interface AssignmentProps {
 	school: string;
 	classes: string[];
 	limit?: number;

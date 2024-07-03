@@ -4,9 +4,11 @@
 	import Store from '../utils/Store.svelte';
 	import { offset, flip, shift } from 'svelte-floating-ui/dom';
 	import { createFloatingActions } from 'svelte-floating-ui';
-	import { useToggle } from 'nutzlich';
+	import { clickOutside, useToggle } from 'nutzlich';
 	import { readable } from 'svelte/store';
 	import { createEventDispatcher } from 'svelte';
+	import { slide } from 'svelte/transition';
+	import { animationLength } from '$lib/utils/store/animation';
 
 	// eslint-disable-next-line no-undef
 	export let options: Option<V>[];
@@ -20,7 +22,11 @@
 		middleware: [offset(4), flip(), shift()]
 	});
 	const showSuggestions = useToggle(false);
-	const dispatch = createEventDispatcher();
+
+	const dispatch = createEventDispatcher<{
+		// eslint-disable-next-line no-undef
+		change: V;
+	}>();
 </script>
 
 <button
@@ -34,21 +40,36 @@
 	<Icon src={ChevronDown} micro class="h-5 w-5" />
 </button>
 
-<div use:floatingContent class="px-2" class:hidden={!$showSuggestions}>
-	<div class="flex w-fit flex-col overflow-hidden rounded bg-zinc-200 dark:bg-zinc-800">
-		{#each options as opt, ind}
-			<button
-				class="px-2 py-1 text-start hover:bg-zinc-300 focus:bg-zinc-300 dark:hover:bg-zinc-700 dark:focus:bg-zinc-700"
-				on:click={() => {
-					selectedIndex = ind;
-					value = options[ind].value;
-					showSuggestions.set(false);
+{#if $showSuggestions}
+	<div
+		use:floatingContent
+		class="z-10 px-2"
+		use:clickOutside={{ callback: () => showSuggestions.set(false) }}
+		transition:slide={{ duration: $animationLength }}
+	>
+		<div class="flex w-fit flex-col overflow-hidden rounded bg-zinc-200 dark:bg-zinc-800">
+			{#each options as opt, ind}
+				<button
+					class="
+						flex items-center gap-2 px-2 py-1 text-start transition-colors
+						hover:bg-zinc-300 focus:bg-zinc-300
+						dark:hover:bg-zinc-700 dark:focus:bg-zinc-700
+					"
+					on:click={() => {
+						selectedIndex = ind;
+						value = options[ind].value;
+						showSuggestions.set(false);
 
-					dispatch('change', value);
-				}}
-			>
-				<Store store={opt.label} />
-			</button>
-		{/each}
+						dispatch('change', value);
+					}}
+				>
+					{#if opt.icon}
+						<Icon src={opt.icon} class="h-4 w-4" micro />
+					{/if}
+
+					<Store store={opt.label} />
+				</button>
+			{/each}
+		</div>
 	</div>
-</div>
+{/if}

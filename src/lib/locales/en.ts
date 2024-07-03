@@ -624,6 +624,16 @@ Your current settings sadly won't be compatible withthe new version. But you can
 		}
 	},
 
+	sorting: 'Sorting',
+	'sorting.asc': 'Ascending',
+	'sorting.desc': 'Descending',
+
+	'sorting.assignments.due': 'Due',
+	'sorting.assignments.from': 'From',
+	'sorting.assignments.subject': 'Subject',
+	'sorting.assignments.description': 'Description',
+	'sorting.assignments.versionsCount': 'Version Count',
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 

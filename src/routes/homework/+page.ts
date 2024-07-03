@@ -1,5 +1,6 @@
 import { DATE } from '$lib/constants/regex';
 import { loadAssignments } from '$lib/dlool/assignments/list';
+import type { OrderKey, SortOrder } from '$lib/types/sorting';
 import { deserialize } from '$lib/utils/dates/custom';
 import { safeMap } from '$lib/utils/null/safeMap';
 import { split } from '$lib/utils/strings/split';
@@ -29,6 +30,9 @@ export const load: PageLoad = ({ url }) => {
 	const fromStart = search.get('fromStart');
 	const fromEnd = search.get('fromEnd');
 
+	const orderKey = (search.get('orderKey') ?? 'due') as OrderKey;
+	const direction = (search.get('direction') ?? 'desc') as SortOrder;
+
 	if (school && classes && classes.length > 0) {
 		return {
 			data: loadAssignments({
@@ -45,8 +49,11 @@ export const load: PageLoad = ({ url }) => {
 						earliest: (DATE.test(fromStart ?? '') && fromStart) || undefined,
 						latest: (DATE.test(fromEnd ?? '') && fromEnd) || undefined
 					}
-				}
+				},
+				orderKey,
+				orderDirection: direction
 			}).catch(() => null),
+
 			query: {
 				school,
 				classes,

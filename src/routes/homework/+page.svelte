@@ -34,7 +34,7 @@
 				fromEnd: null
 			}}
 			totalAmount={data.data?.then((d) => d?.data.totalCount)}
-			on:filterApply={({ detail }) => {
+			on:change={({ detail }) => {
 				goto(
 					`?${objToQueryParams({
 						...detail,

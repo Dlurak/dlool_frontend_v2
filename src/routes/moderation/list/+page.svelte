@@ -15,9 +15,7 @@
 		data = await foreignRequests({ type: 'all' }).then((d) => d.data);
 	});
 
-	const chipHandler = async (d: CustomEvent<'all' | 'Pending' | 'Accepted' | 'Rejected'>) => {
-		data = await foreignRequests({ type: d.detail }).then((d) => d.data);
-	};
+	const states = ['all', 'Pending', 'Accepted', 'Rejected'] as const;
 </script>
 
 <MetaData title={i('title.moderation.list')} />
@@ -26,25 +24,14 @@
 	<div class="w-full py-3">
 		<Chips
 			bind:value={filterValue}
-			on:change={chipHandler}
-			options={[
-				{
-					value: 'all',
-					label: i('moderation.state.all')
-				},
-				{
-					value: 'Pending',
-					label: i('moderation.state.Pending')
-				},
-				{
-					value: 'Accepted',
-					label: i('moderation.state.Accepted')
-				},
-				{
-					value: 'Rejected',
-					label: i('moderation.state.Rejected')
-				}
-			]}
+			options={states.map((state) => ({
+				value: state,
+				label: i(`moderation.state.${state}`)
+			}))}
+			on:change={async ({ detail }) => {
+				// @ts-expect-error Detail is a state but svelte generics are kinda broken
+				data = await foreignRequests({ type: detail }).then((d) => d.data);
+			}}
 		/>
 	</div>
 {/if}

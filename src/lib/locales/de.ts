@@ -637,6 +637,16 @@ Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibe
 		}
 	},
 
+	sorting: 'Sortierung',
+	'sorting.asc': 'Aufsteigend',
+	'sorting.desc': 'Herabsteigend',
+
+	'sorting.assignments.due': 'Bis zum',
+	'sorting.assignments.from': 'Vom',
+	'sorting.assignments.subject': 'Fach',
+	'sorting.assignments.description': 'Beschreibung',
+	'sorting.assignments.versionsCount': 'Versionsanzahl',
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 
