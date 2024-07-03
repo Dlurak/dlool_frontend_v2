@@ -1,73 +1,8 @@
-<script context="module" lang="ts">
-	import { calculatePercentage } from '$lib/utils/math/percentages';
-
-	const isTouchEvent = (e: Event): e is TouchEvent => 'touches' in e;
-
-	interface Props {
-		setPos: (p: number) => void;
-		getPos: () => number;
-		setShowSideBar: (show: boolean) => void;
-		setPercentages: (p: number) => void;
-		min: number;
-		max: number;
-	}
-
-	const handleMouseDownOrTouchStart =
-		({ setPos, getPos, setShowSideBar, setPercentages, min, max }: Props) =>
-		(e: MouseEvent | TouchEvent) => {
-			let isDragging = true;
-			let initialPosition = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
-			let percentage = 0;
-
-			const handleMouseMoveOrTouchMove = (e: MouseEvent | TouchEvent) => {
-				if (!isDragging) return;
-
-				const { clientX } = isTouchEvent(e) ? e.touches[0] : e;
-				const delta = clientX - initialPosition;
-				const potentialPos = getPos() + delta;
-
-				if (potentialPos <= min) {
-					percentage = Math.min(
-						calculatePercentage((potentialPos - min) * -1, ((min - min / 3) / 5) * 4),
-						100
-					);
-					setPercentages(percentage);
-					return setPos(min);
-				}
-				percentage = 0;
-				setPercentages(percentage);
-				if (potentialPos >= max) return setPos(max);
-
-				setPos(potentialPos);
-				initialPosition = clientX;
-			};
-
-			const handleMouseUpOrTouchEnd = () => {
-				document.removeEventListener('mousemove', handleMouseMoveOrTouchMove);
-				document.removeEventListener('touchmove', handleMouseMoveOrTouchMove);
-				document.removeEventListener('mouseup', handleMouseUpOrTouchEnd);
-				document.removeEventListener('touchend', handleMouseUpOrTouchEnd);
-				isDragging = false;
-				if (percentage >= 70) setShowSideBar(false);
-
-				const intervalId = setInterval(() => {
-					percentage -= 2;
-					setPercentages(percentage);
-					if (percentage <= 0) clearInterval(intervalId);
-				}, 2);
-			};
-
-			document.addEventListener('mousemove', handleMouseMoveOrTouchMove);
-			document.addEventListener('touchmove', handleMouseMoveOrTouchMove);
-			document.addEventListener('mouseup', handleMouseUpOrTouchEnd);
-			document.addEventListener('touchend', handleMouseUpOrTouchEnd);
-		};
-</script>
-
 <script lang="ts">
 	import { clamp } from '$lib/utils/numbers/clamp';
 	import { ArrowLeft, ChevronLeft, ChevronRight, Icon } from 'svelte-hero-icons';
 	import QuickAction from '../buttons/QuickAction.svelte';
+	import { handleMouseDownOrTouchStart } from './panes';
 
 	export let min = 120;
 	export let max = 550;
@@ -109,8 +44,8 @@
 		<slot name="a" />
 
 		<div
-			class="absolute inset-0 flex h-full w-full items-center justify-center rounded bg-black bg-opacity-[--effect]"
-			class:hidden={percentageCollapsing === 0}
+			class="pointer-events-none absolute inset-0 flex h-full w-full items-center justify-center rounded bg-black bg-opacity-[--effect]"
+			class:hidden={percentageCollapsing <= 0}
 			style:--effect={Math.round(percentageCollapsing) / 100}
 		>
 			<div class="aspect-square scale-[--effect] rounded-full bg-emerald-300 p-2">
@@ -140,6 +75,7 @@
 					}}
 				/>
 			</div>
+
 			<slot name="b" />
 		</div>
 	</div>
