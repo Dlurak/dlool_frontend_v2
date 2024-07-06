@@ -661,6 +661,10 @@ Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibe
 	'sorting.assignments.description': 'Beschreibung',
 	'sorting.assignments.versionsCount': 'Versionsanzahl',
 
+	'keyboardshortcuts.global': 'Global',
+	'keyboardshortcuts.launcher': 'Launcher öffnen',
+	'keyboardshortcuts.keyboardHelpMenu': 'Alle Tastenkombinationen anzeigen',
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 

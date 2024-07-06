@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import '../app.css';
 	import Token from '$lib/components/layout/Token.svelte';
 	import Version from '$lib/components/layout/Version.svelte';
@@ -11,8 +11,12 @@
 	import { navHeight, footerHeight } from '$lib/stores';
 	import Launcher from '$lib/components/layout/launcher/Launcher.svelte';
 	import Style from '$lib/components/layout/Style.svelte';
+	import KeyboardHelper from '$lib/components/layout/KeyboardModal/KeyboardHelper.svelte';
+	import type { LayoutServerData } from './$types';
 
 	const isBig = mediaQuery('(min-width: 640px)');
+
+	export let data: LayoutServerData;
 
 	$: accessiourHeight = $isBig ? $navHeight + $footerHeight : $footerHeight;
 </script>
@@ -35,4 +39,5 @@
 	<Launcher />
 	<Version />
 	<Style />
+	<KeyboardHelper isApple={data.isApple} />
 </div>

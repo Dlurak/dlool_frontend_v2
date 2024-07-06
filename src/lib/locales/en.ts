@@ -648,6 +648,10 @@ Your current settings sadly won't be compatible withthe new version. But you can
 	'sorting.assignments.description': 'Description',
 	'sorting.assignments.versionsCount': 'Version Count',
 
+	'keyboardshortcuts.global': 'Global',
+	'keyboardshortcuts.launcher': 'Open the launcher',
+	'keyboardshortcuts.keyboardHelpMenu': 'Show all keyboard shortcuts',
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 
