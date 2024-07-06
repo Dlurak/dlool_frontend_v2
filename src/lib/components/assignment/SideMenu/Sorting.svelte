@@ -32,7 +32,7 @@
 </script>
 
 <h3><Store store={i('sorting')} /></h3>
-<div class="flex gap-2">
+<div class="flex flex-wrap gap-2">
 	<Chips
 		bind:value={direction}
 		options={objectEntries(orderings).map(([value, icon]) => ({

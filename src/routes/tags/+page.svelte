@@ -54,7 +54,7 @@
 			on:click={() => {
 				goto(
 					`?${objToQueryParams({
-						school,
+						school: $school,
 						class: className
 					})}`
 				).then(invalidateAll);

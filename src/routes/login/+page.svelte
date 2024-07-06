@@ -1,3 +1,52 @@
+<script context="module" lang="ts">
+	type State = 'base' | 'loading' | 'success' | 'incorrect';
+
+	interface Props {
+		state: Writable<State>;
+		redirectDestination: Readable<string | null>;
+		username: string;
+		pwd: string;
+		disabled: boolean;
+	}
+
+	function clickHandler({ state, username, pwd, redirectDestination, disabled }: Props) {
+		if (disabled) return;
+
+		state.set('loading');
+
+		login({
+			username: username.trim(),
+			password: pwd.trim()
+		})
+			.then((data) => {
+				if (data.status !== 'success') {
+					sendToast({
+						type: 'error',
+						timeout: 5_000,
+						content: i('toast.login.incorrect')
+					});
+					state.set('incorrect');
+					return;
+				}
+
+				state.set('success');
+				sendToast({
+					type: 'success',
+					timeout: 5_000,
+					content: i('toast.login.success')
+				});
+
+				const redirectDest = get(redirectDestination);
+				if (redirectDest) {
+					goto(redirectDest);
+				}
+			})
+			.catch(() => {
+				state.set('base');
+			});
+	}
+</script>
+
 <script lang="ts">
 	import TextInput from '$lib/components/input/Text.svelte';
 	import PasswordInput from '$lib/components/input/Password.svelte';
@@ -6,7 +55,7 @@
 	import Store from '$lib/components/utils/Store.svelte';
 	import { getConditions } from '$lib/utils/strings/password';
 	import { login } from '$lib/dlool/login';
-	import { derived, writable } from 'svelte/store';
+	import { derived, get, writable, type Readable, type Writable } from 'svelte/store';
 	import { sendToast } from '$lib/components/layout/toasts';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
@@ -15,7 +64,7 @@
 	let username = '';
 	let pwd = '';
 
-	const state = writable<'base' | 'loading' | 'success' | 'incorrect'>('base');
+	const state = writable<State>('base');
 
 	const redirectDestination = derived(page, (p) => p.url.searchParams.get('redirect'));
 
@@ -32,42 +81,19 @@
 	class="flex w-[min(100%,28rem)] flex-col gap-4 rounded-md p-4 outline outline-2 outline-gray-400"
 >
 	<TextInput placeholder={i('username')} bind:value={username} on:input={() => state.set('base')} />
-	<PasswordInput placeholder={i('password')} bind:value={pwd} on:input={() => state.set('base')} />
+	<PasswordInput
+		placeholder={i('password')}
+		bind:value={pwd}
+		on:input={() => state.set('base')}
+		on:enter={() => {
+			clickHandler({ redirectDestination, state, username, pwd, disabled });
+		}}
+	/>
 
 	<PrimaryButton
 		{disabled}
 		on:click={() => {
-			state.set('loading');
-
-			login({
-				username: username.trim(),
-				password: pwd.trim()
-			})
-				.then((data) => {
-					if (data.status !== 'success') {
-						sendToast({
-							type: 'error',
-							timeout: 5_000,
-							content: i('toast.login.incorrect')
-						});
-						state.set('incorrect');
-						return;
-					}
-
-					state.set('success');
-					sendToast({
-						type: 'success',
-						timeout: 5_000,
-						content: i('toast.login.success')
-					});
-
-					if ($redirectDestination) {
-						goto($redirectDestination);
-					}
-				})
-				.catch(() => {
-					state.set('base');
-				});
+			clickHandler({ redirectDestination, state, username, pwd, disabled });
 		}}
 	>
 		<Store store={i('login.login')} />
