@@ -3,26 +3,28 @@ import { loadAssignments } from '$lib/dlool/assignments/list';
 import type { OrderKey, SortOrder } from '$lib/types/sorting';
 import { deserialize } from '$lib/utils/dates/custom';
 import { safeMap } from '$lib/utils/null/safeMap';
-import { split } from '$lib/utils/strings/split';
+import { getClasses, getFirstOf, getSchool, parseNumber } from '$lib/utils/url/parts';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = ({ url }) => {
 	const search = new URLSearchParams(url.search);
 
-	const school = search.get('school') || search.get('School') || search.get('s');
-	const classes = ['classes', 'class', 'Class', 'Classes', 'c']
-		.map((q) => split(search.get(q) ?? '').filter((i) => i))
-		.find((i) => i.length > 0);
+	const school = getSchool(search);
+	const classes = getClasses(search);
 
-	const limit = Math.max(
-		parseInt(['limit', 'l', 'lim'].map((i) => search.get(i)).find((i) => i) ?? '0') || 25,
-		5
-	);
+	const limit = parseNumber({
+		attributes: ['limit', 'l', 'lim'],
+		default: 25,
+		min: 5,
+		params: search
+	});
 
-	const offset = Math.max(
-		parseInt(['offset', 'off', 'o'].map((i) => search.get(i)).find((i) => i) ?? '0') || 0,
-		0
-	);
+	const offset = parseNumber({
+		attributes: ['offset', 'off', 'o'],
+		default: 0,
+		min: 0,
+		params: search
+	});
 
 	const dueStart = search.get('dueStart');
 	const dueEnd = search.get('dueEnd');
@@ -30,8 +32,8 @@ export const load: PageLoad = ({ url }) => {
 	const fromStart = search.get('fromStart');
 	const fromEnd = search.get('fromEnd');
 
-	const orderKey = (search.get('orderKey') ?? 'due') as OrderKey;
-	const direction = (search.get('direction') ?? 'desc') as SortOrder;
+	const orderKey = getFirstOf<OrderKey>(['orderKey'])(search) ?? 'due';
+	const direction = getFirstOf<SortOrder>(['direction'])(search) ?? 'desc';
 
 	if (school && classes && classes.length > 0) {
 		return {

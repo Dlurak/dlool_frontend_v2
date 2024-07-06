@@ -26,7 +26,7 @@
 			query={data.query ?? {
 				school: null,
 				classes: [],
-				limit: 5,
+				limit: 25,
 				offset: 0,
 				dueStart: null,
 				dueEnd: null,
