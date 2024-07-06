@@ -55,6 +55,9 @@ const en = {
 	'launcher.logout.terms': 'Abmelden\nAnonym',
 	'launcher.holidays': 'Holidays',
 	'launcher.holidays.terms': 'Holidays\nPublic holidays\nSchool holidays',
+	'launcher.tags': 'Tags',
+	'launcher.tags.desc': 'Here you can view, edit and delete tags',
+	'launcher.tags.terms': 'Tags\nHashtag',
 	'launcher.width': 'Width of this launcher',
 	'launcher.width.terms': 'Width',
 
@@ -110,6 +113,7 @@ const en = {
 	'nav.footer.else.settings': 'Settings',
 	'nav.footer.else.holiday': 'Holiday',
 	'nav.footer.else.contributors': 'Contributors',
+	'nav.footer.else.tags': 'Tags',
 
 	title: 'Homepage',
 	'title.calendar': 'Calendar',
@@ -613,6 +617,16 @@ Your current settings sadly won't be compatible withthe new version. But you can
 	'tags.new.create': 'Create',
 	'tags.new.success': 'Successfully created Tag $tag',
 	'tags.new.error.alreadyTaken': 'This tag already exists',
+
+	'tags.edit.title': 'Edit tag $tag',
+	'tags.edit.success': 'Successfully edited tag!',
+
+	'tags.delete.ok': 'Delete',
+	'tags.delete.desc': 'Are you sure you want to delete the tag $tag',
+	'tags.delete.success': 'Successfully deleted the tag $tag',
+
+	'tags.title': 'Tags',
+	'tags.page.noTags': 'There are no tags',
 
 	'contributions.title': 'Contributors',
 	'contributions.count': {

@@ -12,6 +12,15 @@
 	export let filter: (c: Class) => boolean = () => true;
 
 	let classBucket: Class[] = [];
+
+	if (school) {
+		listClasses({
+			school: school,
+			query: ''
+		}).then((d) => {
+			classBucket = d.data.filter(filter);
+		});
+	}
 </script>
 
 <Select
@@ -23,6 +32,7 @@
 		value: name
 	}))}
 	bind:firstValue={selectedClass}
+	userInput={selectedClass ?? ''}
 	on:userInput={async (e) => {
 		if (school) {
 			classBucket = await listClasses({

@@ -10,7 +10,8 @@ import {
 	Calendar,
 	RectangleGroup,
 	Cog,
-	UserGroup
+	UserGroup,
+	Bookmark
 } from 'svelte-hero-icons';
 
 type Link = {
@@ -105,6 +106,11 @@ export const links: LinkGroup[] = [
 				name: i('nav.footer.else.contributors'),
 				action: () => goto('/contributions'),
 				icon: UserGroup
+			},
+			{
+				name: i('nav.footer.else.tags'),
+				action: () => goto('/tags'),
+				icon: Bookmark
 			}
 		]
 	}

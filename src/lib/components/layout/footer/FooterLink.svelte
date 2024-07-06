@@ -11,13 +11,13 @@
 <button
 	on:click={action}
 	class="
-		relative flex flex-1 justify-center gap-2 py-2
+		relative flex min-w-[min(8rem,100%)] flex-1 items-center justify-center gap-2 px-2 py-2
 		after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black
 		after:transition-[width] hover:after:w-full after:dark:bg-white
 	"
 >
 	{#if icon}
-		<Icon src={icon} class="h-6 w-6" mini />
+		<Icon src={icon} class="h-6 w-6 min-w-6" mini />
 	{/if}
 	<Store store={name} />
 </button>

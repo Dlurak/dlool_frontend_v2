@@ -57,6 +57,9 @@ const de = {
 	'launcher.logout.terms': 'Signout\nAnonymous',
 	'launcher.holidays': 'Ferien',
 	'launcher.holidays.terms': 'Ferien\nFeiertage\nSchulfrei\nFreizeit',
+	'launcher.tags': 'Tags',
+	'launcher.tags.desc': 'Hier kannst Du Tags ansehen, editieren und löschen.',
+	'launcher.tags.terms': 'Schlagwörter\nTags\nHashtag',
 	'launcher.width': 'Breite von diesem Launcher',
 	'launcher.width.terms': 'Breite',
 
@@ -113,6 +116,7 @@ const de = {
 	'nav.footer.else.settings': 'Einstellungen',
 	'nav.footer.else.holiday': 'Ferien',
 	'nav.footer.else.contributors': 'Mitwirkende',
+	'nav.footer.else.tags': 'Tags',
 
 	title: 'Startseite',
 	'title.calendar': 'Kalendar',
@@ -626,6 +630,16 @@ Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibe
 	'tags.new.create': 'Erstellen',
 	'tags.new.success': 'Erfolgreich Tag $tag erstellt',
 	'tags.new.error.alreadyTaken': 'Dieses Tag existiert bereits',
+
+	'tags.edit.title': 'Tag $tag editieren',
+	'tags.edit.success': 'Tag Erfolgreich bearbeitet!',
+
+	'tags.delete.ok': 'Löschen',
+	'tags.delete.desc': 'Möchtest Du das Tag $tag wirklich löschen?',
+	'tags.delete.success': 'Tag $tag Erfolgreich gelöscht!',
+
+	'tags.title': 'Tags',
+	'tags.page.noTags': 'Es gibt keine Tags',
 
 	'contributions.title': 'Mitwirkende',
 	'contributions.count': {

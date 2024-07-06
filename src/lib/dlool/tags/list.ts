@@ -19,8 +19,8 @@ interface ListTagsProps {
 	class: string;
 }
 
-export async function listTags(props: ListTagsProps) {
-	const res = await fetch(`${getApibase()}/tags?${objToQueryParams({ ...props })}`).then((r) =>
+export async function listTags(props: ListTagsProps, fetcher = fetch) {
+	const res = await fetcher(`${getApibase()}/tags?${objToQueryParams({ ...props })}`).then((r) =>
 		r.json()
 	);
 
