@@ -7,6 +7,7 @@
 	import type { CustomDate } from '$lib/utils/dates/custom';
 	import { createEventDispatcher } from 'svelte';
 	import { deepEqual } from '$lib/utils/objects/deepEqual';
+	import TextArea from '$lib/components/input/TextArea.svelte';
 
 	export let assignment: Assignment;
 	export let disabled: boolean;
@@ -41,7 +42,7 @@
 </script>
 
 <TextInput placeholder={i('assignments.create.subject')} bind:value={subject} />
-<TextInput placeholder={i('assignments.create.description')} bind:value={description} />
+<TextArea placeholder={i('assignments.create.description')} bind:value={description} />
 
 <DateSelector bind:date={fromDate} />
 <DateSelector bind:date={dueDate} />

@@ -50,6 +50,8 @@
 		"dice-coefficient": "^2.1.1",
 		"nutzlich": "^0.5.0",
 		"open-holiday-js": "^1.0.3",
+		"remark": "^15.0.1",
+		"remark-gfm": "^4.0.0",
 		"svelte-bootstrap-icons": "^3.1.1",
 		"svelte-confetti": "^1.4.0",
 		"svelte-dnd-action": "^0.9.49",

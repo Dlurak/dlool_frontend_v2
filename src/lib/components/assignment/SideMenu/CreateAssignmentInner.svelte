@@ -148,6 +148,7 @@
 			placeholder={i('assignments.create.description')}
 			bind:value={description}
 			isValid={!!description}
+			rows={3}
 		>
 			<svelte:fragment slot="pre-validator">
 				{#if $presets.map((x) => x.trim()).filter(self).length > 0}

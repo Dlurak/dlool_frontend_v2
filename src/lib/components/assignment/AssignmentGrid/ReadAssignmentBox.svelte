@@ -9,6 +9,7 @@
 	import Updates from '$lib/components/utils/Updates.svelte';
 	import { mapObject } from '$lib/utils/objects/map';
 	import { self } from '$lib/utils/utils';
+	import Markdown from '$lib/components/markdown/Markdown.svelte';
 
 	export let assignment: Assignment;
 
@@ -37,7 +38,7 @@
 			<h3>{assignment.subject}</h3>
 		</div>
 
-		<p>{assignment.description}</p>
+		<Markdown markdown={assignment.description} />
 
 		<hr class="rounded-full border-zinc-300 dark:border-zinc-600" />
 

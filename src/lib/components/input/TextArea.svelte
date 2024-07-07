@@ -28,7 +28,7 @@
 		bind:value
 		{rows}
 		placeholder={$placeholder}
-		class="w-full resize-none bg-transparent focus:outline-none"
+		class="w-full resize-y bg-transparent focus:outline-none"
 		on:input={({ currentTarget }) => {
 			dispatch('input', currentTarget.value);
 		}}
