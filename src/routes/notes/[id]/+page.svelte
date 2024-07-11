@@ -7,6 +7,7 @@
 	import TagLabel from '$lib/components/tags/TagLabel.svelte';
 	import { sortByPredicate } from '$lib/utils/arrays/sort';
 	import Updates from '$lib/components/utils/Updates.svelte';
+	import Markdown from '$lib/components/markdown/Markdown.svelte';
 
 	export let data: PageData;
 </script>
@@ -36,7 +37,7 @@
 	</div>
 
 	{#if note.summary}
-		<p>{note.summary}</p>
+		<Markdown markdown={note.summary} />
 	{:else}
 		<p class="italic text-gray-600 dark:text-gray-400">No summary provided</p>
 	{/if}

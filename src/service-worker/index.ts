@@ -1,38 +1,43 @@
 /// <reference lib="webworker" />
+
 import { version } from '$service-worker';
 import { registerRoute } from 'workbox-routing';
-import { CacheFirst, NetworkFirst } from 'workbox-strategies';
+import { NetworkFirst, StaleWhileRevalidate } from 'workbox-strategies';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { filterForType } from '$lib/utils/service-worker/getRouteName';
+import { clientsClaim } from 'workbox-core';
+import { precacheAndRoute } from 'workbox-precaching';
 
-// const worker = self as unknown as ServiceWorkerGlobalScope;
+declare const self: ServiceWorkerGlobalScope
 
 const cacheName = `cache-${version}`;
 
 const ONE_MONTH_IN_SEC = 30 * 24 * 60 * 60;
 
+precacheAndRoute(self.__WB_MANIFEST || []);
+
+clientsClaim();
+
 registerRoute(
 	filterForType('image'),
-	new CacheFirst({
-		cacheName,
+	new StaleWhileRevalidate({
+		cacheName: "images",
 		plugins: [new ExpirationPlugin({ maxAgeSeconds: ONE_MONTH_IN_SEC })]
 	})
 );
 
 registerRoute(
 	filterForType('holiday'),
-	new CacheFirst({
+	new StaleWhileRevalidate({
 		cacheName,
-		plugins: [new ExpirationPlugin({ maxAgeSeconds: 2 * ONE_MONTH_IN_SEC })]
+		plugins: [new ExpirationPlugin({ maxAgeSeconds: 0.75 * ONE_MONTH_IN_SEC })]
 	})
 );
 
-// the api sends a `Vary`= `*` header
-// This header makes it not possible to cache
 registerRoute(
 	filterForType('dlool-api'),
 	new NetworkFirst({
-		cacheName,
+		cacheName: "dlool-api",
 		plugins: [new ExpirationPlugin({ maxAgeSeconds: ONE_MONTH_IN_SEC })]
 	})
 );

@@ -16,6 +16,7 @@
 	import MetaData from '$lib/components/utils/MetaData.svelte';
 	import Updates from '$lib/components/utils/Updates.svelte';
 	import TagLabel from '$lib/components/tags/TagLabel.svelte';
+	import Markdown from '$lib/components/markdown/Markdown.svelte';
 
 	export let data: PageData;
 
@@ -131,7 +132,7 @@
 		</div>
 
 		{#if event.summary}
-			<span>{event.summary}</span>
+			<Markdown markdown={event.summary} />
 		{/if}
 
 		<EditModal bind:showEditModal {event} />
