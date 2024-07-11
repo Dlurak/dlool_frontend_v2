@@ -145,6 +145,7 @@
 
 	{#if inputMode === 'text'}
 		<TextArea
+			markdown
 			placeholder={i('assignments.create.description')}
 			bind:value={description}
 			isValid={!!description}

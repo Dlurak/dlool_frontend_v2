@@ -8,7 +8,7 @@ import { filterForType } from '$lib/utils/service-worker/getRouteName';
 import { clientsClaim } from 'workbox-core';
 import { precacheAndRoute } from 'workbox-precaching';
 
-declare const self: ServiceWorkerGlobalScope
+declare const self: ServiceWorkerGlobalScope;
 
 const cacheName = `cache-${version}`;
 
@@ -21,7 +21,7 @@ clientsClaim();
 registerRoute(
 	filterForType('image'),
 	new StaleWhileRevalidate({
-		cacheName: "images",
+		cacheName: 'images',
 		plugins: [new ExpirationPlugin({ maxAgeSeconds: ONE_MONTH_IN_SEC })]
 	})
 );
@@ -37,7 +37,7 @@ registerRoute(
 registerRoute(
 	filterForType('dlool-api'),
 	new NetworkFirst({
-		cacheName: "dlool-api",
+		cacheName: 'dlool-api',
 		plugins: [new ExpirationPlugin({ maxAgeSeconds: ONE_MONTH_IN_SEC })]
 	})
 );

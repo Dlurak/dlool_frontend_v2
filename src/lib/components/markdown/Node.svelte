@@ -81,7 +81,7 @@
 		</h6>
 	{/if}
 {:else if node.type === 'blockquote'}
-	<blockquote class="flex gap-1">
+	<blockquote class="flex gap-2 py-0.5">
 		<div class="h-full w-1 rounded-full bg-zinc-300 dark:bg-zinc-600" />
 
 		<div>
