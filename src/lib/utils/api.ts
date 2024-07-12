@@ -1,7 +1,8 @@
 import { get } from 'svelte/store';
 import { svocal } from './store/svocal';
+import { cookie } from '$lib/utils/store/cookie';
 
-export const getApibase = () => get(svocal('api.url'));
+export const getApibase = () => get(cookie('api.url'));
 
 export const getAuthHeader = () => {
 	const tok = get(svocal('auth.access.token'));

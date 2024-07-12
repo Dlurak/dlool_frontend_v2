@@ -6,6 +6,7 @@
 	import { i } from '$lib/i18n/store';
 	import { onMount } from 'svelte';
 	import { network } from 'nutzlich';
+	import { retry } from '$lib/utils/promises/retry';
 
 	const accessTokenExpires = svocal('auth.access.expires');
 	const refreshToken = svocal('auth.refresh.token');
@@ -23,9 +24,11 @@
 				() => {
 					if (!$refreshToken) return;
 
-					refresh({
-						refreshToken: $refreshToken
-					}).catch(() => {
+					retry(() => {
+						return refresh({
+							refreshToken: $refreshToken
+						});
+					}, 3).catch(() => {
 						sendToast({
 							type: 'error',
 							content: i('toast.refreshToken.error')

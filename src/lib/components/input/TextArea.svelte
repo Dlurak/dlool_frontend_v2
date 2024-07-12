@@ -28,7 +28,10 @@
 		<hr class="h-1 w-full border-zinc-300 dark:border-zinc-700" />
 
 		{#if viewMode === 'edit'}
-			<Inner {placeholder} {icon} {isValid} {rows} bind:value on:input />
+			<Inner {placeholder} {icon} {isValid} {rows} bind:value on:input>
+				<slot slot="pre-validator" name="pre-validator" />
+				<slot slot="post-validator" name="post-validator" />
+			</Inner>
 		{:else if viewMode === 'preview'}
 			<Markdown markdown={value} />
 		{/if}

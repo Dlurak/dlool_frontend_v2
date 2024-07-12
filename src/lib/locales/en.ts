@@ -544,6 +544,8 @@ const en = {
 	'settings.api.placeholder': 'URL',
 	'settings.api.success': 'Successfully saved',
 	'settings.api.error': "This isn't a Dlool-server",
+	'settings.api.description':
+		"Here you can specify which API-server you want to use. If you don't know what this means, you can and should ignore this. For developers this can be very usefull!",
 
 	'settings.assignments': 'Assignments',
 	'settings.assignments.title': 'Assignment-Settings',

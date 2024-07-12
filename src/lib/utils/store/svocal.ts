@@ -18,7 +18,6 @@ const sv = {
 	'settings.nav.texts': ['settings.nav.texts', () => true],
 	'settings.weekStartsOn': ['settings.weekStartsOn', () => 1 as 0 | 1 | 2 | 3 | 4 | 5 | 6],
 	'i18n.currentlang': ['i18n.currentlang', () => 'de' satisfies LocaleAbbr as LocaleAbbr],
-	'api.url': ['api.url', () => 'https://dlool.onrender.com'],
 
 	'auth.refresh.token': ['auth.refresh.token', () => null satisfies string | null as string | null],
 	'auth.refresh.expires': [

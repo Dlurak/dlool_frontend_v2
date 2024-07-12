@@ -557,6 +557,8 @@ const de = {
 	'settings.api.placeholder': 'URL',
 	'settings.api.success': 'Erfolgreich gespeichert',
 	'settings.api.error': 'Hierbei handelt es sich nicht um einen Dlool Server',
+	'settings.api.description':
+		'Hier kannst du angeben welchen API-Server Du nutzen willst. Wenn Du nicht weißt, was das bedeuted kannst und solltest Du es ignorieren. Für Entwickler kann diese Option sehr nützlich seien!',
 
 	'settings.assignments': 'Hausaufgaben',
 	'settings.assignments.title': 'Hausaufgaben Einstellungen',
