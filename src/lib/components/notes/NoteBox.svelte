@@ -6,6 +6,8 @@
 	import { svocal } from '$lib/utils/store/svocal';
 	import { slide } from 'svelte/transition';
 	import { animationLength } from '$lib/utils/store/animation';
+	import { i } from '$lib/i18n/store';
+	import Store from '../utils/Store.svelte';
 
 	export let note: Note & { id: string };
 
@@ -36,6 +38,12 @@
 			<p>{note.summary}</p>
 		{:else}
 			<p class="text-center italic text-gray-600 dark:text-gray-500">No summary provided</p>
+		{/if}
+
+		{#if note.priority}
+			<div class="text-gray-600 dark:text-gray-500">
+				<Store store={i(`note.priority.${note.priority}.box`)} />
+			</div>
 		{/if}
 	</a>
 </div>
