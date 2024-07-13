@@ -27,13 +27,14 @@ describe('retry function', () => {
 	});
 
 	it('throws the error if the predicate throws and retries are exhausted', () => {
-		const functor = vi.fn()
+		const functor = vi
+			.fn()
 			.mockImplementationOnce(() => {
 				throw new Error('fail');
 			})
 			.mockImplementation(() => {
 				throw new Error('fail again');
-			})
+			});
 
 		expect(() => retry(functor, 3)).toThrow('fail again');
 		expect(functor).toHaveBeenCalledTimes(3);

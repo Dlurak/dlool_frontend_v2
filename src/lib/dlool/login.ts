@@ -1,9 +1,8 @@
 import { getApibase } from '$lib/utils/api';
 import { currentMs } from '$lib/utils/dates/current';
-import { svocal } from '$lib/utils/store/svocal';
 import { z } from 'zod';
 import { logout } from './logout';
-import { get } from 'svelte/store';
+import { get, type Writable } from 'svelte/store';
 
 const inNSecondsToTs = (n: number) => n * 1_000 + currentMs();
 
@@ -31,9 +30,21 @@ const scheme = z.union([
 interface LoginProps {
 	username: string;
 	password: string;
+
+	refreshToken: Writable<string | null>;
+	refreshExpires: Writable<number | null>;
+	accessToken: Writable<string | null>;
+	accessExpires: Writable<number | null>;
+	generatedBy: Writable<'login' | 'refreshToken' | null>;
 }
 
+/*
+TODO: Create a const { login } = useLogin() hook to refactor this mess with stores
+*/
+
 export async function login(props: LoginProps) {
+	const { refreshToken, refreshExpires, accessToken, accessExpires, generatedBy } = props;
+
 	const res = await fetch(`${getApibase()}/auth/refresh-token/password`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
@@ -47,18 +58,17 @@ export async function login(props: LoginProps) {
 
 	if (parsed.status !== 'success') return parsed;
 
-	const refreshToken = svocal('auth.refresh.token');
 	const oldRefreshToken = get(refreshToken);
 
 	if (oldRefreshToken) {
-		logout({ refreshToken: oldRefreshToken });
+		logout({ refreshToken: oldRefreshToken }).catch();
 	}
 
 	refreshToken.set(parsed.data.refreshToken.token);
-	svocal('auth.refresh.expires').set(inNSecondsToTs(parsed.data.refreshToken.expiresIn));
-	svocal('auth.access.token').set(parsed.data.accessToken.token);
-	svocal('auth.access.expires').set(inNSecondsToTs(parsed.data.accessToken.expiresIn));
-	svocal('auth.access.generatedBy').set('login');
+	refreshExpires.set(inNSecondsToTs(parsed.data.refreshToken.expiresIn));
+	accessToken.set(parsed.data.accessToken.token);
+	accessExpires.set(inNSecondsToTs(parsed.data.accessToken.expiresIn));
+	generatedBy.set('login');
 
 	return parsed;
 }

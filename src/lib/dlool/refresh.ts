@@ -25,6 +25,7 @@ export async function refresh(props: RefreshProps) {
 		})
 	}).then((r) => r.json());
 
+	console.log(res);
 	const parsed = scheme.parse(res);
 
 	svocal('auth.access.token').set(parsed.data.token);

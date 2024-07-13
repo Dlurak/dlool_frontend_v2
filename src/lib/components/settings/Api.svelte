@@ -8,7 +8,7 @@
 	import TextInput from '../input/Text.svelte';
 	import { sendDefaultErrorToast, sendToast } from '../layout/toasts';
 	import Store from '../utils/Store.svelte';
-	import { slide } from "svelte/transition"
+	import { slide } from 'svelte/transition';
 	import { animationLength } from '$lib/utils/store/animation';
 
 	const urlCookie = cookie('api.url');
@@ -18,7 +18,7 @@
 		urlInput = u;
 	});
 
-	let showDescription = false
+	let showDescription = false;
 </script>
 
 <section class="flex flex-col gap-2">
@@ -27,18 +27,15 @@
 	<div class="flex flex-wrap justify-between gap-2">
 		<span class="flex items-center gap-1">
 			<Store store={i('settings.api.url')} />
-				<QuickAction
-					icon={QuestionMarkCircle}
-					small
-					on:click={() => (showDescription = !showDescription)}
-				/>
+			<QuickAction
+				icon={QuestionMarkCircle}
+				small
+				on:click={() => (showDescription = !showDescription)}
+			/>
 		</span>
 
 		<span class="flex gap-2">
-			<TextInput
-				bind:value={urlInput}
-				placeholder={i('settings.api.placeholder')}
-			/>
+			<TextInput bind:value={urlInput} placeholder={i('settings.api.placeholder')} />
 			<SettingsButton
 				on:click={() => {
 					isDlool(urlInput)
@@ -60,7 +57,7 @@
 	</div>
 	{#if showDescription}
 		<div transition:slide={{ duration: $animationLength }} class="text-gray-500 dark:text-gray-400">
-			<Store store={i("settings.api.description")} />
+			<Store store={i('settings.api.description')} />
 		</div>
 	{/if}
 </section>

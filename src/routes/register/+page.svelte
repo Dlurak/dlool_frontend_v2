@@ -11,6 +11,7 @@
 	import Store from '$lib/components/utils/Store.svelte';
 	import { login } from '$lib/dlool/login';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
+	import { svocal } from '$lib/utils/store/svocal';
 
 	let username = '';
 	let displayname = '';
@@ -19,6 +20,12 @@
 
 	type Status = 'registering' | 'loading' | 'error' | Awaited<ReturnType<typeof register>>;
 	const status = writable<Status>('registering');
+
+	const refreshToken = svocal('auth.refresh.token');
+	const refreshExpires = svocal('auth.refresh.expires');
+	const accessToken = svocal('auth.access.token');
+	const accessExpires = svocal('auth.access.expires');
+	const generatedBy = svocal('auth.access.generatedBy');
 
 	const clickHandler = () => {
 		status.set('loading');
@@ -29,7 +36,15 @@
 		})
 			.then((data) => {
 				status.set(data);
-				login({ username: username.trim(), password: pwd.trim() });
+				login({
+					username: username.trim(),
+					password: pwd.trim(),
+					refreshToken,
+					refreshExpires,
+					accessToken,
+					accessExpires,
+					generatedBy
+				});
 			})
 			.catch(() => {
 				status.set('error');

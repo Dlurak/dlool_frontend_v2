@@ -22,8 +22,8 @@ export function cookie<TKey extends CookieKey>(key: TKey) {
 
 	onMount(() => {
 		document.addEventListener(domEventName, () => {
-			const realValue = Cookie.get(key)
-			if (realValue === undefined) return
+			const realValue = Cookie.get(key);
+			if (realValue === undefined) return;
 
 			set(JSON.parse(realValue));
 		});

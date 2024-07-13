@@ -4,21 +4,45 @@
 	interface Props {
 		state: Writable<State>;
 		redirectDestination: Readable<string | null>;
+		disabled: boolean;
+
 		username: string;
 		pwd: string;
-		disabled: boolean;
+
+		refreshToken: Writable<string | null>;
+		refreshExpires: Writable<number | null>;
+		accessToken: Writable<string | null>;
+		accessExpires: Writable<number | null>;
+		generatedBy: Writable<'login' | 'refreshToken' | null>;
 	}
 
-	function clickHandler({ state, username, pwd, redirectDestination, disabled }: Props) {
+	function clickHandler({
+		state,
+		username,
+		pwd,
+		redirectDestination,
+		disabled,
+		refreshToken,
+		refreshExpires,
+		accessToken,
+		accessExpires,
+		generatedBy
+	}: Props) {
 		if (disabled) return;
 
 		state.set('loading');
 
 		login({
 			username: username.trim(),
-			password: pwd.trim()
+			password: pwd.trim(),
+			refreshToken,
+			refreshExpires,
+			accessToken,
+			accessExpires,
+			generatedBy
 		})
 			.then((data) => {
+				console.log('success');
 				if (data.status !== 'success') {
 					sendToast({
 						type: 'error',
@@ -60,6 +84,7 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
+	import { svocal } from '$lib/utils/store/svocal';
 
 	let username = '';
 	let pwd = '';
@@ -73,6 +98,12 @@
 		!!username.trim() &&
 		$state === 'base'
 	);
+
+	const refreshToken = svocal('auth.refresh.token');
+	const refreshExpires = svocal('auth.refresh.expires');
+	const accessToken = svocal('auth.access.token');
+	const accessExpires = svocal('auth.access.expires');
+	const generatedBy = svocal('auth.access.generatedBy');
 </script>
 
 <MetaData title={i('title.login')} />
@@ -86,14 +117,36 @@
 		bind:value={pwd}
 		on:input={() => state.set('base')}
 		on:enter={() => {
-			clickHandler({ redirectDestination, state, username, pwd, disabled });
+			clickHandler({
+				redirectDestination,
+				state,
+				username,
+				pwd,
+				disabled,
+				refreshToken,
+				refreshExpires,
+				accessToken,
+				accessExpires,
+				generatedBy
+			});
 		}}
 	/>
 
 	<PrimaryButton
 		{disabled}
 		on:click={() => {
-			clickHandler({ redirectDestination, state, username, pwd, disabled });
+			clickHandler({
+				redirectDestination,
+				state,
+				username,
+				pwd,
+				disabled,
+				refreshToken,
+				refreshExpires,
+				accessToken,
+				accessExpires,
+				generatedBy
+			});
 		}}
 	>
 		<Store store={i('login.login')} />
