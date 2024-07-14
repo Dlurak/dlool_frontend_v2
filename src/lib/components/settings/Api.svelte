@@ -10,6 +10,7 @@
 	import Store from '../utils/Store.svelte';
 	import { slide } from 'svelte/transition';
 	import { animationLength } from '$lib/utils/store/animation';
+	import { removeSuffix } from '$lib/utils/strings/removeTrailing';
 
 	const urlCookie = cookie('api.url');
 	let urlInput = $urlCookie;
@@ -40,7 +41,7 @@
 				on:click={() => {
 					isDlool(urlInput)
 						.then((isValid) => {
-							if (isValid) urlCookie.set(urlInput);
+							if (isValid) urlCookie.set(removeSuffix(urlInput, '/'));
 
 							sendToast({
 								timeout: 5_000,

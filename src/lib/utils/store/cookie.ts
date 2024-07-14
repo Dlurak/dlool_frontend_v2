@@ -4,15 +4,15 @@ import { safeMap } from '$lib/utils/null/safeMap';
 import { onMount } from 'svelte';
 import { browser } from '$app/environment';
 
-const cookies = {
+export const storeCookieDefaults = {
 	'api.url': 'https://dlool.onrender.com' as string
 } as const satisfies Record<string, unknown>;
 
-type CookieKey = keyof typeof cookies;
-type CookieValue<T extends CookieKey> = (typeof cookies)[T];
+export type CookieKey = keyof typeof storeCookieDefaults;
+export type CookieValue<T extends CookieKey> = (typeof storeCookieDefaults)[T];
 
 export function cookie<TKey extends CookieKey>(key: TKey) {
-	const fallbackValue = cookies[key] as CookieValue<TKey>;
+	const fallbackValue = storeCookieDefaults[key] as CookieValue<TKey>;
 	const realValue = Cookie.get(key);
 	const domEventName = `DLOOL-INTERNAL-set-cookie-${key}`;
 
