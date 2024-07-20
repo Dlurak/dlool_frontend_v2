@@ -25,5 +25,43 @@ export const shortcuts: Record<Context, Shortcut[]> = {
 			],
 			description: i('keyboardshortcuts.keyboardHelpMenu')
 		}
+	],
+	markdown: [
+		{
+			keys: [
+				{
+					modifier: ['Ctrl'],
+					keys: ['b']
+				}
+			],
+			description: i('keyboardshortcuts.markdown.bold')
+		},
+		{
+			keys: [
+				{
+					modifier: ['Ctrl'],
+					keys: ['i']
+				}
+			],
+			description: i('keyboardshortcuts.markdown.italic')
+		},
+		{
+			keys: [
+				{
+					modifier: ['Ctrl'],
+					keys: ['l']
+				}
+			],
+			description: i('keyboardshortcuts.markdown.link')
+		},
+		{
+			keys: [
+				{
+					modifier: ['Ctrl'],
+					keys: ['h']
+				}
+			],
+			description: i('keyboardshortcuts.markdown.heading')
+		}
 	]
 };

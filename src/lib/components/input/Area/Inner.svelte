@@ -27,8 +27,9 @@
 
 	<textarea
 		{rows}
-		bind:this={ele}
+		on:keydown
 		bind:value
+		bind:this={ele}
 		placeholder={$placeholder}
 		class="w-full resize-y bg-transparent focus:outline-none"
 		on:input={({ currentTarget }) => {

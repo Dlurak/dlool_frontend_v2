@@ -12,4 +12,4 @@ export type Shortcut = {
 	keys: KeyCombi[];
 };
 
-export type Context = 'global';
+export type Context = 'global' | 'markdown';

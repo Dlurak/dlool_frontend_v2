@@ -671,6 +671,11 @@ Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibe
 	'keyboardshortcuts.global': 'Global',
 	'keyboardshortcuts.launcher': 'Launcher öffnen',
 	'keyboardshortcuts.keyboardHelpMenu': 'Alle Tastenkombinationen anzeigen',
+	'keyboardshortcuts.markdown': 'Markdown Editor',
+	'keyboardshortcuts.markdown.bold': 'Fett',
+	'keyboardshortcuts.markdown.italic': 'Kursiv',
+	'keyboardshortcuts.markdown.link': 'Link',
+	'keyboardshortcuts.markdown.heading': 'Überscirft',
 
 	'markdownEditor.views.edit': 'Bearbeiten',
 	'markdownEditor.views.preview': 'Vorschau',

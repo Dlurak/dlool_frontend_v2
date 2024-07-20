@@ -658,6 +658,11 @@ Your current settings sadly won't be compatible withthe new version. But you can
 	'keyboardshortcuts.global': 'Global',
 	'keyboardshortcuts.launcher': 'Open the launcher',
 	'keyboardshortcuts.keyboardHelpMenu': 'Show all keyboard shortcuts',
+	'keyboardshortcuts.markdown': 'Markdown Editor',
+	'keyboardshortcuts.markdown.bold': 'Bold',
+	'keyboardshortcuts.markdown.italic': 'Italic',
+	'keyboardshortcuts.markdown.link': 'Link',
+	'keyboardshortcuts.markdown.heading': 'Heading',
 
 	'markdownEditor.views.edit': 'Edit',
 	'markdownEditor.views.preview': 'Preview',

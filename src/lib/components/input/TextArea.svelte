@@ -73,7 +73,42 @@
 		<hr class="h-1 w-full border-zinc-300 dark:border-zinc-700" />
 
 		{#if viewMode === 'edit'}
-			<Inner bind:ele {placeholder} {icon} {isValid} {rows} bind:value on:input>
+			<Inner
+				bind:ele
+				{placeholder}
+				{icon}
+				{isValid}
+				{rows}
+				bind:value
+				on:input
+				on:keydown={(e) => {
+					const { key, ctrlKey } = e;
+
+					if (!ele) return;
+					if (!ctrlKey) return;
+
+					switch (key) {
+						case 'b':
+							e.preventDefault();
+							value = handleMarkdownInsertion(ele, value, insertBold);
+							return;
+						case 'i':
+							e.preventDefault();
+							value = handleMarkdownInsertion(ele, value, insertItalic);
+							return;
+						case 'l':
+							e.preventDefault();
+							value = handleMarkdownInsertion(ele, value, insertLink);
+							return;
+						case 'h':
+							e.preventDefault();
+							value = handleMarkdownInsertion(ele, value, insertHeading);
+							return;
+						default:
+							console.log(key);
+					}
+				}}
+			>
 				<slot slot="pre-validator" name="pre-validator" />
 				<slot slot="post-validator" name="post-validator" />
 			</Inner>

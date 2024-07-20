@@ -11,7 +11,8 @@
 		"test": "vitest",
 		"lint": "prettier --check . && eslint .",
 		"lint:no-fmt": "eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"check:full": "pnpm run format && pnpm run lint:no-fmt && pnpm run check && pnpm run test run"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.2.2",

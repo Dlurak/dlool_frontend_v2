@@ -13,7 +13,7 @@
 </script>
 
 <svelte:window
-	on:keyup={(e) => {
+	on:keydown={(e) => {
 		const { key, ctrlKey } = e;
 		const isCorrectKey = key === 'ß' || key === '?';
 		if (!(ctrlKey && isCorrectKey)) return;
@@ -36,15 +36,19 @@
 		print:hidden
 	"
 >
-	{#each objectEntries(shortcuts) as [category, data]}
-		<h3><Store store={i(`keyboardshortcuts.${category}`)} /></h3>
+	<div class="flex flex-col gap-2">
+		{#each objectEntries(shortcuts) as [category, data]}
+			<div>
+				<h3><Store store={i(`keyboardshortcuts.${category}`)} /></h3>
 
-		<ul class="grid list-none grid-cols-2">
-			{#each data as singleShortcut}
-				<li>
-					<KeyboardShortcut {isApple} shortcut={singleShortcut} />
-				</li>
-			{/each}
-		</ul>
-	{/each}
+				<ul class="grid list-none grid-cols-2">
+					{#each data as singleShortcut}
+						<li>
+							<KeyboardShortcut {isApple} shortcut={singleShortcut} />
+						</li>
+					{/each}
+				</ul>
+			</div>
+		{/each}
+	</div>
 </dialog>

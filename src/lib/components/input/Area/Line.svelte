@@ -28,7 +28,7 @@
 		</ModeButton>
 	</div>
 
-	<div class="flex justify-start gap-1">
+	<div class="flex justify-start gap-1" class:hidden={viewMode === 'preview'}>
 		<MarkdownSymbolButton type="heading" on:click={() => dispatch('heading')} />
 		<MarkdownSymbolButton type="bold" on:click={() => dispatch('bold')} />
 		<MarkdownSymbolButton type="italic" on:click={() => dispatch('italic')} />

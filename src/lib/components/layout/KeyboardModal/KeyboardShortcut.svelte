@@ -8,9 +8,9 @@
 </script>
 
 <div class="flex h-full flex-col gap-2">
-	<b>
+	<h5>
 		<Store store={shortcut.description} />
-	</b>
+	</h5>
 
 	<ul class="grid grid-cols-2 gap-1">
 		{#each shortcut.keys as keys}
