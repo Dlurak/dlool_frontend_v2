@@ -32,6 +32,7 @@
 	class="
 		h-fit min-h-48 min-w-96 max-w-[90%] rounded-md px-2 py-2 outline-none
 		backdrop:bg-black backdrop:opacity-50 backdrop:saturate-50
+		dark:bg-zinc-800 dark:text-white
 		print:hidden
 	"
 >

@@ -12,7 +12,7 @@
 		<Store store={shortcut.description} />
 	</b>
 
-	<ul>
+	<ul class="grid grid-cols-2 gap-1">
 		{#each shortcut.keys as keys}
 			{@const all = [...keys.modifier, ...keys.keys]}
 

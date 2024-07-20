@@ -22,7 +22,7 @@
 	export let isApple: boolean;
 </script>
 
-<kbd class="rounded-sm bg-zinc-300 px-1">
+<kbd class="rounded-sm bg-zinc-300 px-1 dark:bg-zinc-600">
 	{keyFmter({
 		key,
 		isApple,
