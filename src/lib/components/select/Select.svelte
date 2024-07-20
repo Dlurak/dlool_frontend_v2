@@ -19,7 +19,7 @@
 	// eslint-disable-next-line no-undef
 	export let value: null | V[] = null;
 	// eslint-disable-next-line no-undef
-	export let firstValue: V | null = value ? value[0] ?? null : null;
+	export let firstValue: V | null = value ? (value[0] ?? null) : null;
 	export let userInput = firstValue
 		? get(options.find(({ value }) => deepEqual(value, firstValue))?.label ?? readable(''))
 		: '';

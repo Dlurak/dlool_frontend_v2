@@ -63,7 +63,7 @@ export const int = <
 		typeof baseVal === 'string'
 			? baseVal
 			: // @ts-expect-error count can't index counts, but i know it and ?? catches it
-				baseVal.counts[count] ?? baseVal.counts.default
+				(baseVal.counts[count] ?? baseVal.counts.default)
 	) as Base;
 
 	// @ts-expect-error unprocessedstring isn't a string for ts

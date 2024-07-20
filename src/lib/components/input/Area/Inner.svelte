@@ -11,6 +11,8 @@
 	export let isValid: boolean | null = null;
 	export let rows = 2;
 
+	export let ele: HTMLTextAreaElement | undefined;
+
 	const dispatch = createEventDispatcher<{
 		input: string;
 	}>();
@@ -24,8 +26,9 @@
 	{/if}
 
 	<textarea
-		bind:value
 		{rows}
+		bind:this={ele}
+		bind:value
 		placeholder={$placeholder}
 		class="w-full resize-y bg-transparent focus:outline-none"
 		on:input={({ currentTarget }) => {

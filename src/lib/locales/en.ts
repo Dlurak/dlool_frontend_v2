@@ -659,6 +659,10 @@ Your current settings sadly won't be compatible withthe new version. But you can
 	'keyboardshortcuts.launcher': 'Open the launcher',
 	'keyboardshortcuts.keyboardHelpMenu': 'Show all keyboard shortcuts',
 
+	'markdownEditor.views.edit': 'Edit',
+	'markdownEditor.views.preview': 'Preview',
+	'markdownpreview.noPreview': 'To show a preview some input is required',
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 

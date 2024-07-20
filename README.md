@@ -81,12 +81,15 @@ When you have any questions, find a bug or have an idea for a feature you can cr
    ```bash
    git clone git@github.com:Dlurak/dlool_frontend_v2.git
 
+   ```
+
 2. Run the setup script
 
    ```bash
    ./setup.sh
    ```
-5. The server runs on [localhost port 4173](http://localhost:4173)
+
+3. The server runs on [localhost port 4173](http://localhost:4173)
 
 ---
 

@@ -672,6 +672,10 @@ Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibe
 	'keyboardshortcuts.launcher': 'Launcher öffnen',
 	'keyboardshortcuts.keyboardHelpMenu': 'Alle Tastenkombinationen anzeigen',
 
+	'markdownEditor.views.edit': 'Bearbeiten',
+	'markdownEditor.views.preview': 'Vorschau',
+	'markdownpreview.noPreview': 'Gebe etwas ein, um eine Vorschau sehen zu können.',
+
 	literal: '$literal'
 } as const satisfies I18nDict;
 
