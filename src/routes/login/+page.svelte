@@ -42,7 +42,6 @@
 			generatedBy
 		})
 			.then((data) => {
-				console.log('success');
 				if (data.status !== 'success') {
 					sendToast({
 						type: 'error',

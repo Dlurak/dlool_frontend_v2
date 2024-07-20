@@ -4,7 +4,9 @@ import { randomItem } from '$lib/utils/random';
 import { IPV4_ADRESSES } from '$lib/constants/ips';
 
 function getDevAddress() {
-	return randomItem(IPV4_ADRESSES);
+	const ip = randomItem(IPV4_ADRESSES);
+	console.log(ip);
+	return ip;
 }
 
 export const load: PageServerLoad = async ({ getClientAddress }) => {
@@ -16,7 +18,8 @@ export const load: PageServerLoad = async ({ getClientAddress }) => {
 			data,
 			isSuccessfull: true
 		} as const;
-	} catch {
+	} catch (e) {
+		console.error(JSON.stringify(e, null, 4));
 		return { isSuccessfull: false } as const;
 	}
 };

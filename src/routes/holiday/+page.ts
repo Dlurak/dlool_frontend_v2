@@ -12,14 +12,13 @@ interface GetLocationProps {
 }
 
 function getLocation({ state, country, autoDetect, ip }: GetLocationProps) {
-	if (autoDetect && ip.isSuccessfull) {
-		return {
-			state: ip.data.region_code,
-			country: ip.data.country_code
-		};
-	}
+	const useApiResponse = autoDetect && ip.isSuccessfull;
+	if (!useApiResponse) return { state, country };
 
-	return { state, country };
+	return {
+		state: ip.data.regionCode,
+		country: ip.data.country
+	};
 }
 
 const TIME_REGEX = /^(?:\d{2})?(\d{2})-(\d{2})$/;
