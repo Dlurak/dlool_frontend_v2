@@ -5,11 +5,8 @@
 		const [newValue, offset1, offset2] = func(value, selectionStart, selectionEnd);
 		ele.focus();
 
-		// When the value is updated in the dom
-		ele.addEventListener(
-			'selectionchange',
-			() => ele && ele.setSelectionRange(selectionStart + offset1, selectionEnd + offset2),
-			{ once: true }
+		requestAnimationFrame(() =>
+			ele.setSelectionRange(selectionStart + offset1, selectionEnd + offset2)
 		);
 		return newValue;
 	}
@@ -68,9 +65,9 @@
 					value = handleMarkdownInsertion(ele, value, insertLink);
 				}}
 			/>
-		{/if}
 
-		<hr class="h-1 w-full border-zinc-300 dark:border-zinc-700" />
+			<hr class="h-1 w-full border-zinc-300 dark:border-zinc-700" />
+		{/if}
 
 		{#if viewMode === 'edit'}
 			<Inner

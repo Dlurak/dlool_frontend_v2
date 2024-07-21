@@ -13,6 +13,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import type { Tag } from '$lib/components/tags/types';
 	import ChooseTag from '$lib/components/tags/ChooseTag.svelte';
+	import TextArea from '$lib/components/input/TextArea.svelte';
 
 	export let className: string | null;
 	export let schoolName: string;
@@ -62,7 +63,8 @@
 
 		<!-- TODO: i18n -->
 		<h4>Summary</h4>
-		<TextInput
+		<TextArea
+			markdown
 			placeholder={i('calendar.title.placeholder')}
 			bind:value={summary}
 			on:input={({ detail }) => {

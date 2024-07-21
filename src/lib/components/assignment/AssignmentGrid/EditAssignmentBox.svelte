@@ -8,6 +8,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import { deepEqual } from '$lib/utils/objects/deepEqual';
 	import TextArea from '$lib/components/input/TextArea.svelte';
+	import Store from '$lib/components/utils/Store.svelte';
 
 	export let assignment: Assignment;
 	export let disabled: boolean;
@@ -42,7 +43,7 @@
 </script>
 
 <TextInput placeholder={i('assignments.create.subject')} bind:value={subject} />
-<TextArea placeholder={i('assignments.create.description')} bind:value={description} />
+<TextArea markdown placeholder={i('assignments.create.description')} bind:value={description} />
 
 <DateSelector bind:date={fromDate} />
 <DateSelector bind:date={dueDate} />
@@ -53,5 +54,5 @@
 		dispatch('submit', { subject, description, fromDate, dueDate });
 	}}
 >
-	Submt
+	<Store store={i('update')} />
 </PrimaryButton>

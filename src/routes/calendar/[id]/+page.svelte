@@ -131,6 +131,8 @@
 			{/each}
 		</div>
 
+		<hr class="border-1 border border-zinc-300 dark:border-zinc-700" />
+
 		{#if event.summary}
 			<Markdown markdown={event.summary} />
 		{/if}

@@ -25,7 +25,7 @@
 <TextInput placeholder={i('note.title.placeholder')} bind:value={title} />
 
 <h4><Store store={i('note.summary')} /></h4>
-<TextArea placeholder={i('note.summary.placeholder')} bind:value={summary} />
+<TextArea markdown placeholder={i('note.summary.placeholder')} bind:value={summary} />
 
 <h4><Store store={i('note.priority')} /></h4>
 <NotTyppable
