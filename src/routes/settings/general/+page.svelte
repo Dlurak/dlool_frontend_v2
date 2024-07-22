@@ -123,24 +123,26 @@
 			description={i('settings.genral.holiday.autoDetect.description')}
 		/>
 
-		<SelectSetting
-			typpable
-			label={i('settings.genral.holiday.country')}
-			options={data.countries.map(({ isoCode, name }) => ({
-				label: readable(
-					(
-						name.find(({ language }) => language === $currentLang.toUpperCase()) ??
-						name.find(({ language }) => language === 'EN')
-					)?.text ?? ''
-				),
-				value: isoCode
-			}))}
-			bind:value={$holidayCountry}
-			on:select={() => {
-				// @ts-expect-error I am certain
-				holidayState.set(null);
-			}}
-		/>
+		{#await data.countries then countries}
+			<SelectSetting
+				typpable
+				label={i('settings.genral.holiday.country')}
+				options={countries.map(({ isoCode, name }) => ({
+					label: readable(
+						(
+							name.find(({ language }) => language === $currentLang.toUpperCase()) ??
+							name.find(({ language }) => language === 'EN')
+						)?.text ?? ''
+					),
+					value: isoCode
+				}))}
+				bind:value={$holidayCountry}
+				on:select={() => {
+					// @ts-expect-error I am certain
+					holidayState.set(null);
+				}}
+			/>
+		{/await}
 
 		{#await holiday.getSubdivisions($holidayCountry) then d}
 			{#if d.length > 0}

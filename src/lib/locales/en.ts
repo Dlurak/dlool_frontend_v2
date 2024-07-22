@@ -617,8 +617,8 @@ Your current settings sadly won't be compatible withthe new version. But you can
 		}
 	},
 	'intro.start': "Let's go!",
-	'intro.reinstall': "Reinstall Dlool to use it.",
-	'intro.reinstall.apple': "Readd Dlool to your homescreen to use it.",
+	'intro.reinstall': 'Reinstall Dlool to use it.',
+	'intro.reinstall.apple': 'Readd Dlool to your homescreen to use it.',
 
 	'tags.choose': 'Choose a tag',
 	'tags.choose.choose': 'Choose tags',

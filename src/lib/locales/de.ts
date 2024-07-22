@@ -630,8 +630,9 @@ Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibe
 		}
 	},
 	'intro.start': "Los geht's!",
-	'intro.reinstall': "Installiere Dlool neu, um es nutzen zu können.",
-	'intro.reinstall.apple': "Füge Dlool erneut auf deinen Homebildschirm hinzu um es nutzen zu können.",
+	'intro.reinstall': 'Installiere Dlool neu, um es nutzen zu können.',
+	'intro.reinstall.apple':
+		'Füge Dlool erneut auf deinen Homebildschirm hinzu um es nutzen zu können.',
 
 	'tags.choose': 'Wähle Tags aus',
 	'tags.choose.choose': 'Wähle Tags aus',
