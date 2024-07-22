@@ -42,7 +42,7 @@
 	<ToastContainer />
 	<Confirmation />
 	<Launcher />
-	<Version />
+	<Version isApple={data.isApple} />
 	<Style />
 	<KeyboardHelper isApple={data.isApple} />
 </div>

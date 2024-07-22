@@ -1,24 +1,28 @@
 <script lang="ts">
 	import { svocal } from '$lib/utils/store/svocal';
-	import { clickOutside } from 'nutzlich';
+	import { clickOutside, mediaQuery } from 'nutzlich';
 	import { browser } from '$app/environment';
 	import { enableScrolling } from '$lib/utils/dom/scroll';
-	import { ArrowDown, Icon, RocketLaunch } from 'svelte-hero-icons';
+	import { ArrowDown, Icon, RocketLaunch, ExclamationCircle } from 'svelte-hero-icons';
 	import { gradientText } from '$lib/utils/actions/gradientText';
 	import SettingsButton from '../buttons/SettingsButton.svelte';
 	import Store from '../utils/Store.svelte';
 	import { i } from '$lib/i18n/store';
 
+	export let isApple = false;
 	let showUpdateIntro = false;
 	let secondEle: HTMLDivElement | undefined = undefined;
 
+	const isStandalone = mediaQuery('(display-mode: standalone)');
+
 	const reset = () => {
+		if ($isStandalone) return;
 		showUpdateIntro = false;
 		enableScrolling(true);
+		window.localStorage.clear();
 	};
 
 	const version = svocal('dlool-version');
-
 	const textStore = i('into.text');
 
 	$: {
@@ -26,10 +30,7 @@
 	}
 
 	$: {
-		if ($version === '1' && browser) {
-			enableScrolling(false);
-			version.set('2');
-		}
+		if ($version === '1' && browser) enableScrolling(false);
 	}
 </script>
 
@@ -66,7 +67,7 @@
 				<p>{@html $textStore}</p>
 
 				<button
-					class="absolute bottom-4 right-4 animate-bounce rounded-full bg-zinc-300 p-2 shadow-lg"
+					class="absolute bottom-4 right-4 animate-bounce rounded-full bg-zinc-300 p-2 shadow-lg dark:bg-zinc-700"
 					on:click={() => {
 						if (!secondEle) return;
 
@@ -88,11 +89,26 @@
 					{/each}
 				</ul>
 
-				<div class="flex">
-					<SettingsButton icon={RocketLaunch} on:click={reset}>
-						<Store store={i('intro.start')} />
-					</SettingsButton>
-				</div>
+				{#if $isStandalone}
+					<div
+						class="flex items-center gap-1 rounded border-2 border-red-500 bg-red-400 bg-opacity-30 px-3"
+					>
+						<Icon src={ExclamationCircle} class="h-6 w-6 flex-shrink-0" />
+						<span>
+							{#if isApple}
+								<Store store={i('intro.reinstall.apple')} />
+							{:else}
+								<Store store={i('intro.reinstall')} />
+							{/if}
+						</span>
+					</div>
+				{:else}
+					<div class="flex">
+						<SettingsButton icon={RocketLaunch} on:click={reset}>
+							<Store store={i('intro.start')} />
+						</SettingsButton>
+					</div>
+				{/if}
 			</div>
 		</div>
 	</div>
