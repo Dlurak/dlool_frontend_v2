@@ -12,12 +12,14 @@
 	const showText = svocal('settings.nav.texts');
 </script>
 
-<button class="flex w-full flex-1 flex-col items-center px-3" on:click={data.action}>
+<button class="flex w-full flex-col items-center px-3" on:click={data.action}>
 	<div class="h-8 w-8 p-0.5">
 		<Icon src={data.icon} micro />
 	</div>
 
 	{#if $showText}
-		<span class="text-xs"><Store store={data.text} /></span>
+		<span class="w-full overflow-hidden truncate text-xs">
+			<Store store={data.text} />
+		</span>
 	{/if}
 </button>

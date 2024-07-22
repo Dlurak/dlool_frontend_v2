@@ -26,9 +26,11 @@
 			</a>
 		</div>
 
-		<div class="flex w-full items-center justify-evenly sm:w-fit">
+		<div
+			class="grid grid-cols-[repeat(auto-fit,minmax(0,1fr))] w-full items-center justify-evenly sm:w-fit"
+		>
 			{#each $navEntries as navTarget (navTarget)}
-				<span class="flex-1" animate:flip={{ duration: $animationLength }}>
+				<span animate:flip={{ duration: $animationLength }}>
 					<NavigationButton target={navTarget} />
 				</span>
 			{/each}
