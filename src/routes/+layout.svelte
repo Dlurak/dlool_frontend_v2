@@ -13,6 +13,8 @@
 	import Style from '$lib/components/layout/Style.svelte';
 	import KeyboardHelper from '$lib/components/layout/KeyboardModal/KeyboardHelper.svelte';
 	import type { LayoutServerData } from './$types';
+	import Favicons from '$lib/components/layout/Favicons.svelte';
+	import Splashscreens from '$lib/components/layout/Splashscreens.svelte';
 
 	const isBig = mediaQuery('(min-width: 640px)');
 
@@ -20,6 +22,9 @@
 
 	$: accessiourHeight = $isBig ? $navHeight + $footerHeight : $footerHeight;
 </script>
+
+<Favicons />
+<Splashscreens />
 
 <div class="flex min-h-[100dvh] w-full flex-col items-stretch justify-between">
 	<Navbar />
