@@ -557,6 +557,14 @@ const en = {
 	'settings.assignments.default.class.subject': 'Subject',
 	'settings.assignments.default.smart': 'Automatic subject detection',
 
+	'settings.icon': 'App-Icon',
+	'settings.description':
+		'You can change the background color of the app icon for your homescreen. Set a color, go to the startpage and then add Dlool to your homescreen',
+	'settings.icon.fallback':
+		'This setting requires a iPhone or iPad. Additionally you need to open the page in safari.',
+	'settings.warning':
+		"If you've already opened the share menu, you need to reload this site now. That is due to a behaviour of safari",
+
 	'settings.save': 'Save',
 
 	'holiday.noData': 'There is not data for this month',

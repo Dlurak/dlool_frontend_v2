@@ -17,6 +17,7 @@
 
 	export let subject: string;
 	export let hexColor: string;
+	export let disabled = false;
 	$: txtColor = blackOrWhiteText(parseHexIntoRgb(hexColor));
 
 	let isModalOpened = false;
@@ -31,7 +32,11 @@
 </script>
 
 <button
-	class="flex items-center justify-center rounded-sm bg-[--bg] px-2 py-1"
+	{disabled}
+	class="
+		flex items-center justify-center rounded-sm bg-[--bg] px-2 py-1
+		disabled:cursor-not-allowed disabled:opacity-50 disabled:saturate-50
+	"
 	style:--bg={hexColor}
 	class:text-black={txtColor === 'black'}
 	class:text-white={txtColor === 'white'}

@@ -570,6 +570,14 @@ const de = {
 	'settings.assignments.default.class.subject': 'Fach',
 	'settings.assignments.default.smart': 'Automatische Facherkennung',
 
+	'settings.icon': 'App-Icon',
+	'settings.description':
+		'Du kannst hier die Hintergrundfarbe des App Icons einstellen. Stelle eine Farbe ein, gehe auf die Startseite und füge Dlool dann auf den Homebildschirm hinzu',
+	'settings.icon.fallback':
+		'Für die Nutzung dieser Einstellung benötigst du ein iPhone oder iPad. Zusätzlich musst Du die Seite im Browser öffnen.',
+	'settings.warning':
+		'Wenn du bereitst auf das Teilen Menü gedrückt hast, musst du die Seite nun neu laden. Das liegt an einer Limitierung Seitens Apple.',
+
 	'settings.save': 'Speichern',
 
 	'holiday.noData': 'Es gibt keine Daten für diesen Monat',

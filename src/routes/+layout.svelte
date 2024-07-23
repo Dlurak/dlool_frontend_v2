@@ -8,7 +8,7 @@
 	import Navbar from '$lib/components/layout/navigation/Navbar.svelte';
 	import ToastContainer from '$lib/components/layout/toasts/ToastContainer.svelte';
 	import { mediaQuery } from 'nutzlich';
-	import { navHeight, footerHeight } from '$lib/stores';
+	import { navHeight, footerHeight, isApple } from '$lib/stores';
 	import Launcher from '$lib/components/layout/launcher/Launcher.svelte';
 	import Style from '$lib/components/layout/Style.svelte';
 	import KeyboardHelper from '$lib/components/layout/KeyboardModal/KeyboardHelper.svelte';
@@ -19,6 +19,8 @@
 	const isBig = mediaQuery('(min-width: 640px)');
 
 	export let data: LayoutServerData;
+
+	$: isApple.set(data.isApple);
 
 	$: accessiourHeight = $isBig ? $navHeight + $footerHeight : $footerHeight;
 </script>

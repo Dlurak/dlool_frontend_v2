@@ -6,3 +6,7 @@ export const footerHeight = writable(0);
 export const currentLang = svocal('i18n.currentlang');
 
 export const openedModals = writable(0);
+
+export const iconBg = writable('#ffffff');
+
+export const isApple = writable(false);
