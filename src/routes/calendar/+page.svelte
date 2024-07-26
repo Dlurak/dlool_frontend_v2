@@ -18,7 +18,7 @@
 
 <MetaData title={i('title.calendar')} />
 
-<Panes>
+<Panes min={200} position={300}>
 	<div slot="a">
 		<SidePanel
 			query={data.query ?? {

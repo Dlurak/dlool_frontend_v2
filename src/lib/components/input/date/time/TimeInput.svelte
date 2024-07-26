@@ -15,14 +15,17 @@
 	let focusMin = false;
 </script>
 
-<span class="flex w-fit items-center justify-center gap-1 rounded bg-zinc-800 px-2 py-1">
+<span
+	class="flex w-fit items-center justify-center gap-1 rounded bg-zinc-200 px-2 py-1 dark:bg-zinc-800"
+>
 	<Input
 		on:change={({ detail }) => {
 			dispatch('change', {
 				hour: detail,
-				min: min
+				min
 			});
 		}}
+		max={23}
 		bind:value={hour}
 		on:next={() => {
 			focusMin = true;
@@ -35,7 +38,7 @@
 		max={59}
 		on:change={({ detail }) => {
 			dispatch('change', {
-				hour: hour,
+				hour,
 				min: detail
 			});
 		}}

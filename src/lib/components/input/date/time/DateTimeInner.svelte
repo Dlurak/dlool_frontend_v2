@@ -2,6 +2,7 @@
 	import {
 		currentCustomDate,
 		customDateToNormal,
+		normalToCustomDate,
 		type CustomDate,
 		type CustomDateTime,
 		type CustomTime
@@ -10,6 +11,7 @@
 	import CalFrame from '../CalFrame.svelte';
 	import CalInner from '../CalInner.svelte';
 	import TimeInput from './TimeInput.svelte';
+	import SettingsButton from '$lib/components/buttons/SettingsButton.svelte';
 
 	export let displayMonth: Date = new Date();
 	export let earliest: CustomDate | null = null;
@@ -26,6 +28,7 @@
 			custom: CustomDateTime;
 			normal: Date;
 		};
+		close: null;
 	}>();
 
 	const dispatchChange = (date: CustomDate, time: CustomTime) => {
@@ -56,20 +59,33 @@
 		<hr class="w-full border-zinc-200 dark:border-zinc-800" />
 	</div>
 
-	<div>
-		<TimeInput
-			hour={time?.hour}
-			min={time?.min}
-			on:change={({ detail }) => {
-				const { hour, min } = detail;
+	<div class="flex items-center justify-between">
+		<span class="w-full">
+			<TimeInput
+				hour={time?.hour}
+				min={time?.min}
+				on:change={({ detail }) => {
+					const { hour, min } = detail;
 
-				if (hour === null || min === null) {
-					time = null;
-					return;
-				}
+					if (hour === null || min === null) {
+						time = null;
+						return;
+					}
 
-				time = { hour, min };
+					time = { hour, min };
+				}}
+			/>
+		</span>
+
+		<SettingsButton
+			on:click={() => {
+				const { min, hour, day, month, year } = normalToCustomDate(new Date());
+
+				time = time ?? { min, hour };
+				date = date ?? { day, month, year };
 			}}
-		/>
+		>
+			Ok
+		</SettingsButton>
 	</div>
 </CalFrame>

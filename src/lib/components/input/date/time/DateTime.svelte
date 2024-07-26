@@ -89,7 +89,7 @@
 				date = detail.custom;
 				dispatch('change', detail);
 			}}
-			on:close={show.toggle}
+			on:close={() => show.set(false)}
 		/>
 	</div>
 {/if}
