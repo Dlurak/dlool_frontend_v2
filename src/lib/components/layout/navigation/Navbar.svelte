@@ -27,7 +27,8 @@
 		</div>
 
 		<div
-			class="grid w-full grid-cols-[repeat(auto-fit,minmax(0,1fr))] items-center justify-evenly md:w-full lg:w-[70%] xl:w-[1/2] 2xl:w-[30%]"
+			class="grid grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
+			style:--cols={$navEntries.length}
 		>
 			{#each $navEntries as navTarget (navTarget)}
 				<span animate:flip={{ duration: $animationLength }} class="w-full">

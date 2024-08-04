@@ -33,12 +33,16 @@
 			{:else}
 				<a
 					href={`/settings${s.uri}`}
-					class="flex gap-2 rounded px-2 py-1 text-black hover:bg-zinc-300 dark:text-white dark:hover:bg-zinc-800"
+					class="
+						flex gap-2 rounded px-2 py-1 text-black hover:bg-zinc-300 dark:text-white dark:hover:bg-zinc-800
+					"
 				>
 					{#if s.icon}
-						<Icon src={s.icon} class="h-6 w-6" />
+						<Icon src={s.icon} class="h-6 w-6 flex-none" />
 					{/if}
-					<Store store={s.label} />
+					<span class="overflow-hidden text-ellipsis">
+						<Store store={s.label} />
+					</span>
 				</a>
 			{/if}
 		{/each}
