@@ -18,7 +18,7 @@
 	}>();
 </script>
 
-<div class="flex w-full items-stretch gap-2">
+<div class="relative flex w-full items-stretch gap-2">
 	{#if icon}
 		<div class="flex items-center px-2">
 			<Icon src={icon} class="h-6 w-6" mini solid />
@@ -44,4 +44,6 @@
 			<slot name="post-validator" />
 		</div>
 	{/if}
+
+	<slot />
 </div>

@@ -50,6 +50,7 @@
 		"color-convert": "^2.0.1",
 		"colorame": "^0.0.1",
 		"dice-coefficient": "^2.1.1",
+		"gemoji": "^8.1.0",
 		"js-cookie": "^3.0.5",
 		"nutzlich": "^0.5.0",
 		"open-holiday-js": "^1.0.3",

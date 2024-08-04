@@ -1,6 +1,7 @@
 import { getApibase, getAuthHeader } from '$lib/utils/api';
 import type { CustomDate } from '$lib/utils/dates/custom';
 import { removeKey } from '$lib/utils/objects/removeKey';
+import { prettify } from '$lib/utils/strings/prettify';
 import { z } from 'zod';
 
 const scheme = z.object({
@@ -25,7 +26,11 @@ export async function updateAssignment(props: UpdateProps) {
 			Authorization: getAuthHeader(),
 			'Content-Type': 'application/json'
 		},
-		body: JSON.stringify(removeKey(props, 'id'))
+		body: JSON.stringify({
+			...removeKey(props, 'id'),
+			...props,
+			...(props.description && { description: prettify(props.description) })
+		})
 	}).then((r) => r.json());
 
 	return scheme.parse(res);

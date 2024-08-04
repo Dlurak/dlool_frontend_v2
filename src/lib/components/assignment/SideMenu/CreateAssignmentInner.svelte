@@ -146,6 +146,7 @@
 	{#if inputMode === 'text'}
 		<TextArea
 			markdown
+			emoji
 			placeholder={i('assignments.create.description')}
 			bind:value={description}
 			isValid={!!description}
