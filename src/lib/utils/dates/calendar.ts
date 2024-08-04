@@ -10,11 +10,11 @@ export const getPaddingDays = (date: Date, weekStartsOn: number) => {
 	const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
 	const monthStartsWith = firstDayOfMonth.getDay();
 
-	const calculatePaddingDays = (weekday: number, paddingDays = 0): number => {
-		if (weekday === monthStartsWith) return paddingDays;
+	const calculatePaddingDays = (weekday: number): number => {
+		if (weekday === monthStartsWith) return 0;
 
 		const nextWeekday = (weekday + 1) % 7;
-		return calculatePaddingDays(nextWeekday, paddingDays + 1);
+		return 1 + calculatePaddingDays(nextWeekday);
 	};
 
 	return calculatePaddingDays(weekStartsOn);

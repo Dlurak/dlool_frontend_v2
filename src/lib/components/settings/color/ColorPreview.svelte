@@ -14,6 +14,7 @@
 	import { colorNames } from '$lib/constants/colors';
 	import { currentLang } from '$lib/stores';
 	import { svocal } from '$lib/utils/store/svocal';
+	import { writable } from 'svelte/store';
 
 	export let subject: string;
 	export let hexColor: string;
@@ -22,7 +23,7 @@
 
 	let isModalOpened = false;
 
-	let pickerHsl = convert.hex.hsl(hexColor);
+	let pickerHsl = writable(convert.hex.hsl(hexColor));
 
 	const dispatch = createEventDispatcher<{
 		change: string;
@@ -67,7 +68,7 @@
 
 		<PrimaryButton
 			on:click={() => {
-				hexColor = `#${convert.hsl.hex(pickerHsl)}`;
+				hexColor = `#${convert.hsl.hex($pickerHsl)}`;
 				dispatch('change', hexColor);
 				isModalOpened = false;
 			}}
