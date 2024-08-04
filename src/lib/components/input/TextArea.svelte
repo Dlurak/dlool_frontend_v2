@@ -32,9 +32,7 @@
 	import { diceCoefficient } from 'dice-coefficient';
 	import type { Gemoji } from 'gemoji';
 	import { getCursorPixelPosition } from '$lib/utils/dom/cursor';
-	import { clickOutside } from 'nutzlich';
-	import { animationLength } from '$lib/utils/store/animation';
-	import { flip } from 'svelte/animate';
+	import EmojiSelector from '../emoji/EmojiSelector.svelte';
 
 	export let placeholder: Readable<string>;
 	export let icon: IconSource | null = null;
@@ -126,7 +124,7 @@
 						}))
 						.sort(({ distance: a }, { distance: b }) => b - a)
 						.slice(0, 5)
-						.filter(({ distance }) => distance > 0.2);
+						.filter(({ distance }) => distance > 0.375);
 
 					emojiRecommendations = sortedGemoji;
 
@@ -164,42 +162,25 @@
 			>
 				<slot slot="pre-validator" name="pre-validator" />
 				<slot slot="post-validator" name="post-validator" />
-				<div>
+				<div
+					class=" absolute left-[--left] top-[--top]"
+					style:--top={`${emojiPopupY}px`}
+					style:--left={`${emojiPopupX}px`}
+				>
 					{#if emoji && emojiRecommendations.length > 0}
-						<div
-							class="absolute left-[--left] top-[--top] flex flex-col overflow-hidden rounded bg-zinc-300 shadow"
-							style:--top={`${emojiPopupY}px`}
-							style:--left={`${emojiPopupX}px`}
-							use:clickOutside={{
-								callback() {
-									emojiRecommendations = [];
-								}
+						<EmojiSelector
+							emoji={emojiRecommendations}
+							on:select={({ detail: emoji }) => {
+								if (!ele) return;
+								const start = value.slice(0, ele.selectionStart).replace(/:\w+:?$/, emoji.emoji);
+								value = start + value.slice(ele.selectionStart);
+								window.requestAnimationFrame(() => {
+									if (!ele) return;
+									ele.setSelectionRange(start.length, start.length);
+									ele.focus();
+								});
 							}}
-						>
-							{#each emojiRecommendations as recommendation (recommendation.emoji)}
-								<button
-									class="px-2 py-1 text-start text-lg hover:bg-zinc-400 dark:bg-zinc-700 dark:hover:bg-zinc-600"
-									animate:flip={{ duration: $animationLength }}
-									on:click={() => {
-										if (!ele) return;
-										const start = value
-											.slice(0, ele.selectionStart)
-											.replace(/:\w+:?$/, recommendation.emoji);
-										value = start + value.slice(ele.selectionStart);
-										window.requestAnimationFrame(() => {
-											if (!ele) return;
-											ele.setSelectionRange(start.length, start.length);
-											ele.focus();
-										});
-
-										emojiRecommendations = [];
-									}}
-								>
-									{recommendation.emoji}
-									{recommendation.names[0]}
-								</button>
-							{/each}
-						</div>
+						/>
 					{/if}
 				</div>
 			</Inner>
