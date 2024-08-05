@@ -1,3 +1,4 @@
+import { errorFallback } from '$lib/utils/error/fallback';
 import { isUrl } from '$lib/utils/strings/isUrl';
 
 const getSelection = (str: string, selectionStart: number, selectionEnd: number) =>
@@ -42,9 +43,12 @@ export const insertLink: InsertionFunc = (str, selectionStart, selectionEnd) => 
 	const [preSelection, selection, postSelection] = getSelection(str, selectionStart, selectionEnd);
 
 	const asTextString = `${preSelection}[${selection}]()${postSelection}`;
-	const asUrlString = `${preSelection}[](${selection})${postSelection}`;
+	const asUrlString = (title: string) => `${preSelection}[${title}](${selection})${postSelection}`;
 
 	if (selection === '') return [asTextString, 1, 1];
-	if (isUrl(selection)) return [asUrlString, 1, -1 * selection.length + 1];
+	if (isUrl(selection)) {
+		const title = errorFallback(() => new URL(selection).hostname, '');
+		return [asUrlString(title), 1, -1 * selection.length + 1 + title.length];
+	}
 	return [asTextString, selection.length + 3, 3];
 };
