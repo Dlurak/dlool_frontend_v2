@@ -26,7 +26,7 @@
 				break;
 			case 'ArrowUp':
 				e.preventDefault();
-				focusedInd.inc();
+				focusedInd.dec();
 				break;
 			case 'Enter':
 				e.preventDefault();
@@ -38,7 +38,7 @@
 />
 
 <div
-	class="flex flex-col overflow-hidden rounded bg-zinc-300 shadow"
+	class="flex flex-col overflow-hidden rounded bg-zinc-300 shadow dark:bg-zinc-700"
 	use:clickOutside={{
 		callback() {
 			emoji = [];
@@ -48,7 +48,7 @@
 	{#each emoji as recommendation, index (recommendation.emoji)}
 		{@const isFocused = index === $focusedInd}
 		<button
-			class="px-2 py-1 text-start text-lg dark:bg-zinc-700"
+			class="px-2 py-1 text-start text-lg"
 			class:bg-zinc-400={isFocused}
 			class:dark:bg-zinc-600={isFocused}
 			on:mousemove={() => {

@@ -2,6 +2,10 @@ import { counter } from 'nutzlich';
 import { get } from 'svelte/store';
 
 interface CycleProps {
+	/**
+	 * A function that returns the maximum value the counter can reach before cycling back to 0.
+	 * @returns {number} - The maximum value.
+	 */
 	max: () => number;
 }
 
@@ -22,14 +26,24 @@ export const useCycle = (props: CycleProps) => {
 	const c = counter(0);
 
 	return {
+		/**
+		 * Increments the counter by 1. If the counter value equals the maximum value provided by `props.max()`,
+		 * it resets the counter to 0.
+		 */
 		inc() {
 			if (get(c) === props.max()) c.set(0);
 			else c.inc();
 		},
+		/**
+		 * Decrements the counter by 1. If the counter value is 0, it cycles back to the maximum value provided by `props.max()`.
+		 */
 		dec() {
 			if (get(c) === 0) c.set(props.max());
 			else c.dec();
 		},
+		/**
+		 * Resets the counter to 0.
+		 */
 		reset() {
 			c.set(0);
 		},
