@@ -8,7 +8,7 @@
 	{#each links as group}
 		<div>
 			<h4 class="text-start md:text-center"><Store store={group.name} /></h4>
-			<div class="flex flex-wrap">
+			<div class="flex flex-wrap gap-2">
 				{#each group.entries as link}
 					<FooterLink {...link} />
 				{/each}

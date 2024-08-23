@@ -75,8 +75,8 @@ export const settings: Setting[] = [
 		uri: '/icon',
 		label: i('settings.icon'),
 		icon: DeviceTablet,
-		show: (browser) => {
-			if (!browser) return get(isApple);
+		show: (runsInBrowser) => {
+			if (!runsInBrowser) return get(isApple);
 
 			const isStandalone =
 				window.matchMedia('(display-mode: standalone)').matches ||

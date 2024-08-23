@@ -1,4 +1,3 @@
-import { goto } from '$app/navigation';
 import { i } from '$lib/i18n/store';
 import type { Readable } from 'svelte/store';
 import {
@@ -16,7 +15,7 @@ import {
 
 type Link = {
 	name: Readable<string>;
-	action: () => void;
+	href: string;
 	icon?: IconSource;
 };
 
@@ -31,17 +30,17 @@ export const links: LinkGroup[] = [
 		entries: [
 			{
 				name: i('nav.footer.auth.login'),
-				action: () => goto('/login'),
+				href: '/login',
 				icon: User
 			},
 			{
 				name: i('nav.footer.auth.register'),
-				action: () => goto('/register'),
+				href: '/register',
 				icon: UserPlus
 			},
 			{
 				name: i('nav.footer.auth.join'),
-				action: () => goto('/join'),
+				href: '/join',
 				icon: RectangleGroup
 			}
 		]
@@ -51,11 +50,11 @@ export const links: LinkGroup[] = [
 		entries: [
 			{
 				name: i('nav.footer.mod.own'),
-				action: () => goto('/moderation/own')
+				href: '/moderation/own'
 			},
 			{
 				name: i('nav.footer.mod.list'),
-				action: () => goto('/moderation/list')
+				href: '/moderation/list'
 			}
 		]
 	},
@@ -64,7 +63,7 @@ export const links: LinkGroup[] = [
 		entries: [
 			{
 				name: i('nav.footer.homework.homework'),
-				action: () => goto('/homework'),
+				href: '/homework',
 				icon: BookOpen
 			}
 		]
@@ -74,7 +73,7 @@ export const links: LinkGroup[] = [
 		entries: [
 			{
 				name: i('nav.footer.notes.notes'),
-				action: () => goto('/notes'),
+				href: '/notes',
 				icon: PencilSquare
 			}
 		]
@@ -84,7 +83,7 @@ export const links: LinkGroup[] = [
 		entries: [
 			{
 				name: i('nav.footer.calendar.calendar'),
-				action: () => goto('/calendar'),
+				href: '/calendar',
 				icon: Calendar
 			}
 		]
@@ -94,22 +93,22 @@ export const links: LinkGroup[] = [
 		entries: [
 			{
 				name: i('nav.footer.else.settings'),
-				action: () => goto('/settings'),
+				href: '/settings',
 				icon: Cog
 			},
 			{
 				name: i('nav.footer.else.holiday'),
-				action: () => goto('/holiday'),
+				href: '/holiday',
 				icon: Calendar
 			},
 			{
 				name: i('nav.footer.else.contributors'),
-				action: () => goto('/contributions'),
+				href: '/contributions',
 				icon: UserGroup
 			},
 			{
 				name: i('nav.footer.else.tags'),
-				action: () => goto('/tags'),
+				href: '/tags',
 				icon: Bookmark
 			}
 		]
