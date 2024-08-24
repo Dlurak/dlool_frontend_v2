@@ -1,11 +1,10 @@
 <script lang="ts">
-	import type { Token } from '$lib/i18n/i18n';
-	import { i } from '$lib/i18n/store';
 	import Store from '$lib/components/utils/Store.svelte';
+	import type { Readable } from 'svelte/store';
 
 	export let emoji: string;
-	export let title: Token;
-	export let description: Token;
+	export let title: Readable<string>;
+	export let description: Readable<string>;
 
 	export let disfoccused = false;
 </script>
@@ -18,6 +17,6 @@
 	<div class="py-2 print:hidden">
 		<span class="rounded-sm bg-black bg-opacity-20 p-2 text-xl">{emoji}</span>
 	</div>
-	<h3><Store store={i(title)} /></h3>
-	<Store store={i(description)} />
+	<h3><Store store={title} /></h3>
+	<Store store={description} />
 </div>

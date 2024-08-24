@@ -134,7 +134,6 @@ const de = {
 
 	'home.subtitle': 'Das Hausaufgabenheft der nächsten Generation für Deine ganze Klasse',
 	'home.digitalEra': 'Ein Hausaufgabenheft für das digitale Zeitalter',
-	'home.quick.getStarted': '🚀 Loslegen',
 	'home.quick.why': 'Warum Dlool?',
 	'home.quick.github': 'Auf GitHub anzeigen',
 	'home.logo.alt': 'Das wunderschöne Dlool Logo',
@@ -145,7 +144,7 @@ const de = {
 	'home.homeworkBut.collaborative.3':
 		'Um Cybermobbing zu verhinden, braucht man keinen Account um Daten zu sehen',
 	'home.homeworkBut.collaborative.4':
-		'Andere registrierte Nutzer können die Daten editieren um Fehler zu korrigieren',
+		'Andere authorisierte Nutzer können die Daten editieren um Fehler zu korrigieren',
 	'home.homeworkBut.collaborative.5':
 		'Es ist nicht mehr Nötig in der Klassengruppe nach Hausaufgaben zu fragen (ﾉ◕ヮ◕)ﾉ',
 
@@ -155,9 +154,6 @@ const de = {
 		'Dank fachspezifischen Icons und Farben, ist es leicht die Fächer auf anhieb zu erkennen.',
 	'home.homeworkBut.convenient.3':
 		'Der Stundenplan und die Voreinstellungen erlauben schnelle und präzise Änderungen',
-	'home.homeworkBut.convenient.4': 'Exportiere Deine Daten als ical oder todo.txt',
-	'home.homeworkBut.convenient.5':
-		'Nutze einen Siri-Kurzbefehl um die Dlool Hausaufgaben mit Apple Erinnerungen zu synchronisieren',
 
 	'home.homeworkBut.free': 'Gratis',
 	'home.homeworkBut.free.1': 'Dlool ist komplett kostenlos, ohne versteckte Überraschungen!',

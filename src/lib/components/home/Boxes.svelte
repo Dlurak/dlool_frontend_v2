@@ -5,7 +5,10 @@
 	let hoveredBoxIndex: number | null = null;
 </script>
 
-<section class="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-6">
+<section
+	class="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-6"
+	id="boxes"
+>
 	{#each boxes as box, index}
 		<div
 			aria-roledescription="Tiles of a grid of features"

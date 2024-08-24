@@ -1,4 +1,4 @@
-import type { SubtractOne } from '$lib/types/math';
+import type { Add, SubtractOne } from '$lib/types/math';
 
 type PrivateEnumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
 	? Acc
@@ -13,6 +13,20 @@ type PrivateEnumerate<N extends number, Acc extends number[] = []> = Acc['length
  * type Result = Enumerate<5>; // Result is [0, 1, 2, 3, 4]
  */
 export type Enumerate<N extends number> = PrivateEnumerate<N>;
+
+/**
+ * A utility type to create a tuple containing the sequence of numbers from Min up to, but not including, Max.
+ *
+ * @template Min - The lower limit of the enumeration (inclusive).
+ * @template Max - The upper limit of the enumeration (exclusive).
+ *
+ * @example
+ * type Result = Range<1, 5>; // Result is [1, 2, 3, 4]
+ */
+export type Range<Min extends number, Max extends number> = Min extends Max
+	? [Max]
+	: // @ts-expect-error Add<> isn't a number for ts but indeet it is
+		[Min, ...Range<Add<Min, 1>, Max>];
 
 /**
  * Extracts the last item of an array `T`. If the array is empty, returns the alternative type `Alt`.

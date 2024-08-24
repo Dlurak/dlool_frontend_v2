@@ -1,45 +1,46 @@
-import type { Token } from '$lib/i18n/i18n';
+import { i } from '$lib/i18n/store';
+import type { Readable } from 'svelte/store';
 
 type Box = {
 	emoji: string;
-	description: Token;
-	title: Token;
+	description: Readable<string>;
+	title: Readable<string>;
 };
 
 export const boxes: Box[] = [
 	{
 		emoji: '📱',
-		title: 'home.boxes.crossPlattform',
-		description: 'home.boxes.crossPlattform.description'
+		title: i('home.boxes.crossPlattform'),
+		description: i('home.boxes.crossPlattform.description')
 	},
 
 	{
 		emoji: '👨‍👩‍👧‍👦',
-		title: 'home.boxes.collaborative',
-		description: 'home.boxes.collaborative.description'
+		title: i('home.boxes.collaborative'),
+		description: i('home.boxes.collaborative.description')
 	},
 
 	{
 		emoji: '⚙️',
-		title: 'home.boxes.customizable',
-		description: 'home.boxes.customizable.description'
+		title: i('home.boxes.customizable'),
+		description: i('home.boxes.customizable.description')
 	},
 
 	{
 		emoji: '🗽',
-		title: 'home.boxes.libre',
-		description: 'home.boxes.libre.description'
+		title: i('home.boxes.libre'),
+		description: i('home.boxes.libre.description')
 	},
 
 	{
 		emoji: '🎓',
-		title: 'home.boxes.students',
-		description: 'home.boxes.students.description'
+		title: i('home.boxes.students'),
+		description: i('home.boxes.students.description')
 	},
 
 	{
 		emoji: '🧠',
-		title: 'home.boxes.easy',
-		description: 'home.boxes.easy.description'
+		title: i('home.boxes.easy'),
+		description: i('home.boxes.easy.description')
 	}
 ];

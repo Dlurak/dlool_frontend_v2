@@ -1,6 +1,7 @@
 <script>
 	import Store from '$lib/components/utils/Store.svelte';
 	import { i } from '$lib/i18n/store';
+	import { range } from '$lib/utils/arrays/range';
 	import GradientText from './GradientText.svelte';
 </script>
 
@@ -15,11 +16,9 @@
 				</GradientText>
 			</h3>
 			<ul>
-				<li><Store store={i('home.homeworkBut.collaborative.1')} /></li>
-				<li><Store store={i('home.homeworkBut.collaborative.2')} /></li>
-				<li><Store store={i('home.homeworkBut.collaborative.3')} /></li>
-				<li><Store store={i('home.homeworkBut.collaborative.4')} /></li>
-				<li><Store store={i('home.homeworkBut.collaborative.5')} /></li>
+				{#each range(1, 5) as num}
+					<li><Store store={i(`home.homeworkBut.collaborative.${num}`)} /></li>
+				{/each}
 			</ul>
 		</div>
 		<div>
@@ -29,11 +28,9 @@
 				</GradientText>
 			</h3>
 			<ul>
-				<li><Store store={i('home.homeworkBut.convenient.1')} /></li>
-				<li><Store store={i('home.homeworkBut.convenient.2')} /></li>
-				<li><Store store={i('home.homeworkBut.convenient.3')} /></li>
-				<li><Store store={i('home.homeworkBut.convenient.4')} /></li>
-				<li><Store store={i('home.homeworkBut.convenient.5')} /></li>
+				{#each range(1, 3) as num}
+					<li><Store store={i(`home.homeworkBut.convenient.${num}`)} /></li>
+				{/each}
 			</ul>
 		</div>
 		<div>
@@ -43,10 +40,9 @@
 				</GradientText>
 			</h3>
 			<ul>
-				<li><Store store={i('home.homeworkBut.free.1')} /></li>
-				<li><Store store={i('home.homeworkBut.free.2')} /></li>
-				<li><Store store={i('home.homeworkBut.free.3')} /></li>
-				<li><Store store={i('home.homeworkBut.free.4')} /></li>
+				{#each range(1, 4) as num}
+					<li><Store store={i(`home.homeworkBut.free.${num}`)} /></li>
+				{/each}
 			</ul>
 		</div>
 	</div>

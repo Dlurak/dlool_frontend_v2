@@ -131,7 +131,6 @@ const en = {
 
 	'home.subtitle': 'Next generation homework for your entire class',
 	'home.digitalEra': 'A homework management system for the digital era',
-	'home.quick.getStarted': '🚀 Get Started',
 	'home.quick.why': 'Why Dlool?',
 	'home.quick.github': 'View on GitHub',
 	'home.logo.alt': 'The beautifull Dlool Logo',
@@ -149,8 +148,6 @@ const en = {
 	'home.homeworkBut.convenient.2':
 		'Thanks to subject specific icons and colors it is easy to identify subjects at first glance',
 	'home.homeworkBut.convenient.3': 'The timetable and presets allow for quick and precice edits',
-	'home.homeworkBut.convenient.4': 'Export your data as ical or todo.txt',
-	'home.homeworkBut.convenient.5': 'Use a siri-shortcut to integrate Dlool with apple reminders',
 
 	'home.homeworkBut.free': 'Free',
 	'home.homeworkBut.free.1': 'Dlool is completly free, no hidden costs!',

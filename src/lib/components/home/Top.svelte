@@ -22,20 +22,12 @@
 		</h2>
 
 		<div class="flex flex-wrap gap-4 py-2 text-lg print:hidden">
-			<!--
 			<a
-				href="/documentation/getting-started"
-				class="text-light-text dark:text-dark-text rounded-full bg-emerald-500 px-4 py-1 shadow-md"
-			>
-				<Store store={i('home.quick.getStarted')} />
-			</a>
-			<a
-				href="#why"
-				class="text-light-text dark:text-dark-text rounded-full border px-4 py-1 shadow-md"
+				href="#boxes"
+				class="rounded-full bg-emerald-500 px-4 py-1 text-black shadow-md dark:text-white"
 			>
 				<Store store={i('home.quick.why')} />
 			</a>
-			-->
 			<a
 				href="https://github.com/Dlurak/dloolFrontend_v2"
 				class="flex items-center gap-1 rounded-full border px-4 py-1 text-black shadow-md dark:text-white"
