@@ -89,17 +89,13 @@
 					{/each}
 				</ul>
 
-				{#if $isStandalone}
+				{#if $isStandalone && isApple}
 					<div
 						class="flex items-center gap-1 rounded border-2 border-red-500 bg-red-400 bg-opacity-30 px-3"
 					>
 						<Icon src={ExclamationCircle} class="h-6 w-6 flex-shrink-0" />
 						<span>
-							{#if isApple}
-								<Store store={i('intro.reinstall.apple')} />
-							{:else}
-								<Store store={i('intro.reinstall')} />
-							{/if}
+							<Store store={i('intro.reinstall')} />
 						</span>
 					</div>
 				{:else}
