@@ -12,6 +12,8 @@
 	import Markdown from '$lib/components/markdown/Markdown.svelte';
 
 	export let assignment: Assignment;
+	export let ele: HTMLDivElement | undefined = undefined;
+	export let capturing = false;
 
 	$: icon = getSubjectIcon(assignment.subject);
 
@@ -22,7 +24,13 @@
 		undefined;
 </script>
 
-<div class="flex gap-3">
+<div
+	class="flex gap-3"
+	class:bg-white={capturing}
+	class:text-black={capturing}
+	class:p-3={capturing}
+	bind:this={ele}
+>
 	{#if color}
 		<div class="box-content h-full w-1.5 px-1">
 			<div class="h-full w-full rounded bg-[--bg]" style:--bg={color} />

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Assignment } from '$lib/dlool/assignments/list';
-	import { Trash, Pencil } from 'svelte-hero-icons';
+	import { Trash, Pencil, Photo } from 'svelte-hero-icons';
 	import { i } from '$lib/i18n/store';
 	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
 	import { deleteAssignment } from '$lib/dlool/assignments/delete';
@@ -16,9 +16,13 @@
 	import Store from '$lib/components/utils/Store.svelte';
 	import { currentCustomDate, sort } from '$lib/utils/dates/custom';
 	import { useAuth } from '$lib/utils/store/auth';
+	import { downloadUrl, asyncRequestAnimationFrame } from '$lib/utils/dom';
 
 	export let assignment: Assignment;
 	export let school: string;
+
+	let element: HTMLDivElement | undefined = undefined;
+	let capturing = false;
 
 	type ReadState = {
 		view: 'read';
@@ -53,10 +57,10 @@
 		class:opacity-[--opac]={isOverdue}
 		class="flex flex-col gap-2 rounded px-2 py-1 outline outline-2 outline-zinc-300 dark:outline-zinc-700"
 	>
-		<ReadAssignmentBox {assignment} />
+		<ReadAssignmentBox {assignment} bind:ele={element} {capturing} />
 
-		{#if $isInClass && $isLoggedIn}
-			<div class="flex w-full justify-evenly pt-2">
+		<div class="flex w-full justify-evenly pt-2">
+			{#if $isInClass && $isLoggedIn}
 				<QuickAction
 					icon={Trash}
 					small
@@ -91,8 +95,28 @@
 						});
 					}}
 				/>
-			</div>
-		{/if}
+			{/if}
+			<QuickAction
+				icon={Photo}
+				small
+				color="indigo"
+				on:click={async () => {
+					if (!element) return;
+					const html2canvas = await import('html2canvas').then((lib) => lib.default);
+
+					capturing = true;
+					await asyncRequestAnimationFrame();
+
+					const canvas = await html2canvas(element);
+					capturing = false;
+
+					downloadUrl({
+						url: canvas.toDataURL(),
+						fileName: 'Dlool-homework.png'
+					});
+				}}
+			/>
+		</div>
 	</div>
 
 	<Modal

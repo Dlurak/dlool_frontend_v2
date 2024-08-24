@@ -5,7 +5,7 @@
 	export let small = false;
 	export let disabled = false;
 
-	export let color: null | 'red' | 'blue' = null;
+	export let color: null | 'red' | 'blue' | 'indigo' = null;
 </script>
 
 <button
@@ -19,6 +19,7 @@
 	"
 	class:text-red-500={color === 'red'}
 	class:text-blue-500={color === 'blue'}
+	class:text-indigo-500={color === 'indigo'}
 >
 	<Icon src={icon} mini={!small} micro={small} class={`${small ? 'h-5 w-5' : 'h-7 w-7'}`} />
 </button>
