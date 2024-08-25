@@ -17,11 +17,14 @@
 	import { replaceKey } from '$lib/utils/objects/replaceKey';
 	import { removeKey } from '$lib/utils/objects/removeKey';
 	import BoolSetting from '$lib/components/settings/BoolSetting.svelte';
+	import { settingsHeader } from '$lib/stores';
 
 	const homeworkTransparency = svocal('settings.homework.transparency');
 	const homeworkPresets = svocal('settings.homeworkPresets');
 	const defaultSubjects = svocal('settings.homework.defaultSubject');
 	const smartSubjects = svocal('settings.homework.smart-subjects');
+
+	settingsHeader.set(i('settings.assignments.title'));
 
 	onDestroy(() => {
 		if (!browser) return;

@@ -8,7 +8,7 @@
 	import Store from '$lib/components/utils/Store.svelte';
 	import type { PageData } from './$types';
 	import { readable } from 'svelte/store';
-	import { currentLang } from '$lib/stores';
+	import { currentLang, settingsHeader } from '$lib/stores';
 	import { Holiday } from 'open-holiday-js';
 	import NavbarCustomizor from '$lib/components/settings/navigation/NavbarCustomizor.svelte';
 	import { onDestroy } from 'svelte';
@@ -33,6 +33,8 @@
 	const sizes = ['small', 'medium', 'large'] as const;
 
 	export let data: PageData;
+
+	settingsHeader.set(i('title.settings.general'));
 
 	onDestroy(() => {
 		if (!browser) return;

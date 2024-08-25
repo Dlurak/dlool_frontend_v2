@@ -4,8 +4,10 @@
 	import Panes from '$lib/components/panes/Panes.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { settings } from '$lib/constants/settings';
+	import { i } from '$lib/i18n/store';
+	import { settingsHeader } from '$lib/stores';
 	import { onMount } from 'svelte';
-	import { Icon } from 'svelte-hero-icons';
+	import { ChevronLeft, Icon } from 'svelte-hero-icons';
 	import { derived } from 'svelte/store';
 
 	const isOverviewPage = derived(page, (p) => p.route.id === '/settings');
@@ -48,7 +50,26 @@
 		{/each}
 	</div>
 
-	<div slot="b" class="w-full" class:hidden={$isOverviewPage} class:md:block={$isOverviewPage}>
+	<div slot="b" class=" w-full" class:hidden={$isOverviewPage} class:md:block={$isOverviewPage}>
+		<div class="flex flex-col gap-2 pb-2 md:hidden">
+			<div class="flex justify-center">
+				<button
+					class="flex justify-center rounded-sm px-2"
+					on:click={() => {
+						window.history.back();
+					}}
+				>
+					<Icon src={ChevronLeft} class="h-6 w-6" micro />
+					<Store store={i('back')} />
+				</button>
+				<span class="w-full text-center font-bold">
+					<Store store={$settingsHeader} />
+				</span>
+			</div>
+
+			<hr class="border-zinc-300 md:hidden dark:border-zinc-700" />
+		</div>
+
 		<slot />
 	</div>
 </Panes>

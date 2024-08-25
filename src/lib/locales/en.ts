@@ -4,6 +4,7 @@ const en = {
 	error: 'Something went wrong',
 	loading: 'Loading',
 	update: 'Update',
+	back: 'Back',
 
 	school: 'School',
 	class: 'Class',

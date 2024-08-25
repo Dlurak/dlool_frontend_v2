@@ -21,6 +21,7 @@
 	import { loadFromFile } from '$lib/components/settings/timetable/loadFromFile';
 	import { WEEKDAYS } from '$lib/components/settings/timetable/weekdays';
 	import BoolSetting from '$lib/components/settings/BoolSetting.svelte';
+	import { settingsHeader } from '$lib/stores';
 
 	const timetable = svocal('settings.timetable');
 	const weekStartsOn = svocal('settings.weekStartsOn');
@@ -33,6 +34,8 @@
 	});
 
 	const currentWeekday = WEEKDAYS[new Date().getDay()];
+
+	settingsHeader.set(i('settings.timetable.title'));
 </script>
 
 <MetaData title={i('settings.timetable.title')} />

@@ -4,6 +4,7 @@ const de = {
 	error: 'Etwas ist schief gelaufen',
 	loading: 'Lädt',
 	update: 'Aktualisieren',
+	back: 'Zurück',
 
 	school: 'Schule',
 	class: 'Klasse',

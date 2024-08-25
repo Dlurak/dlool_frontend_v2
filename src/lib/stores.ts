@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { readable, writable } from 'svelte/store';
 import { svocal } from './utils/store/svocal';
 
 export const navHeight = writable(0);
@@ -10,3 +10,5 @@ export const openedModals = writable(0);
 export const iconBg = writable('#ffffff');
 
 export const isApple = writable(false);
+
+export const settingsHeader = writable(readable(''));

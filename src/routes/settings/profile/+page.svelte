@@ -8,6 +8,7 @@
 	import Details from '$lib/components/settings/profile/Details.svelte';
 	import { i } from '$lib/i18n/store';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
+	import { settingsHeader } from '$lib/stores';
 
 	const { isLoggedIn } = useAuth();
 	isLoggedIn.subscribe((isLoggedIn) => {
@@ -21,6 +22,8 @@
 		svocal('auth.access.expires').set(null);
 		svocal('auth.access.generatedBy').set(null);
 	};
+
+	settingsHeader.set(i('title.settings.profile'));
 </script>
 
 <MetaData title={i('title.settings.profile')} />

@@ -14,9 +14,12 @@
 	import { downloadJSON } from '$lib/utils/files/download';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
 	import { loadFromFile } from '$lib/components/settings/color/loadFromFile';
+	import { settingsHeader } from '$lib/stores';
 
 	const colors = svocal('settings.color');
 	const showHex = svocal('settings.color.showHex');
+
+	settingsHeader.set(i('settings.color.title'));
 </script>
 
 <MetaData title={i('settings.color.title')} />
