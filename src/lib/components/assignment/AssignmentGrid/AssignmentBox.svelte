@@ -121,7 +121,6 @@
 
 	<Modal
 		isOpen={$state.view === 'write'}
-		closeDisabled={$state.view === 'write' && $state.hasUnsavedEdits}
 		on:close={() => {
 			$state.view = 'read';
 		}}

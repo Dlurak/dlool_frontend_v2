@@ -4,8 +4,6 @@
 	import { createEventDispatcher } from 'svelte';
 	import { Icon, XMark } from 'svelte-hero-icons';
 
-	export let closeDisabled = false;
-
 	const dispatch = createEventDispatcher<{ open: null; close: null }>();
 
 	let dialogElement: HTMLDialogElement | undefined;
@@ -15,7 +13,7 @@
 		if (!dialogElement) return;
 		if (dialogElement.open) return;
 
-		openedModals.update((x) => x + 1);
+		openedModals.inc();
 		dialogElement.showModal();
 		isOpen = true;
 		dispatch('open');
@@ -23,10 +21,10 @@
 	};
 
 	export const close = () => {
+		openedModals.dec();
 		if (!dialogElement) return;
 		if (!dialogElement.open) return;
 
-		openedModals.update((x) => x - 1);
 		dialogElement.close();
 		isOpen = false;
 		dispatch('close');
@@ -51,11 +49,7 @@
 			<b><slot name="title" /></b>
 		</div>
 
-		<button
-			on:click={close}
-			disabled={closeDisabled}
-			class="disabled:cursor-not-allowed disabled:opacity-50"
-		>
+		<button on:click={close}>
 			<Icon src={XMark} class="h-8 w-8 text-red-500" />
 		</button>
 	</div>

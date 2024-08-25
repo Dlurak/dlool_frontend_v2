@@ -1,11 +1,16 @@
 import { readable, writable } from 'svelte/store';
 import { svocal } from './utils/store/svocal';
+import { useBounds } from '$lib/utils/store/bounds';
 
 export const navHeight = writable(0);
 export const footerHeight = writable(0);
 export const currentLang = svocal('i18n.currentlang');
 
-export const openedModals = writable(0);
+export const openedModals = useBounds({
+	initial: 0,
+	min: 0,
+	max: Infinity
+});
 
 export const iconBg = writable('#ffffff');
 

@@ -4,16 +4,22 @@
 	import DateSelector from '$lib/components/input/date/DateSelector.svelte';
 	import type { Assignment } from '$lib/dlool/assignments/list';
 	import { i } from '$lib/i18n/store';
-	import type { CustomDate } from '$lib/utils/dates/custom';
+	import { customDateToNormal, type CustomDate } from '$lib/utils/dates/custom';
 	import { createEventDispatcher } from 'svelte';
 	import { deepEqual } from '$lib/utils/objects/deepEqual';
 	import TextArea from '$lib/components/input/TextArea.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
+	import { prettify } from '$lib/utils/strings/prettify';
 
 	export let assignment: Assignment;
 	export let disabled: boolean;
 
 	let { subject, description, from: fromDate, due: dueDate } = assignment;
+
+	$: internallyEnabled =
+		!!subject &&
+		!!prettify(description) &&
+		customDateToNormal(dueDate) > customDateToNormal(fromDate);
 
 	$: {
 		dispatch('change', {
@@ -49,7 +55,7 @@
 <DateSelector bind:date={dueDate} />
 
 <PrimaryButton
-	{disabled}
+	disabled={disabled || !internallyEnabled}
 	on:click={() => {
 		dispatch('submit', { subject, description, fromDate, dueDate });
 	}}

@@ -29,7 +29,7 @@
 	});
 </script>
 
-<Modal bind:isOpen closeDisabled={hasChanges}>
+<Modal bind:isOpen>
 	<div slot="title">Edit</div>
 
 	<div slot="body" class="flex flex-col gap-3 py-3">

@@ -5,7 +5,7 @@
 		const [newValue, offset1, offset2] = func(value, selectionStart, selectionEnd);
 		ele.focus();
 
-		requestAnimationFrame(() =>
+		asyncRequestAnimationFrame().then(() =>
 			ele.setSelectionRange(selectionStart + offset1, selectionEnd + offset2)
 		);
 		return newValue;
@@ -33,11 +33,14 @@
 	import type { Gemoji } from 'gemoji';
 	import { getCursorPixelPosition } from '$lib/utils/dom/cursor';
 	import EmojiSelector from '../emoji/EmojiSelector.svelte';
+	import { asyncRequestAnimationFrame } from '$lib/utils/dom';
+	import { prettify } from '$lib/utils/strings/prettify';
 
 	export let placeholder: Readable<string>;
 	export let icon: IconSource | null = null;
 
 	export let markdown = false;
+	export let prettifiying = true;
 
 	export let value: string = '';
 
@@ -170,15 +173,13 @@
 					{#if emoji && emojiRecommendations.length > 0}
 						<EmojiSelector
 							emoji={emojiRecommendations}
-							on:select={({ detail: emoji }) => {
+							on:select={async ({ detail: emoji }) => {
 								if (!ele) return;
 								const start = value.slice(0, ele.selectionStart).replace(/:\w+:?$/, emoji.emoji);
 								value = start + value.slice(ele.selectionStart);
-								window.requestAnimationFrame(() => {
-									if (!ele) return;
-									ele.setSelectionRange(start.length, start.length);
-									ele.focus();
-								});
+								await asyncRequestAnimationFrame();
+								ele.setSelectionRange(start.length, start.length);
+								ele.focus();
 							}}
 						/>
 					{/if}
@@ -190,7 +191,7 @@
 					<Store store={i('markdownpreview.noPreview')} />
 				</span>
 			{:else}
-				<Markdown markdown={value} />
+				<Markdown markdown={prettifiying ? prettify(value) : value} />
 			{/if}
 		{/if}
 	</div>
