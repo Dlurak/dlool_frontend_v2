@@ -12,6 +12,7 @@ interface AuthProps {
 export const useAuth = (props: AuthProps = {}) => {
 	const tokenExpires = svocal('auth.access.expires');
 	const userDetails = svocal('dlool.ownUserDetails');
+	const generatedByLogin = derived(svocal('auth.access.generatedBy'), (gb) => gb === 'login');
 
 	return {
 		userDetails: { subscribe: userDetails.subscribe },
@@ -30,6 +31,7 @@ export const useAuth = (props: AuthProps = {}) => {
 		),
 		isLoggedIn: derived(tokenExpires, ($tokenExpires) => {
 			return $tokenExpires !== null && $tokenExpires > currentMs();
-		})
+		}),
+		generatedByLogin
 	};
 };

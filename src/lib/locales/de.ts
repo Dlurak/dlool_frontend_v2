@@ -443,6 +443,8 @@ const de = {
 	'settings.noneSelected': 'Wähle eine Kategorie aus',
 	'settings.profile': 'Profil',
 
+	'settings.profile.info':
+		'Um gravierende Änderungen vornehmen zu können, musst Du dich erneut einloggen.',
 	'settings.logout': 'Abmelden',
 	'settings.logout.all': 'Von allen Sitzungen Abmelden',
 	'settings.logout.success': 'Erfolgreich Abgemeldet',

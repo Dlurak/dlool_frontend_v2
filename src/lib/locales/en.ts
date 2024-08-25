@@ -434,6 +434,8 @@ const en = {
 	'settings.noneSelected': 'Select a category',
 	'settings.profile': 'Account',
 
+	'settings.profile.info':
+		'Um gravierende Änderungen vornehmen zu können, musst Du dich erneut einloggen.',
 	'settings.logout': 'Logout',
 	'settings.logout.all': 'Logout from all sessions',
 	'settings.logout.success': 'Successfully logged out',

@@ -9,8 +9,10 @@
 	import { i } from '$lib/i18n/store';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
 	import { settingsHeader } from '$lib/stores';
+	import Info from '$lib/components/utils/Info.svelte';
+	import Store from '$lib/components/utils/Store.svelte';
 
-	const { isLoggedIn } = useAuth();
+	const { isLoggedIn, generatedByLogin } = useAuth();
 	isLoggedIn.subscribe((isLoggedIn) => {
 		if (!isLoggedIn && browser) goto(`/login?redirect=/settings/profile`);
 	});
@@ -29,6 +31,12 @@
 <MetaData title={i('title.settings.profile')} />
 
 <div class="flex flex-col gap-4">
+	{#if !$generatedByLogin}
+		<Info>
+			<Store store={i('settings.profile.info')} />
+		</Info>
+	{/if}
+
 	<Logout on:reset={reset} />
 	<Details on:reset={reset} />
 	<Delete on:reset={reset} />
