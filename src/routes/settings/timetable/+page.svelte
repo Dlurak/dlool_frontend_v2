@@ -6,7 +6,6 @@
 		removeNthLesson,
 		cleanUpTimeTable
 	} from '$lib/components/settings/timetable/utils';
-	import TextInput from '$lib/components/input/Text.svelte';
 	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { i } from '$lib/i18n/store';
@@ -22,7 +21,7 @@
 	import { WEEKDAYS } from '$lib/components/settings/timetable/weekdays';
 	import BoolSetting from '$lib/components/settings/BoolSetting.svelte';
 	import { settingsHeader } from '$lib/stores';
-	import { asyncRequestAnimationFrame } from '$lib/utils/dom';
+	import TimeTableRow from '$lib/components/settings/timetable/TimetableRow.svelte';
 
 	const timetable = svocal('settings.timetable');
 	const weekStartsOn = svocal('settings.weekStartsOn');
@@ -33,8 +32,6 @@
 		if (!browser) return;
 		timetable.update(cleanUpTimeTable);
 	});
-
-	const currentWeekday = WEEKDAYS[new Date().getDay()];
 
 	settingsHeader.set(i('settings.timetable.title'));
 
@@ -102,42 +99,7 @@
 							/>
 						</th>
 
-						{#each WEEKDAYS as _, ind}
-							{@const day = WEEKDAYS[(ind + $weekStartsOn) % 7]}
-							{@const isToday = currentWeekday === day}
-							{@const show = $showWeekend ? true : !(day === 'sat' || day === 'sun')}
-
-							{#if show}
-								<td
-									class="bg-opacity-20 px-1 py-3 dark:bg-opacity-10"
-									class:bg-emerald-200={isToday}
-									class:dark:bg-emerald-800={isToday}
-								>
-									<TextInput
-										minimal
-										placeholder={i('settings.timetable.subject.placeholder')}
-										value={$timetable[day][lessonIndex] ?? undefined}
-										on:input={({ detail }) => {
-											$timetable[day][lessonIndex] = detail;
-										}}
-										on:enter={async () => {
-											const isOnlyNull = getLastLessons($timetable).every((x) => x === null);
-											const hasLessons = countMaxLessons($timetable) > 0;
-											if (!(isOnlyNull && hasLessons)) {
-												timetable.update(addRow);
-												await asyncRequestAnimationFrame();
-											}
-
-											const nextEle = elements[`${lessonIndex + 1}-${ind}`];
-											if (!nextEle) return;
-
-											nextEle.focus();
-										}}
-										bind:element={elements[`${lessonIndex}-${ind}`]}
-									/>
-								</td>
-							{/if}
-						{/each}
+						<TimeTableRow {elements} {lessonIndex} />
 					</tr>
 				{/each}
 
@@ -147,9 +109,7 @@
 							icon={Plus}
 							disabled={getLastLessons($timetable).every((x) => x === null) &&
 								countMaxLessons($timetable) > 0}
-							on:click={() => {
-								timetable.update(addRow);
-							}}
+							on:click={() => timetable.update(addRow)}
 						/>
 					</th>
 				</tr>
