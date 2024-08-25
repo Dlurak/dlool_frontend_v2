@@ -19,6 +19,8 @@
 
 	export let minimal = false;
 
+	export let element: HTMLInputElement | undefined = undefined;
+
 	const id = randomStr(16);
 	const dispatch = createEventDispatcher<{
 		input: string;
@@ -37,7 +39,7 @@
 				{disabled}
 				type="text"
 				class="w-full bg-transparent focus:outline-none disabled:cursor-not-allowed"
-				list={id}
+				list={options.length > 0 ? id : null}
 				placeholder={$placeholder}
 				on:input={({ currentTarget }) => {
 					dispatch('input', currentTarget.value);
@@ -48,6 +50,7 @@
 				on:focus
 				on:blur
 				bind:value
+				bind:this={element}
 			/>
 
 			<slot name="postInput" />
@@ -71,8 +74,10 @@
 	</div>
 </Frame>
 
-<datalist {id}>
-	{#each options as option}
-		<option value={option} />
-	{/each}
-</datalist>
+{#if options.length > 0}
+	<datalist {id}>
+		{#each options as option}
+			<option value={option} />
+		{/each}
+	</datalist>
+{/if}

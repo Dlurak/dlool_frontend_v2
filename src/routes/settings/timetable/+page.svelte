@@ -22,6 +22,7 @@
 	import { WEEKDAYS } from '$lib/components/settings/timetable/weekdays';
 	import BoolSetting from '$lib/components/settings/BoolSetting.svelte';
 	import { settingsHeader } from '$lib/stores';
+	import { asyncRequestAnimationFrame } from '$lib/utils/dom';
 
 	const timetable = svocal('settings.timetable');
 	const weekStartsOn = svocal('settings.weekStartsOn');
@@ -36,6 +37,8 @@
 	const currentWeekday = WEEKDAYS[new Date().getDay()];
 
 	settingsHeader.set(i('settings.timetable.title'));
+
+	let elements: Record<string, HTMLInputElement | undefined> = {};
 </script>
 
 <MetaData title={i('settings.timetable.title')} />
@@ -117,14 +120,20 @@
 										on:input={({ detail }) => {
 											$timetable[day][lessonIndex] = detail;
 										}}
-										on:enter={() => {
+										on:enter={async () => {
 											const isOnlyNull = getLastLessons($timetable).every((x) => x === null);
 											const hasLessons = countMaxLessons($timetable) > 0;
+											if (!(isOnlyNull && hasLessons)) {
+												timetable.update(addRow);
+												await asyncRequestAnimationFrame();
+											}
 
-											if (!(isOnlyNull && hasLessons)) timetable.update(addRow);
+											const nextEle = elements[`${lessonIndex + 1}-${ind}`];
+											if (!nextEle) return;
 
-											// TODO: Focus the TextInput one below
+											nextEle.focus();
 										}}
+										bind:element={elements[`${lessonIndex}-${ind}`]}
 									/>
 								</td>
 							{/if}
