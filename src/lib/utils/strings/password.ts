@@ -5,7 +5,7 @@ const longEnough = (pwd: string) => pwd.length > 7;
 const hasLowercaseChar = (pwd: string) => /[a-z]/.test(pwd);
 const hasUppercaseChar = (pwd: string) => /[A-Z]/.test(pwd);
 const hasDigit = (pwd: string) => /[0-9]/.test(pwd);
-const hasSpecialChar = (pwd: string) => /[#?!@$ %^&*-]/.test(pwd);
+const hasSpecialChar = (pwd: string) => /[^a-zA-Z0-9]/.test(pwd);
 
 type Condition = {
 	isValid: (pwd: string) => boolean;
