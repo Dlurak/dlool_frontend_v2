@@ -27,7 +27,7 @@
 		</div>
 
 		<div
-			class="grid grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
+			class="grid w-full grid-cols-[repeat(var(--cols),minmax(0,1fr))] sm:w-fit"
 			style:--cols={$navEntries.length}
 		>
 			{#each $navEntries as navTarget (navTarget)}
