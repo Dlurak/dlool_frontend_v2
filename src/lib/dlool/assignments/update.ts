@@ -28,7 +28,6 @@ export async function updateAssignment(props: UpdateProps) {
 		},
 		body: JSON.stringify({
 			...removeKey(props, 'id'),
-			...props,
 			...(props.description && { description: prettify(props.description) })
 		})
 	}).then((r) => r.json());
