@@ -6,7 +6,7 @@ import {
 	BuildingLibrary,
 	Calculator,
 	ComputerDesktop,
-	HomeModern,
+	Fire,
 	Language,
 	LightBulb,
 	MusicalNote,
@@ -29,11 +29,7 @@ const iconObjs: IconObj[] = [
 		icon: BugAnt
 	},
 	{
-		subjects: ['biologie', 'bio', 'biology'],
-		icon: Beaker
-	},
-	{
-		subjects: ['biologie', 'bio', 'biology'],
+		subjects: ['chemie', 'chemistry'],
 		icon: Beaker
 	},
 	{
@@ -78,7 +74,7 @@ const iconObjs: IconObj[] = [
 	},
 	{
 		subjects: ['sport', 'pe'],
-		icon: HomeModern
+		icon: Fire
 	},
 	{
 		subjects: ['powi', 'politik', 'wirtschaft', 'economy'],

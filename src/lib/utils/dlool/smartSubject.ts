@@ -19,7 +19,9 @@ const exactPairs = [
 	'Spanisch',
 	'Kunst',
 	'Französisch',
+	'Englisch',
 
+	'English',
 	'Spanish',
 	'French',
 	'German'
@@ -50,10 +52,6 @@ const rules: SmartDetectRule[] = [
 	{
 		subject: 'Biologie',
 		pattern: /^bio/
-	},
-	{
-		subject: 'Religion',
-		pattern: /^reli/
 	},
 	{
 		subject: 'Religion',

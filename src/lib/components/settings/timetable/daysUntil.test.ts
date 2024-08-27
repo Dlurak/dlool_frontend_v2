@@ -9,7 +9,7 @@ import { describe, expect, it } from 'vitest';
 const EXAMPLE_TIMETABLE: Timetable = {
 	mon: ['German', 'Religion', 'Math'],
 	tue: ['English', 'P.E.', 'Music'],
-	wed: ['English', 'Math', 'Physics'],
+	wed: ['English', 'mathemathics', 'Physics'],
 	thu: ['Art', 'Biology', 'German'],
 	fri: ['History', 'Geography', 'English'],
 	sat: [],
