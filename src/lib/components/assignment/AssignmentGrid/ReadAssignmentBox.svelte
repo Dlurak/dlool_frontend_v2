@@ -10,6 +10,8 @@
 	import { mapObject } from '$lib/utils/objects/map';
 	import { self } from '$lib/utils/utils';
 	import Markdown from '$lib/components/markdown/Markdown.svelte';
+	import { derived } from 'svelte/store';
+	import { internalSubjectRepresentation } from '$lib/utils/subjects/internal';
 
 	export let assignment: Assignment;
 	export let ele: HTMLDivElement | undefined = undefined;
@@ -18,10 +20,11 @@
 	$: icon = getSubjectIcon(assignment.subject);
 
 	const colors = svocal('settings.color');
+	const internalColors = derived(colors, (c) =>
+		mapObject(c, (key) => internalSubjectRepresentation(key), self)
+	);
 
-	$: color =
-		mapObject($colors, (key) => key.toLowerCase(), self)[assignment.subject.toLowerCase()] ??
-		undefined;
+	$: color = $internalColors[internalSubjectRepresentation(assignment.subject)] ?? undefined;
 </script>
 
 <div

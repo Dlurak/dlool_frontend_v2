@@ -1,24 +1,6 @@
 import type { Timetable, TimetableWeekday } from '$lib/components/settings/timetable/types';
 import { WEEKDAYS } from '$lib/components/settings/timetable/weekdays';
-import { objectEntries } from '$lib/utils/objects/entries';
-
-const serialized = {
-	informatik: ['informatik', 'info', 'computer science', 'programming'],
-	biologie: ['bio', 'biology', 'biologie'],
-	geschichte: ['geschichte', 'geschi'],
-	mathematik: ['mathe', 'mathematick', 'mathematik', 'mathemathik', 'mathemathics', 'math'],
-	religion: ['reli', 'religion'],
-	powi: ['powi', 'wipo'],
-	physics: ['physics', 'physic', 'physik']
-};
-
-function timetableSerialize(subj: string) {
-	const subject = subj.trim().toLowerCase();
-	const entries = objectEntries(serialized);
-	const entry = entries.find(([_, alts]) => alts.includes(subj));
-
-	return entry ? entry[0] : subject;
-}
+import { internalSubjectRepresentation } from '$lib/utils/subjects/internal';
 
 export interface DaysUntilProps {
 	subject: string;
@@ -32,7 +14,7 @@ function privateDaysUntil({ subject, timetable, currentDay }: DaysUntilProps, co
 
 	const isTommorow = timetable[nextDay].some((iterSubj) => {
 		if (!iterSubj) return false;
-		return timetableSerialize(iterSubj) === timetableSerialize(subject);
+		return internalSubjectRepresentation(iterSubj) === internalSubjectRepresentation(subject);
 	});
 
 	if (isTommorow) return count + 1;
