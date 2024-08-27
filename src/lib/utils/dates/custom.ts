@@ -49,11 +49,13 @@ export const currentCustomDate = () => normalToCustomDate(new Date());
 interface StringifyProps {
 	includeTime?: boolean;
 	includeDate?: boolean;
+	weekday?: 'short' | 'long' | 'narrow';
 }
 
 export const stringify = (d: CustomDate, props: StringifyProps = {}) => {
 	const includeTime = props.includeTime ?? false;
 	const includeDate = props.includeDate ?? true;
+	const weekday = props.weekday ?? null;
 
 	const timeOptions: Intl.DateTimeFormatOptions = includeTime
 		? {
@@ -66,7 +68,8 @@ export const stringify = (d: CustomDate, props: StringifyProps = {}) => {
 		? {
 				day: '2-digit',
 				month: '2-digit',
-				year: '2-digit'
+				year: '2-digit',
+				...(weekday ? { weekday } : null)
 			}
 		: {};
 

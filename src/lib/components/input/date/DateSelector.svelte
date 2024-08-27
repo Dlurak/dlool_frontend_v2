@@ -60,7 +60,7 @@
 
 		<span>
 			{#if date}
-				{stringify(date)}
+				{stringify(date, { weekday: 'short' })}
 			{:else}
 				<Store store={i('calendar.select')} />
 			{/if}
