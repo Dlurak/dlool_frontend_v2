@@ -42,6 +42,11 @@ export const links: LinkGroup[] = [
 				name: i('nav.footer.auth.join'),
 				href: '/join',
 				icon: RectangleGroup
+			},
+			{
+				name: i('nav.footer.auth.profile'),
+				href: '/profile',
+				icon: User
 			}
 		]
 	},

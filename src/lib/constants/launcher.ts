@@ -86,6 +86,16 @@ export const launcherItems: LauncherItem[] = [
 		searchTerms: split(i('launcher.register.terms'))
 	},
 	{
+		label: i('launcher.profile'),
+		description: null,
+		icon: User,
+		callback: () => {
+			goto('/profile');
+			closeLauncher();
+		},
+		searchTerms: split(i('launcher.profile.terms'))
+	},
+	{
 		label: i('launcher.join'),
 		description: null,
 		icon: RectangleGroup,

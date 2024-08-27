@@ -33,6 +33,8 @@ const de = {
 	'launcher.homework.terms': 'Aufgaben\nArbeitsauftrag',
 	'launcher.register': 'Registrieren',
 	'launcher.register.terms': 'Account',
+	'launcher.profile': 'Dein Profil',
+	'launcher.profile.terms': 'Profil\nDetails\nAccount\nNutzer',
 	'launcher.join': 'Einer Klasse beitreten',
 	'launcher.join.terms': 'Klasse\nbeitreten\nKurs\nGruppe\nhinzufügen',
 	'launcher.mod.own': 'Eigene Anfragen',
@@ -104,6 +106,7 @@ const de = {
 	'nav.footer.auth.login': 'Einloggen',
 	'nav.footer.auth.register': 'Registrieren',
 	'nav.footer.auth.join': 'Klasse beitreten',
+	'nav.footer.auth.profile': 'Dein Profil',
 	'nav.footer.notes': 'Notizen',
 	'nav.footer.notes.notes': 'Notizen',
 	'nav.footer.calendar': 'Kalender',
@@ -683,11 +686,27 @@ Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibe
 	'keyboardshortcuts.markdown.bold': 'Fett',
 	'keyboardshortcuts.markdown.italic': 'Kursiv',
 	'keyboardshortcuts.markdown.link': 'Link',
-	'keyboardshortcuts.markdown.heading': 'Überscirft',
+	'keyboardshortcuts.markdown.heading': 'Überschrift',
 
 	'markdownEditor.views.edit': 'Bearbeiten',
 	'markdownEditor.views.preview': 'Vorschau',
 	'markdownpreview.noPreview': 'Gebe etwas ein, um eine Vorschau sehen zu können.',
+
+	'profile.logInRequired': 'Für diese Funktion musst du dich einloggen.',
+	'profile.logInRequired.link': 'Klicke hier',
+	'profile.title': 'Dein Profil',
+	'profile.classes': 'Klassen',
+	'profile.classes.count': {
+		counts: {
+			default: '$count Klassen',
+			0: 'Keine Klassen',
+			1: 'Eine Klasse',
+			2: 'Two Klassen'
+		}
+	},
+	'profile.registered': 'Am $date registriert',
+	'profile.links.reqs': 'Deine Beitritts-Anfragen',
+	'profile.links.settings': 'Deine Profil Einstellungen',
 
 	literal: '$literal'
 } as const satisfies I18nDict;

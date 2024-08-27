@@ -107,8 +107,8 @@
 						'Joined class successfully!': i('toast.join.joined')
 					}[res.message];
 
-					ownUserInfo().then((d) => {
-						svocal('dlool.ownUserDetails').set(d.data);
+					ownUserInfo().then(({ data }) => {
+						svocal('dlool.ownUserDetails').set(data);
 					});
 
 					sendToast({

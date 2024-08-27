@@ -11,9 +11,9 @@ import { fromEntries, objectEntries } from '$lib/utils/objects/entries';
 import { self } from '$lib/utils/utils';
 
 export function countMaxLessons(timetable: Timetable) {
-	const lessonCounts = Object.values(timetable).map((x) => x.length);
+	const lessonCountsPerDay = Object.values(timetable).map((x) => x.length);
 
-	return Math.max(...lessonCounts);
+	return Math.max(...lessonCountsPerDay);
 }
 
 export function addRow(timetable: Timetable): Timetable {

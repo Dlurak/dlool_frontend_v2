@@ -13,7 +13,7 @@ describe('object to query params', () => {
 		expect(objToQueryParams({ key: 'value', key2: 'value2' })).toBe('key=value&key2=value2');
 		expect(objToQueryParams({ key: 'value', key2: null })).toBe('key=value');
 	});
-	it('converrts a Record<string, Record<string, unknown>>', () => {
+	it('converts a Record<string, Record<string, unknown>>', () => {
 		const obj = { key: { key: { key: { key: [4, 2.42, { key: { value: 'hi' } }] } } } };
 
 		expect(objToQueryParams({ key: obj, key2: 'value2' })).toBe(

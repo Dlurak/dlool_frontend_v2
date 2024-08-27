@@ -32,6 +32,8 @@ const en = {
 	'launcher.homework.terms': 'Task\nHomework',
 	'launcher.register': 'Register',
 	'launcher.register.terms': 'Account',
+	'launcher.profile': 'Your Profile',
+	'launcher.profile.terms': 'Profile\nDetails\nAccount',
 	'launcher.join': 'Join a class',
 	'launcher.join.terms': 'Class\nJoin\nCourse\nGroup\nAdd',
 	'launcher.mod.own': 'Own join requests',
@@ -101,6 +103,7 @@ const en = {
 	'nav.footer.auth.login': 'Login',
 	'nav.footer.auth.register': 'Register',
 	'nav.footer.auth.join': 'Join class',
+	'nav.footer.auth.profile': 'Your Profile',
 	'nav.footer.notes': 'Notes',
 	'nav.footer.notes.notes': 'Notes',
 	'nav.footer.calendar': 'Calendar',
@@ -676,6 +679,22 @@ Your current settings sadly won't be compatible withthe new version. But you can
 	'markdownEditor.views.edit': 'Edit',
 	'markdownEditor.views.preview': 'Preview',
 	'markdownpreview.noPreview': 'To show a preview some input is required',
+
+	'profile.logInRequired': 'For this function you first need to log in.',
+	'profile.logInRequired.link': 'Click here',
+	'profile.title': 'Your Profile',
+	'profile.classes': 'Classes',
+	'profile.classes.count': {
+		counts: {
+			default: '$count classes',
+			0: 'No classes',
+			1: 'One class',
+			2: 'Two classes'
+		}
+	},
+	'profile.registered': 'Registered on the $date',
+	'profile.links.reqs': 'Your Join-Requests',
+	'profile.links.settings': 'Your Profile Settings',
 
 	literal: '$literal'
 } as const satisfies I18nDict;
