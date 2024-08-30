@@ -45,7 +45,7 @@
 		<div class="flex justify-center">
 			<div class="flex flex-col items-center gap-2 px-3">
 				<div
-					class="flex aspect-square items-center justify-center rounded-full bg-zinc-300 p-5 shadow"
+					class="flex aspect-square items-center justify-center rounded-full bg-zinc-300 p-5 shadow dark:bg-zinc-600"
 				>
 					<Icon src={User} class="w-16" small />
 				</div>

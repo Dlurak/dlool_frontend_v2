@@ -20,6 +20,7 @@
 	import { settingsHeader } from '$lib/stores';
 
 	const homeworkTransparency = svocal('settings.homework.transparency');
+	const overdueAfterDays = svocal('settings.homework.overdue');
 	const homeworkPresets = svocal('settings.homeworkPresets');
 	const defaultSubjects = svocal('settings.homework.defaultSubject');
 	const smartSubjects = svocal('settings.homework.smart-subjects');
@@ -39,6 +40,7 @@
 
 	<RangeSettings
 		label={i('settings.assignments.transparency')}
+		description={i('settings.assignments.transparency.description')}
 		bind:value={$homeworkTransparency}
 		min={0}
 		max={1}
@@ -46,7 +48,20 @@
 		valueFmt={(num) => `${Math.round(num * 100)}%`}
 	/>
 
-	<BoolSetting label={i('settings.assignments.default.smart')} bind:value={$smartSubjects} />
+	<RangeSettings
+		label={i('settings.assignments.overdueAfterDays')}
+		description={i('settings.assignments.overdueAfterDays.description')}
+		bind:value={$overdueAfterDays}
+		min={0}
+		max={3}
+		step={1}
+	/>
+
+	<BoolSetting
+		label={i('settings.assignments.default.smart')}
+		description={i('settings.assignments.default.smart.description')}
+		bind:value={$smartSubjects}
+	/>
 
 	<div class="flex justify-between">
 		<span><Store store={i('settings.assignments.presets')} /></span>

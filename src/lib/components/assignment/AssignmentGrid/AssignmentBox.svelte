@@ -14,7 +14,7 @@
 	import { updateAssignment } from '$lib/dlool/assignments/update';
 	import Modal from '$lib/components/modal/Modal.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
-	import { currentCustomDate, sort } from '$lib/utils/dates/custom';
+	import { currentCustomDate, customDateToNormal } from '$lib/utils/dates/custom';
 	import { useAuth } from '$lib/utils/store/auth';
 	import { downloadUrl, asyncRequestAnimationFrame } from '$lib/utils/dom';
 
@@ -36,6 +36,7 @@
 	const state: Writable<State> = writable({ view: 'read' });
 
 	const transparencyOfOverdue = svocal('settings.homework.transparency');
+	const overdueAfterDays = svocal('settings.homework.overdue');
 
 	const queryStore = writable({ school, classes: [assignment.class.name] });
 	$: queryStore.update((props) => ({ ...props, school }));
@@ -43,7 +44,11 @@
 
 	const { isLoggedIn, isInClass } = useAuth({ query: queryStore });
 
-	$: isOverdue = sort(assignment.due, currentCustomDate()) === -1;
+	$: overdueInDays =
+		(customDateToNormal(assignment.due).getTime() -
+			customDateToNormal(currentCustomDate()).getTime()) /
+		(1000 * 60 * 60 * 24);
+	$: isOverdue = overdueInDays <= -1 * $overdueAfterDays;
 
 	const dispatch = createEventDispatcher<{
 		delete: null;

@@ -59,10 +59,14 @@
 	{#each { length: getDaysInMonth(displayMonth) } as _, ind}
 		{@const isTooEarly = isEarliestMonth && (earliest?.day ?? Infinity) >= ind + 2}
 		{@const isTooLate = isLatestMonth && (latest?.day ?? -Infinity) <= ind + 1}
+		{@const now = new Date()}
+		{@const todaysDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1)}
+		{@const displayDate = new Date(displayMonth.getFullYear(), displayMonth.getMonth(), ind)}
+		{@const isToday = displayDate.getTime() === todaysDate.getTime()}
 
 		<button
 			class="
-					flex aspect-square items-center justify-center rounded-sm p-1.5
+					flex aspect-square items-center justify-center rounded-sm p-0.5
 					hover:bg-zinc-200 focus:bg-zinc-200
 					disabled:opacity-50
 					dark:hover:bg-zinc-800 dark:focus:bg-zinc-800
@@ -77,7 +81,12 @@
 				});
 			}}
 		>
-			{ind + 1}
+			<div
+				class="flex aspect-square h-full w-full items-center justify-center rounded-full p-1"
+				class:bg-red-500={isToday}
+			>
+				{ind + 1}
+			</div>
 		</button>
 	{/each}
 </div>

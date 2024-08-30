@@ -565,12 +565,19 @@ const de = {
 	'settings.assignments': 'Hausaufgaben',
 	'settings.assignments.title': 'Hausaufgaben Einstellungen',
 	'settings.assignments.transparency': 'Transparenz überfälliger Hausaufgaben',
+	'settings.assignments.transparency.description':
+		'Überfällige Hausaufgaben werden gräulich, sodass sie  nicht zu sehr auffallen und Du dich auf die wichtigen konzentrieren kannst. Ein wert von 0% blendet die Hausaufgabe aus.',
+	'settings.assignments.overdueAfterDays': 'Tage bis es überfällig ist',
+	'settings.assignments.overdueAfterDays.description':
+		'Wieviele Tage nach dem Datum bis wann die Hausaufgabe fällig war soll sie als überfällig angesehen werden. Bei 0 wird die Hausaufgabe ausgegraut ab dem Tag an dem Du sie erledigt haben solltest, bei 1 ab dem Tag danach...',
 	'settings.assignments.presets': 'Voreinstellungen für neue Hausaufgaben',
 	'settings.assignments.presets.new': 'Neues hinzufügen',
 	'settings.assignments.default': 'Standard Fächer für Kurse',
 	'settings.assignments.default.class.placeholder': 'Klasse/Kurs',
 	'settings.assignments.default.class.subject': 'Fach',
 	'settings.assignments.default.smart': 'Automatische Facherkennung',
+	'settings.assignments.default.smart.description':
+		'Anhand des Kurs namens kann automatisch das Fach erkannt werden, somit reicht es nur den Kurs einzugeben. Falls Du in einem klassischem Klassenverband bist wird das Fach nicht automatisch ausgefüllt.',
 
 	'settings.icon': 'App-Icon',
 	'settings.description':

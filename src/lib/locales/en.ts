@@ -553,12 +553,19 @@ const en = {
 	'settings.assignments': 'Assignments',
 	'settings.assignments.title': 'Assignment-Settings',
 	'settings.assignments.transparency': 'transparency of overdue assignments',
+	'settings.assignments.transparency.description':
+		"Overdue homework can be slightly transparent so it isn't too present and you can focus on the important homework. A value of 0% hides the homework",
+	'settings.assignments.overdueAfterDays': 'Days until it is overdue',
+	'settings.assignments.overdueAfterDays.description':
+		'How many days after the day the homework was due should it be considered overdue. A value of 0 means that it is overdue on the date it is due to, a value of 1 means it is overdue one day after that...',
 	'settings.assignments.presets': 'Presets for new assignments',
 	'settings.assignments.presets.new': 'Add a new one',
 	'settings.assignments.default': 'Default subjects for courses',
 	'settings.assignments.default.class.placeholder': 'Course',
 	'settings.assignments.default.class.subject': 'Subject',
 	'settings.assignments.default.smart': 'Automatic subject detection',
+	'settings.assignments.default.smart.description':
+		'Based on the course name the subject can be detected (e.g. Math class has the subject Math).',
 
 	'settings.icon': 'App-Icon',
 	'settings.description':
