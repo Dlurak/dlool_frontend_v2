@@ -85,7 +85,7 @@
 		customDateToNormal(due) > customDateToNormal(from)
 	);
 
-	$: {
+	function setAutoDue() {
 		const dueInDays = safeDaysUntil({
 			subject,
 			timetable: $timetable,
@@ -96,6 +96,13 @@
 		date.setDate(date.getDate() + dueInDays);
 
 		due = normalToCustomDate(date);
+	}
+
+	$: {
+		$timetable;
+		from;
+		subject;
+		setAutoDue();
 	}
 
 	classInput.subscribe((cl) => {

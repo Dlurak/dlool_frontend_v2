@@ -57,8 +57,8 @@
 			<Icon src={Clock} class="h-4 w-4" micro />
 			<Store
 				store={i('assignments.assignment.date', {
-					start: stringify(assignment.from),
-					end: stringify(assignment.due)
+					start: stringify(assignment.from, { weekday: 'short' }),
+					end: stringify(assignment.due, { weekday: 'short' })
 				})}
 			/>
 		</div>
