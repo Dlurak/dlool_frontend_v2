@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { openedModals } from '$lib/stores';
 	import { enableScrolling } from '$lib/utils/dom/scroll';
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onDestroy } from 'svelte';
 	import { Icon, XMark } from 'svelte-hero-icons';
 
 	const dispatch = createEventDispatcher<{ open: null; close: null }>();
@@ -35,6 +35,11 @@
 		if (isOpen) open();
 		else close();
 	}
+
+	onDestroy(() => {
+		openedModals.dec();
+		enableScrolling(true);
+	});
 </script>
 
 <dialog
