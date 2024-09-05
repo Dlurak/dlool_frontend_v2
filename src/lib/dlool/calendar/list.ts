@@ -1,4 +1,7 @@
 import { getApibase } from '$lib/utils/api';
+import { normalToCustomDate } from '$lib/utils/dates/custom';
+import { convertCustomUTCToLocal } from '$lib/utils/dates/utc';
+import { removeKey } from '$lib/utils/objects/removeKey';
 import { objToQueryParams } from '$lib/utils/url/query';
 import { z } from 'zod';
 
@@ -71,7 +74,7 @@ const calendarScheme = z.object({
 	id: z.string()
 });
 
-export type Calendar = z.infer<typeof calendarScheme>;
+export type Calendar = Awaited<ReturnType<typeof listCalendar>>['data']['calendar'][number];
 
 const scheme = z.object({
 	status: z.literal('success'),
@@ -82,28 +85,55 @@ const scheme = z.object({
 	})
 });
 
-const specifcScheme = z.union([
-	z.object({
-		status: z.literal('success'),
-		message: z.literal('Successfully retrieved calendar event'),
-		data: calendarScheme
-	}),
-	z.object({
-		status: z.literal('error'),
-		error: z.literal('Calendar event not found')
-	})
-]);
+const positivSpecific = z.object({
+	status: z.literal('success'),
+	message: z.literal('Successfully retrieved calendar event'),
+	data: calendarScheme
+});
+
+const negativeSpecific = z.object({
+	status: z.literal('error'),
+	error: z.literal('Calendar event not found')
+});
 
 export async function listCalendar(props: CalendarProps) {
 	const url = `${getApibase()}/calendar/?${objToQueryParams({ ...props })}`;
 	const res = await fetch(url).then((r) => r.json());
 
-	return scheme.parse(res);
+	const parsed = scheme.parse(res);
+
+	return {
+		...parsed,
+		data: {
+			...parsed.data,
+			calendar: parsed.data.calendar.map((cal) => ({
+				...removeKey(cal, 'ending'),
+				beginning: normalToCustomDate(convertCustomUTCToLocal(cal.beginning)),
+				...(cal.ending && {
+					ending: normalToCustomDate(convertCustomUTCToLocal(cal.ending))
+				})
+			}))
+		}
+	};
 }
 
 export async function specificCalendar(id: string) {
 	const url = `${getApibase()}/calendar/${id}`;
 	const res = await fetch(url).then((r) => r.json());
 
-	return specifcScheme.parse(res);
+	try {
+		const parsed = positivSpecific.parse(res);
+		return {
+			...parsed,
+			data: {
+				...removeKey(parsed.data, 'ending'),
+				beginning: normalToCustomDate(convertCustomUTCToLocal(parsed.data.beginning)),
+				...(parsed.data.ending && {
+					ending: normalToCustomDate(convertCustomUTCToLocal(parsed.data.ending))
+				})
+			}
+		};
+	} catch {
+		return negativeSpecific.parse(res);
+	}
 }

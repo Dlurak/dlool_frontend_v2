@@ -17,6 +17,8 @@
 	import Updates from '$lib/components/utils/Updates.svelte';
 	import TagLabel from '$lib/components/tags/TagLabel.svelte';
 	import Markdown from '$lib/components/markdown/Markdown.svelte';
+	import { getSubjectIcon } from '$lib/utils/icons/subjectIcons';
+	import { smartSubject } from '$lib/utils/dlool/smartSubject';
 
 	export let data: PageData;
 
@@ -48,11 +50,35 @@
 			includeTime: true,
 			includeDate: false
 		})}
+		{@const subj = smartSubject(event.class.name)}
 
-		<div class="flex items-center justify-between border-b border-zinc-300 dark:border-zinc-700">
-			<h3 class=" leading-loose">{event.title}</h3>
+		<div
+			class="flex flex-wrap items-center justify-between border-b border-zinc-300 dark:border-zinc-700"
+		>
+			<h3 class="flex flex-wrap gap-1 leading-loose">
+				{#if subj}
+					<span class="flex items-center gap-1">
+						<Icon mini class="h-6 w-6" src={getSubjectIcon(subj)} />
+						{subj}
+					</span>
+					<div class="py-2">
+						<div class="h-full w-0.5 rounded-full bg-zinc-300 dark:bg-zinc-800" />
+					</div>
+				{/if}
+
+				{event.title}
+			</h3>
+
 			{#if $hasEditRights}
 				<div class="flex gap-2">
+					<QuickAction
+						icon={Pencil}
+						color="blue"
+						small
+						on:click={() => {
+							showEditModal = true;
+						}}
+					/>
 					<QuickAction
 						icon={Trash}
 						color="red"
@@ -74,14 +100,6 @@
 									return goto(`/calendar${$page.url.search}`);
 								})
 								.catch(sendDefaultErrorToast);
-						}}
-					/>
-					<QuickAction
-						icon={Pencil}
-						color="blue"
-						small
-						on:click={() => {
-							showEditModal = true;
 						}}
 					/>
 				</div>
