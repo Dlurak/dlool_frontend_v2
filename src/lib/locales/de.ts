@@ -236,6 +236,8 @@ const de = {
 	'assignments.update.success': 'Erfolgreich aktualisiert',
 	'assignments.pages.currently': 'Seite $current von $total',
 	'assignments.edit': 'Hausaufgabe bearbeiten',
+	'assignments.upcoming': 'Anstehend',
+	'assignments.overdue': 'Überfällig',
 
 	'calendar.month': {
 		counts: {

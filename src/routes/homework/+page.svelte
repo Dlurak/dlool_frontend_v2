@@ -11,11 +11,15 @@
 	import { createAssignment } from '$lib/dlool/assignments/create';
 	import { sendToast } from '$lib/components/layout/toasts';
 	import { safeMap } from '$lib/utils/null/safeMap';
-	import { serialize } from '$lib/utils/dates/custom';
+	import { currentCustomDate, customDateToNormal, serialize } from '$lib/utils/dates/custom';
 	import { wasSuccessfull } from '$lib/components/assignment/SideMenu/CreateAssignmentInner.svelte';
 	import MetaData from '$lib/components/utils/MetaData.svelte';
+	import { svocal } from '$lib/utils/store/svocal';
+	import { groupBy } from '$lib/utils/objects/group';
 
 	export let data: PageData;
+
+	const overdueAfterDays = svocal('settings.homework.overdue');
 </script>
 
 <MetaData title={i('title.homework')} />
@@ -77,9 +81,19 @@
 				<LoadingCircle />
 			{:then assignmentData}
 				{#if assignmentData}
+					{@const { assignments } = assignmentData.data}
+					{@const grouped = groupBy(assignments, (assignment) => {
+						const overdueMs =
+							customDateToNormal(assignment.due).getTime() -
+							customDateToNormal(currentCustomDate()).getTime();
+						const overdueInDays = overdueMs / (1000 * 60 * 60 * 24);
+						const isOverdue = overdueInDays <= -1 * $overdueAfterDays;
+						return isOverdue ? 'overdue' : 'upcoming';
+					})}
 					<div class="h-full w-full">
 						<AssignmentGrid
-							assignments={assignmentData.data.assignments}
+							assignments={grouped.upcoming}
+							overdueAssignments={grouped.overdue}
 							school={data.query.school}
 							on:delete={invalidateAll}
 							on:update={invalidateAll}

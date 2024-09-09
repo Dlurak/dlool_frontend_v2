@@ -2,6 +2,7 @@ import type { NavigationTarget } from '$lib/components/layout/navigation/types';
 import type { Timetable } from '$lib/components/settings/timetable/types';
 import type { OwnUserDetails } from '$lib/dlool/userInfo/own';
 import type { LocaleAbbr } from '$lib/i18n/i18n';
+import type { OrderKey, SortOrder } from '$lib/types/sorting';
 import { localstorage } from 'svocal';
 
 const sv = {
@@ -69,7 +70,12 @@ const sv = {
 	'settings.homework.smart-subjects': ['settings.homework.smart-subjects', () => true],
 	'settings.reduceMotion': ['settings.reduceMotion', () => false],
 	'settings.tagsInOverview': ['settings.tagsInOverview', () => true],
-	'dlool-version': ['dlool-version', () => '2']
+	'dlool-version': ['dlool-version', () => '2'],
+	'assignments.order.key': ['assignments.order.key', () => 'due' satisfies OrderKey as OrderKey],
+	'assignments.order.direction': [
+		'assignments.order.direction',
+		() => 'desc' satisfies SortOrder as SortOrder
+	]
 } as const satisfies Record<string, [string, () => unknown]>;
 
 type SvocalKey = keyof typeof sv;

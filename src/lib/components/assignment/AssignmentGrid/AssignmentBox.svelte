@@ -14,12 +14,12 @@
 	import { updateAssignment } from '$lib/dlool/assignments/update';
 	import Modal from '$lib/components/modal/Modal.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
-	import { currentCustomDate, customDateToNormal } from '$lib/utils/dates/custom';
 	import { useAuth } from '$lib/utils/store/auth';
 	import { downloadUrl, asyncRequestAnimationFrame } from '$lib/utils/dom';
 
 	export let assignment: Assignment;
 	export let school: string;
+	export let overdue = false;
 
 	let element: HTMLDivElement | undefined = undefined;
 	let capturing = false;
@@ -36,7 +36,6 @@
 	const state: Writable<State> = writable({ view: 'read' });
 
 	const transparencyOfOverdue = svocal('settings.homework.transparency');
-	const overdueAfterDays = svocal('settings.homework.overdue');
 
 	const queryStore = writable({ school, classes: [assignment.class.name] });
 	$: queryStore.update((props) => ({ ...props, school }));
@@ -44,22 +43,16 @@
 
 	const { isLoggedIn, isInClass } = useAuth({ query: queryStore });
 
-	$: overdueInDays =
-		(customDateToNormal(assignment.due).getTime() -
-			customDateToNormal(currentCustomDate()).getTime()) /
-		(1000 * 60 * 60 * 24);
-	$: isOverdue = overdueInDays <= -1 * $overdueAfterDays;
-
 	const dispatch = createEventDispatcher<{
 		delete: null;
 		update: null;
 	}>();
 </script>
 
-{#if !(isOverdue && $transparencyOfOverdue === 0)}
+{#if !(overdue && $transparencyOfOverdue === 0)}
 	<div
 		style:--opac={$transparencyOfOverdue}
-		class:opacity-[--opac]={isOverdue}
+		class:opacity-[--opac]={overdue}
 		class="flex flex-col gap-2 rounded px-2 py-1 outline outline-2 outline-zinc-300 dark:outline-zinc-700"
 	>
 		<ReadAssignmentBox {assignment} bind:ele={element} {capturing} />

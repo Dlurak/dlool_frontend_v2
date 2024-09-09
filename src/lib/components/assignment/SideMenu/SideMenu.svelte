@@ -9,8 +9,8 @@
 	import { createEventDispatcher } from 'svelte';
 	import type { SortOrder, OrderKey } from '$lib/types/sorting';
 
-	let direction: SortOrder = 'desc';
-	let orderKey: OrderKey = 'due';
+	const orderKey = svocal('assignments.order.key');
+	const direction = svocal('assignments.order.direction');
 
 	type FilterQuery = {
 		direction: SortOrder;
@@ -53,8 +53,8 @@
 
 <div class="flex flex-col gap-4">
 	<Sorting
-		bind:direction
-		bind:orderKey
+		bind:direction={$direction}
+		bind:orderKey={$orderKey}
 		on:change={({ detail }) => dispatch('change', { ...query, ...detail })}
 	/>
 	<div>
@@ -63,8 +63,8 @@
 			on:filterApply={({ detail }) =>
 				dispatch('change', {
 					...detail,
-					direction,
-					orderKey,
+					direction: $direction,
+					orderKey: $orderKey,
 					limit: query.limit,
 					offset: query.offset
 				})}

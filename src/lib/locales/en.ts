@@ -229,6 +229,8 @@ const en = {
 	'assignments.update.success': 'Successfully updated',
 	'assignments.pages.currently': 'Page $current of $total',
 	'assignments.edit': 'Edit assignment',
+	'assignments.upcoming': 'Upcoming',
+	'assignments.overdue': 'Overdue',
 
 	'calendar.month': {
 		counts: {
