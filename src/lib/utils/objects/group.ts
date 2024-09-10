@@ -9,7 +9,10 @@ type Key = string | number | symbol;
  * @param {(item: T) => K} keySelector A function that extracts the key for grouping from each element.
  * @returns {Record<K, T[]>} An object where keys are derived from elements and values are arrays of elements with the same key.
  */
-export function groupBy<T, K extends Key>(array: T[], keySelector: (item: T) => K): Record<K, T[]> {
+export function groupBy<T, K extends Key>(
+	array: T[],
+	keySelector: (item: T) => K
+): Partial<Record<K, T[]>> {
 	return array.reduce(
 		(result, item) => {
 			const key = keySelector(item);

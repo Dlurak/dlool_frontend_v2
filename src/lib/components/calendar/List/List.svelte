@@ -1,3 +1,11 @@
+<script lang="ts" context="module">
+	function groupEvents(events: Calendar[]) {
+		const grouped = groupBy(events, ({ beginning }) => stringify(beginning));
+		const values = Object.values(grouped);
+		return values.map((x) => x!);
+	}
+</script>
+
 <script lang="ts">
 	import Store from '$lib/components/utils/Store.svelte';
 	import type { Calendar } from '$lib/dlool/calendar/list';
@@ -7,7 +15,8 @@
 	import CalEventListBox from './CalEventListBox.svelte';
 
 	export let events: Calendar[];
-	$: grouped = Object.values(groupBy(events, ({ beginning }) => stringify(beginning)));
+
+	$: grouped = groupEvents(events);
 </script>
 
 {#each grouped as day, index}

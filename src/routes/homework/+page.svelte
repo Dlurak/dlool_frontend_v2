@@ -92,8 +92,8 @@
 					})}
 					<div class="h-full w-full">
 						<AssignmentGrid
-							assignments={grouped.upcoming}
-							overdueAssignments={grouped.overdue}
+							assignments={grouped.upcoming ?? []}
+							overdueAssignments={grouped.overdue ?? []}
 							school={data.query.school}
 							on:delete={invalidateAll}
 							on:update={invalidateAll}
