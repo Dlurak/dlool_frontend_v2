@@ -43,7 +43,7 @@ const de = {
 	'launcher.mod.list': 'Fremde Anfragen',
 	'launcher.mod.list.terms': 'Moderation\nFremde\nAnfragen',
 	'launcher.mod.list.desc':
-		'Hier kannst Du Anfragen, Deinen Klassen beizutreten, anderer moderiereren',
+		'Hier kannst Du Anfragen von Leuten, die Deinen Klassen beitreten wollen, moderieren',
 	'launcher.notes': 'Notizen',
 	'launcher.notes.terms': 'Notizbuch',
 	'launcher.calendar': 'Kalender',
@@ -71,7 +71,7 @@ const de = {
 	'register.joinLink': 'Hier kannst du einer Klasse beitreten!',
 	'register.nametaken.desc':
 		'Aber Du kannst noch immer den selben Anzeigenamen und das selbe Passwort nutzen',
-	'register.success': 'Erfolgreich registriert (ﾉ◕ヮ◕)ﾉ',
+	'register.success': 'Erfolgreich registriert (ﾉ◕ヮ◕)ﾉ Jetzt nur noch CoC runterladen',
 
 	'login.login': 'Einloggen',
 
@@ -269,13 +269,13 @@ const de = {
 	'calendar.weekday.abbr': {
 		counts: {
 			default: '',
-			0: 'S',
-			1: 'M',
-			2: 'D',
-			3: 'M',
-			4: 'D',
-			5: 'F',
-			6: 'S'
+			0: 'So',
+			1: 'Mo',
+			2: 'Di',
+			3: 'Mi',
+			4: 'Do',
+			5: 'Fr',
+			6: 'Sa'
 		}
 	},
 	'calendar.select': 'Wähle ein Datum aus',
@@ -284,9 +284,9 @@ const de = {
 	'note.title.placeholder': 'Titel',
 	'note.summary': 'Zusammenfassung',
 	'note.summary.placeholder': 'Zusammenfassung',
-	'notes.nothing': 'Hier gibt es nichts zu sehen :]',
+	'notes.nothing': 'You got jebaited:]',
 	'notes.delete.ok': 'Löschen',
-	'notes.delete.desc': 'Willst du diese Notiz wirklich löschnen?',
+	'notes.delete.desc': 'Willst du diese Notiz wirklich löschen?',
 	'note.delete.success': 'Erfolgreich gelöscht',
 	'note.priority': 'Priorität',
 	'note.priority.Critical': 'Kritisch',
@@ -318,8 +318,8 @@ const de = {
 		counts: {
 			default: 'Vor $diff Minuten von $name erstellt',
 			1: 'Vor einer Minute von $name erstellt',
-			2: 'Vor zwei Minute von $name erstellt',
-			3: 'Vor drei Minute von $name erstellt'
+			2: 'Vor zwei Minuten von $name erstellt',
+			3: 'Vor drei Minuten von $name erstellt'
 		}
 	},
 	'time.ago.created.hours': {
