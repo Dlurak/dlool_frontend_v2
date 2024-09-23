@@ -1,6 +1,6 @@
 # Dlool
 
-(English README)[./README.md]
+[English README](./README.md)
 
 ## Ein digitales und kollaboratives Hausaufgabenheft
 
@@ -21,14 +21,14 @@ Klassische Hausaufgabenhefte haben eine Menge Probleme. Hier sind einige Problem
 
 ---
 
-## Feature
+## Features
 
-Dlool bietet eine Vielzahl von Funktionen, um Ihre Hausaufgabenverwaltung zu verbessern.
+Dlool bietet eine Vielzahl von Funktionen, um Deine Hausaufgabenverwaltung zu erleichtern.
 
 - **Kollaborativ**: Alle Einträge aus einer Klasse sind für alle verfügbar.
 - **Strukturiert**: Dlool hat ein strukturiertes Eingabesystem. Es ist einfach zu bedienen, aber auch sehr leistungsfähig.
-- *(***Exportierbar**: Du kannst Deine Daten nach ical oder todo.txt exportieren,
-  mit [diesem] (https://github.com/Dlurak/dlool-scriptable/blob/main/reminders/README.md) Skript kannst Du Dlool auch mit Apple Reminders synchronisieren.)* **(noch nicht implementiert)**
+- *(**Exportierbar**: Du kannst Deine Daten nach ical oder todo.txt exportieren,
+  mit [diesem](https://github.com/Dlurak/dlool-scriptable/blob/main/reminders/README.md) Skript kannst Du Dlool auch mit Apple Reminders synchronisieren.)* **(noch nicht implementiert)**
 - **Plattformübergreifend**: Zugriff auf Dlool von allen Geräten mit einem Browser.
 - **Dunkelmodus**: Dlool passt sich automatisch an Ihre Systemeinstellungen an. Dlool respektiert auch reduzierte Bewegungseinstellungen.
 - **REST-API**: Es gibt eine offene REST-API, um eigene Skripte zu schreiben.
@@ -48,7 +48,7 @@ Dlool bietet eine Vielzahl von Funktionen, um Ihre Hausaufgabenverwaltung zu ver
 
 ### Frontend
 
-Dlool ist eine progressive Webanwendung und wird von den folgenden Technologien unterstützt:
+Dlool ist eine progressive Webanwendung und baut auf den folgenden Technologien:
 
 - [SvelteKit](https://kit.svelte.dev/)
 - [TailwindCSS](https://tailwindcss.com/)
@@ -56,7 +56,7 @@ Dlool ist eine progressive Webanwendung und wird von den folgenden Technologien 
 
 ### [Backend](https://github.com/Dlurak/dlool_backend_v2)
 
-Das [Backend](https://github.com/Dlurak/dlool_backend_v2) von Dlool wird von den folgenden Technologien unterstützt:
+Das [Backend](https://github.com/Dlurak/dlool_backend_v2) von Dlool baut auf den folgenden Technologien:
 
 - [Bun](https://bun.sh)
 - [Elysia](https://elysiajs.com/)
@@ -69,11 +69,11 @@ Das [Backend](https://github.com/Dlurak/dlool_backend_v2) von Dlool wird von den
 
 Der einfachste Weg, Dlool auszuprobieren, ist ein Besuch auf [der offiziellen Website](https://dlool.me/).
 
-Wenn Du Dlool lokal ausführen möchten, z.B. für die Entwicklung, kannst Du den Anweisungen unten folgen. ([[#Lokal ausführen]]).
+Wenn Du Dlool lokal ausführen möchten, z.B. für die Entwicklung, kannst Du [den Anweisungen](#Lokal-ausführen) unten folgen.
 
-Die Hausaufgaben sind für jeden öffentlich sichtbar, dies ist beabsichtigt, um Mobbing vorzubeugen. Wenn Du aber Hausaufgaben erstellen, aktualisieren oder löschen willst, brauchst Du einen Account für eine bestimmte Klasse. Du kannst einen Account [hier](https://dlool.me/register) erstellen. Es kann vorkommen, dass jemand aus Deiner Klasse bereits Dlool benutzt, dann muss er Deine Anfrage, sich für die Klasse anzumelden, akzeptieren. Dies kannst Du tun, indem Du [diese Seite](https://www.dlool.me/moderation/list) aufrufst und auf die Schaltfläche „Akzeptieren“ klickst.
+Die Hausaufgaben sind für jeden öffentlich sichtbar, dies ist beabsichtigt, um Mobbing vorzubeugen. Wenn Du aber Hausaufgaben erstellen, aktualisieren oder löschen willst, brauchst Du einen Account für eine bestimmte Klasse. Du kannst einen Account [hier](https://dlool.me/register) erstellen. Es kann vorkommen, dass jemand aus Deiner Klasse bereits Dlool benutzt, dann muss er Deine Anfrage, sich für die Klasse anzumelden, akzeptieren. Dies kann man tun, indem man [diese Seite](https://www.dlool.me/moderation/list) besucht und auf die Schaltfläche „Akzeptieren“ klickt.
 
-Sobald Du Dein Konto hast, kannst Du Dich [hier](https://dlool.me/login) anmelden und eine Hausaufgabe [hier](https://dlool.me/homework/) erstellen.
+Sobald Du Dein Konto hast, kannst Du Dich [hier](https://dlool.me/login) einloggen und eine Hausaufgabe [hier](https://dlool.me/homework/) erstellen.
 
 Wenn Du Fragen hast, einen Fehler findest oder eine Idee für eine Funktion hast, kannst Du ein [Issue](https://github.com/Dlurak/dlool_frontend_v2/issues) erstellen.
 
