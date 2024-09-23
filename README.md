@@ -1,6 +1,6 @@
-# Dlool (English)
+# Dlool
 
-[Deutsche README](#Deutsch)
+[Deutsche README](./README.de.md)
 
 ## A digital and collaborative homework book
 
