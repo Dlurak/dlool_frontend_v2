@@ -1,4 +1,7 @@
 # Dlool
+
+(English README)[./README.md]
+
 ## Ein digitales und kollaboratives Hausaufgabenheft
 
 Dlool ist ein digitales und kollaboratives Hausaufgabenheft.  
