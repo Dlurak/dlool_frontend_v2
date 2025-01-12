@@ -1,4 +1,4 @@
-import { get, type Readable } from 'svelte/store';
+import { get, writable, type Readable } from 'svelte/store';
 import {
 	DeviceTablet,
 	Calendar,
@@ -6,7 +6,8 @@ import {
 	PaintBrush,
 	User,
 	BookOpen,
-	type IconSource
+	type IconSource,
+    Check
 } from 'svelte-hero-icons';
 import { i } from '$lib/i18n/store';
 import { isApple } from '$lib/stores';
@@ -57,6 +58,13 @@ export const settings: Setting[] = [
 		uri: '/homework',
 		label: i('settings.assignments'),
 		icon: BookOpen
+	},
+	{ type: "hr" },
+	{
+		type: 'link',
+		uri: '/todo',
+		label: writable("Todo-Integration"), // TODO: i18n
+		icon: Check
 	},
 	{
 		type: 'hr',

@@ -131,6 +131,7 @@ const en = {
 	'title.settings': 'Settings',
 	'title.settings.profile': 'Profile settings',
 	'title.settings.general': 'General settings',
+	'title.settings.todo': 'ToDo Syncing',
 	'title.holiday': 'Holiday',
 
 	'home.subtitle': 'Next generation homework for your entire class',
@@ -704,6 +705,11 @@ Your current settings sadly won't be compatible withthe new version. But you can
 	'profile.registered': 'Registered on the $date',
 	'profile.links.reqs': 'Your Join-Requests',
 	'profile.links.settings': 'Your Profile Settings',
+
+	'todoist.enable': "Activate todoist syncing",
+	'todoist.createListButton': "Create a new list",
+	'todoist.createList': "Create a todoist list",
+	'todoist.listCreated': "Todist list created",
 
 	literal: '$literal'
 } as const satisfies I18nDict;

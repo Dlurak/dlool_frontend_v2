@@ -134,6 +134,7 @@ const de = {
 	'title.settings': 'Einstellungen',
 	'title.settings.profile': 'Profil Einstellungen',
 	'title.settings.general': 'Allgemeine Einstellungen',
+	'title.settings.todo': 'ToDo Syncrhonisation',
 	'title.holiday': 'Ferien',
 
 	'home.subtitle': 'Das Hausaufgabenheft der nächsten Generation für Deine ganze Klasse',
@@ -716,6 +717,11 @@ Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibe
 	'profile.registered': 'Am $date registriert',
 	'profile.links.reqs': 'Deine Beitritts-Anfragen',
 	'profile.links.settings': 'Deine Profil Einstellungen',
+
+	'todoist.enable': "Aktiviere todoist Synchronisation",
+	'todoist.createListButton': "Erstelle eine neue Todoist Liste",
+	'todoist.createList': "Erstelle eine Todoist Liste",
+	'todoist.listCreated': "Todist Liste erstellt",
 
 	literal: '$literal'
 } as const satisfies I18nDict;

@@ -3,6 +3,7 @@
 	import LoadingCircle from '$lib/components/utils/LoadingCircle.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { i } from '$lib/i18n/store';
+	import { Icon, ArrowUpTray } from 'svelte-hero-icons';
 	import type { PageData } from './$types';
 	import Panes from '$lib/components/panes/Panes.svelte';
 	import SideMenu from '$lib/components/assignment/SideMenu/SideMenu.svelte';
@@ -16,10 +17,12 @@
 	import MetaData from '$lib/components/utils/MetaData.svelte';
 	import { svocal } from '$lib/utils/store/svocal';
 	import { groupBy } from '$lib/utils/objects/group';
+	import { navHeight } from '$lib/stores';
 
 	export let data: PageData;
 
 	const overdueAfterDays = svocal('settings.homework.overdue');
+	const todoistEnabled = svocal('settings.todo.todoist.enabled');
 </script>
 
 <MetaData title={i('title.homework')} />
@@ -112,3 +115,16 @@
 		{/if}
 	</div>
 </Panes>
+
+{#if $todoistEnabled}
+	<button
+		style:--nav-h={`${$navHeight}px`}
+		class="
+			fixed bottom-[calc(0.5rem+var(--nav-h))] right-2 z-10 h-12 w-12 rounded-full
+			bg-neutral-400 bg-opacity-50 px-4 py-2 shadow-md backdrop-blur-lg active:scale-95 sm:bottom-2
+			dark:bg-neutral-800 dark:bg-opacity-50 sm:dark:bg-neutral-900 sm:dark:bg-opacity-50
+		"
+	>
+		<Icon src={ArrowUpTray} />
+	</button>
+{/if}
