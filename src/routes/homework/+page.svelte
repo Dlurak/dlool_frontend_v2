@@ -18,6 +18,11 @@
 	import { svocal } from '$lib/utils/store/svocal';
 	import { groupBy } from '$lib/utils/objects/group';
 	import { navHeight } from '$lib/stores';
+	import { createSection } from '$lib/utils/todoist/createNewSection';
+	import { createNewTask } from '$lib/utils/todoist/createNewTask';
+	import { internalSubjectRepresentation } from '$lib/utils/subjects/internal';
+	import { mapObject } from '$lib/utils/objects/map';
+	import { self } from '$lib/utils/utils';
 
 	export let data: PageData;
 
@@ -116,15 +121,38 @@
 	</div>
 </Panes>
 
-{#if $todoistEnabled}
-	<button
-		style:--nav-h={`${$navHeight}px`}
-		class="
-			fixed bottom-[calc(0.5rem+var(--nav-h))] right-2 z-10 h-12 w-12 rounded-full
-			bg-neutral-400 bg-opacity-50 px-4 py-2 shadow-md backdrop-blur-lg active:scale-95 sm:bottom-2
-			dark:bg-neutral-800 dark:bg-opacity-50 sm:dark:bg-neutral-900 sm:dark:bg-opacity-50
-		"
-	>
-		<Icon src={ArrowUpTray} />
-	</button>
+{#if $todoistEnabled && data.data}
+	{#await data.data then assignmentData}
+		{#if assignmentData}
+			<button
+				on:click={async () => {
+					const grouped = groupBy(assignmentData.data.assignments, ({ subject }) =>
+						internalSubjectRepresentation(subject)
+					);
+					const mapped = mapObject(grouped, self, (group) => group ?? []);
+					const parsedResponses = await Promise.all(
+						Object.values(mapped).map(async (group) => {
+							const { id: sectionId } = await createSection(group[0].subject);
+							return group.map(({ description, id, due, updates }) => {
+								return createNewTask({
+									id: `${id}-${updates}`,
+									due,
+									sectionId,
+									content: description
+								});
+							});
+						})
+					).then((a) => Promise.all(a.flat()));
+				}}
+				style:--nav-h={`${$navHeight}px`}
+				class="
+					fixed bottom-[calc(0.5rem+var(--nav-h))] right-2 z-10 h-12 w-12 rounded-full
+					bg-neutral-400 bg-opacity-50 px-4 py-2 shadow-md backdrop-blur-lg active:scale-95 sm:bottom-2
+					dark:bg-neutral-800 dark:bg-opacity-50 sm:dark:bg-neutral-900 sm:dark:bg-opacity-50
+				"
+			>
+				<Icon src={ArrowUpTray} />
+			</button>
+		{/if}
+	{/await}
 {/if}

@@ -134,7 +134,7 @@ const de = {
 	'title.settings': 'Einstellungen',
 	'title.settings.profile': 'Profil Einstellungen',
 	'title.settings.general': 'Allgemeine Einstellungen',
-	'title.settings.todo': 'ToDo Syncrhonisation',
+	'title.settings.todo': 'ToDo Synchronisation',
 	'title.holiday': 'Ferien',
 
 	'home.subtitle': 'Das Hausaufgabenheft der nächsten Generation für Deine ganze Klasse',
