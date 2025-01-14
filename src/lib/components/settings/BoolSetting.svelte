@@ -27,7 +27,7 @@
 			{/if}
 		</span>
 
-		<Switch bind:checked={value} />
+		<Switch bind:checked={value} on:activate on:inactivate on:toggle />
 	</div>
 	{#if description && showDescription}
 		<div transition:slide={{ duration: $animationLength }} class="text-gray-500 dark:text-gray-400">

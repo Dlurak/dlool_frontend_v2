@@ -70,6 +70,17 @@ const sv = {
 	'settings.homework.smart-subjects': ['settings.homework.smart-subjects', () => true],
 	'settings.reduceMotion': ['settings.reduceMotion', () => false],
 	'settings.tagsInOverview': ['settings.tagsInOverview', () => true],
+	'settings.todo.todoist.code': ['settings.todo.todoist.code', () => null as string | null],
+	'settings.todo.todoist.enabled': ['settings.todo.todoist.enabled', () => false],
+	'settings.todo.todoist.listId': ['settings.todo.todoist.listId', () => null as string | null],
+	'settings.todo.todoist.projectIds': [
+		'settings.todo.todoist.projectIds',
+		() => ({}) as Record<string, string>
+	],
+	'settings.todo.todoist.taskIds': [
+		'settings.todo.todoist.taskIds',
+		() => ({}) as Record<string, string>
+	],
 	'dlool-version': ['dlool-version', () => '2'],
 	'assignments.order.key': ['assignments.order.key', () => 'due' satisfies OrderKey as OrderKey],
 	'assignments.order.direction': [
