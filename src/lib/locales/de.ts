@@ -722,6 +722,14 @@ Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibe
 	'todoist.createListButton': "Erstelle eine neue Todoist Liste",
 	'todoist.createList': "Erstelle eine Todoist Liste",
 	'todoist.listCreated': "Todist Liste erstellt",
+	'todoist.tasksCreated': {
+		counts: {
+			default: "Aufgaben zum Todoist Projekt hinzugefügt",
+			1: "Eine Aufgabe zum Todoist Projekt hinzugefügt",
+			2: "Zwei Aufgabe zum Todoist Projekt hinzugefügt",
+			25: "25 Aufgabe zum Todoist Projekt hinzugefügt",
+		}
+	},
 
 	literal: '$literal'
 } as const satisfies I18nDict;

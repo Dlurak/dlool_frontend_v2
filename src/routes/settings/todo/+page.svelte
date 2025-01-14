@@ -18,6 +18,7 @@
 	const todoistEnabled = svocal('settings.todo.todoist.enabled');
 	const todoistListId = svocal('settings.todo.todoist.listId');
 	const todoistSections = svocal('settings.todo.todoist.projectIds')
+	const todoistTasks = svocal('settings.todo.todoist.taskIds')
 
 	const todoistCodeUrl = derived(page, ({ url }) => url.searchParams.get('todoist'));
 	todoistCodeUrl.subscribe((code) => {
@@ -87,6 +88,7 @@
 				activationRunning = false;
 				todoistListId.set(id);
 				todoistSections.set({});
+				todoistTasks.set({});
 			}}
 		/>
 	</div>

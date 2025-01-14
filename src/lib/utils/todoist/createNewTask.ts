@@ -5,10 +5,11 @@ import { get } from 'svelte/store';
 import { z } from 'zod';
 
 const todoistToken = svocal('settings.todo.todoist.code');
+const todoisttaskIds = svocal('settings.todo.todoist.taskIds');
 
 const fmtDayMonth = (dayOrMonth: number) => dayOrMonth.toString().padStart(2, '0');
 
-const scheme = z.object({
+const newScheme = z.object({
 	creator_id: z.string(),
 	created_at: z.string(),
 	assignee_id: z.nullable(z.unknown()),
@@ -29,25 +30,68 @@ const scheme = z.object({
 	url: z.string().url()
 });
 
+const retrieveScheme = z.object({
+	id: z.string(),
+	content: z.string(),
+	due: z.object({
+		date: z.string()
+	})
+});
+
 type TaskProps = {
 	content: string;
 	sectionId: string;
-	id: string;
+	dloolId: string;
 	due: CustomDate;
 };
 
-export async function createNewTask({ content, sectionId, id: dloolId, due }: TaskProps) {
-	const res = await fetch('https://api.todoist.com/rest/v2/tasks', {
+export async function createNewTask({ content, sectionId, dloolId, due }: TaskProps): Promise<{
+	id: string;
+}> {
+	const todoistId = get(todoisttaskIds)[dloolId];
+	const formattedDate = `${due.year}-${fmtDayMonth(due.month)}-${fmtDayMonth(due.day)}`;
+	if (!todoistId) {
+		return await fetch('https://api.todoist.com/rest/v2/tasks', {
+			method: Method.POST,
+			headers: { Authorization: `Bearer ${get(todoistToken)}`, 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				content,
+				section_id: sectionId,
+				due_string: formattedDate
+			})
+		})
+			.then((r) => r.json())
+			.then(newScheme.parse);
+	}
+
+	const alreadyCreated = await fetch(`https://api.todoist.com/rest/v2/tasks/${todoistId}`, {
+		method: Method.GET,
+		headers: { Authorization: `Bearer ${get(todoistToken)}` }
+	})
+		.then((r) => r.json())
+		.then(retrieveScheme.parse);
+
+	if (typeof alreadyCreated === 'string') {
+		return { id: alreadyCreated };
+	}
+
+	if (content === alreadyCreated.content && formattedDate === alreadyCreated.due.date) {
+		return { id: todoistId };
+	}
+
+	const updatedTask = await fetch(`https://api.todoist.com/rest/v2/tasks/${todoistId}`, {
 		method: Method.POST,
-		headers: { Authorization: `Bearer ${get(todoistToken)}`, 'Content-Type': 'application/json' },
+		headers: {
+			Authorization: `Bearer ${get(todoistToken)}`,
+			'Content-Type': 'application/json'
+		},
 		body: JSON.stringify({
 			content,
-			description: dloolId,
-			section_id: sectionId,
-			due_string: `${due.year}-${fmtDayMonth(due.month)}-${fmtDayMonth(due.day)}`
+			due_string: formattedDate
 		})
-	}).then((r) => r.json());
+	})
+		.then((r) => r.json())
+		.then(z.object({ id: z.string() }).parse);
 
-	const parsed = scheme.parse(res);
-	return parsed
+	return updatedTask;
 }

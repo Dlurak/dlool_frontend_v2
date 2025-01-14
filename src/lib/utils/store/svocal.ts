@@ -77,6 +77,10 @@ const sv = {
 		'settings.todo.todoist.projectIds',
 		() => ({}) as Record<string, string>
 	],
+	'settings.todo.todoist.taskIds': [
+		'settings.todo.todoist.taskIds',
+		() => ({}) as Record<string, string>
+	],
 	'dlool-version': ['dlool-version', () => '2'],
 	'assignments.order.key': ['assignments.order.key', () => 'due' satisfies OrderKey as OrderKey],
 	'assignments.order.direction': [

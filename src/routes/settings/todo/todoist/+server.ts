@@ -6,8 +6,9 @@ import { z } from 'zod';
 export const GET: RequestHandler = async ({ url: { searchParams }, fetch }) => {
 	const code = searchParams.get('code');
 	const state = searchParams.get('state');
+	const passedUrl = searchParams.get('redirect');
 
-	if (state !== PUBLIC_TODOIST_SECRET || !code) {
+	if (state !== PUBLIC_TODOIST_SECRET || !code || !passedUrl) {
 		redirect(302, '/settings/todo?error=true');
 	}
 
@@ -15,10 +16,10 @@ export const GET: RequestHandler = async ({ url: { searchParams }, fetch }) => {
 	url.searchParams.append('client_id', PUBLIC_TODOIST_CLIENT_ID);
 	url.searchParams.append('client_secret', TODOIST_CLIENT_SECRET);
 	url.searchParams.append('code', code);
-	url.searchParams.append('redirect_uri', 'http://localhost:5173/settings/todo/todoist');
+	url.searchParams.append('redirect_uri', `http://${passedUrl}/settings/todo/todoist`);
 	const res = await fetch(url, { method: 'POST' })
 		.then((res) => res.json())
-		.then((res) => z.object({ access_token: z.string().min(1) }).parse(res));
+		.then(z.object({ access_token: z.string().min(1) }).parse);
 
 	redirect(302, `/settings/todo?todoist=${res.access_token}`);
 };

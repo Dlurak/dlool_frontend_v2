@@ -708,8 +708,9 @@ Your current settings sadly won't be compatible withthe new version. But you can
 
 	'todoist.enable': "Activate todoist syncing",
 	'todoist.createListButton': "Create a new list",
-	'todoist.createList': "Create a todoist list",
+	'todoist.createList': "Create a Todoist list",
 	'todoist.listCreated': "Todist list created",
+	'todoist.tasksCreated': "Added tasks to the Todoist project",
 
 	literal: '$literal'
 } as const satisfies I18nDict;
