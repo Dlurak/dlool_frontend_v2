@@ -16,7 +16,7 @@ Classical homework books have a lot of problems. These are some of them and how 
 | Entries are not very structured                                                   | Dlool has a structured system for entering homework.                                                                                                                                                                                                       |
 | If you lose your homework book, all your data is gone forever                     | Dlool is digital, you can't lose it.                                                                                                                                                                                                                       |
 | Every year you need a new homework book                                           | Dlool can be used for multiple years.                                                                                                                                                                                                                      |
-| Traditional homework books lock you into a specific brand                         | Dlool is free and open source. *(With Dlool you can export your data to ical or todo.txt. Also, there is [a way](https://github.com/Dlurak/dlool-scriptable/blob/main/reminders/README.md) to sync Dlool with Apple Reminders.)* **(not yet implemented)** |
+| Traditional homework books lock you into a specific brand                         | Dlool is free and open source. _(With Dlool you can export your data to ical or todo.txt. Also, there is [a way](https://github.com/Dlurak/dlool-scriptable/blob/main/reminders/README.md) to sync Dlool with Apple Reminders.)_ **(not yet implemented)** |
 | Homework, tests and notes are not separate                                        | Dlool offers a distinct system for homework, tests, and notes. Everything is separated but still in one place and easy to find.                                                                                                                            |
 
 ---
@@ -27,8 +27,8 @@ Dlool offers a lot of features to enhance your homework management experience.
 
 - **Collaborative**: All entries from one class are available for everyone.
 - **Structured**: Dlool has a structured entry system. It is easy to use but also very powerful.
-- *(**Exportable**: You can export your data to ical or todo.txt,
-  using [this](https://github.com/Dlurak/dlool-scriptable/blob/main/reminders/README.md) script, you can also sync Dlool with Apple Reminders.)* **(not yet implemented)**
+- _(**Exportable**: You can export your data to ical or todo.txt,
+  using [this](https://github.com/Dlurak/dlool-scriptable/blob/main/reminders/README.md) script, you can also sync Dlool with Apple Reminders.)_ **(not yet implemented)**
 - **Cross-Platform**: Access Dlool on all devices with a browser.
 - **Dark mode**: Dlool automatically adapts to your system settings. Dlool also respects reduced motion settings.
 - **REST API**: There is an open REST-API to write own scripts.

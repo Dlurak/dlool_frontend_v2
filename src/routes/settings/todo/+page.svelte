@@ -6,7 +6,7 @@
 	import { page } from '$app/stores';
 	import { svocal } from '$lib/utils/store/svocal';
 	import BoolSetting from '$lib/components/settings/BoolSetting.svelte';
-	import { derived, writable } from 'svelte/store';
+	import { derived } from 'svelte/store';
 	import { browser } from '$app/environment';
 	import Modal from '$lib/components/modal/Modal.svelte';
 	import TodoIstModal from '$lib/components/settings/todo/todoist/Modal.svelte';
@@ -17,8 +17,8 @@
 	const todoistCode = svocal('settings.todo.todoist.code');
 	const todoistEnabled = svocal('settings.todo.todoist.enabled');
 	const todoistListId = svocal('settings.todo.todoist.listId');
-	const todoistSections = svocal('settings.todo.todoist.projectIds')
-	const todoistTasks = svocal('settings.todo.todoist.taskIds')
+	const todoistSections = svocal('settings.todo.todoist.projectIds');
+	const todoistTasks = svocal('settings.todo.todoist.taskIds');
 
 	const todoistCodeUrl = derived(page, ({ url }) => url.searchParams.get('todoist'));
 	todoistCodeUrl.subscribe((code) => {

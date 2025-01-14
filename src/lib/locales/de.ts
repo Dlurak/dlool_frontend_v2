@@ -718,16 +718,16 @@ Deine bisherigen Einstellungen sind leider nicht mit der neuen Version kompatibe
 	'profile.links.reqs': 'Deine Beitritts-Anfragen',
 	'profile.links.settings': 'Deine Profil Einstellungen',
 
-	'todoist.enable': "Aktiviere todoist Synchronisation",
-	'todoist.createListButton': "Erstelle eine neue Todoist Liste",
-	'todoist.createList': "Erstelle eine Todoist Liste",
-	'todoist.listCreated': "Todist Liste erstellt",
+	'todoist.enable': 'Aktiviere todoist Synchronisation',
+	'todoist.createListButton': 'Erstelle eine neue Todoist Liste',
+	'todoist.createList': 'Erstelle eine Todoist Liste',
+	'todoist.listCreated': 'Todist Liste erstellt',
 	'todoist.tasksCreated': {
 		counts: {
-			default: "Aufgaben zum Todoist Projekt hinzugefügt",
-			1: "Eine Aufgabe zum Todoist Projekt hinzugefügt",
-			2: "Zwei Aufgabe zum Todoist Projekt hinzugefügt",
-			25: "25 Aufgabe zum Todoist Projekt hinzugefügt",
+			default: 'Aufgaben zum Todoist Projekt hinzugefügt',
+			1: 'Eine Aufgabe zum Todoist Projekt hinzugefügt',
+			2: 'Zwei Aufgabe zum Todoist Projekt hinzugefügt',
+			25: '25 Aufgabe zum Todoist Projekt hinzugefügt'
 		}
 	},
 

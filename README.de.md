@@ -7,17 +7,17 @@
 Dlool ist ein digitales und kollaboratives Hausaufgabenheft.  
 Klassische Hausaufgabenhefte haben eine Menge Probleme. Hier sind einige Probleme und wie Dlool sie löst:
 
-| Problem                                                                                                  | Lösung                                                                                                                                                                                                                                                                                               |
-| -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Manche Schüler arbeiten nur digital, benutzen aber immer noch ein klassisches, analoges Hausaufgabenheft | Dlool ist digital und ein optimaler Ersatz.                                                                                                                                                                                                                                                          |
-| Alle in einer Klasse schreiben die selben Hausaufgaben auf                                               | Dlool ist kollaborativ, alle Einträge einer Klasse sind für alle verfügbar.                                                                                                                                                                                                                          |
-| Nicht sehr gut für die Umwelt, da sie nach nur einem Schuljahr weggeworfen werden                        | Dlool ist digital, es wird kein Papier benötigt.                                                                                                                                                                                                                                                     |
-| Sie sind nicht sehr praktisch                                                                            | Dlool ist auf allen Geräten verfügbar.                                                                                                                                                                                                                                                               |
-| Einträge sind nicht sehr strukturiert                                                                    | Dlool hat ein strukturiertes System zum Eintragen von Hausaufgaben.                                                                                                                                                                                                                                  |
-| Wenn Du Dein Hausaufgabenheft verlierst, sind alle Deine Daten für immer verloren                        | Dlool ist digital, Du kannst es nicht verlieren.                                                                                                                                                                                                                                                     |
-| Jedes Jahr braucht man ein neues Hausaufgabenheft                                                        | Dlool kann für mehrere Jahre verwendet werden.                                                                                                                                                                                                                                                       |
-| Du bist an eine bestimmte Marke gebunden                                                                 | Dlool ist kostenlos und quelloffen. *(Mit Dlool kanst Du Deine Daten in ical oder todo.txt exportieren. Außerdem gibt es [eine Möglichkeit](https://github.com/Dlurak/dlool-scriptable/blob/main/reminders/README.md), Dlool mit Apple Reminders zu synchronisieren.)* **(noch nicht implementiert)** |
-| Hausaufgaben, Tests und Notizen sind nicht getrennt                                                      | Dlool hat ein anderes System für Hausaufgaben, Tests und Notizen. Alles ist getrennt organisiert, aber dennoch leicht an einem Ort zu finden.                                                                                                                                                        |
+| Problem                                                                                                  | Lösung                                                                                                                                                                                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Manche Schüler arbeiten nur digital, benutzen aber immer noch ein klassisches, analoges Hausaufgabenheft | Dlool ist digital und ein optimaler Ersatz.                                                                                                                                                                                                                                                           |
+| Alle in einer Klasse schreiben die selben Hausaufgaben auf                                               | Dlool ist kollaborativ, alle Einträge einer Klasse sind für alle verfügbar.                                                                                                                                                                                                                           |
+| Nicht sehr gut für die Umwelt, da sie nach nur einem Schuljahr weggeworfen werden                        | Dlool ist digital, es wird kein Papier benötigt.                                                                                                                                                                                                                                                      |
+| Sie sind nicht sehr praktisch                                                                            | Dlool ist auf allen Geräten verfügbar.                                                                                                                                                                                                                                                                |
+| Einträge sind nicht sehr strukturiert                                                                    | Dlool hat ein strukturiertes System zum Eintragen von Hausaufgaben.                                                                                                                                                                                                                                   |
+| Wenn Du Dein Hausaufgabenheft verlierst, sind alle Deine Daten für immer verloren                        | Dlool ist digital, Du kannst es nicht verlieren.                                                                                                                                                                                                                                                      |
+| Jedes Jahr braucht man ein neues Hausaufgabenheft                                                        | Dlool kann für mehrere Jahre verwendet werden.                                                                                                                                                                                                                                                        |
+| Du bist an eine bestimmte Marke gebunden                                                                 | Dlool ist kostenlos und quelloffen. _(Mit Dlool kanst Du Deine Daten in ical oder todo.txt exportieren. Außerdem gibt es [eine Möglichkeit](https://github.com/Dlurak/dlool-scriptable/blob/main/reminders/README.md), Dlool mit Apple Reminders zu synchronisieren.)_ **(noch nicht implementiert)** |
+| Hausaufgaben, Tests und Notizen sind nicht getrennt                                                      | Dlool hat ein anderes System für Hausaufgaben, Tests und Notizen. Alles ist getrennt organisiert, aber dennoch leicht an einem Ort zu finden.                                                                                                                                                         |
 
 ---
 
@@ -27,8 +27,8 @@ Dlool bietet eine Vielzahl von Funktionen, um Deine Hausaufgabenverwaltung zu er
 
 - **Kollaborativ**: Alle Einträge aus einer Klasse sind für alle verfügbar.
 - **Strukturiert**: Dlool hat ein strukturiertes Eingabesystem. Es ist einfach zu bedienen, aber auch sehr leistungsfähig.
-- *(**Exportierbar**: Du kannst Deine Daten nach ical oder todo.txt exportieren,
-  mit [diesem](https://github.com/Dlurak/dlool-scriptable/blob/main/reminders/README.md) Skript kannst Du Dlool auch mit Apple Reminders synchronisieren.)* **(noch nicht implementiert)**
+- _(**Exportierbar**: Du kannst Deine Daten nach ical oder todo.txt exportieren,
+  mit [diesem](https://github.com/Dlurak/dlool-scriptable/blob/main/reminders/README.md) Skript kannst Du Dlool auch mit Apple Reminders synchronisieren.)_ **(noch nicht implementiert)**
 - **Plattformübergreifend**: Zugriff auf Dlool von allen Geräten mit einem Browser.
 - **Dunkelmodus**: Dlool passt sich automatisch an Ihre Systemeinstellungen an. Dlool respektiert auch reduzierte Bewegungseinstellungen.
 - **REST-API**: Es gibt eine offene REST-API, um eigene Skripte zu schreiben.
@@ -39,7 +39,6 @@ Dlool bietet eine Vielzahl von Funktionen, um Deine Hausaufgabenverwaltung zu er
 - **Kalender**: Behalte den Überblick über Tests und Fristen mit dem wunderschönen Kalender von Dlool.
 - **Stundenplan**: Mit der Stundenplanunterstützung weißt Du ganz einfach, welche Fächer wann sind und kannst die Hausaufgaben richtig aufschreiben.
 - **Feiertage**: Schaue nach, wann in Deiner Gegend Feiertage sind, die Daten werden von [der OpenHolidayAPI](https://www.openholidaysapi.org/en/) bereitgestellt
-  
 - Viele kleine Dinge, die Dir das Leben leichter machen.
 
 ---
@@ -83,7 +82,7 @@ Wenn Du Fragen hast, einen Fehler findest oder eine Idee für eine Funktion hast
 
 ```bash
    git clone git@github.com:Dlurak/dlool_frontend_v2.git
-   ```
+```
 
 2. Führe das Setup-Skript aus
 

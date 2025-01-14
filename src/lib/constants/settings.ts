@@ -7,7 +7,7 @@ import {
 	User,
 	BookOpen,
 	type IconSource,
-    Check
+	Check
 } from 'svelte-hero-icons';
 import { i } from '$lib/i18n/store';
 import { isApple } from '$lib/stores';
@@ -59,11 +59,11 @@ export const settings: Setting[] = [
 		label: i('settings.assignments'),
 		icon: BookOpen
 	},
-	{ type: "hr" },
+	{ type: 'hr' },
 	{
 		type: 'link',
 		uri: '/todo',
-		label: writable("Todo-Integration"), // TODO: i18n
+		label: writable('Todo-Integration'), // TODO: i18n
 		icon: Check
 	},
 	{
