@@ -26,7 +26,7 @@
 	import { listClasses, type Class } from '$lib/dlool/classList';
 	import { i } from '$lib/i18n/store';
 	import { createEventDispatcher } from 'svelte';
-	import { AcademicCap, Bookmark } from 'svelte-hero-icons';
+	import { AcademicCap, ArrowLongRight, Bookmark } from 'svelte-hero-icons';
 	import { readable, writable } from 'svelte/store';
 	import {
 		currentCustomDate,
@@ -85,24 +85,25 @@
 		customDateToNormal(due) > customDateToNormal(from)
 	);
 
-	function setAutoDue() {
+	function setAutoDue(from: CustomDate) {
+		const fromDate = customDateToNormal(from);
+		const currentDay = WEEKDAYS[fromDate.getDay()];
+		const timetable = $timetable;
 		const dueInDays = safeDaysUntil({
 			subject,
-			timetable: $timetable,
-			currentDay: WEEKDAYS[customDateToNormal(from).getDay()]
+			timetable,
+			currentDay,
 		});
 
-		const date = customDateToNormal(from);
-		date.setDate(date.getDate() + dueInDays);
+		fromDate.setDate(fromDate.getDate() + dueInDays);
 
-		due = normalToCustomDate(date);
+		due = normalToCustomDate(fromDate);
 	}
 
 	$: {
 		$timetable;
-		from;
 		subject;
-		setAutoDue();
+		setAutoDue(from);
 	}
 
 	classInput.subscribe((cl) => {
@@ -194,6 +195,16 @@
 	</DateSelector>
 	<DateSelector bind:date={due}>
 		<span slot="postIcon"><Store store={i('assignments.create.due')} /></span>
+		<span slot="postButton">
+			<QuickAction
+				icon={ArrowLongRight}
+				small
+				on:click={() => {
+					// goto the next lesson from the timetable
+					setAutoDue(due)
+				}}
+			/>
+		</span>
 	</DateSelector>
 
 	<PrimaryButton

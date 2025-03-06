@@ -4,12 +4,20 @@
 	import DateSelector from '$lib/components/input/date/DateSelector.svelte';
 	import type { Assignment } from '$lib/dlool/assignments/list';
 	import { i } from '$lib/i18n/store';
-	import { customDateToNormal, type CustomDate } from '$lib/utils/dates/custom';
+	import { customDateToNormal, normalToCustomDate, type CustomDate } from '$lib/utils/dates/custom';
 	import { createEventDispatcher } from 'svelte';
 	import { deepEqual } from '$lib/utils/objects/deepEqual';
 	import TextArea from '$lib/components/input/TextArea.svelte';
 	import Store from '$lib/components/utils/Store.svelte';
 	import { prettify } from '$lib/utils/strings/prettify';
+	import QuickAction from '$lib/components/buttons/QuickAction.svelte';
+	import { ArrowLongRight } from 'svelte-hero-icons';
+	import { WEEKDAYS } from '$lib/components/settings/timetable/weekdays';
+	import { svocal } from '$lib/utils/store/svocal';
+	import { daysUntil } from '$lib/components/settings/timetable/daysUntil';
+	import { get } from 'svelte/store';
+
+	const timetable = svocal('settings.timetable');
 
 	export let assignment: Assignment;
 	export let disabled: boolean;
@@ -51,8 +59,34 @@
 <TextInput placeholder={i('assignments.create.subject')} bind:value={subject} />
 <TextArea markdown placeholder={i('assignments.create.description')} bind:value={description} />
 
-<DateSelector bind:date={fromDate} />
-<DateSelector bind:date={dueDate} />
+<DateSelector bind:date={fromDate}>
+	<span slot="postIcon"><Store store={i('assignments.create.from')} /></span>
+</DateSelector>
+<DateSelector bind:date={dueDate}>
+	<span slot="postIcon"><Store store={i('assignments.create.due')} /></span>
+	<span slot="postButton">
+		<QuickAction
+			icon={ArrowLongRight}
+			small
+			on:click={() => {
+				const original = customDateToNormal(dueDate);
+				const currentDay = WEEKDAYS[original.getDay()];
+
+				let dueInDays = 7;
+				try {
+					dueInDays = daysUntil({
+						subject,
+						timetable: get(timetable),
+						currentDay
+					});
+				} catch {}
+
+				original.setDate(original.getDate() + dueInDays);
+				dueDate = normalToCustomDate(original);
+			}}
+		/>
+	</span>
+</DateSelector>
 
 <PrimaryButton
 	disabled={disabled || !internallyEnabled}
